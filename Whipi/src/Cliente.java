@@ -34,6 +34,6 @@ public class Cliente {
 	}
 	
 	public String toString(){
-		return "Cliente: " + this.nome + "Data de nascimento: " + this.toStringLocalDate() + "Sexo: " + this.sexo;
+		return "Cliente: " + this.nome + "\nData de nascimento: " + this.toStringLocalDate() + "\nSexo: " + this.sexo;
 	}
 }

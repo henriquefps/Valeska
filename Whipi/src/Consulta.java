@@ -6,14 +6,22 @@ public class Consulta {
 	private LocalDateTime horario;
 	boolean realizada = false;
 	private Medico medico;
+	private String descricaoPosConsulta;
 	public Consulta(Cliente paciente, LocalDateTime hora, Medico medico){
 		this.paciente = paciente;
 		this.horario = hora;
 		this.medico = medico;
 	}
-	public boolean realizarConsulta(){
-		this.realizada = true;
-		return this.realizada;
+	// removi o realizarConsulta
+	public void setRealizada(boolean a){
+		this.realizada = a;
+	}
+	// get e set descricao da consulta
+	public void setDescricaoDaConsulta(String descricao){
+		this.descricaoPosConsulta = descricao;
+	}
+	public String getDescricaoPosConsulta() {
+		return descricaoPosConsulta;
 	}
 	public Cliente getCliente(){
 		return this.paciente;
@@ -32,7 +40,7 @@ public class Consulta {
 		return "\nData: " + a + "\nHora: " + b;
 	}
 	public String toString(){
-		return this.paciente.toString() + this.toStringLocalDateTime();
+		return this.paciente.toString() + this.toStringLocalDateTime() + "\n";
 	}
 	public Medico getMedico(){
 		return this.medico;

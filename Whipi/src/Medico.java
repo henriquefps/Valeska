@@ -7,7 +7,6 @@ public class Medico {
 	private ArrayList<Consulta> consultasDoMedico = new ArrayList<Consulta>();
 	private String cpf;
 	private String senha;
-	private int numeroDaSala;
 	public Medico(String nome, String cpf, String especializacao, String senha){
 		this.nome = nome;
 		this.especializacao = especializacao;
@@ -29,24 +28,31 @@ public class Medico {
 	public String getCpf() {
 		return cpf;
 	}
-	public String getSenha() {
+	// getSenha é private aqui e em recepcionista
+	private String getSenha() {
 		return senha;
 	}
-	public void removerConsultasRealizadas(){
-		int i = 0;
-		while(i < this.consultasDoMedico.size()){
-			if(this.consultasDoMedico.get(i).isRealizada()){
-				this.consultasDoMedico.remove(i);
-			}
+	// nova Funcao
+	public void realizarConsulta(Consulta a, String descricao){
+		if(this.consultasDoMedico.contains(a)){
+			int aux = this.consultasDoMedico.indexOf(a);
+			this.consultasDoMedico.get(aux).setDescricaoDaConsulta(descricao);
+			this.consultasDoMedico.get(aux).setRealizada(true);
+			this.consultasDoMedico.remove(a);
 		}
 	}
+	// removi removerConsultasRealizadas
+	// alterada
 	public ArrayList<Consulta> consultasDeHoje(){
 		ArrayList<Consulta> hoje = new ArrayList<Consulta>();
 		for (int i = 0; i < this.consultasDoMedico.size(); i++) {
-			if(this.consultasDoMedico.get(i).getDia() == LocalDate.now());
-			hoje.add(this.consultasDoMedico.get(i));
+			if(!this.consultasDoMedico.get(i).isRealizada() && this.consultasDoMedico.get(i).getDia().getDayOfYear() == LocalDate.now().getDayOfYear() && this.consultasDoMedico.get(i).getDia().getMonthValue() == LocalDate.now().getMonthValue() && this.consultasDoMedico.get(i).getDia().getYear() == LocalDate.now().getYear()){
+				hoje.add(this.consultasDoMedico.get(i));
+			}
 		}
 		return hoje;
 	}
-	
+	public String toString(){
+		return "Nome: " + this.nome + "\nEspecialização: " + this.especializacao + "\nCPF: " + this.cpf + "\n";
+	}
 }

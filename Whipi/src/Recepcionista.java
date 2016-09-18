@@ -18,7 +18,8 @@ public class Recepcionista {
 	public static ArrayList<Consulta> getTodasAsConsultas() {
 		return todasAsConsultas;
 	}
-	public String getSenha() {
+	// getSenha é private
+	private String getSenha() {
 		return senha;
 	}
 	public boolean marcarConsulta(Medico medico, Cliente paciente, LocalDateTime hora){
@@ -37,5 +38,8 @@ public class Recepcionista {
 	}
 	public void cadastrarCliente(String nome, String cpf, String sexo, LocalDate nascimento){
 		todosOsClientes.add(new Cliente(nome, cpf, nascimento, sexo));
+	}
+	public String toString(){
+		return "Nome: " + this.nome + "\nCPF: " + this.cpf + "\n";
 	}
 }
