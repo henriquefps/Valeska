@@ -6,7 +6,7 @@ public class Consulta {
 	private LocalDateTime horario;
 	boolean realizada = false;
 	private Medico medico;
-	private String descricaoPosConsulta;
+	private String descricaoPosConsulta;// novo
 	public Consulta(Cliente paciente, LocalDateTime hora, Medico medico){
 		this.paciente = paciente;
 		this.horario = hora;

@@ -9,6 +9,17 @@ public class Recepcionista {
 	private static ArrayList<Cliente> todosOsClientes = new ArrayList<Cliente>();
 	//todasAsConsultas é static pois todos os recepcionistas devem ter acesso a todas as consultas
 	private String senha;
+	
+	public Recepcionista(String nome, String cpf, String senha){
+		this.nome = nome;
+		this.cpf = cpf;
+		this.senha = senha;
+	}
+	
+	public static ArrayList<Cliente> getTodosOsClientes() {
+		return todosOsClientes;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -41,5 +52,23 @@ public class Recepcionista {
 	}
 	public String toString(){
 		return "Nome: " + this.nome + "\nCPF: " + this.cpf + "\n";
+	}
+	//Nova funcao, alguem deve verificar antes se o cliente ja tem cadastro
+	public Cliente getCliente(String cpf){
+		for (int i = 0; i < todosOsClientes.size(); i++) {
+			if(todosOsClientes.get(i).getCpf() == cpf){
+				return todosOsClientes.get(i);
+			}
+		}
+		return null;
+	}
+	//nova função
+	public Consulta getConsulta(String cpf){
+		for (int i = 0; i < todasAsConsultas.size(); i++) {
+			if(todasAsConsultas.get(i).getCliente().getCpf() == cpf && !todasAsConsultas.get(i).isRealizada()){
+				return todasAsConsultas.get(i);
+			}
+		}
+		return null;
 	}
 }
