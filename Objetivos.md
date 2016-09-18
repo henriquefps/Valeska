@@ -1,6 +1,6 @@
 # Valeska
 Projeto IP2
-Gerenciamento Financeiro 
+Gerenciamento Clínica Médica
 - Quem criará novos médicos e novos recepcionistas será uma classe administradora
 - Quem cria novas consultas e cadastra novos clientes é o recepcionista
 - Recepcionista tem acesso a todos os clientes e consultas cadastradas no sistema
