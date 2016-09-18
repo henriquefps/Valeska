@@ -1,14 +1,11 @@
 # Valeska
 Projeto IP2
 Gerenciamento Financeiro 
--O cara começa criando um perfil para ele, com usuário e senha, e uma conta;
-
--Quando ele criar o perfil, podemos usar o java time para pegar a data atual;
-
--Durante a criação da conta, poderíamos perguntar quanto dinheiro ele tem, para inicializar o saldo, e isso não contaria como uma transação;
-
--Podemos criar planejamentos para o usuario, ele diz quanto ele precisa, e em quanto tempo, nós daríamos quanto ele precisa poupar por mês e por quanto tempo(talvez alguma coisa com o salario dele);
-
--Nossa função de passar o tempo pularia em 1 mês todas as contas daquele perfil;
-
--Podemos configurar transações que se repetem todos os meses (como assinaturas de serviços, Netflix, revistas...);
+- Quem criará novos médicos e novos recepcionistas será uma classe administradora
+- Quem cria novas consultas e cadastra novos clientes é o recepcionista
+- Recepcionista tem acesso a todos os clientes e consultas cadastradas no sistema
+- Quem garante que os horários das consultas sejam compatíveis é o recepcionista
+- Médicos só tem acesso as consultas que foram marcadas para ele
+- Clientes não devem usar o sistema
+- Teremos tres tipos de usuário do sistema, Médicos, Recepcionistas e Administrador
+- Uma consulta tem o atributo "realizada" que começa como falso, após o atendimento, colocamos ela como true para que ela possa ser removida do sistema, ou pelo menos removida da lista de consultas do médico
