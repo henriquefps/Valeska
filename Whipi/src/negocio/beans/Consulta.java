@@ -1,3 +1,5 @@
+package negocio.beans;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 

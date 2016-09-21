@@ -1,4 +1,8 @@
+package classesTeste;
+
 import java.time.LocalDate;
+
+import negocio.beans.Cliente;
 
 public class TestCliente {
 
