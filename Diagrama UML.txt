@@ -1,0 +1,69 @@
+1.
+Cliente
+-nome:String
+-dataDeNascimento:LocalDate
+-sexo:String
+-cpf:String
++Cliente(nome:String, cpf:String, nascimento:LocalDate, sexo:String)
++getNome():String
++getDataDeNascimento():LocalDate
++getSexo():String
++getCpf():String
++toStringLocalDate():String
++toString():String
+
+2.
+Consulta
+-paciente:Cliente
+-horario:LocalDateTime
+-realizada:boolean = false
+-medico:Medico
+-descricaoPosConsulta:String
++Consulta(paciente:Cliente, hora:LocalDateTime, medico:Medico)
++setRealizada():void+
++setDescricaoDaConsulta(descricao:String):void
++getDescricaoPosConsulta():String
++getCliente():Cliente
++isRealizada():boolean
++getDia():LocalDate
++toStringLocalDateTime():String
++toString():String
++getMedico():Medico
+
+3.
+Medico
+-nome:String
+-especializacao:String
+-consultasDoMedico:ArrayList<Consulta> = new ArrayList<Consulta>()
+-cpf:String
+-senha:String
++Medico(nome:String, cpf:String, especializacao:String, senha:String)
++registrarConsulta(a:Consulta):void
++getTodasAsConsultas():ArrayList<Consulta>
++getNome():String
++getEspecializacao():String
++getCpf():String
++getSenha():String
++realizarConsulta(a:Consulta, descricao:String):void
++consultasDeHoje():ArrayList<Consulta>
++toString():String
+
+4.
+Recepcionista
+-nome:String
+-cpf:String
+-todasAsConsultas:ArrayList<Consulta> = new ArrayList<Consulta>()
+-todosOsClientes:ArrayList<Cliente> = new ArrayList<Cliente>()
+-senha:String
++Recepcionista(nome:String, cpf:String, senha:String)
++getTodosOsClientes():ArrayList<Cliente>
++getNome():String
++getCpf():String
++getTodasAsConsultas():ArrayList<Consulta>
++getSenha:String
++marcarConsulta(medico:Medico, paciente:Cliente, hora:LocalDateTime):boolean
++desmarcarConsulta(Consulta a):boolean
++cadastrarCliente(nome:String, cpf:String, sexo:String, nascimento:LocalDate):void
++toString():String
++getCliente(cpf:String):Cliente
++getConsulta(cpf:String):Consulta
