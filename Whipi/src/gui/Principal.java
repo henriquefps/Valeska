@@ -1,4 +1,4 @@
-package GUI;
+package gui;
 
 import negocio.beans.*;
 import repositorio.*;
