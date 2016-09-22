@@ -7,7 +7,7 @@ public class Paciente {
 	private LocalDate dataDeNascimento;
 	private String cpf;
 	private String telefone;
-	private int id;vou criar a classe endereç
+	private int id;
 	
 	public Paciente(String nome, String cpf, int id, LocalDate dataDeNascimento, String telefone){
 		this.nomeDoPaciente = nome;
