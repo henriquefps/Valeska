@@ -6,7 +6,23 @@ public class RepositorioConsultas {
 	private static ArrayList<Consulta> lista = new ArrayList<Consulta>();
 	
 	public void add(Consulta consulta){
-		lista.add(consulta);
+		RepositorioConsultas.lista.add(consulta);
+	}
+	
+	public Consulta procurar(int id){
+		for(int i = 0; i < RepositorioConsultas.lista.size(); i++){
+			if(RepositorioConsultas.lista.get(i).getId() == id){
+				return RepositorioConsultas.lista.get(i);
+			}
+		}
+		return null;
+	}
+	
+	public void excluir(int id){
+		Consulta con = procurar(id);
+		if(con != null){
+			RepositorioConsultas.lista.remove(con);
+		}
 	}
 	
 	public ArrayList<Consulta> getConsultasComMedico(Medico medico){
@@ -26,7 +42,7 @@ public class RepositorioConsultas {
 	}
 	//retorna um ArrayList com todas as consultas com um determinado medico
 	
-	public ArrayList<Consulta> getConsultasComPaciente(Cliente paciente){
+	public ArrayList<Consulta> getConsultasComPaciente(Paciente paciente){
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
 		
 		for(int i = 0; i < RepositorioConsultas.lista.size(); i++){
