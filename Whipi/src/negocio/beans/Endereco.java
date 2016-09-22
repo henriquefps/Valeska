@@ -4,6 +4,7 @@ public class Endereco {
 	private String rua;
 	private String cidade;
 	private String bairro;
+	private String estado;
 	private String cep;
 	private String complemento;
 	
@@ -17,7 +18,7 @@ public class Endereco {
 
 	public boolean equals(Endereco b){
 		if(rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() &&
-			cep == b.getCep() && complemento == b.getComplemento()){
+			cep == b.getCep() && complemento == b.getComplemento() && estado == b.getEstado()){
 			return true;
 		}
 	return false;
@@ -66,5 +67,13 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
+	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 }

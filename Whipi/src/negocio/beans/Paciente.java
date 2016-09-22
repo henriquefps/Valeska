@@ -18,7 +18,14 @@ public class Paciente {
 		this.id = id;
 		this.endereco = endereco;
 	}
-	
+	public boolean equals(Paciente b){
+		if(nomeDoPaciente == b.getNomeDoPaciente() && dataDeNascimento == b.getDataDeNascimento() &&
+				cpf == b.getCpf() && telefone == b.getTelefone() && id == b.getId() &&
+				endereco == b.getEndereco()){
+			return true;
+		}
+		return false;
+	}
 	public Endereco getEndereco() {
 		return endereco;
 	}
