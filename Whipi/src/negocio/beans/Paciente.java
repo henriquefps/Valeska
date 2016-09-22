@@ -7,16 +7,26 @@ public class Paciente {
 	private LocalDate dataDeNascimento;
 	private String cpf;
 	private String telefone;
-	private int id;vou criar a classe endereç
+	private int id;
+	private Endereco endereco;
 	
-	public Paciente(String nome, String cpf, int id, LocalDate dataDeNascimento, String telefone){
+	public Paciente(String nome, String cpf, int id, LocalDate dataDeNascimento, String telefone, Endereco endereco){
 		this.nomeDoPaciente = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.id = id;
+		this.endereco = endereco;
 	}
 	
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
 	public int getId() {
 		return id;
 	}

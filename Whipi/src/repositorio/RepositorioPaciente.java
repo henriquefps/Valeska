@@ -14,11 +14,12 @@ public class RepositorioPaciente {
 	public void removerPaciente(Paciente paciente){
 		this.todosOsPacientes.remove(paciente);
 	}
-	public void atualizarPaciente(Paciente paciente, String nome, String cpf, LocalDate dataDeNascimento, String telefone){
+	public void atualizarPaciente(Paciente paciente, String nome, String cpf, LocalDate dataDeNascimento, String telefone, Endereco endereco){
 		paciente.setNomeDoPaciente(nome);
 		paciente.setCpf(cpf);
 		paciente.setDataDeNascimento(dataDeNascimento);
 		paciente.setTelefone(telefone);
+		paciente.setEndereco(endereco);
 	}
 	public Paciente pesquisarPeloNome(String nomeDoPaciente){
 		Paciente aux = null;
