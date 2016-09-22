@@ -6,20 +6,29 @@ public class Paciente {
 	private String nomeDoPaciente;
 	private LocalDate dataDeNascimento;
 	private String cpf;
+	private String rg;
+	public String getRg() {
+		return rg;
+	}
+	public void setRg(String rg) {
+		this.rg = rg;
+	}
+
 	private String telefone;
 	private int id;
 	private Endereco endereco;
 	
-	public Paciente(String nome, String cpf, int id, LocalDate dataDeNascimento, String telefone, Endereco endereco){
+	public Paciente(String nome, String cpf, String rg, int id, LocalDate dataDeNascimento, String telefone, Endereco endereco){
 		this.nomeDoPaciente = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.cpf = cpf;
 		this.telefone = telefone;
 		this.id = id;
 		this.endereco = endereco;
+		this.rg = rg;
 	}
 	public boolean equals(Paciente b){
-		if(cpf == b.getCpf()){
+		if(cpf == b.getCpf() || rg == b.getRg()){
 			return true;
 		}
 		return false;
