@@ -8,8 +8,8 @@ import negocio.beans.*;
 public class RepositorioPaciente {
 	private ArrayList<Paciente> todosOsPacientes = new ArrayList<Paciente>();
 
-	public void cadastrarPaciente(String nome, String cpf, LocalDate dataDeNascimento, String telefone){
-		this.todosOsPacientes.add(new Paciente(nome, cpf, dataDeNascimento, telefone));
+	public void cadastrarPaciente(Paciente paciente){
+		this.todosOsPacientes.add(paciente);
 	}
 	public void removerPaciente(Paciente paciente){
 		this.todosOsPacientes.remove(paciente);
