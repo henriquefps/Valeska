@@ -93,7 +93,7 @@ public class Medico {
 		resultado += "CPF: " + this.CPF + "\n";
 		resultado += "CRM: " + this.numCRM + "\n";
 		resultado += "RG: " + this.rg + "\n";
-		resultado += "Endereço: " + this.end + "\n";
+		resultado += "Endereco: " + this.end + "\n";
 		resultado += "Telefone: " + this.telefone + "\n";
 		resultado += "Celular: " + this.celular;
 

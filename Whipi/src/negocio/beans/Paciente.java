@@ -54,8 +54,8 @@ public class Paciente {
 	}
 
 	public String toString() {
-		return "Nome do Paciente: " + nomeDoPaciente + ", Data de Nascimento: " + dataDeNascimento + ", CPF: " + cpf
-				+ ", telefone=" + telefone + "\n";
+		return "Nome do Paciente: " + nomeDoPaciente + "\nData de Nascimento: " + dataDeNascimento + "\nCPF: " + cpf
+				+ "\ntelefone: " + telefone + "\n";
 	}
 
 	public String getNomeDoPaciente() {

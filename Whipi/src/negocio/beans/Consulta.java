@@ -74,9 +74,9 @@ public class Consulta {
 	public String toString() {
 		String resultado = "ID:" + this.id + "\n";
 		resultado += "Paciente: " + this.paciente + "\n";
-		resultado += "Médico: " + this.medico + "\n";
-		resultado += "Horário: " + this.horario + "\n";
-		resultado += "Descrição: " + this.descricao + "\n";
+		resultado += "Medico: " + this.medico + "\n";
+		resultado += "Horario: " + this.horario + "\n";
+		resultado += "Descricao: " + this.descricao + "\n";
 		resultado += "Realizada: " + this.realizada + "\n";
 
 		return resultado;
