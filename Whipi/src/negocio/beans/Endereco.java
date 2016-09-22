@@ -17,8 +17,7 @@ public class Endereco {
 	}
 
 	public boolean equals(Endereco b){
-		if(rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() &&
-			cep == b.getCep() && complemento == b.getComplemento() && estado == b.getEstado()){
+		if(cep == b.getCep() && complemento == b.getComplemento()){
 			return true;
 		}
 	return false;
