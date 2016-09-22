@@ -73,8 +73,8 @@ public class Consulta {
 	@Override
 	public String toString() {
 		String resultado = "ID:" + this.id + "\n";
-		resultado += "Paciente: " + this.paciente + "\n";
-		resultado += "Medico: " + this.medico + "\n";
+		resultado += "Paciente: " + this.paciente.getNomeDoPaciente() + "\n";
+		resultado += "Medico: " + this.medico.getNome() + "\n";
 		resultado += "Horario: " + this.horario + "\n";
 		resultado += "Descricao: " + this.descricao + "\n";
 		resultado += "Realizada: " + this.realizada + "\n";
