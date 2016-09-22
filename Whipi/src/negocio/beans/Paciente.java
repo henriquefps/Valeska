@@ -7,6 +7,7 @@ public class Paciente {
 	private LocalDate dataDeNascimento;
 	private String cpf;
 	private String rg;
+	
 	public String getRg() {
 		return rg;
 	}
