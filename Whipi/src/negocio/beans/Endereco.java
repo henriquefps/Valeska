@@ -25,7 +25,7 @@ public class Endereco {
 	}
 
 	public String toString() {
-		return "Endereco.\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nCep: " + cep + "\nComplemento: "
+		return "Endereco.\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado +  "\nCep: " + cep + "\nComplemento: "
 				+ complemento + "\n";
 	}
 
@@ -51,6 +51,14 @@ public class Endereco {
 
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
+	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
 	}
 
 	public String getCep() {
