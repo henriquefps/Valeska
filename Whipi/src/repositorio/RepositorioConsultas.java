@@ -2,7 +2,6 @@ package repositorio;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import negocio.beans.*;
-import negocio.beans.Consulta;
 
 public class RepositorioConsultas {
 	private static ArrayList<Consulta> lista = new ArrayList<Consulta>();

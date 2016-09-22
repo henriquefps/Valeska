@@ -72,7 +72,13 @@ public class Consulta {
 
 	@Override
 	public String toString() {
-		return "Consulta " + id + " - paciente= " + paciente + ", horario= " + horario + ", realizada= " + realizada
-				+ ", descricao= " + descricao + ", medico= " + medico;
+		String resultado = "ID:" + this.id + "\n";
+		resultado += "Paciente: " + this.paciente + "\n";
+		resultado += "Médico: " + this.medico + "\n";
+		resultado += "Horário: " + this.horario + "\n";
+		resultado += "Descrição: " + this.descricao + "\n";
+		resultado += "Realizada: " + this.realizada + "\n";
+
+		return resultado;
 	}
 }
