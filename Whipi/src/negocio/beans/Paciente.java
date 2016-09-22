@@ -7,14 +7,24 @@ public class Paciente {
 	private LocalDate dataDeNascimento;
 	private String cpf;
 	private String telefone;
+	private int id;vou criar a classe endereç
 	
-	public Paciente(String nome, String cpf, LocalDate dataDeNascimento, String telefone){
+	public Paciente(String nome, String cpf, int id, LocalDate dataDeNascimento, String telefone){
 		this.nomeDoPaciente = nome;
 		this.dataDeNascimento = dataDeNascimento;
 		this.cpf = cpf;
 		this.telefone = telefone;
+		this.id = id;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public String toString() {
 		return "Nome do Paciente: " + nomeDoPaciente + ", Data de Nascimento: " + dataDeNascimento + ", CPF: " + cpf
 				+ ", telefone=" + telefone + "\n";
