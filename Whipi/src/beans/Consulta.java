@@ -3,6 +3,7 @@ package beans;
 import java.time.*;
 
 public class Consulta {
+	private static int proximoID = 1;
 	private int id;
 	private Paciente paciente;
 	private LocalDateTime horario;
@@ -11,14 +12,22 @@ public class Consulta {
 	private Medico medico;
 	
 	public Consulta(Paciente paciente, LocalDateTime horario, String descricao, Medico medico) {
-		super();
+		this.id = Consulta.proximoID;
 		this.paciente = paciente;
 		this.horario = horario;
 		this.realizada = false;
 		this.descricao = descricao;
 		this.medico = medico;
+		Consulta.proximoID++;
 	}
 	
+	public boolean foiRealizada() {
+		return realizada;
+	}
+	
+	public void trocarStatus() {
+		this.realizada = !this.realizada;
+	}
 	
 	public int getId() {
 		return id;
@@ -44,12 +53,6 @@ public class Consulta {
 	public void setHorario(LocalDateTime horario) {
 		this.horario = horario;
 	}
-	public boolean isRealizada() {
-		return realizada;
-	}
-	public void setRealizada(boolean realizada) {
-		this.realizada = realizada;
-	}
 	public String getDescricao() {
 		return descricao;
 	}
@@ -58,8 +61,8 @@ public class Consulta {
 	}
 	
 	public boolean equals(Consulta outra){
-		if(this.id == outra.id && this.medico == outra.medico && this.paciente == outra.paciente 
-				&& this.horario == outra.horario && this.descricao.equals(outra.descricao)){
+		if(this.medico == outra.medico && this.paciente == outra.paciente 
+				&& this.horario == outra.horario){
 			return true;
 		}
 		else{

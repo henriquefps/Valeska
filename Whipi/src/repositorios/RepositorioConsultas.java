@@ -1,4 +1,5 @@
 package repositorios;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import beans.*;
 
@@ -6,7 +7,9 @@ public class RepositorioConsultas {
 	private static ArrayList<Consulta> lista = new ArrayList<Consulta>();
 	
 	public void add(Consulta consulta){
-		RepositorioConsultas.lista.add(consulta);
+		if(consulta != null){
+			RepositorioConsultas.lista.add(consulta);
+		}
 	}
 	
 	public Consulta procurar(int id){
@@ -23,6 +26,40 @@ public class RepositorioConsultas {
 		if(con != null){
 			RepositorioConsultas.lista.remove(con);
 		}
+	}
+	
+	public void excluir(Consulta con){
+		if(con != null){
+			RepositorioConsultas.lista.remove(con);
+		}
+	}
+	
+	public void modificar(Consulta con, Paciente paciente){
+		if(con != null && paciente != null){
+			con.setPaciente(paciente);
+		}
+	}
+	
+	public void modificar(Consulta con, LocalDateTime horario){
+		if(con != null){
+			con.setHorario(horario);;
+		}
+	}
+
+	public void modificar(Consulta con, String descricao){
+		if(con != null){
+			con.setDescricao(descricao);;
+		}
+	}
+	
+	public void modificar(Consulta con, Medico medico){
+		if(con != null && medico != null){
+			con.setMedico(medico);;
+		}
+	}
+	
+	public void trocarStatus(Consulta con){
+		con.trocarStatus();
 	}
 	
 	public ArrayList<Consulta> getConsultasComMedico(Medico medico){
