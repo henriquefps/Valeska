@@ -1,4 +1,3 @@
-
 package negocio.beans;
 
 public class Endereco {
@@ -18,14 +17,15 @@ public class Endereco {
 	}
 
 	public boolean equals(Endereco b){
-		if(cep == b.getCep() && complemento == b.getComplemento()){
+		if(rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() &&
+			cep == b.getCep() && complemento == b.getComplemento()){
 			return true;
 		}
 	return false;
 	}
 
 	public String toString() {
-		return "Endereco.\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nCep: " + cep + "\nComplemento: "
+		return "Endereco.\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado +  "\nCep: " + cep + "\nComplemento: "
 				+ complemento + "\n";
 	}
 
@@ -52,6 +52,14 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
+	
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
 
 	public String getCep() {
 		return cep;
@@ -67,13 +75,5 @@ public class Endereco {
 
 	public void setComplemento(String complemento) {
 		this.complemento = complemento;
-	}
-
-	public String getEstado() {
-		return estado;
-	}
-
-	public void setEstado(String estado) {
-		this.estado = estado;
 	}
 }
