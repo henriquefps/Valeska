@@ -29,8 +29,11 @@ public class Paciente {
 		this.rg = rg;
 	}
 	public boolean equals(Paciente b){
-		if(cpf == b.getCpf() || rg == b.getRg()){
-			return true;
+		if(b != null){
+			if(cpf == b.getCpf() || rg == b.getRg()){
+				return true;
+			}
+			return false;
 		}
 		return false;
 	}
