@@ -3,6 +3,7 @@ package negocio.beans;
 import java.time.*;
 
 public class Consulta {
+	
 	private static int proximoID = 1;
 	private int id;
 	private Paciente paciente;
@@ -73,7 +74,7 @@ public class Consulta {
 	@Override
 	public String toString() {
 		String resultado = "ID:" + this.id + "\n";
-		resultado += "Paciente: " + this.paciente.getNomeDoPaciente() + "\n";
+		resultado += "Paciente: " + this.paciente.getNome() + "\n";
 		resultado += "Medico: " + this.medico.getNome() + "\n";
 		resultado += "Horario: " + this.horario + "\n";
 		resultado += "Descricao: " + this.descricao + "\n";

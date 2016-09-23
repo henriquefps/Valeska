@@ -1,21 +1,22 @@
 package negocio.beans;
 
 public class Medico {
+	
 	private int id;
 	private String nome;
 	private int numCRM;
-	private String CPF;
+	private String cpf;
 	private String rg;
 	private Endereco end;
 	private String telefone;
 	private String celular;
 	
-	public Medico(int id, String nome, int numCRM, String cPF, String rg, Endereco end, 
+	public Medico(int id, String nome, int numCRM, String cpf, String rg, Endereco end, 
 			String telefone, String celular) {
 		this.id = id;
 		this.nome = nome;
 		this.numCRM = numCRM;
-		CPF = cPF;
+		this.cpf = cpf;
 		this.rg = rg;
 		this.end = end;
 		this.telefone = telefone;
@@ -47,11 +48,11 @@ public class Medico {
 	}
 
 	public String getCPF() {
-		return CPF;
+		return cpf;
 	}
 
 	public void setCPF(String cPF) {
-		CPF = cPF;
+		cpf = cPF;
 	}
 
 	public String getRg() {
@@ -90,7 +91,7 @@ public class Medico {
 	{
 		String resultado = "ID:" + this.id + "\n";
 		resultado += "Nome: " + this.nome + "\n";
-		resultado += "CPF: " + this.CPF + "\n";
+		resultado += "CPF: " + this.cpf + "\n";
 		resultado += "CRM: " + this.numCRM + "\n";
 		resultado += "RG: " + this.rg + "\n";
 		resultado += "Endereco: " + this.end + "\n";
@@ -108,7 +109,7 @@ public class Medico {
 		if(m != null)
 		{
 			if(this.id == m.getId() && this.numCRM == m.getNumCRM() && this.nome != null && m.getNome() != null &&
-					this.nome.equals(m.getNome()) && this.CPF != null && m.getCPF() != null && this.CPF.equals(m.getCPF()))
+					this.nome.equals(m.getNome()) && this.cpf != null && m.getCPF() != null && this.cpf.equals(m.getCPF()))
 			{
 				resultado = true;
 			}

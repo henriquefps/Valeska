@@ -1,6 +1,7 @@
 package negocio.beans;
 
 public class Endereco {
+	
 	private String rua;
 	private String cidade;
 	private String bairro;
@@ -8,10 +9,11 @@ public class Endereco {
 	private String cep;
 	private String complemento;
 	
-	public Endereco(String rua, String cidade, String bairro, String cep, String complemento){
+	public Endereco(String rua, String cidade, String bairro, String estado, String cep, String complemento){
 		this.rua = rua;
 		this.cidade = cidade;
 		this.bairro = bairro;
+		this.estado = estado;
 		this.cep = cep;
 		this.complemento = complemento;
 	}

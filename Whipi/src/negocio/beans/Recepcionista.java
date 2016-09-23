@@ -1,6 +1,7 @@
 package negocio.beans;
 
 public class Recepcionista {
+	
 	private String nome;
 	private String cpf;
 	private String telefone;
@@ -8,8 +9,7 @@ public class Recepcionista {
 	private char sexo;
 	private int idade;
 
-	public Recepcionista(String nome ,String cpf,String rg,String telefone,char sexo,int idade)
-	{
+	public Recepcionista(String nome, String cpf, String rg, String telefone, char sexo, int idade) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -17,21 +17,8 @@ public class Recepcionista {
 		this.sexo = sexo;
 		this.idade = idade;
 	}
-	
-	public Recepcionista()
-	{
-		this.nome = null;
-		this.cpf = null;
-		this.rg = null;
-		this.telefone = null;
-		this.sexo = ' ';
-		this.idade = 0;
-	}
 
-
-
-	public boolean equals(Recepcionista a)
-	{
+	public boolean equals(Recepcionista a) {
 		boolean resultado =  false;
 		String nome = a.getNome();
 		String cpf = a.getCpf();
@@ -45,8 +32,7 @@ public class Recepcionista {
 		return resultado;
 	}
 	
-	public String toString()
-	{
+	public String toString() {
 		String resultado;
 		String quebraLinha = System.getProperty("line.separator"); 
 		
