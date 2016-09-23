@@ -26,7 +26,6 @@ public class Recepcionista {
 		this.telefone = null;
 		this.sexo = ' ';
 		this.idade = 0;
-		this.salario = 0;
 	}
 
 

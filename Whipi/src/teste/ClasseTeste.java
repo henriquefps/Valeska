@@ -16,9 +16,8 @@ public class ClasseTeste {
 		String nome = "Joo",rg = "12345",cpf = "123456",telefone = "1234567";
 		char sexo = 'm';
 		int idade = 20;
-		double salario = 220.09;
-		Recepcionista a = new Recepcionista(nome,cpf,rg,telefone,sexo,idade,salario);
-		Recepcionista b = new Recepcionista(nome,"132432",rg,telefone,sexo,idade,salario);
+		Recepcionista a = new Recepcionista(nome,cpf,rg,telefone,sexo,idade);
+		Recepcionista b = new Recepcionista(nome,"132432",rg,telefone,sexo,idade);
 		
 		boolean resultado = a.equals(b);
 		
