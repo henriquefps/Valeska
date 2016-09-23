@@ -7,9 +7,8 @@ public class Recepcionista {
 	private String rg;
 	private char sexo;
 	private int idade;
-	private double salario;
 
-	public Recepcionista(String nome ,String cpf,String rg,String telefone,char sexo,int idade,double salario)
+	public Recepcionista(String nome ,String cpf,String rg,String telefone,char sexo,int idade)
 	{
 		this.nome = nome;
 		this.cpf = cpf;
@@ -17,7 +16,6 @@ public class Recepcionista {
 		this.telefone = telefone;
 		this.sexo = sexo;
 		this.idade = idade;
-		this.salario = salario;
 	}
 	
 	public Recepcionista()
@@ -55,8 +53,7 @@ public class Recepcionista {
 		
 		resultado = "Nome - " + this.nome + quebraLinha + "cpf - " + this.cpf + quebraLinha
 				+ "Rg - " + this.rg + quebraLinha + "Telefone - " + this.telefone + quebraLinha
-				+ "Sexo - " + this.sexo + quebraLinha + "Idade - " + this.idade + quebraLinha
-				+"Salario - " + this.salario + quebraLinha;
+				+ "Sexo - " + this.sexo + quebraLinha + "Idade - " + this.idade + quebraLinha;
 				
 		
 		return resultado;
@@ -92,12 +89,6 @@ public class Recepcionista {
 	}
 	public void setIdade(int idade) {
 		this.idade = idade;
-	}
-	public double getSalario() {
-		return salario;
-	}
-	public void setSalario(double salario) {
-		this.salario = salario;
 	}
 
 	public String getRg() {

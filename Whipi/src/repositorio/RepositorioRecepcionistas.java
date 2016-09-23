@@ -20,7 +20,7 @@ public class RepositorioRecepcionistas {
 
 		if ( result == true)
 		{
-			System.out.println("Recepcionista Já cadastrado(a)");
+			System.out.println("Recepcionista Jï¿½ cadastrado(a)");
 		}else{
 			this.recepcionista.add(proximo, recepcionista);
 			proximo++;
@@ -32,19 +32,18 @@ public class RepositorioRecepcionistas {
 
 		if ( result == true)
 		{
-			System.out.println("Recepcionista Já cadastrado(a)");
+			System.out.println("Recepcionista Jï¿½ cadastrado(a)");
 		}else{
 			this.recepcionista.remove(recepcionista);
 		}
 	}
 
-	public void atualizar(Recepcionista recepcionista , String nome,String cpf,String telefone,String rg,char sexo,int idade,double salario)
+	public void atualizar(Recepcionista recepcionista , String nome,String cpf,String telefone,String rg,char sexo,int idade)
 	{
 		recepcionista.setNome(nome);
 		recepcionista.setIdade(idade);
 		recepcionista.setCpf(cpf);
 		recepcionista.setRg(rg);
-		recepcionista.setSalario(salario);
 		recepcionista.setSexo(sexo);
 		recepcionista.setTelefone(telefone);
 	}
