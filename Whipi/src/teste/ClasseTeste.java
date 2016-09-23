@@ -31,11 +31,11 @@ public class ClasseTeste {
 		
 		
 		Paciente c = new Paciente("Batman", "123124", "1414", 1, LocalDate.now(), "33233323", 
-				new Endereco("Batcaverna", "NY", "Broklyn", "4432345", "Sala 01"));
+				new Endereco("Batcaverna", "NY", "Broklyn", "4432345", "Sala 01", "33012213"));
 		Paciente d = new Paciente("Beto", "3456241", "1231", 2, LocalDate.of(1996, 12, 8), "33232157",
-				new Endereco("Batcaverna", "NY", "Broklyn", "4432345", "Sala 02"));
+				new Endereco("Batcaverna", "NY", "Broklyn", "4432345", "Sala 02", "88910323"));
 		
-		Medico e = new Medico(1, "Dexter", 322123, "5566431", "67867", new Endereco("rua dos medicos", "Recife", "Macaxeira", "4432345", ""), "4121241", "08790872");
+		Medico e = new Medico(1, "Dexter", 322123, "5566431", "67867", new Endereco("rua dos medicos", "Recife", "Macaxeira", "4432345", "28391871", ""), "4121241", "08790872");
 		
 		Consulta c1 = new Consulta(d, LocalDateTime.of(2016, 9, 30, 16, 30), "", e);
 		Consulta c2 = new Consulta(c, LocalDateTime.now(), "", e);
