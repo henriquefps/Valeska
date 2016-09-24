@@ -7,6 +7,10 @@ import negocio.beans.*;
 
 public class RepositorioPacientes {
 	private ArrayList<Paciente> todosOsPacientes = new ArrayList<Paciente>();
+	private static RepositorioPacientes instance;
+	private RepositorioPacientes(){
+		
+	}
 
 	public void cadastrarPaciente(Paciente paciente){
 		this.todosOsPacientes.add(paciente);
@@ -31,5 +35,11 @@ public class RepositorioPacientes {
 			}
 		}
 		return aux;
+	}
+	public static RepositorioPacientes getInstance(){
+		if(instance == null){
+			instance = new RepositorioPacientes();
+		}
+		return instance;
 	}
 }

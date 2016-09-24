@@ -6,8 +6,9 @@ import negocio.beans.Recepcionista;
 
 public class RepositorioRecepcionistas {
 	private ArrayList<Recepcionista> recepcionista;
+	private static RepositorioRecepcionistas instance;
 	int proximo;
-	public RepositorioRecepcionistas()
+	private RepositorioRecepcionistas()
 	{
 		this.recepcionista = new ArrayList<Recepcionista>();
 		this.proximo = 0;
@@ -61,6 +62,11 @@ public class RepositorioRecepcionistas {
 
 		}
 		return resultado;
-
+	}
+	public static RepositorioRecepcionistas getInstance(){
+		if(instance == null){
+			instance = new RepositorioRecepcionistas();
+		}
+		return instance;
 	}
 }
