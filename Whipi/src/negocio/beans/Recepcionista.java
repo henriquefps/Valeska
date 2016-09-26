@@ -8,14 +8,24 @@ public class Recepcionista {
 	private String rg;
 	private char sexo;
 	private int idade;
+	private Login login;
 
-	public Recepcionista(String nome, String cpf, String rg, String telefone, char sexo, int idade) {
+	public Recepcionista(String nome, String cpf, String rg, String telefone, char sexo, int idade, Login login) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
 		this.telefone = telefone;
 		this.sexo = sexo;
 		this.idade = idade;
+		this.login = login;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 	public boolean equals(Recepcionista a) {

@@ -6,8 +6,12 @@ import negocio.beans.Endereco;
 import negocio.beans.Medico;
 
 public class RepositorioMedicos {
-	ArrayList<Medico> repositorio = new ArrayList<>();
+	private ArrayList<Medico> repositorio = new ArrayList<>();
+	private static RepositorioMedicos instance;
 	
+	private RepositorioMedicos(){
+		
+	}
 	public void cadastrar(Medico m)
 	{
 		repositorio.add(m);
@@ -43,5 +47,11 @@ public class RepositorioMedicos {
 		m.setEnd(end);
 		m.setTelefone(telefone);;
 		m.setCelular(celular);
+	}
+	public static RepositorioMedicos getInstance(){
+		if(instance == null){
+			instance = new RepositorioMedicos();
+		}
+		return instance;
 	}
 }

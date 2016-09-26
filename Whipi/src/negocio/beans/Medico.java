@@ -10,9 +10,10 @@ public class Medico {
 	private Endereco end;
 	private String telefone;
 	private String celular;
+	private Login login;
 	
 	public Medico(int id, String nome, int numCRM, String cpf, String rg, Endereco end, 
-			String telefone, String celular) {
+			String telefone, String celular, Login login) {
 		this.id = id;
 		this.nome = nome;
 		this.numCRM = numCRM;
@@ -21,6 +22,7 @@ public class Medico {
 		this.end = end;
 		this.telefone = telefone;
 		this.celular = celular;
+		this.login = login;
 	}
 
 	public int getId() {
@@ -116,5 +118,21 @@ public class Medico {
 		}
 		
 		return resultado;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 }

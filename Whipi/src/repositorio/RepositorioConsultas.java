@@ -6,6 +6,7 @@ import negocio.beans.*;
 public class RepositorioConsultas {
 	private static ArrayList<Consulta> lista = new ArrayList<Consulta>();
 	
+	
 	public void add(Consulta consulta){
 		if(consulta != null){
 			RepositorioConsultas.lista.add(consulta);
