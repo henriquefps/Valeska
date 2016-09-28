@@ -3,13 +3,8 @@ package teste;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import negocio.beans.Consulta;
-import negocio.beans.Endereco;
-import negocio.beans.Login;
-import negocio.beans.Medico;
-import negocio.beans.Paciente;
-import negocio.beans.Recepcionista;
-
+import negocio.beans.*;
+import repositorio.*;
 public class ClasseTeste {
 
 	public static void main(String[] args) {
@@ -22,13 +17,13 @@ public class ClasseTeste {
 		
 		boolean resultado = a.equals(b);
 		
-		System.out.println(resultado);
+		//System.out.println(resultado);
 		
 		b.setCpf(cpf);
 		
 		resultado = a.equals(b);
 		
-		System.out.println(resultado);
+		//System.out.println(resultado);
 		
 		
 		Paciente c = new Paciente("Batman", "123124", "1414", 1, LocalDate.now(), "33233323", 
@@ -42,8 +37,22 @@ public class ClasseTeste {
 		
 		Consulta c1 = new Consulta(d, LocalDateTime.of(2016, 9, 30, 16, 30), "", e);
 		Consulta c2 = new Consulta(c, LocalDateTime.now(), "", e);
-		System.out.println(a.toString() + b.toString() + c.toString() + d.toString() + e.toString() + c1.toString() + c2.toString());
-
+		//System.out.println(a.toString() + b.toString() + c.toString() + d.toString() + e.toString() + c1.toString() + c2.toString());
+		
+		RepositorioMedicos todosOsMedicos = RepositorioMedicos.getInstance();
+		todosOsMedicos.cadastrar(e);
+		System.out.println(todosOsMedicos.pesquisar(1));
+		todosOsMedicos.atualizar(1,"Frankstein", 322123, "5566431", "67867", 
+				new Endereco("rua dos medicos", "Recife", "Macaxeira", "4432345", "28391871", ""),
+				"4121241", "08790872");
+		System.out.println(todosOsMedicos.pesquisar(1));
+		todosOsMedicos.remover(0);
+		
+		RepositorioConsultas todasAsConsultas = RepositorioConsultas.getInstance();
+		todasAsConsultas.add(c1);
+		todasAsConsultas.add(c2);
+		System.out.println(todasAsConsultas.procurar(1));
+		todasAsConsultas.excluir(c2);
 	}
 
 }
