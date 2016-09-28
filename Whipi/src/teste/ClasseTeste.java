@@ -60,12 +60,18 @@ public class ClasseTeste {
 				new Endereco("End of the World", "Hell", "Asfodelos", "Hades", "101", "01")));
 		System.out.println(dataP.pesquisarPeloNome("Braulios Minimus III"));
 		System.out.println(dataP.pesquisarPeloNome("Braulios Minimus III").getEndereco());
-		dataP.atualizarPaciente(dataP.pesquisarPeloNome("Braulios Minimus III"), "É né", "well", "this is boring", LocalDate.now(), "blah blah", 
+		dataP.atualizarPaciente(dataP.pesquisarPeloNome("Braulios Minimus III"), "Rodrigo", "well", "this is boring", LocalDate.now(), "blah blah", 
 				new Endereco("End of the World", "Hell", "Asfodelos", "Hades", "101", "01"));
-		System.out.println(dataP.pesquisarPeloNome("É né"));
-		System.out.println(dataP.pesquisarPeloNome("É né").getEndereco());
-		dataP.removerPaciente(dataP.pesquisarPeloNome("É né"));
-		System.out.println(dataP.pesquisarPeloNome("É né"));
+		System.out.println(dataP.pesquisarPeloNome("Rodrigo"));
+		System.out.println(dataP.pesquisarPeloNome("Rodrigo").getEndereco());
+		dataP.removerPaciente(dataP.pesquisarPeloNome("Rodrigo"));
+		System.out.println(dataP.pesquisarPeloNome("Rodrigo"));
+		
+		// Recepcionistas
+		RepositorioRecepcionistas dataRecepcionista = RepositorioRecepcionistas.getInstance();
+		dataRecepcionista.cadastrar(a);
+		dataRecepcionista.cadastrar(b);
+		System.out.println(dataRecepcionista.pesquisar("123456"));
 	}
 
 }
