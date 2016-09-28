@@ -53,6 +53,19 @@ public class ClasseTeste {
 		todasAsConsultas.add(c2);
 		System.out.println(todasAsConsultas.procurar(1));
 		todasAsConsultas.excluir(c2);
+		
+		//Pacientes
+		RepositorioPacientes dataP = RepositorioPacientes.getInstance();
+		dataP.cadastrarPaciente(new Paciente("Braulios Minimus III", "3003", "30031", 9000, LocalDate.now(), "0800", 
+				new Endereco("End of the World", "Hell", "Asfodelos", "Hades", "101", "01")));
+		System.out.println(dataP.pesquisarPeloNome("Braulios Minimus III"));
+		System.out.println(dataP.pesquisarPeloNome("Braulios Minimus III").getEndereco());
+		dataP.atualizarPaciente(dataP.pesquisarPeloNome("Braulios Minimus III"), "É né", "well", "this is boring", LocalDate.now(), "blah blah", 
+				new Endereco("End of the World", "Hell", "Asfodelos", "Hades", "101", "01"));
+		System.out.println(dataP.pesquisarPeloNome("É né"));
+		System.out.println(dataP.pesquisarPeloNome("É né").getEndereco());
+		dataP.removerPaciente(dataP.pesquisarPeloNome("É né"));
+		System.out.println(dataP.pesquisarPeloNome("É né"));
 	}
 
 }

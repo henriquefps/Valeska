@@ -30,7 +30,7 @@ public class Endereco {
 	}
 
 	public String toString() {
-		return "Endereco.\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado +  "\nCep: " + cep + "\nComplemento: "
+		return "Endereco:\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado +  "\nCep: " + cep + "\nComplemento: "
 				+ complemento + "\n";
 	}
 
