@@ -4,25 +4,16 @@ import java.time.LocalDate;
 
 public class Medico extends Pessoa {
 
-	private int id;
 	private int numCRM;
 	private Login login;
 
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
-			LocalDate dataDeNascimento, int id, int numCRM, Login login) {
+			LocalDate dataDeNascimento, int numCRM, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
-		this.id = id;
 		this.numCRM = numCRM;
-		this.login = login;
+		this.login = new Login(cpf, senha, 1);
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public int getNumCRM() {
 		return numCRM;
@@ -42,7 +33,7 @@ public class Medico extends Pessoa {
 
 	@Override
 	public String toString() {
-		String resultado = "ID: " + this.id + "\n";
+		String resultado = "ID: " + this.getId() + "\n";
 		resultado += "Nome: " + this.getNome() + "\n";
 		resultado += "CPF: " + this.getCpf() + "\n";
 		resultado += "CRM: " + this.numCRM + "\n";

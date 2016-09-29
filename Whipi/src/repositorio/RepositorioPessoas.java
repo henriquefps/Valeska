@@ -42,7 +42,7 @@ public class RepositorioPessoas {
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int id, int numCRM, Login login, Medico medico) {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, String senha, Medico medico) {
 		medico.setNome(nome);
 		medico.setCpf(cpf);
 		medico.setRg(rg);
@@ -51,13 +51,12 @@ public class RepositorioPessoas {
 		medico.setSexo(sexo);
 		medico.setEndereco(endereco);
 		medico.setDataDeNascimento(dataDeNascimento);
-		medico.setId(id);
 		medico.setNumCRM(numCRM);
-		medico.setLogin(login);
+		medico.setLogin(new Login(cpf, senha, 1));
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int id, Paciente paciente) {
+			Endereco endereco, LocalDate dataDeNascimento, Paciente paciente) {
 		paciente.setNome(nome);
 		paciente.setCpf(cpf);
 		paciente.setRg(rg);
@@ -66,11 +65,10 @@ public class RepositorioPessoas {
 		paciente.setSexo(sexo);
 		paciente.setEndereco(endereco);
 		paciente.setDataDeNascimento(dataDeNascimento);
-		paciente.setId(id);
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, Login login, Recepcionista recepcionista) {
+			Endereco endereco, LocalDate dataDeNascimento, String senha, Recepcionista recepcionista) {
 		recepcionista.setNome(nome);
 		recepcionista.setCpf(cpf);
 		recepcionista.setRg(rg);
@@ -79,7 +77,7 @@ public class RepositorioPessoas {
 		recepcionista.setSexo(sexo);
 		recepcionista.setEndereco(endereco);
 		recepcionista.setDataDeNascimento(dataDeNascimento);
-		recepcionista.setLogin(login);
+		recepcionista.setLogin(new Login(cpf, senha, 1));
 	}
 
 }

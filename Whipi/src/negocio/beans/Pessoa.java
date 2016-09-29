@@ -12,6 +12,8 @@ public class Pessoa {
 	private char sexo;
 	private Endereco endereco;
 	private LocalDate dataDeNascimento;
+	private static int proximoId = 1;
+	private int id;
 
 	public Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
 			LocalDate dataDeNascimento) {
@@ -23,8 +25,18 @@ public class Pessoa {
 		this.sexo = sexo;
 		this.endereco = endereco;
 		this.dataDeNascimento = dataDeNascimento;
+		this.id = proximoId;
+		proximoId++;
 	}
 	
+	public int getId() {
+		return id;
+	}
+
+	public static int getProximoId() {
+		return proximoId;
+	}
+
 	public String getNome() {
 		return nome;
 	}
