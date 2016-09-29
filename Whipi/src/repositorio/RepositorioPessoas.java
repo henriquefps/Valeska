@@ -31,14 +31,12 @@ public class RepositorioPessoas {
 	}
 
 	public Pessoa pesquisar(String cpf) {
-		Pessoa pesquisa = null;
 		for (int i = 0; i < repositorio.size(); i++) {
-			if (repositorio.get(i).equals(cpf)) {
-				pesquisa = repositorio.get(i);
-				break;
+			if (repositorio.get(i).getCpf() == cpf) {
+				return repositorio.get(i);
 			}
 		}
-		return pesquisa;
+		return null;
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,

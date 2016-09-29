@@ -28,13 +28,12 @@ public class RepositorioConsultas {
 	}
 
 	public Consulta pesquisar(int id) {
-		Consulta procura = null;
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getId() == id) {
-				procura = lista.get(i);
+				return lista.get(i);
 			}
 		}
-		return procura;
+		return null;
 	}
 
 	public void remover(Consulta con) {
