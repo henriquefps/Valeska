@@ -12,8 +12,9 @@ public class Pessoa {
 	private char sexo;
 	private Endereco endereco;
 	private LocalDate dataDeNascimento;
-	
-	public Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento) {
+
+	public Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
+			LocalDate dataDeNascimento) {
 		this.nome = nome;
 		this.cpf = cpf;
 		this.rg = rg;
@@ -23,7 +24,7 @@ public class Pessoa {
 		this.endereco = endereco;
 		this.dataDeNascimento = dataDeNascimento;
 	}
-
+	
 	public String getNome() {
 		return nome;
 	}
@@ -109,5 +110,5 @@ public class Pessoa {
 		}
 		return true;
 	}
-	
+
 }

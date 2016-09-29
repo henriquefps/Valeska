@@ -8,13 +8,14 @@ public class Medico extends Pessoa {
 	private int numCRM;
 	private Login login;
 
-	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, int id, int numCRM, Login login) {
+	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
+			LocalDate dataDeNascimento, int id, int numCRM, Login login) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.id = id;
 		this.numCRM = numCRM;
 		this.login = login;
 	}
-
+	
 	public int getId() {
 		return id;
 	}
