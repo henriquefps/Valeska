@@ -3,10 +3,11 @@ package negocio.beans;
 import java.time.LocalDate;
 
 public class Paciente extends Pessoa {
-	
+
 	private int id;
-	
-	public Paciente(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, int id){
+
+	public Paciente(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
+			LocalDate dataDeNascimento, int id) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.id = id;
 	}
@@ -30,5 +31,5 @@ public class Paciente extends Pessoa {
 		resultado += "Celular: " + this.getCelular();
 		return resultado;
 	}
-	
+
 }

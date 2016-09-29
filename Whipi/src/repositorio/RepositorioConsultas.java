@@ -7,7 +7,7 @@ import negocio.beans.*;
 public class RepositorioConsultas {
 
 	private ArrayList<Consulta> lista;
-
+	
 	private static RepositorioConsultas instance;
 
 	private RepositorioConsultas() {

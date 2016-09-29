@@ -15,7 +15,7 @@ public class Medico extends Pessoa {
 		this.numCRM = numCRM;
 		this.login = login;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
