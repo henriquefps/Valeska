@@ -11,9 +11,9 @@ import negocio.beans.Paciente;
 import negocio.beans.Recepcionista;
 import repositorio.RepositorioConsultas;
 public class ClasseTeste {
-
+	
 	public static void main(String[] args) {
-		System.out.println("oi");
+		
 	}
 
 }

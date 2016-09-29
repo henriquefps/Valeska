@@ -14,7 +14,7 @@ public class RepositorioPessoas {
 	private RepositorioPessoas() {
 		this.repositorio = new ArrayList<Pessoa>();
 	}
-
+	
 	public static RepositorioPessoas getInstance() {
 		if (instance == null) {
 			instance = new RepositorioPessoas();

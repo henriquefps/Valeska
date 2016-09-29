@@ -1,15 +1,15 @@
 package negocio.beans;
 
 public class Endereco {
-	
+
 	private String rua;
 	private String cidade;
 	private String bairro;
 	private String estado;
 	private String cep;
 	private String complemento;
-	
-	public Endereco(String rua, String cidade, String bairro, String estado, String cep, String complemento){
+
+	public Endereco(String rua, String cidade, String bairro, String estado, String cep, String complemento) {
 		this.rua = rua;
 		this.cidade = cidade;
 		this.bairro = bairro;
@@ -18,20 +18,20 @@ public class Endereco {
 		this.complemento = complemento;
 	}
 
-	public boolean equals(Endereco b){
-		if(b != null){
-			if(rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() &&
-				cep == b.getCep() && complemento == b.getComplemento()){
+	public boolean equals(Endereco b) {
+		if (b != null) {
+			if (rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() && cep == b.getCep()
+					&& complemento == b.getComplemento()) {
 				return true;
 			}
 			return false;
 		}
-	return false;
+		return false;
 	}
 
 	public String toString() {
-		return "Endereco:\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado +  "\nCep: " + cep + "\nComplemento: "
-				+ complemento + "\n";
+		return "Endereco:\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado
+				+ "\nCep: " + cep + "\nComplemento: " + complemento + "\n";
 	}
 
 	public String getRua() {
@@ -57,7 +57,7 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	
+
 	public String getEstado() {
 		return estado;
 	}
