@@ -4,7 +4,7 @@ import java.time.*;
 
 public class Consulta {
 	
-	private static int proximoID = 1;
+	private static int proximoId = 1;
 	private int id;
 	private Paciente paciente;
 	private LocalDateTime horario;
@@ -12,14 +12,14 @@ public class Consulta {
 	private String descricao;
 	private Medico medico;
 	
-	public Consulta(Paciente paciente, LocalDateTime horario, String descricao, Medico medico) {
-		this.id = Consulta.proximoID;
+	public Consulta(Paciente paciente, LocalDateTime horario, Medico medico) {
+		this.id = Consulta.proximoId;
 		this.paciente = paciente;
 		this.horario = horario;
 		this.realizada = false;
-		this.descricao = descricao;
+		this.descricao = "";
 		this.medico = medico;
-		Consulta.proximoID++;
+		Consulta.proximoId++;
 	}
 	
 	public boolean foiRealizada() {
