@@ -37,59 +37,54 @@ public class RepositorioConsultas {
 		return procura;
 	}
 
-	public void remover(int id) {
-		Consulta con = pesquisar(id);
-		if (con != null) {
-			lista.remove(con);
-		}
-	}
-
 	public void remover(Consulta con) {
 		if (con != null) {
 			lista.remove(con);
 		}
 	}
 
-	public void atualizar(LocalDateTime horario,Medico medico, Paciente paciente, Consulta consulta){
+	public void atualizar(Consulta consulta, LocalDateTime horario,Medico medico, Paciente paciente){
 		consulta.setHorario(horario);
 		consulta.setMedico(medico);
 		consulta.setPaciente(paciente);
 	}
 
+/*
+	public ArrayList<Consulta> getConsultasComMedico(Medico medico) {
+		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 
-//	public ArrayList<Consulta> getConsultasComMedico(Medico medico) {
-//		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
-//
-//		for (int i = 0; i < lista.size(); i++) {
-//			if (lista.get(i).getMedico() == medico) {
-//				comMedico.add(lista.get(i));
-//			}
-//		}
-//		if (comMedico.isEmpty()) {
-//			return null;
-//		} else {
-//			return comMedico;
-//		}
-//	}
-//	// retorna um ArrayList com todas as consultas com um determinado medico
-//
-//	public ArrayList<Consulta> getConsultasComPaciente(Paciente paciente) {
-//		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
-//
-//		for (int i = 0; i < lista.size(); i++) {
-//			if (lista.get(i).getPaciente() == paciente) {
-//				comPaciente.add(lista.get(i));
-//			}
-//		}
-//		if (comPaciente.isEmpty()) {
-//			return null;
-//		} else {
-//			return comPaciente;
-//		}
-//	}
-//	// retorna um ArrayList com todas as consultas de um determinado paciente
-//
-//	public ArrayList<Consulta> getLista() {
-//		return lista;
-//	}
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getMedico() == medico) {
+				comMedico.add(lista.get(i));
+			}
+		}
+		if (comMedico.isEmpty()) {
+			return null;
+		} else {
+			return comMedico;
+		}
+	}
+	// retorna um ArrayList com todas as consultas com um determinado medico
+
+	public ArrayList<Consulta> getConsultasComPaciente(Paciente paciente) {
+		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
+
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getPaciente() == paciente) {
+				comPaciente.add(lista.get(i));
+			}
+		}
+		if (comPaciente.isEmpty()) {
+			return null;
+		} else {
+			return comPaciente;
+		}
+	}
+	// retorna um ArrayList com todas as consultas de um determinado paciente
+
+	public ArrayList<Consulta> getLista() {
+		return lista;
+	}
+ */
+	
 }
