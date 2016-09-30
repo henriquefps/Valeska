@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import negocio.beans.*;
 
 public class RepositorioConsultas {
-	private ArrayList<Consulta> repositorio;
+	private ArrayList<Consulta> lista = new ArrayList<Consulta>();
 	private static RepositorioConsultas instance;
 	
 	private RepositorioConsultas(){
-		repositorio = new ArrayList<Consulta>();
+		
 	}
-	
 	public static RepositorioConsultas getInstance(){
 		if(instance == null){
 			instance = new RepositorioConsultas();
@@ -19,29 +18,29 @@ public class RepositorioConsultas {
 	}
 	public void cadastrar(Consulta consulta){
 		if(consulta != null){
-			repositorio.add(consulta);
+			lista.add(consulta);
 		}
 	}
 	
-	public Consulta procurar(int id){
-		for(int i = 0; i < repositorio.size(); i++){
-			if(repositorio.get(i).getId() == id){
-				return repositorio.get(i);
+	public Consulta pesquisar(int id){
+		for(int i = 0; i < lista.size(); i++){
+			if(lista.get(i).getId() == id){
+				return lista.get(i);
 			}
 		}
 		return null;
 	}
 	
 	public void excluir(int id){
-		Consulta con = procurar(id);
+		Consulta con = pesquisar(id);
 		if(con != null){
-			repositorio.remove(con);
+			lista.remove(con);
 		}
 	}
 	
 	public void excluir(Consulta con){
 		if(con != null){
-			repositorio.remove(con);
+			lista.remove(con);
 		}
 	}
 	
@@ -76,9 +75,9 @@ public class RepositorioConsultas {
 	public ArrayList<Consulta> getConsultasComMedico(Medico medico){
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		
-		for(int i = 0; i < repositorio.size(); i++){
-			if(repositorio.get(i).getMedico() == medico){
-				comMedico.add(repositorio.get(i));
+		for(int i = 0; i < lista.size(); i++){
+			if(lista.get(i).getMedico() == medico){
+				comMedico.add(lista.get(i));
 			}
 		}
 		if(comMedico.isEmpty()){
@@ -93,9 +92,9 @@ public class RepositorioConsultas {
 	public ArrayList<Consulta> getConsultasComPaciente(Paciente paciente){
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
 		
-		for(int i = 0; i < repositorio.size(); i++){
-			if(repositorio.get(i).getPaciente() == paciente){
-				comPaciente.add(repositorio.get(i));
+		for(int i = 0; i < lista.size(); i++){
+			if(lista.get(i).getPaciente() == paciente){
+				comPaciente.add(lista.get(i));
 			}
 		}
 		if(comPaciente.isEmpty()){
@@ -108,6 +107,6 @@ public class RepositorioConsultas {
 	//retorna um ArrayList com todas as consultas de um determinado paciente
 	
 	public ArrayList<Consulta> getLista(){
-		return repositorio;
+		return lista;
 	}
 }

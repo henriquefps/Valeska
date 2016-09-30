@@ -1,11 +1,13 @@
 package negocio.beans;
 
 public class Login {
+	
 	private String cpf;
 	private String senha;
-	private int tipoDeLogin;// 1 para médico, 2 para recepcionista, 3 para administrador
-	
-	public Login(String cpf, String senha, int tipoDeLogin){
+	private int tipoDeLogin;// 1 para médico, 2 para recepcionista, 3 para
+							// administrador
+
+	public Login(String cpf, String senha, int tipoDeLogin) {
 		this.cpf = cpf;
 		this.senha = senha;
 		this.tipoDeLogin = tipoDeLogin;
