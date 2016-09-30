@@ -6,8 +6,9 @@ public class Recepcionista extends Pessoa {
 
 	private Login login;
 
-	public Recepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha) {
+	public Recepcionista(String nome, String cpf, String rg, String telefone, 
+			String celular, char sexo, Endereco endereco, 
+			LocalDate dataDeNascimento, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.login = new Login(cpf, senha, 2);
 	}

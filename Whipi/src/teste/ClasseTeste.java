@@ -9,6 +9,7 @@ import repositorio.*;
 public class ClasseTeste {
 
 	public static void main(String[] args) {
+
 		Medico m1 = new Medico("Dexter", "123145", "234231", "33212314", "991239123", 'M',
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
 				1337, "2345");
