@@ -14,7 +14,7 @@ public class RepositorioPessoas {
 	private RepositorioPessoas() {
 		this.repositorio = new ArrayList<Pessoa>();
 	}
-	
+
 	public static RepositorioPessoas getInstance() {
 		if (instance == null) {
 			instance = new RepositorioPessoas();
@@ -37,6 +37,14 @@ public class RepositorioPessoas {
 			}
 		}
 		return null;
+	}
+
+	public boolean existe(Pessoa pessoa) {
+		if (pesquisar(pessoa.getCpf()) != null) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
