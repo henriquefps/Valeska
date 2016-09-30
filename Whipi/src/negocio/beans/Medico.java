@@ -39,7 +39,7 @@ public class Medico extends Pessoa {
 		resultado += "CRM: " + this.numCRM + "\n";
 		resultado += "RG: " + this.getRg() + "\n";
 		resultado += "Sexo: " + this.getSexo() + "\n";
-		resultado += "Endereco: " + this.getEndereco() + "\n";
+		resultado += this.getEndereco() + "\n";
 		resultado += "Telefone: " + this.getTelefone() + "\n";
 		resultado += "Celular: " + this.getCelular();
 		return resultado;

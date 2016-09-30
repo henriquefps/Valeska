@@ -33,7 +33,12 @@ public class ClasseTeste {
 
 		System.out.println(registroDePessoas.pesquisar("2132131239").toString());
 		registroDePessoas.remover(registroDePessoas.pesquisar("2132131239"));
-		System.out.println(registroDePessoas.pesquisar("2132131239"));
+		System.out.println(registroDePessoas.pesquisar("2132131239")); // Isso é
+																		// responsável
+																		// pelo
+																		// null
+																		// do
+																		// console.
 		System.out.println();
 
 		Consulta c1 = new Consulta(((Paciente) registroDePessoas.pesquisar("0123123955")),
