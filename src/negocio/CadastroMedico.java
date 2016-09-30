@@ -14,7 +14,7 @@ public class CadastroMedico {
 		if (medico != null && !this.medicos.existe(medico)) {
 			this.medicos.cadastrar(medico);
 		} else {
-			//Usar exceções no futuro
+			//Usar exceÃ§Ãµes no futuro
 		}
 	}
 	
@@ -23,7 +23,7 @@ public class CadastroMedico {
 		if(p != null) {
 			this.medicos.remover(p);
 		} else {
-			//Usar exceções no futuro
+			//Usar exceÃ§Ãµes no futuro
 		}
 	}
 }
