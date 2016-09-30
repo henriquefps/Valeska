@@ -49,8 +49,8 @@ public class ClasseTeste {
 		todosOsMedicos.remover(0);
 		
 		RepositorioConsultas todasAsConsultas = RepositorioConsultas.getInstance();
-		todasAsConsultas.add(c1);
-		todasAsConsultas.add(c2);
+		todasAsConsultas.cadastrar(c1);
+		todasAsConsultas.cadastrar(c2);
 		System.out.println(todasAsConsultas.procurar(1));
 		todasAsConsultas.excluir(c2);
 		
