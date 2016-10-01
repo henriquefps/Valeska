@@ -75,6 +75,16 @@ public class RepositorioConsultas {
 		}
 	}
 
+	public Consulta pesquisar(String cpfDoPaciente, LocalDate dia) {
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getPaciente().getCpf() == cpfDoPaciente
+					&& lista.get(i).getHorario().toLocalDate() == dia) {
+				return lista.get(i);
+			}
+		}
+		return null;
+	}
+
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 
@@ -92,11 +102,11 @@ public class RepositorioConsultas {
 	}
 	// retorna um ArrayList com todas as consultas com um determinado medico
 
-	public ArrayList<Consulta> getConsultasComPaciente(Paciente paciente) {
+	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
 
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getPaciente() == paciente) {
+			if (lista.get(i).getPaciente() == paciente && lista.get(i).getPaciente() == paciente) {
 				comPaciente.add(lista.get(i));
 			}
 		}

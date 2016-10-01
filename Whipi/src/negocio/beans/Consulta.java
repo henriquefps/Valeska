@@ -26,8 +26,8 @@ public class Consulta {
 		return realizada;
 	}
 
-	public void trocarStatus() {
-		this.realizada = !this.realizada;
+	public void setRealizada(boolean a){
+		this.realizada = a;
 	}
 
 	public int getId() {
