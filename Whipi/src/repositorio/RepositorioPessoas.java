@@ -58,7 +58,7 @@ public class RepositorioPessoas {
 		medico.setEndereco(endereco);
 		medico.setDataDeNascimento(dataDeNascimento);
 		medico.setNumCRM(numCRM);
-		medico.setLogin(new Login(cpf, senha, 1));
+		medico.setSenha(senha);
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
@@ -83,7 +83,7 @@ public class RepositorioPessoas {
 		recepcionista.setSexo(sexo);
 		recepcionista.setEndereco(endereco);
 		recepcionista.setDataDeNascimento(dataDeNascimento);
-		recepcionista.setLogin(new Login(cpf, senha, 1));
+		recepcionista.setSenha(senha);
 	}
 
 }

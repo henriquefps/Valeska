@@ -5,13 +5,13 @@ import java.time.LocalDate;
 public class Medico extends Pessoa {
 
 	private int numCRM;
-	private Login login;
+	private String senha;
 
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
 			LocalDate dataDeNascimento, int numCRM, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.numCRM = numCRM;
-		this.login = new Login(cpf, senha, 1);
+		this.senha = senha;
 	}
 
 
@@ -23,12 +23,12 @@ public class Medico extends Pessoa {
 		this.numCRM = numCRM;
 	}
 
-	public Login getLogin() {
-		return login;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setLogin(Login login) {
-		this.login = login;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override

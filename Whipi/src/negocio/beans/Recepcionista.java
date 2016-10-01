@@ -4,21 +4,21 @@ import java.time.LocalDate;
 
 public class Recepcionista extends Pessoa {
 
-	private Login login;
+	private String senha;
 
 	public Recepcionista(String nome, String cpf, String rg, String telefone, 
 			String celular, char sexo, Endereco endereco, 
 			LocalDate dataDeNascimento, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
-		this.login = new Login(cpf, senha, 2);
+		this.senha = senha;
 	}
 
-	public Login getLogin() {
-		return login;
+	public String getSenha() {
+		return this.senha;
 	}
 
-	public void setLogin(Login login) {
-		this.login = login;
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	@Override
