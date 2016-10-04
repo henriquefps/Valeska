@@ -8,8 +8,8 @@ import negocio.beans.*;
 
 public class GerenciamentoMedico {
 	private RepositorioPessoas pessoas;
-
-	public GerenciamentoMedico() {
+	private static GerenciamentoMedico instance;
+	private GerenciamentoMedico() {
 		this.pessoas = RepositorioPessoas.getInstance();
 	}
 
@@ -42,5 +42,11 @@ public class GerenciamentoMedico {
 			return (Medico) aux;
 		}
 		return null;
+	}
+	public static GerenciamentoMedico getInstance(){
+		if(instance == null){
+			instance = new GerenciamentoMedico();
+		}
+		return instance;
 	}
 }

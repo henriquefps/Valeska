@@ -13,14 +13,14 @@ import repositorio.RepositorioConsultas;
 
 public class GerenciamentoConsulta {
 	private RepositorioConsultas consultas;
-
-	public GerenciamentoConsulta() {
+	private static GerenciamentoConsulta instance;
+	private GerenciamentoConsulta() {
 		consultas = RepositorioConsultas.getInstance();
 	}
 
 	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) {
 		int numConsultas = consultas.getConsultasComMedicoNoDia(medico, horario.toLocalDate()).size();
-		if (numConsultas < medico.getConsultasPorDia()) {
+		if (numConsultas < 10) {
 			if (horario.toLocalTime().getHour() >= 8 && horario.toLocalTime().getMinute() >= 0
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SATURDAY
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY
@@ -48,5 +48,11 @@ public class GerenciamentoConsulta {
 	public void realizarConsulta(Consulta consulta, String descricao){
 		consulta.setRealizada(true);
 		consulta.setDescricao(descricao);
+	}
+	public static GerenciamentoConsulta getInstance(){
+		if(instance == null){
+			instance = new GerenciamentoConsulta();
+		}
+		return instance;
 	}
 }
