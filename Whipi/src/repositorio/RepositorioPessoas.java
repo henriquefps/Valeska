@@ -40,11 +40,19 @@ public class RepositorioPessoas {
 	}
 
 	public boolean existe(Pessoa pessoa) {
+		boolean achou = false;
 		if (pesquisar(pessoa.getCpf()) != null) {
-			return true;
-		} else {
-			return false;
+			achou = true;
 		}
+		return achou;
+	}
+	
+	public boolean existe(String cpf) {
+		boolean achou = false;
+		if (pesquisar(cpf) != null) {
+			achou = true;
+		}
+		return achou;
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
