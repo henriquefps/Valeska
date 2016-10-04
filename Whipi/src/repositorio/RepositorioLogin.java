@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import negocio.beans.Login;
 
-@SuppressWarnings("unused")
 public class RepositorioLogin {
 	private ArrayList<Login> todosOsLogins;
 	private static RepositorioLogin instance;

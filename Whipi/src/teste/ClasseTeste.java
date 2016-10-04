@@ -12,10 +12,10 @@ public class ClasseTeste {
 
 		Medico m1 = new Medico("Dexter", "123145", "234231", "33212314", "991239123", 'M',
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
-				1337, "2345");
+				1337, 10, "2345");
 		Medico m2 = new Medico("Enfermeira Joy", "655566", "121256", "335678887", "9923413413", 'F',
 				new Endereco("Rua da Consolacao", "Recife", "Ibura", "PE", "5224323", ""), LocalDate.of(1992, 12, 24),
-				4221, "666");
+				4221, 15, "666");
 		Paciente p1 = new Paciente("Henrique", "2132131239", "1257852", "21326364", "912391212", 'M',
 				new Endereco("Estrada Do Arraial", "Recife", "Casa Amarela", "PE", "52342342", "APT 501"),
 				LocalDate.of(1998, 6, 2));

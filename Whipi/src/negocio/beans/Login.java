@@ -1,6 +1,5 @@
 package negocio.beans;
 
-@SuppressWarnings("unused")
 public class Login {
 	
 	private String cpf;

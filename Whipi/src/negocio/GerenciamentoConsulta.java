@@ -2,15 +2,14 @@ package negocio;
 
 import negocio.beans.Medico;
 import negocio.beans.Paciente;
-
+import negocio.beans.Consulta;
+import repositorio.RepositorioConsultas;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-import negocio.beans.Consulta;
-import repositorio.RepositorioConsultas;
-
+@SuppressWarnings("unused")
 public class GerenciamentoConsulta {
 	private RepositorioConsultas consultas;
 
