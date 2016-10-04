@@ -39,8 +39,8 @@ public class RepositorioPessoas {
 		return null;
 	}
 
-	public boolean existe(Pessoa pessoa) {
-		if (pesquisar(pessoa.getCpf()) != null) {
+	public boolean existe(String cpf) {
+		if (pesquisar(cpf) != null) {
 			return true;
 		} else {
 			return false;
