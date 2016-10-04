@@ -6,12 +6,24 @@ public class Medico extends Pessoa {
 
 	private int numCRM;
 	private String senha;
+	private int consultasPorDia;
 
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
-			LocalDate dataDeNascimento, int numCRM, String senha) {
+			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.numCRM = numCRM;
 		this.senha = senha;
+		this.consultasPorDia = consultasPorDia;
+	}
+
+
+	public int getConsultasPorDia() {
+		return consultasPorDia;
+	}
+
+
+	public void setConsultasPorDia(int consultasPorDia) {
+		this.consultasPorDia = consultasPorDia;
 	}
 
 
