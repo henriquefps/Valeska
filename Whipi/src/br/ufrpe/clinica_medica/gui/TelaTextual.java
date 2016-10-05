@@ -27,13 +27,13 @@ public class TelaTextual {
 				if (((Medico) individuo).getSenha() != senha) {
 					System.out.println("Senha incorreta.");
 				} else {
-					medico();
+					medico((Medico) individuo);
 				}
 			} else if (individuo instanceof Recepcionista && individuo != null) {
 				if (((Recepcionista) individuo).getSenha() != senha) {
 					System.out.println("Senha incorreta.");
 				} else {
-					recepcionista();
+					recepcionista((Recepcionista) individuo);
 				}
 			} else {
 				System.out.println("CPF invalido.");
@@ -41,11 +41,11 @@ public class TelaTextual {
 		}
 	}
 
-	public void medico() {
+	public void medico(Medico medico) {
 
 	}
 
-	public void recepcionista() {
+	public void recepcionista(Recepcionista recepcionista) {
 
 	}
 	
