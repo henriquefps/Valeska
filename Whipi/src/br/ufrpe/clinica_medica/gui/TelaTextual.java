@@ -1,21 +1,55 @@
 package br.ufrpe.clinica_medica.gui;
 
 import java.util.Scanner;
+import br.ufrpe.clinica_medica.negocio.*;
+import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
-	
-	private static Scanner scan;
 
-	public static void main(String[] args){
+	private static Scanner scan = new Scanner(System.in);
+
+	public void inicio() {
 		String cpf;
 		String senha;
-		scan = new Scanner(System.in);
-		
-		
-		System.out.println("===== Clinica Boladona =====");
-		System.out.printf("CPF: ");
-		cpf = scan.nextLine();
-		System.out.printf("Senha: ");
-		senha = scan.nextLine();
+
+		while (true) {
+			System.out.println("===== Clinica Boladona =====");
+			System.out.printf("CPF: ");
+			cpf = scan.nextLine();
+			System.out.printf("Senha: ");
+			senha = scan.nextLine();
+
+			RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+			Pessoa individuo = pessoas.pesquisar(cpf);
+
+			if (individuo != null) {
+				if (individuo instanceof Medico) {
+					if (((Medico) individuo).getSenha() != senha) {
+						System.out.println("Senha incorreta.");
+					} else {
+						medico();
+					}
+				} else if (individuo instanceof Recepcionista) {
+					if (((Recepcionista) individuo).getSenha() != senha) {
+						System.out.println("Senha incorreta.");
+					} else {
+						recepcionista();
+					}
+				} else {
+					System.out.println("CPF invalido.");
+				}
+			} else {
+				System.out.println("CPF invalido.");
+			}
+		}
+	}
+
+	public void medico() {
+
+	}
+
+	public void recepcionista() {
+
 	}
 }
