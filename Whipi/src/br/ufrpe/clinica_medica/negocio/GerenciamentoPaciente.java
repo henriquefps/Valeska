@@ -8,8 +8,10 @@ import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoPaciente {
-	private RepositorioPessoas pessoas;
+
 	private static GerenciamentoPaciente instance;
+	private RepositorioPessoas pessoas;
+
 	private GerenciamentoPaciente() {
 		pessoas = RepositorioPessoas.getInstance();
 	}
@@ -23,27 +25,27 @@ public class GerenciamentoPaciente {
 
 	public Paciente pesquisarPaciente(String cpf) {
 		Pessoa a = pessoas.pesquisar(cpf);
-		if (a instanceof Paciente) {
-			return (Paciente) a;
+		if (!(a instanceof Paciente)) {
+			a = null;
 		}
-		return null;
+		return (Paciente) a;
 	}
 
-	public void removerPaciente(Paciente a){
-		if(a != null){
+	public void removerPaciente(Paciente a) {
+		if (a != null) {
 			pessoas.remover(a);
 		}
 	}
 
-	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento){
-		if(a != null){
+	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular,
+			char sexo, Endereco endereco, LocalDate dataDeNascimento) {
+		if (a != null) {
 			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, (Paciente) a);
 		}
 	}
-	
-	public static GerenciamentoPaciente getInstance(){
-		if(instance == null){
+
+	public static GerenciamentoPaciente getInstance() {
+		if (instance == null) {
 			instance = new GerenciamentoPaciente();
 		}
 		return instance;

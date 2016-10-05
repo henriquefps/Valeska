@@ -31,12 +31,13 @@ public class RepositorioPessoas {
 	}
 
 	public Pessoa pesquisar(String cpf) {
-		for (int i = 0; i < repositorio.size(); i++) {
+		Pessoa achou = null;
+		for (int i = 0; i < repositorio.size() && achou == null; i++) {
 			if (repositorio.get(i).getCpf() == cpf) {
-				return repositorio.get(i);
+				achou = repositorio.get(i);
 			}
 		}
-		return null;
+		return achou;
 	}
 
 	public boolean existe(Pessoa pessoa) {

@@ -28,12 +28,13 @@ public class RepositorioConsultas {
 	}
 
 	public Consulta pesquisar(int id) {
-		for (int i = 0; i < lista.size(); i++) {
+		Consulta achou = null;
+		for (int i = 0; i < lista.size() && achou == null; i++) {
 			if (lista.get(i).getId() == id) {
-				return lista.get(i);
+				achou = lista.get(i);
 			}
 		}
-		return null;
+		return achou;
 	}
 
 	public void excluir(int id) {
@@ -77,18 +78,18 @@ public class RepositorioConsultas {
 	}
 
 	public Consulta pesquisar(String cpfDoPaciente, LocalDate dia) {
-		for (int i = 0; i < lista.size(); i++) {
+		Consulta achou = null;
+		for (int i = 0; i < lista.size() && achou == null; i++) {
 			if (lista.get(i).getPaciente().getCpf() == cpfDoPaciente
 					&& lista.get(i).getHorario().toLocalDate() == dia) {
-				return lista.get(i);
+				achou = lista.get(i);
 			}
 		}
-		return null;
+		return achou;
 	}
 
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
-
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getMedico() == medico && !lista.get(i).foiRealizada()
 					&& lista.get(i).getHorario().toLocalDate() == dia) {
@@ -96,26 +97,23 @@ public class RepositorioConsultas {
 			}
 		}
 		if (comMedico.isEmpty()) {
-			return null;
-		} else {
-			return comMedico;
+			comMedico = null;
 		}
+		return comMedico;
 	}
 	// retorna um ArrayList com todas as consultas com um determinado medico
 
 	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
-
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getPaciente() == paciente && lista.get(i).getPaciente() == paciente) {
 				comPaciente.add(lista.get(i));
 			}
 		}
 		if (comPaciente.isEmpty()) {
-			return null;
-		} else {
-			return comPaciente;
+			comPaciente = null;
 		}
+		return comPaciente;
 	}
 	// retorna um ArrayList com todas as consultas de um determinado paciente
 

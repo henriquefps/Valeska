@@ -6,6 +6,7 @@ import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class GerenciamentoMedico {
+	
 	private RepositorioPessoas pessoas;
 
 	public GerenciamentoMedico() {
@@ -14,7 +15,8 @@ public class GerenciamentoMedico {
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
 			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
-		Medico novo = new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM, consultasPorDia, senha);
+		Medico novo = new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
+				consultasPorDia, senha);
 		if (!pessoas.existe(novo)) {
 			pessoas.cadastrar(novo);
 		}
@@ -38,9 +40,9 @@ public class GerenciamentoMedico {
 
 	public Medico pesquisarMedico(String cpf) {
 		Pessoa aux = pessoas.pesquisar(cpf);
-		if (aux instanceof Medico) {
-			return (Medico) aux;
+		if (!(aux instanceof Medico)) {
+			aux = null;
 		}
-		return null;
+		return (Medico) aux;
 	}
 }

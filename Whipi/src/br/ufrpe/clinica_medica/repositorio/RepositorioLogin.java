@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import br.ufrpe.clinica_medica.negocio.beans.Login;
 
 public class RepositorioLogin {
+	
 	private ArrayList<Login> todosOsLogins;
 	private static RepositorioLogin instance;
 
@@ -19,14 +20,15 @@ public class RepositorioLogin {
 	public void removerLogin(Login login) {
 		todosOsLogins.remove(login);
 	}
-
+	
 	public Login pesquisarLogin(String cpf) {
-		for (int i = 0; i < todosOsLogins.size(); i++) {
+		Login achou = null;
+		for (int i = 0; i < todosOsLogins.size() && achou == null; i++) {
 			if (todosOsLogins.get(i).getCpf() == cpf) {
-				return todosOsLogins.get(i);
+				achou = todosOsLogins.get(i);
 			}
 		}
-		return null;
+		return achou;
 	}
 
 	public void atualizarLogin(Login login, String cpf, String senha) {
