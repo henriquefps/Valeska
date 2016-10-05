@@ -21,23 +21,19 @@ public class TelaTextual {
 			senha = scan.nextLine();
 
 			RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
-			Pessoa individuo = pessoas.pesquisar(cpf);
 
-			if (individuo != null) {
-				if (individuo instanceof Medico) {
-					if (((Medico) individuo).getSenha() != senha) {
-						System.out.println("Senha incorreta.");
-					} else {
-						medico();
-					}
-				} else if (individuo instanceof Recepcionista) {
-					if (((Recepcionista) individuo).getSenha() != senha) {
-						System.out.println("Senha incorreta.");
-					} else {
-						recepcionista();
-					}
+			Pessoa individuo = pessoas.pesquisar(cpf);
+			if (individuo instanceof Medico && individuo != null) {
+				if (((Medico) individuo).getSenha() != senha) {
+					System.out.println("Senha incorreta.");
 				} else {
-					System.out.println("CPF invalido.");
+					medico();
+				}
+			} else if (individuo instanceof Recepcionista && individuo != null) {
+				if (((Recepcionista) individuo).getSenha() != senha) {
+					System.out.println("Senha incorreta.");
+				} else {
+					recepcionista();
 				}
 			} else {
 				System.out.println("CPF invalido.");
@@ -51,5 +47,9 @@ public class TelaTextual {
 
 	public void recepcionista() {
 
+	}
+	
+	public void adm(){
+		
 	}
 }
