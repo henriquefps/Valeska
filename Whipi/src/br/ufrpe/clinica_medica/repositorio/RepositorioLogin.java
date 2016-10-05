@@ -1,8 +1,8 @@
-package repositorio;
+package br.ufrpe.clinica_medica.repositorio;
 
 import java.util.ArrayList;
 
-import negocio.beans.Login;
+import br.ufrpe.clinica_medica.negocio.beans.Login;
 
 public class RepositorioLogin {
 	private ArrayList<Login> todosOsLogins;

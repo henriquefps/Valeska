@@ -1,4 +1,4 @@
-package negocio.beans;
+package br.ufrpe.clinica_medica.negocio.beans;
 
 public class Endereco {
 

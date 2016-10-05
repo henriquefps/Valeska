@@ -1,11 +1,11 @@
-package negocio;
+package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
-import negocio.beans.Endereco;
-import negocio.beans.Paciente;
-import negocio.beans.Pessoa;
-import repositorio.RepositorioPessoas;
+import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoPaciente {
 	private RepositorioPessoas pessoas;

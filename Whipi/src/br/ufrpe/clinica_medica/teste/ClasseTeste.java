@@ -1,10 +1,10 @@
-package teste;
+package br.ufrpe.clinica_medica.teste;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import negocio.beans.*;
-import repositorio.*;
+import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.repositorio.*;
 
 public class ClasseTeste {
 

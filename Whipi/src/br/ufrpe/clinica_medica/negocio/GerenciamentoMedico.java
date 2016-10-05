@@ -1,10 +1,9 @@
-package negocio;
-
-import repositorio.*;
+package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
-import negocio.beans.*;
+import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.repositorio.*;
 
 public class GerenciamentoMedico {
 	private RepositorioPessoas pessoas;

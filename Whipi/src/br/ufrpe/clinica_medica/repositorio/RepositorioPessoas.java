@@ -1,9 +1,9 @@
-package repositorio;
-
-import negocio.beans.*;
+package br.ufrpe.clinica_medica.repositorio;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import br.ufrpe.clinica_medica.negocio.beans.*;
 
 public class RepositorioPessoas {
 

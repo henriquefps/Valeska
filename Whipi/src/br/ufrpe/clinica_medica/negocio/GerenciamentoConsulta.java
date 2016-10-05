@@ -1,11 +1,13 @@
-package negocio;
+package br.ufrpe.clinica_medica.negocio;
 
-import negocio.beans.Medico;
-import negocio.beans.Paciente;
-import negocio.beans.Consulta;
-import repositorio.RepositorioConsultas;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+
+import br.ufrpe.clinica_medica.negocio.beans.Consulta;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
+
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
