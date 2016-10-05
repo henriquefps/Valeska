@@ -1,7 +1,7 @@
 package br.ufrpe.clinica_medica.negocio.beans;
 
 public class Login {
-	
+
 	private String cpf;
 	private String senha;
 	private int tipoDeLogin;// 1 para médico, 2 para recepcionista, 3 para
@@ -36,4 +36,5 @@ public class Login {
 	public void setTipoDeLogin(int tipoDeLogin) {
 		this.tipoDeLogin = tipoDeLogin;
 	}
+	
 }

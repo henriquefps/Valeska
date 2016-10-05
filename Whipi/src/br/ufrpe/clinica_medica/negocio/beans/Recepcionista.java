@@ -6,9 +6,8 @@ public class Recepcionista extends Pessoa {
 
 	private String senha;
 
-	public Recepcionista(String nome, String cpf, String rg, String telefone, 
-			String celular, char sexo, Endereco endereco, 
-			LocalDate dataDeNascimento, String senha) {
+	public Recepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
+			Endereco endereco, LocalDate dataDeNascimento, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.senha = senha;
 	}
@@ -23,7 +22,7 @@ public class Recepcionista extends Pessoa {
 
 	@Override
 	public String toString() {
-		String resultado ="ID: " + this.getId() + "\n" + "Nome: " + this.getNome() + "\n";
+		String resultado = "ID: " + this.getId() + "\n" + "Nome: " + this.getNome() + "\n";
 		resultado += "CPF: " + this.getCpf() + "\n";
 		resultado += "RG: " + this.getRg() + "\n";
 		resultado += "Sexo: " + this.getSexo() + "\n";

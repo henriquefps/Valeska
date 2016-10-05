@@ -19,14 +19,14 @@ public class Endereco {
 	}
 
 	public boolean equals(Endereco b) {
+		boolean achou = false;
 		if (b != null) {
 			if (rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() && cep == b.getCep()
 					&& complemento == b.getComplemento()) {
-				return true;
+				achou = true;
 			}
-			return false;
 		}
-		return false;
+		return achou;
 	}
 
 	public String toString() {

@@ -1,6 +1,6 @@
 package br.ufrpe.clinica_medica.negocio.beans;
 
-import java.time.*;
+import java.time.LocalDateTime;
 
 public class Consulta {
 
@@ -11,7 +11,7 @@ public class Consulta {
 	private boolean realizada;
 	private String descricao;
 	private Medico medico;
-	
+
 	public Consulta(Paciente paciente, LocalDateTime horario, Medico medico) {
 		this.id = Consulta.proximoId;
 		this.paciente = paciente;
@@ -71,11 +71,11 @@ public class Consulta {
 	}
 
 	public boolean equals(Consulta outra) {
+		boolean achou = false;
 		if (this.medico == outra.medico && this.paciente == outra.paciente && this.horario == outra.horario) {
-			return true;
-		} else {
-			return false;
+			achou = true;
 		}
+		return achou;
 	}
 
 	@Override

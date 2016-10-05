@@ -16,7 +16,6 @@ public class Medico extends Pessoa {
 		this.senha = senha;
 	}
 
-
 	public int getNumCRM() {
 		return numCRM;
 	}
@@ -29,11 +28,9 @@ public class Medico extends Pessoa {
 		return consultasPorDia;
 	}
 
-
 	public void setConsultasPorDia(int consultasPorDia) {
 		this.consultasPorDia = consultasPorDia;
 	}
-
 
 	public String getSenha() {
 		return this.senha;
@@ -56,5 +53,5 @@ public class Medico extends Pessoa {
 		resultado += "Celular: " + this.getCelular();
 		return resultado;
 	}
-
+	
 }

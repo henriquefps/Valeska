@@ -28,7 +28,7 @@ public class Pessoa {
 		this.id = proximoId;
 		proximoId++;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
