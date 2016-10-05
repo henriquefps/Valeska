@@ -2,6 +2,7 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -18,6 +19,10 @@ public class GerenciamentoConsulta {
 
 	public GerenciamentoConsulta() {
 		consultas = RepositorioConsultas.getInstance();
+	}
+
+	public ArrayList<Consulta> consultasDoDia(Medico medico) {
+		return this.consultas.getConsultasComMedicoNoDia(medico, LocalDate.now());
 	}
 
 	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) {
@@ -49,7 +54,7 @@ public class GerenciamentoConsulta {
 	public Consulta pesquisarConsulta(String cpfDoPaciente, LocalDate dia) {
 		return consultas.pesquisar(cpfDoPaciente, dia);
 	}
-	
+
 	public void realizarConsulta(Consulta consulta, String descricao) {
 		consulta.setRealizada(true);
 		consulta.setDescricao(descricao);
