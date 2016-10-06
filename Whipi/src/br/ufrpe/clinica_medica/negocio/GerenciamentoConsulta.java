@@ -60,6 +60,11 @@ public class GerenciamentoConsulta {
 		consulta.setDescricao(descricao);
 	}
 	public String consultasComMedicoNoDia(Medico a, LocalDate dia){
-		return consultas.getConsultasComMedicoNoDia(a, dia);
+		String resp = "";
+		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
+		for (int i = 0; i < comMedico.size(); i++) {
+			resp += comMedico.get(i).toString();
+		}
+		return resp;
 	}
 }

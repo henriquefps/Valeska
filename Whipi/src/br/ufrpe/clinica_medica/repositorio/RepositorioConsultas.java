@@ -88,24 +88,30 @@ public class RepositorioConsultas {
 		return achou;
 	}
 
-	public String getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
-		String comMedico = "";
+	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
+		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getMedico() == medico && !lista.get(i).foiRealizada()
 					&& lista.get(i).getHorario().toLocalDate() == dia) {
-				comMedico += lista.get(i).toString();
+				comMedico.add(lista.get(i));
 			}
+		}
+		if (comMedico.isEmpty()) {
+			comMedico = null;
 		}
 		return comMedico;
 	}
 	// retorna um ArrayList com todas as consultas com um determinado medico
 
-	public String getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
-		String comPaciente = "";
+	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
+		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getPaciente() == paciente && lista.get(i).getPaciente() == paciente) {
-				comPaciente += lista.get(i).toString();
+				comPaciente.add(lista.get(i));
 			}
+		}
+		if (comPaciente.isEmpty()) {
+			comPaciente = null;
 		}
 		return comPaciente;
 	}
