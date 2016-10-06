@@ -9,6 +9,7 @@ import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
+	
 	private static Scanner scan = new Scanner(System.in);
 	private GerenciamentoConsulta consultas = new GerenciamentoConsulta();
 	private GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
