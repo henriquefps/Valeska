@@ -33,7 +33,7 @@ public class RepositorioPessoas {
 	public Pessoa pesquisar(String cpf) {
 		Pessoa achou = null;
 		for (int i = 0; i < repositorio.size() && achou == null; i++) {
-			if (repositorio.get(i).getCpf() == cpf) {
+			if (repositorio.get(i).getCpf().equals(cpf)) {
 				achou = repositorio.get(i);
 			}
 		}

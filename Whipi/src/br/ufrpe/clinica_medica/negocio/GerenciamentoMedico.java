@@ -15,10 +15,9 @@ public class GerenciamentoMedico {
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
 			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
-		Medico novo = new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
-				consultasPorDia, senha);
-		if (!pessoas.existe(novo)) {
-			pessoas.cadastrar(novo);
+		if (!pessoas.existe(cpf)) {
+			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
+					consultasPorDia, senha));
 		}
 	}
 
