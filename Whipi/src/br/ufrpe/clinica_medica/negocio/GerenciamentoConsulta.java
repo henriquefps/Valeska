@@ -59,4 +59,7 @@ public class GerenciamentoConsulta {
 		consulta.setRealizada(true);
 		consulta.setDescricao(descricao);
 	}
+	public String consultasComMedicoNoDia(Medico a, LocalDate dia){
+		return consultas.getConsultasComMedicoNoDia(a, dia);
+	}
 }
