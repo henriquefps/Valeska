@@ -12,7 +12,7 @@ public class GerenciamentoRecepcionista {
 	private RepositorioPessoas pessoas;
 	private static GerenciamentoRecepcionista instance;
 
-	private GerenciamentoRecepcionista() {
+	public GerenciamentoRecepcionista() {
 		pessoas = RepositorioPessoas.getInstance();
 	}
 

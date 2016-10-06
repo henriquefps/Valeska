@@ -37,18 +37,24 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public void removerConsulta(String cpfDoPaciente, LocalDate dia) {
+	public boolean removerConsulta(String cpfDoPaciente, LocalDate dia) {
+		boolean result = false;
 		Consulta aux = consultas.pesquisar(cpfDoPaciente, dia);
 		if (aux != null) {
 			consultas.excluir(aux);
+			result = true;
 		}
+		return result;
 	}
 
-	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) {
+	public boolean alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) {
+		boolean result = false;
 		if (consulta != null) {
 			consultas.modificar(consulta, novoHorario);
 			consultas.modificar(consulta, novoMedico);
+			result = true;
 		}
+		return result;
 	}
 
 	public Consulta pesquisarConsulta(String cpfDoPaciente, LocalDate dia) {
