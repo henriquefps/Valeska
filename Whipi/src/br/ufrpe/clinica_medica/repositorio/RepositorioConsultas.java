@@ -96,9 +96,6 @@ public class RepositorioConsultas {
 				comMedico.add(lista.get(i));
 			}
 		}
-		if (comMedico.isEmpty()) {
-			comMedico = null;
-		}
 		return comMedico;
 	}
 	// retorna um ArrayList com todas as consultas com um determinado medico
@@ -109,9 +106,6 @@ public class RepositorioConsultas {
 			if (lista.get(i).getPaciente() == paciente && lista.get(i).getPaciente() == paciente) {
 				comPaciente.add(lista.get(i));
 			}
-		}
-		if (comPaciente.isEmpty()) {
-			comPaciente = null;
 		}
 		return comPaciente;
 	}

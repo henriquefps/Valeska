@@ -161,7 +161,7 @@ public class TelaTextual {
 			// Marcar consultas - nessa opção o usuário(recepcionista) interage
 			// com o paciente e o médico.
 			if (op == 1) {
-				System.out.println(recepcionista.getNome() + "você escolheu a opção de cadastrar consultas.");
+				System.out.println(recepcionista.getNome() + " você escolheu a opção de cadastrar consultas.");
 				System.out.println("Digite o cpf do médico : ");
 				String cpfMedico = scan.next();
 				System.out.println("Digite o cpf do paciente : ");
@@ -176,9 +176,11 @@ public class TelaTextual {
 				int horaC = scan.nextInt();
 				System.out.println("Digite o minuto : ");
 				int minC = scan.nextInt();
-
-				consultas.cadastrarConsulta(doutor.pesquisarMedico(cpfMedico), paciente.pesquisarPaciente(cpfPaciente),
-						LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+				Medico a = doutor.pesquisarMedico(cpfMedico);
+				Paciente b = paciente.pesquisarPaciente(cpfPaciente);
+				if (a != null && b != null) {
+					consultas.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+				}
 			} else if (op == 2) {
 				System.out.println(recepcionista.getNome() + "você escolheu a opção de alterar consultas.");
 				System.out.println("Digite o cpf do paciente : ");
