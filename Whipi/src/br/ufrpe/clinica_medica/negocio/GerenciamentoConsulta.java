@@ -31,9 +31,13 @@ public class GerenciamentoConsulta {
 			if (horario.toLocalTime().getHour() >= 8 && horario.toLocalTime().getMinute() >= 0
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SATURDAY
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY && horario.toLocalTime().getHour() < 18
-					&& consultas.getConsultasComPacienteNoDia(paciente, horario.toLocalDate()) == null) {
+					&& consultas.getConsultasComPacienteNoDia(paciente, horario.toLocalDate()).isEmpty()) {
 				consultas.cadastrar(new Consulta(paciente, horario, medico));
+			} else{
+				System.out.println("erro");
 			}
+		} else{
+			System.out.println("erro2");
 		}
 	}
 
@@ -68,9 +72,12 @@ public class GerenciamentoConsulta {
 	public String consultasComMedicoNoDia(Medico a, LocalDate dia){
 		String resp = "";
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
+		if (comMedico.isEmpty()) {
+			System.out.println("Vazio");
+		}
 		for (int i = 0; i < comMedico.size(); i++) {
 			resp += comMedico.get(i).toString();
 		}
-		return resp;
+		return comMedico.toString();
 	}
 }

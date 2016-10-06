@@ -1,8 +1,10 @@
 package br.ufrpe.clinica_medica;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import br.ufrpe.clinica_medica.gui.TelaTextual;
+import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoPaciente;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoRecepcionista;
@@ -26,6 +28,8 @@ public class Principal {
 		paciente.cadastrarPaciente("valeskka", "987", "654", "321", "123", 'F',
 				new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 				LocalDate.of(1992, 9, 24));
+		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
+		consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.now());
 		while (true) {
 			Pessoa logada = tela.inicio();
 			if (logada instanceof Medico) {

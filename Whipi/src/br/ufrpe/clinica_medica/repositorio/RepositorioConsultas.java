@@ -24,6 +24,8 @@ public class RepositorioConsultas {
 	public void cadastrar(Consulta consulta) {
 		if (consulta != null) {
 			lista.add(consulta);
+		} else {
+			System.out.println("erro3");
 		}
 	}
 
@@ -91,7 +93,7 @@ public class RepositorioConsultas {
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getMedico() == medico && !lista.get(i).foiRealizada()
+			if (lista.get(i).getMedico().equals(medico) && !lista.get(i).foiRealizada()
 					&& lista.get(i).getHorario().toLocalDate() == dia) {
 				comMedico.add(lista.get(i));
 			}
