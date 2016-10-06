@@ -69,15 +69,12 @@ public class GerenciamentoConsulta {
 		consulta.setRealizada(true);
 		consulta.setDescricao(descricao);
 	}
-	public String consultasComMedicoNoDia(Medico a, LocalDate dia){
+	public String consultasComMedicoNoDia(Medico medico, LocalDate dia){
 		String resp = "";
-		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
-		if (comMedico.isEmpty()) {
-			System.out.println("Vazio");
-		}
+		ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);
 		for (int i = 0; i < comMedico.size(); i++) {
 			resp += comMedico.get(i).toString();
 		}
-		return comMedico.toString();
+		return resp;
 	}
 }
