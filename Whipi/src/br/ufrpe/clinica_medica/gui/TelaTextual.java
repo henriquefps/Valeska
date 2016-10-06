@@ -280,6 +280,13 @@ public class TelaTextual {
 				break;
 
 			case 5:
+				System.out.println("Tem certeza que deseja sair?");
+				System.out.println("1 - Sim");
+				System.out.println("outro - Nao");
+				int op2 = scan.nextInt();
+				if (op2 == 1) {
+					return;
+				}
 				break;
 
 			default:
