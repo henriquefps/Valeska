@@ -1,8 +1,10 @@
 package br.ufrpe.clinica_medica;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import br.ufrpe.clinica_medica.gui.TelaTextual;
+import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoPaciente;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoRecepcionista;
@@ -19,21 +21,24 @@ public class Principal {
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
 				1337, 10, "123");
 		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
-		recep.cadastrarRecepcionista("Jurema", "123", "456", "789", "098", 'F',
-				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), 
-				LocalDate.of(1990, 9, 27), "456");
+		recep.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
+				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1990, 9, 27),
+				"456");
 		GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
-		paciente.cadastrarPaciente("valeskka", "987","654", "321", "123", 'F',
-				new Endereco("Rua guaraná", "Recife", "Gracas", "PE", "52012312", "APT1201") , 
+		paciente.cadastrarPaciente("valeskka", "987", "654", "321", "123", 'F',
+				new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 				LocalDate.of(1992, 9, 24));
-		
-		Pessoa logada = tela.inicio();
-		if (logada instanceof Medico) {
-			tela.medico((Medico)logada);
-		} else if(logada instanceof Recepcionista){
-			tela.recepcionista((Recepcionista)logada);
-		} else{
-			tela.adm();
+		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
+		consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.now());
+		while (true) {
+			Pessoa logada = tela.inicio();
+			if (logada instanceof Medico) {
+				tela.medico((Medico) logada);
+			} else if (logada instanceof Recepcionista) {
+				tela.recepcionista((Recepcionista) logada);
+			} else {
+				tela.adm();
+			}
 		}
 	}
 }
