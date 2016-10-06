@@ -2,6 +2,7 @@ package br.ufrpe.clinica_medica.gui;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
@@ -10,6 +11,10 @@ import br.ufrpe.clinica_medica.repositorio.*;
 public class TelaTextual {
 
 	private static Scanner scan = new Scanner(System.in);
+	private GerenciamentoConsulta consultas = new GerenciamentoConsulta();
+	private GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
+	private GerenciamentoMedico doutor = new GerenciamentoMedico();
+	private GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
 
 	public Pessoa inicio() {
 		String cpf;
@@ -41,9 +46,6 @@ public class TelaTextual {
 	}
 
 	public void medico(Medico medico) {
-		GerenciamentoConsulta consultas = new GerenciamentoConsulta();
-		GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
-		GerenciamentoMedico doutor = new GerenciamentoMedico();
 		while (true) {
 			System.out.println("Bem Vindo " + medico.getNome());
 			System.out.println("1 - Ver consultas de hoje");
@@ -142,11 +144,6 @@ public class TelaTextual {
 	}
 
 	public void recepcionista(Recepcionista recepcionista) {
-
-		GerenciamentoConsulta consultas = new GerenciamentoConsulta();
-		GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
-		GerenciamentoMedico doutor = new GerenciamentoMedico();
-		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
 		int op = 0;
 		do {
 			System.out.println("Bem Vindo " + recepcionista.getNome());
@@ -158,7 +155,8 @@ public class TelaTextual {
 			System.out.print("Selecionou: ");
 			op = scan.nextInt();
 
-			// Marcar consultas - nessa opção o usuário(recepcionista) interage
+			// Marcar consultas - nessa opção o usuário(recepcionista)
+			// interage
 			// com o paciente e o médico.
 			if (op == 1) {
 				System.out.println(recepcionista.getNome() + "você escolheu a opção de cadastrar consultas.");
@@ -190,7 +188,8 @@ public class TelaTextual {
 				System.out.println("Digite o dia : ");
 				int diaC = scan.nextInt();
 				System.out.println("-----Novos Dados-----");
-				// colocar opção para checar se esse médico já tem algo marcado
+				// colocar opção para checar se esse médico já tem algo
+				// marcado
 				// nesse horário
 				System.out.println("Digite o cpf do novo médico : ");
 				String cpfMedico = scan.next();
@@ -257,6 +256,113 @@ public class TelaTextual {
 	}
 
 	public void adm() {
+		while (true) {
+			System.out.println("-ADM-");
+			System.out.println("1 - Medicos");
+			System.out.println("2 - Recepcionistas");
+			System.out.println("3 - Consultas");
+			System.out.println("4 - Pacientes");
+			System.out.println("5 - Sair");
+			System.out.print("Selecionou: ");
+			int opcao = 0;
+			opcao = scan.nextInt();
 
+			switch (opcao) {
+
+			case 1:
+				admMed();
+				break;
+
+			case 2:
+				admRec();
+				break;
+
+			case 5:
+				break;
+
+			default:
+				System.out.println("Opcao invalida.");
+			}
+		}
+	}
+
+	public void admMed() {
+		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+		while (true) {
+			System.out.println("-ADM-Medicos");
+			System.out.println("1 - Listar medicos");
+			System.out.println("2 - Cadastrar medico");
+			System.out.println("3 - Editar medico");
+			System.out.println("4 - Deletar medico");
+			System.out.println("5 - Voltar");
+			System.out.print("Selecionou: ");
+			int opcao = 0;
+			opcao = scan.nextInt();
+			
+			switch (opcao) {
+			
+			case 1:
+				if (pessoas.getListaMedicos() != null) {
+					System.out.println(pessoas.getListaMedicos());
+				} else {
+					System.out.println("Nao ha medicos cadastrados no sistema.");
+				}
+				break;
+				
+			case 2:
+				System.out.print("Digite o CPF: ");
+				String cpf = scan.nextLine();
+				System.out.print("Digite o RG: ");
+				String rg = scan.nextLine();
+				System.out.print("Digite o nome: ");
+				String nome = scan.nextLine();
+				System.out.println("Digite o telefone fixo: ");
+				String telefone = scan.nextLine();
+				System.out.print("Digite o celular: ");
+				String celular = scan.nextLine();
+				System.out.print("Digite o Sexo: ");
+				String sexomf = scan.nextLine();
+				Character sexo = sexomf.charAt(0);
+				sexo = Character.toUpperCase(sexo);
+				System.out.print("Digite o nome da sua rua: ");
+				String rua = scan.nextLine();
+				System.out.print("Digite o CEP da sua residencia");
+				String cep = scan.nextLine();
+				System.out.println("Digite o bairro: ");
+				String bairro = scan.nextLine();
+				System.out.println("Digite a cidade: ");
+				String cidade = scan.nextLine();
+				System.out.println("Digite o estado(PE, SP, AL): ");
+				String estado = scan.nextLine();
+				System.out.println("Digite o complemento da residencia: ");
+				String complemento = scan.nextLine();
+				int dia = 0;
+				int mes = 0;
+				int ano = 0;
+				System.out.println("Digite a data de aniversario.");
+				System.out.print("Dia: ");
+				dia = scan.nextInt();
+				System.out.print("Mes: ");
+				mes = scan.nextInt();
+				System.out.print("Ano: ");
+				ano = scan.nextInt();
+				System.out.println("Digite o numero do CRM");
+				int numCrm = scan.nextInt();
+				System.out.println("Digite o numero de consultas por dia: ");
+				int consultasPorDia = scan.nextInt();
+				System.out.println("Digite a senha: ");
+				String senha = scan.nextLine();
+				doutor.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
+				new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia), numCrm, consultasPorDia, senha);
+				break;
+				
+			case 3:
+				
+			}
+		}
+	}
+	
+	public void admRec() {
+		
 	}
 }

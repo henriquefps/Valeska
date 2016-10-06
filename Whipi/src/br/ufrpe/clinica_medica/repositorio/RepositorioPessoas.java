@@ -22,6 +22,19 @@ public class RepositorioPessoas {
 		return instance;
 	}
 
+	public ArrayList<Medico> getListaMedicos() {
+		ArrayList<Medico> lista = new ArrayList<Medico>();
+		for (int i = 0; i < repositorio.size(); i++) {
+			if (this.repositorio.get(i) instanceof Medico) {
+				lista.add((Medico) this.repositorio.get(i));
+			}
+		}
+		if (lista.size() > 0) {
+			return lista;
+		}
+		return null;
+	}
+
 	public void cadastrar(Pessoa cadastro) {
 		repositorio.add(cadastro);
 	}
@@ -47,7 +60,7 @@ public class RepositorioPessoas {
 		}
 		return achou;
 	}
-	
+
 	public boolean existe(String cpf) {
 		boolean achou = false;
 		if (pesquisar(cpf) != null) {
