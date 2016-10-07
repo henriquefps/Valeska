@@ -347,9 +347,8 @@ public class TelaTextual {
 			scan.nextLine();
 
 			if (opcao == 1) {
-				ArrayList<Medico> medicos = pessoas.getListaMedicos();
-				if (medicos != null) {
-					System.out.println(medicos);
+				if (pessoas.getListaMedicos() != null) {
+					System.out.println(pessoas.getListaMedicos());
 				} else {
 					System.out.println("Nao ha medicos cadastrados no sistema.");
 				}
