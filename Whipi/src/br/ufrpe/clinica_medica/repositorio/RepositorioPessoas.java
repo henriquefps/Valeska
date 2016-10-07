@@ -48,6 +48,20 @@ public class RepositorioPessoas {
 		}
 		return null;
 	}
+	
+	public ArrayList<Paciente> getListaPacientes() {
+		ArrayList<Paciente> lista = new ArrayList<Paciente>();
+		for (int i = 0; i < repositorio.size(); i++) {
+			if (this.repositorio.get(i) instanceof Paciente) {
+				lista.add((Paciente) this.repositorio.get(i));
+			}
+		}
+		if (lista.size() > 0) {
+			return lista;
+		}
+		return null;
+	}
+	
 	public String getListaRecepcionista(){
 		String resp = "";
 		for (int i = 0; i < repositorio.size(); i++) {
