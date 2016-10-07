@@ -84,7 +84,8 @@ public class GerenciamentoConsulta {
 		consulta.setRealizada(true);
 		consulta.setDescricao(descricao);
 	}
-	public String consultasComMedicoNoDia(Medico medico, LocalDate dia){
+	
+	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		String resp = "";
 		ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);
 		for (int i = 0; i < comMedico.size(); i++) {

@@ -22,7 +22,6 @@ import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 public class GerenciamentoRecepcionista {
 
 	private RepositorioPessoas pessoas;
-	private static GerenciamentoRecepcionista instance;
 
 	public GerenciamentoRecepcionista() {
 		pessoas = RepositorioPessoas.getInstance();
@@ -58,10 +57,4 @@ public class GerenciamentoRecepcionista {
 		}
 	}
 
-	public static GerenciamentoRecepcionista getInstance() {
-		if (instance == null) {
-			instance = new GerenciamentoRecepcionista();
-		}
-		return instance;
-	}
 }

@@ -36,8 +36,6 @@ public class GerenciamentoMedico {
 	public void removerMedico(Medico medico) {
 		if (medico != null) {
 			this.pessoas.remover(medico);
-		} else {
-			// Usar exceções no futuro
 		}
 	}
 
