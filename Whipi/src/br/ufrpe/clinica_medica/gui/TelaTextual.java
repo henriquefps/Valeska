@@ -10,11 +10,7 @@ import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
 	private static Scanner scan = new Scanner(System.in);
-	private GerenciamentoConsulta consultas = new GerenciamentoConsulta();
-	private GerenciamentoPaciente paciente = new GerenciamentoPaciente();
-	private GerenciamentoMedico doutor = new GerenciamentoMedico();
-	private GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
-
+	private FachadaClinicaMedica fachada = FachadaClinicaMedica.getInstance();
 	public Pessoa inicio() {
 		String cpf;
 		String senha;
@@ -56,7 +52,7 @@ public class TelaTextual {
 			int opcao = 0;
 			opcao = scan.nextInt();
 			if (opcao == 1) {
-				System.out.println(consultas.consultasComMedicoNoDia(medico, LocalDate.now()));
+				System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.now()));
 			} else if (opcao == 2) {
 				int dia = 0;
 				int mes = 0;
@@ -68,7 +64,7 @@ public class TelaTextual {
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
 				if (dia <= 31 && mes <= 12) {
-					System.out.println(consultas.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
+					System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
 				} else {
 					System.out.println("Data invalida");
 				}
@@ -84,7 +80,7 @@ public class TelaTextual {
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
 				if (dia <= 31 && mes <= 12) {
-					consultas.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia));
+					fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia));
 				} else {
 					System.out.println("Data invalida");
 				}
@@ -128,7 +124,7 @@ public class TelaTextual {
 				System.out.println("Digite sua nova senha: ");
 				String senha = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
-					doutor.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
+					fachada.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
 							new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
 							numCrm, consultasPorDia, senha);
 				}
@@ -176,10 +172,10 @@ public class TelaTextual {
 				int horaC = scan.nextInt();
 				System.out.println("Digite o minuto : ");
 				int minC = scan.nextInt();
-				Medico a = doutor.pesquisarMedico(cpfMedico);
-				Paciente b = paciente.pesquisarPaciente(cpfPaciente);
+				Medico a = fachada.pesquisarMedico(cpfMedico);
+				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
 				if (a != null && b != null) {
-					consultas.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+					fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
 				}
 			} else if (op == 2) {
 				System.out.println(recepcionista.getNome() + "voce escolheu a opcao de alterar consultas.");
@@ -213,9 +209,9 @@ public class TelaTextual {
 				// mesC, diaC));
 				// LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2);
 
-				boolean result = consultas.alterarConsulta(
-						consultas.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)),
-						doutor.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
+				boolean result = fachada.alterarConsulta(
+						fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)),
+						fachada.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
 
 				if (result == false) {
 					System.out.println("Problema ao atualizar!!");
@@ -234,7 +230,7 @@ public class TelaTextual {
 				System.out.println("Digite o dia : ");
 				int diaC = scan.nextInt();
 
-				boolean result = consultas.removerConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC));
+				boolean result = fachada.removerConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC));
 
 				if (result == false) {
 					System.out.println("Problema ao remover");
@@ -277,7 +273,9 @@ public class TelaTextual {
 				System.out.print("");
 				String senha = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
-					recep.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(), telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia), senha);
+					fachada.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(),
+							telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
+							LocalDate.of(ano, mes, dia), senha);
 				} else {
 					System.out.println("Data invalida.");
 				}
@@ -355,7 +353,7 @@ public class TelaTextual {
 				} else {
 					System.out.println("Nao ha medicos cadastrados no sistema.");
 				}
-				
+
 			} else if (opcao == 2) {
 				System.out.print("Digite o CPF: ");
 				String cpf = scan.nextLine();
@@ -400,14 +398,14 @@ public class TelaTextual {
 				scan.nextLine();
 				System.out.println("Digite a senha: ");
 				String senha = scan.nextLine();
-				doutor.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
+				fachada.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
 						new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
 						numCrm, consultasPorDia, senha);
-				
+
 			} else if (opcao == 3) {
 				System.out.println("Digite o CPF do medico: ");
 				String cpf = scan.nextLine();
-				Medico medico = this.doutor.pesquisarMedico(cpf);
+				Medico medico = this.fachada.pesquisarMedico(cpf);
 				if (medico == null) {
 					System.out.println("CPF invalido.");
 				} else {
@@ -450,16 +448,16 @@ public class TelaTextual {
 					System.out.println("Digite sua nova senha: ");
 					String senha = scan.nextLine();
 					if (dia <= 31 && mes <= 12) {
-						doutor.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
-								new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
-								numCrm, consultasPorDia, senha);
+						fachada.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
+								new Endereco(rua, cidade, bairro, estado, cep, complemento),
+								LocalDate.of(ano, mes, dia), numCrm, consultasPorDia, senha);
 					}
 				}
-				
+
 			} else if (opcao == 4) {
 				System.out.print("Digite o CPF: ");
 				String cpfMed = scan.nextLine();
-				Medico medico = this.doutor.pesquisarMedico(cpfMed);
+				Medico medico = this.fachada.pesquisarMedico(cpfMed);
 				if (medico == null) {
 					System.out.println("CPF invalido");
 				} else {
@@ -469,7 +467,7 @@ public class TelaTextual {
 					int opcao2 = scan.nextInt();
 					scan.nextLine();
 					if (opcao2 == 1) {
-						this.doutor.removerMedico(medico);
+						this.fachada.removerMedico(medico);
 						System.out.println("Medico removido");
 					}
 				}
@@ -482,10 +480,112 @@ public class TelaTextual {
 	}
 
 	public void admRec() {
-		System.out.println("1-Listar Recepcionistas");
-		System.out.println("2-Cadastrar Recepcionistas");
-		System.out.println("3-Editar Recepcionista");
-		System.out.println("4-Remover Recepcionista");
-		System.out.println("");
+		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+		while (true) {
+			System.out.println("1-Listar Recepcionistas");
+			System.out.println("2-Cadastrar Recepcionistas");
+			System.out.println("3-Editar Recepcionista");
+			System.out.println("4-Remover Recepcionista");
+			System.out.print("Escolheu: ");
+			Character opcao = scan.nextLine().charAt(0);
+			if (opcao.equals('1')) {
+				System.out.println(pessoas.getListaRecepcionista());
+			} else if (opcao.equals('2')) {
+				System.out.print("Digite o CPF: ");
+				String cpf = scan.nextLine();
+				System.out.print("Digite o RG: ");
+				String rg = scan.nextLine();
+				System.out.print("Digite o nome: ");
+				String nome = scan.nextLine();
+				System.out.println("Digite o telefone fixo: ");
+				String telefone = scan.nextLine();
+				System.out.print("Digite o celular: ");
+				String celular = scan.nextLine();
+				System.out.print("Digite o Sexo: ");
+				String sexomf = scan.nextLine();
+				Character sexo = sexomf.charAt(0);
+				sexo = Character.toUpperCase(sexo);
+				System.out.print("Digite o nome da sua rua: ");
+				String rua = scan.nextLine();
+				System.out.print("Digite o CEP da sua residencia");
+				String cep = scan.nextLine();
+				System.out.println("Digite o bairro: ");
+				String bairro = scan.nextLine();
+				System.out.println("Digite a cidade: ");
+				String cidade = scan.nextLine();
+				System.out.println("Digite o estado(PE, SP, AL): ");
+				String estado = scan.nextLine();
+				System.out.println("Digite o complemento da residencia: ");
+				String complemento = scan.nextLine();
+				int dia = 0;
+				int mes = 0;
+				int ano = 0;
+				System.out.println("Digite a data de aniversario.");
+				System.out.print("Dia: ");
+				dia = scan.nextInt();
+				System.out.print("Mes: ");
+				mes = scan.nextInt();
+				System.out.print("Ano: ");
+				ano = scan.nextInt();
+				scan.nextLine();
+				System.out.println("Digite a senha: ");
+				String senha = scan.nextLine();
+				if (dia <= 31 && mes <= 12) {
+					fachada.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo,
+							new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
+							senha);
+				}
+			} else if(opcao.equals('3')){
+				System.out.print("Digite o CPF: ");
+				String cpf = scan.nextLine();
+				System.out.print("Digite o seu novo CPF: ");
+				String novoCpf = scan.nextLine();
+				System.out.print("Digite o RG: ");
+				String rg = scan.nextLine();
+				System.out.print("Digite o nome: ");
+				String nome = scan.nextLine();
+				System.out.println("Digite o telefone fixo: ");
+				String telefone = scan.nextLine();
+				System.out.print("Digite o celular: ");
+				String celular = scan.nextLine();
+				System.out.print("Digite o Sexo: ");
+				String sexomf = scan.nextLine();
+				Character sexo = sexomf.charAt(0);
+				sexo = Character.toUpperCase(sexo);
+				System.out.print("Digite o nome da sua rua: ");
+				String rua = scan.nextLine();
+				System.out.print("Digite o CEP da sua residencia");
+				String cep = scan.nextLine();
+				System.out.println("Digite o bairro: ");
+				String bairro = scan.nextLine();
+				System.out.println("Digite a cidade: ");
+				String cidade = scan.nextLine();
+				System.out.println("Digite o estado(PE, SP, AL): ");
+				String estado = scan.nextLine();
+				System.out.println("Digite o complemento da residencia: ");
+				String complemento = scan.nextLine();
+				int dia = 0;
+				int mes = 0;
+				int ano = 0;
+				System.out.println("Digite a data de aniversario.");
+				System.out.print("Dia: ");
+				dia = scan.nextInt();
+				System.out.print("Mes: ");
+				mes = scan.nextInt();
+				System.out.print("Ano: ");
+				ano = scan.nextInt();
+				scan.nextLine();
+				System.out.println("Digite a senha: ");
+				String senha = scan.nextLine();
+				if (dia <= 31 && mes <= 12) {
+					Recepcionista a = fachada.pesquisarRecepcionista(cpf);
+					fachada.alterarRecepcionista(a, nome, novoCpf, rg, telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia), senha);
+				}
+			} else if(opcao.equals('4')){
+				System.out.print("Digite o CPF do recepcionista a ser removido: ");
+				String cpf = scan.nextLine();
+				fachada.removerRecepcionista(fachada.pesquisarRecepcionista(cpf));
+			}
+		}
 	}
 }

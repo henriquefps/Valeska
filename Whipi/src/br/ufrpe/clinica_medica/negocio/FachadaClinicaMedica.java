@@ -26,7 +26,7 @@ public class FachadaClinicaMedica {
 		this.recepcionista = new GerenciamentoRecepcionista();
 	}
 
-	public FachadaClinicaMedica getInstance() {
+	public static FachadaClinicaMedica getInstance() {
 		if (instance == null) {
 			instance = new FachadaClinicaMedica();
 		}
