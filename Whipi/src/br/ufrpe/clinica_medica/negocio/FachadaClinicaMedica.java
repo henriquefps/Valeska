@@ -26,6 +26,7 @@ public class FachadaClinicaMedica {
 		this.medico = new GerenciamentoMedico();
 		this.paciente = new GerenciamentoPaciente();
 		this.recepcionista = new GerenciamentoRecepcionista();
+		this.login = new GerenciamentoLogin();
 	}
 
 	public static FachadaClinicaMedica getInstance() {
