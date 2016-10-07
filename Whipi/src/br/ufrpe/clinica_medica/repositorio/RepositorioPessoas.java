@@ -25,6 +25,8 @@ public class RepositorioPessoas {
 
 	private RepositorioPessoas() {
 		this.repositorio = new ArrayList<Pessoa>();
+		Pessoa admin = new Pessoa("admin", "admin", null, null, null, 'm', null, null);
+		repositorio.add(admin);
 	}
 
 	public static RepositorioPessoas getInstance() {
