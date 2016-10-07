@@ -1,3 +1,15 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Repositorio que armazena todas as pessoas cadastradas no sistema, Paciente, Medicos e Recepcionistas
+ * Permite e a remocao e alteracao dos objetos salvos
+ */
 package br.ufrpe.clinica_medica.repositorio;
 
 import java.time.LocalDate;

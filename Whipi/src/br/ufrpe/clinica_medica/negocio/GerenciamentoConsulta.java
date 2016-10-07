@@ -1,3 +1,18 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Controla o cadastro de consultas com as seguintes condicoes
+ * 		nao pode cadastrar consultas aos sabados e domingos
+ * 		nao pode pcadastrar consultas antes das 8h e depois das 18h
+ * 		nao pode cadastrar consultas para um medico que ja atingiu o maximo de consultas por dia
+ * 
+ */
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDateTime;

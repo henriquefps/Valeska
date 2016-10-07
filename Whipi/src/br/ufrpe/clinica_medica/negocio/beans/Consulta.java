@@ -7,7 +7,7 @@
  * Copyright Whipi® Inc.
  * Todos os direitos reservados.
  * 
- * Classe basica que guarda a definicao do que é uma consulta
+ * Classe basica que guarda a definicao do que e uma consulta
  */
 package br.ufrpe.clinica_medica.negocio.beans;
 

@@ -1,3 +1,15 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Gerencia o cadastro e funcoes que um medico pode fazer
+ * 		ele impede que sejam cadastradas pessoas com o mesmo cpf
+ */
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
