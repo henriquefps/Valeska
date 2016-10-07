@@ -482,6 +482,10 @@ public class TelaTextual {
 	}
 
 	public void admRec() {
-		
+		System.out.println("1-Listar Recepcionistas");
+		System.out.println("2-Cadastrar Recepcionistas");
+		System.out.println("3-Editar Recepcionista");
+		System.out.println("4-Remover Recepcionista");
+		System.out.println("");
 	}
 }
