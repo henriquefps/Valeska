@@ -26,7 +26,7 @@ public class Principal {
 		recep.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
 				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1990, 9, 27),
 				"456");
-		GerenciamentoPaciente paciente = GerenciamentoPaciente.getInstance();
+		GerenciamentoPaciente paciente = new GerenciamentoPaciente();
 		paciente.cadastrarPaciente("valeskka", "987", "654", "321", "123", 'F',
 				new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 				LocalDate.of(1992, 9, 24));

@@ -8,11 +8,9 @@ import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoPaciente {
-
-	private static GerenciamentoPaciente instance;
 	private RepositorioPessoas pessoas;
 
-	private GerenciamentoPaciente() {
+	public GerenciamentoPaciente() {
 		pessoas = RepositorioPessoas.getInstance();
 	}
 
@@ -42,12 +40,5 @@ public class GerenciamentoPaciente {
 		if (a != null) {
 			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, (Paciente) a);
 		}
-	}
-
-	public static GerenciamentoPaciente getInstance() {
-		if (instance == null) {
-			instance = new GerenciamentoPaciente();
-		}
-		return instance;
 	}
 }
