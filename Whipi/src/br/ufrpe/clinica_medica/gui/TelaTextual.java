@@ -310,6 +310,7 @@ public class TelaTextual {
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
 				scan.nextLine();
+				System.out.print("");
 				String senha = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
 					fachada.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(),
