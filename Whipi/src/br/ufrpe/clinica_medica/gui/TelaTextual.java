@@ -341,8 +341,8 @@ public class TelaTextual {
 			System.out.println("-ADM-Medicos");
 			System.out.println("1 - Listar medicos");
 			System.out.println("2 - Cadastrar medico");
-			System.out.println("3 - Editar medico");
-			System.out.println("4 - Deletar medico");
+			System.out.println("3 - Deletar medico");
+			System.out.println("4 - Editar médico");
 			System.out.println("5 - Voltar");
 			System.out.print("Selecionou: ");
 			int opcao = 0;
@@ -407,6 +407,22 @@ public class TelaTextual {
 				break;
 
 			case 3:
+				System.out.print("Digite o CPF: ");
+				String cpfMed = scan.nextLine();
+				
+			    boolean result = pessoas.existe(cpfMed);
+			    
+			    if(result == true){
+			    	result = pessoas.remover(doutor.pesquisarMedico(cpfMed));
+			    	if (result == true){
+			    		System.out.println("Médico removido com sucesso!!");
+			    	}else{
+			    		System.out.println("Problema ao remover! Tente novamente");
+			    	}
+			    		
+			    }
+				
+				
 
 			}
 		}

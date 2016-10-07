@@ -39,8 +39,15 @@ public class RepositorioPessoas {
 		repositorio.add(cadastro);
 	}
 
-	public void remover(Pessoa remover) {
-		repositorio.remove(remover);
+	public boolean remover(Pessoa remover) {
+		boolean result = false;
+		boolean existe = this.existe(remover);
+		if (existe == true){
+			repositorio.remove(remover);
+			result = true;
+		}
+		return result;
+		
 	}
 
 	public Pessoa pesquisar(String cpf) {
