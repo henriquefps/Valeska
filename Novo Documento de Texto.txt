@@ -1,0 +1,14 @@
+	classe Pessoa
+-nome: String
+-cpf: String
+-rg: String
+-telefone: String
+-celular: String
+-sexo: char
+-endereco: Endereco
+-dataDeNascimento: LocalDate
+-proximoId: static int
+-id: int
++Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento)
++equals(Object obj): boolean
+
