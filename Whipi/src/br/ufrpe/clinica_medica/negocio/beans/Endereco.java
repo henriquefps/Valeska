@@ -7,7 +7,7 @@
  * Copyright Whipi® Inc.
  * Todos os direitos reservados.
  * 
- * Classe basica que guarda a definicao do que é um Endereco
+ * Classe basica que guarda a definicao do que e um Endereco
  */
 package br.ufrpe.clinica_medica.negocio.beans;
 

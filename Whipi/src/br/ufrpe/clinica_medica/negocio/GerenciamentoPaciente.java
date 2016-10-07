@@ -1,3 +1,15 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Gerencia o cadastro de novos pacientes de forma a evitar que o cpf 
+ * dessa nova pessoa seja igual a de alguma pessoa que ja esteja cadastrada no sistema.
+ */
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;

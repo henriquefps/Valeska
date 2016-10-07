@@ -1,3 +1,16 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Repositorio que guarda todas as cunsultas salvas no sistema, tambem informa uma lista de consultas
+ * com determinado medico em um determinado dia
+ * Permite e a remocao e alteracao dos objetos salvos
+ */
 package br.ufrpe.clinica_medica.repositorio;
 
 import java.time.LocalDate;
