@@ -159,6 +159,7 @@ public class TelaTextual {
 			System.out.println("7 - Sair");
 			System.out.print("Selecionou: ");
 			op = scan.nextInt();
+			scan.nextLine();
 
 			// Marcar consultas - nessa opção o usuário(recepcionista)
 			// interage
