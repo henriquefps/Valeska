@@ -72,9 +72,9 @@ public class FachadaClinicaMedica {
 	}
 
 	public void alterarMedico(Medico medico, String nome, String novocpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, String senha) {
+			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
 		this.medico.alterarMedico(medico, nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento,
-				numCRM, senha);
+				numCRM, consultasPorDia, senha);
 	}
 
 	public Medico pesquisarMedico(String cpf) {
