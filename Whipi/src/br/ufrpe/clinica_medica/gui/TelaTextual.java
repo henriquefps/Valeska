@@ -338,7 +338,7 @@ public class TelaTextual {
 			System.out.println("======= ADM-Medicos =======");
 			System.out.println("1 - Listar medicos");
 			System.out.println("2 - Cadastrar medico");
-			System.out.println("3 - Editar medico");
+			System.out.println("3 - Entrar como medico");
 			System.out.println("4 - Deletar medico");
 			System.out.println("5 - Voltar");
 			System.out.print("Selecionou: ");
@@ -408,49 +408,7 @@ public class TelaTextual {
 				if (medico == null) {
 					System.out.println("CPF invalido.");
 				} else {
-					System.out.print("Digite seu nome: ");
-					String nome = scan.nextLine();
-					System.out.println("Digite seu telefone fixo: ");
-					String telefone = scan.nextLine();
-					System.out.print("Digite seu celular: ");
-					String celular = scan.nextLine();
-					System.out.print("Digite seu Sexo: ");
-					String sexomf = scan.nextLine();
-					Character sexo = sexomf.charAt(0);
-					sexo = Character.toUpperCase(sexo);
-					System.out.print("Digite o nome da sua rua: ");
-					String rua = scan.nextLine();
-					System.out.print("Digite o CEP da sua residencia");
-					String cep = scan.nextLine();
-					System.out.println("Digite seu bairro: ");
-					String bairro = scan.nextLine();
-					System.out.println("Digite sua cidade: ");
-					String cidade = scan.nextLine();
-					System.out.println("Digite seu estado(PE, SP, AL): ");
-					String estado = scan.nextLine();
-					System.out.println("Digite o complemento da residencia: ");
-					String complemento = scan.nextLine();
-					int dia = 0;
-					int mes = 0;
-					int ano = 0;
-					System.out.println("Digite sua data de aniversario.");
-					System.out.print("Dia: ");
-					dia = scan.nextInt();
-					System.out.print("Mes: ");
-					mes = scan.nextInt();
-					System.out.print("Ano: ");
-					ano = scan.nextInt();
-					System.out.println("Digite o numero do CRM");
-					int numCrm = scan.nextInt();
-					System.out.println("Digite o numero de consultas por dia: ");
-					int consultasPorDia = scan.nextInt();
-					System.out.println("Digite sua nova senha: ");
-					String senha = scan.nextLine();
-					if (dia <= 31 && mes <= 12) {
-						fachada.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
-								new Endereco(rua, cidade, bairro, estado, cep, complemento),
-								LocalDate.of(ano, mes, dia), numCrm, consultasPorDia, senha);
-					}
+					medico(medico);
 				}
 
 			} else if (opcao == 4) {
@@ -611,6 +569,92 @@ public class TelaTextual {
 					System.out.println(pacientes);
 				} else {
 					System.out.println("Nao ha pacientes cadastrados no sistema.");
+				}
+			} else if (opcao ==2) {
+				System.out.print("Digite o CPF: ");
+				String cpf = scan.nextLine();
+				System.out.print("Digite o RG: ");
+				String rg = scan.nextLine();
+				System.out.print("Digite o nome: ");
+				String nome = scan.nextLine();
+				System.out.println("Digite o telefone fixo: ");
+				String telefone = scan.nextLine();
+				System.out.print("Digite o celular: ");
+				String celular = scan.nextLine();
+				System.out.print("Digite o Sexo: ");
+				String sexomf = scan.nextLine();
+				Character sexo = sexomf.charAt(0);
+				sexo = Character.toUpperCase(sexo);
+				System.out.print("Digite o nome da sua rua: ");
+				String rua = scan.nextLine();
+				System.out.print("Digite o CEP da sua residencia");
+				String cep = scan.nextLine();
+				System.out.println("Digite o bairro: ");
+				String bairro = scan.nextLine();
+				System.out.println("Digite a cidade: ");
+				String cidade = scan.nextLine();
+				System.out.println("Digite o estado(PE, SP, AL): ");
+				String estado = scan.nextLine();
+				System.out.println("Digite o complemento da residencia: ");
+				String complemento = scan.nextLine();
+				int dia = 0;
+				int mes = 0;
+				int ano = 0;
+				System.out.println("Digite a data de aniversario.");
+				System.out.print("Dia: ");
+				dia = scan.nextInt();
+				System.out.print("Mes: ");
+				mes = scan.nextInt();
+				System.out.print("Ano: ");
+				ano = scan.nextInt();
+				this.fachada.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo, 
+						new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia));
+			} else if (opcao == 3) {
+				System.out.println("Digite o CPF do paciente: ");
+				String cpf = scan.nextLine();
+				Paciente paciente = this.fachada.pesquisarPaciente(cpf);
+				if (paciente == null) {
+					System.out.println("CPF invalido.");
+				} else {
+					System.out.print("Digite o nome: ");
+					String nome = scan.nextLine();
+					System.out.print("Digite o RG: ");
+					String rg = scan.nextLine();
+					System.out.println("Digite o telefone fixo: ");
+					String telefone = scan.nextLine();
+					System.out.print("Digite o celular: ");
+					String celular = scan.nextLine();
+					System.out.print("Digite o Sexo: ");
+					String sexomf = scan.nextLine();
+					Character sexo = sexomf.charAt(0);
+					sexo = Character.toUpperCase(sexo);
+					System.out.print("Digite o nome da sua rua: ");
+					String rua = scan.nextLine();
+					System.out.print("Digite o CEP da sua residencia");
+					String cep = scan.nextLine();
+					System.out.println("Digite o bairro: ");
+					String bairro = scan.nextLine();
+					System.out.println("Digite a cidade: ");
+					String cidade = scan.nextLine();
+					System.out.println("Digite o estado(PE, SP, AL): ");
+					String estado = scan.nextLine();
+					System.out.println("Digite o complemento da residencia: ");
+					String complemento = scan.nextLine();
+					int dia = 0;
+					int mes = 0;
+					int ano = 0;
+					System.out.println("Digite a data de aniversario.");
+					System.out.print("Dia: ");
+					dia = scan.nextInt();
+					System.out.print("Mes: ");
+					mes = scan.nextInt();
+					System.out.print("Ano: ");
+					ano = scan.nextInt();
+					scan.nextLine();
+					if (dia <= 31 && mes <= 12) {
+						fachada.alterarPaciente(paciente, nome, cpf, rg, telefone, celular, sexo, 
+								new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia));
+					}
 				}
 			}
 		}
