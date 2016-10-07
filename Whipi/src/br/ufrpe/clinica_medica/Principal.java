@@ -12,7 +12,6 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
-import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
 
 public class Principal {
 	public static void main(String[] args) {

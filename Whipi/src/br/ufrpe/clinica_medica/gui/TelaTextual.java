@@ -489,8 +489,10 @@ public class TelaTextual {
 			System.out.println("4-Remover Recepcionista");
 			System.out.println("5-Voltar");
 			System.out.print("Escolheu: ");
-			Character opcao = scan.nextLine().charAt(0);
-			if(opcao.equals('2')){
+			int opcao = scan.nextInt();
+			scan.nextLine();
+
+			if (opcao == 2) {
 				System.out.print("Digite o CPF: ");
 				String cpf = scan.nextLine();
 				System.out.print("Digite o RG: ");
@@ -527,10 +529,13 @@ public class TelaTextual {
 				mes = scan.nextInt();
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
+				scan.nextLine();
 				System.out.println("Digite a senha: ");
 				String senha = scan.nextLine();
-				fachada.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia), senha);
-			} if(opcao.equals('3')){
+				fachada.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo,
+						new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
+						senha);
+			} else if (opcao == 3) {
 				System.out.print("Digite o cpf do recepcionista a ser alterado: ");
 				String cpf = scan.nextLine();
 				System.out.print("Digite o CPF: ");
@@ -571,21 +576,23 @@ public class TelaTextual {
 				ano = scan.nextInt();
 				System.out.println("Digite a senha: ");
 				String senha = scan.nextLine();
-				fachada.alterarRecepcionista(fachada.pesquisarRecepcionista(cpf), nome, novoCpf, rg, telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia), senha);
-			} else if(opcao.equals('1')){
+				fachada.alterarRecepcionista(fachada.pesquisarRecepcionista(cpf), nome, novoCpf, rg, telefone, celular,
+						sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
+						senha);
+			} else if (opcao == 1) {
 				System.out.println(pessoas.getListaRecepcionista());
-			} else if(opcao.equals('4')){
+			} else if (opcao == 4) {
 				System.out.print("Digite o cpf do recepcionista a ser removido: ");
 				String cpf = scan.nextLine();
 				fachada.removerRecepcionista(fachada.pesquisarRecepcionista(cpf));
-			} else if(opcao.equals('5')) {
+			} else if (opcao == 5) {
 				return;
 			} else {
 				System.out.println("Opcao invalida.");
 			}
 		}
 	}
-	
+
 	public void admPac() {
 		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
 		while (true) {
@@ -598,7 +605,7 @@ public class TelaTextual {
 			System.out.print("Selecionou: ");
 			int opcao = scan.nextInt();
 			scan.nextLine();
-			
+
 			if (opcao == 1) {
 				ArrayList<Paciente> pacientes = pessoas.getListaPacientes();
 				if (pacientes != null) {
