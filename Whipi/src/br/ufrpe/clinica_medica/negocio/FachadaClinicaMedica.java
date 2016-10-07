@@ -8,6 +8,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 
 public class FachadaClinicaMedica {
@@ -16,6 +17,7 @@ public class FachadaClinicaMedica {
 	private GerenciamentoMedico medico;
 	private GerenciamentoPaciente paciente;
 	private GerenciamentoRecepcionista recepcionista;
+	private GerenciamentoLogin login;
 
 	private static FachadaClinicaMedica instance;
 
@@ -26,7 +28,7 @@ public class FachadaClinicaMedica {
 		this.recepcionista = new GerenciamentoRecepcionista();
 	}
 
-	public FachadaClinicaMedica getInstance() {
+	public static FachadaClinicaMedica getInstance() {
 		if (instance == null) {
 			instance = new FachadaClinicaMedica();
 		}
@@ -117,6 +119,10 @@ public class FachadaClinicaMedica {
 			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) {
 		this.recepcionista.alterarRecepcionista(a, nome, novoCpf, rg, telefone, celular, sexo, endereco,
 				dataDeNascimento, senha);
+	}
+	
+	public Pessoa efetuarLogin(String cpf, String senha) {
+		return this.login.efetuarLogin(cpf, senha);
 	}
 
 }

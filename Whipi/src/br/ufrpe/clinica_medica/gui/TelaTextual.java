@@ -9,11 +9,14 @@ import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
+
 	private static Scanner scan = new Scanner(System.in);
-	private GerenciamentoConsulta consultas = new GerenciamentoConsulta();
-	private GerenciamentoPaciente paciente = new GerenciamentoPaciente();
-	private GerenciamentoMedico doutor = new GerenciamentoMedico();
-	private GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
+
+	private FachadaClinicaMedica fachada;
+
+	public TelaTextual() {
+		this.fachada = FachadaClinicaMedica.getInstance();
+	}
 
 	public Pessoa inicio() {
 		String cpf;
@@ -26,21 +29,13 @@ public class TelaTextual {
 			System.out.printf("Senha: ");
 			senha = scan.nextLine();
 
-			RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
-
-			Pessoa individuo = pessoas.pesquisar(cpf);
+			Pessoa individuo = fachada.efetuarLogin(cpf, senha);
 			if (individuo != null) {
-				if (individuo instanceof Medico && ((Medico) individuo).getSenha().equals(senha)) {
-					return individuo;
-				} else if (individuo instanceof Recepcionista && ((Recepcionista) individuo).getSenha().equals(senha)) {
-					return individuo;
-				} else {
-					System.out.println("Usuario ou senha incorreta");
-				}
-			} else if (senha.equals("admin") && cpf.equals("admin")) {
-				return null;
+				System.out.println("Login realizado com sucesso!");
+				return individuo;
+			} else {
+				System.out.println("Usuario ou senha incorreto!");
 			}
-			System.out.println("CPF inexistente");
 		}
 	}
 
@@ -277,7 +272,9 @@ public class TelaTextual {
 				System.out.print("");
 				String senha = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
-					recep.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(), telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia), senha);
+					recep.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(),
+							telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
+							LocalDate.of(ano, mes, dia), senha);
 				} else {
 					System.out.println("Data invalida.");
 				}
@@ -355,7 +352,7 @@ public class TelaTextual {
 				} else {
 					System.out.println("Nao ha medicos cadastrados no sistema.");
 				}
-				
+
 			} else if (opcao == 2) {
 				System.out.print("Digite o CPF: ");
 				String cpf = scan.nextLine();
@@ -403,7 +400,7 @@ public class TelaTextual {
 				doutor.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
 						new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
 						numCrm, consultasPorDia, senha);
-				
+
 			} else if (opcao == 3) {
 				System.out.println("Digite o CPF do medico: ");
 				String cpf = scan.nextLine();
@@ -451,11 +448,11 @@ public class TelaTextual {
 					String senha = scan.nextLine();
 					if (dia <= 31 && mes <= 12) {
 						doutor.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
-								new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
-								numCrm, consultasPorDia, senha);
+								new Endereco(rua, cidade, bairro, estado, cep, complemento),
+								LocalDate.of(ano, mes, dia), numCrm, consultasPorDia, senha);
 					}
 				}
-				
+
 			} else if (opcao == 4) {
 				System.out.print("Digite o CPF: ");
 				String cpfMed = scan.nextLine();
