@@ -114,24 +114,16 @@ public class Pessoa {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
-			return true;
-		}
-		if (obj == null) {
-			return false;
-		}
-		if (getClass() != obj.getClass()) {
-			return false;
-		}
-		Pessoa other = (Pessoa) obj;
-		if (cpf == null) {
-			if (other.cpf != null) {
-				return false;
+		boolean res = false;
+		
+		if(obj != null)	{
+			if(obj.getClass() == this.getClass()){
+				if(this.cpf != null && this.cpf.equals(((Pessoa)obj).getCpf())){
+					res = true;
+				}
 			}
-		} else if (!cpf.equals(other.cpf)) {
-			return false;
-		}
-		return true;
+		}		
+		return res;
 	}
-
+	
 }
