@@ -32,6 +32,8 @@ public class GerenciamentoRecepcionista {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(
 					new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
+		} else{
+			System.out.println("CPF ja cadastrado");
 		}
 	}
 

@@ -30,6 +30,8 @@ public class GerenciamentoMedico {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 					consultasPorDia, senha));
+		} else{
+			System.out.println("CPF ja cadastrado");
 		}
 	}
 

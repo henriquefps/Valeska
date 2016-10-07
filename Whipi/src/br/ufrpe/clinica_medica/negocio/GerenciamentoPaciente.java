@@ -30,6 +30,8 @@ public class GerenciamentoPaciente {
 			Endereco endereco, LocalDate dataDeNascimento) {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Paciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento));
+		} else{
+			System.out.println("CPF ja cadastrado");
 		}
 	}
 
