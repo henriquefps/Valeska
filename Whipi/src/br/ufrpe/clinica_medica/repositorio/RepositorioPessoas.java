@@ -66,7 +66,7 @@ public class RepositorioPessoas {
 		String resp = "";
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Recepcionista) {
-				resp += repositorio.get(i).toString();
+				resp += repositorio.get(i).toString() + "\n";
 			}
 		}
 		return resp;
