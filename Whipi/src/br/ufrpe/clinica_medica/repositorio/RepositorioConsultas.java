@@ -94,7 +94,9 @@ public class RepositorioConsultas {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getMedico().equals(medico) && !lista.get(i).foiRealizada()
-					&& lista.get(i).getHorario().toLocalDate() == dia) {
+					&& lista.get(i).getHorario().toLocalDate().getDayOfMonth() == dia.getDayOfMonth()
+					&& lista.get(i).getHorario().toLocalDate().getMonthValue() == dia.getMonthValue()
+					&& lista.get(i).getHorario().toLocalDate().getYear() == dia.getYear()) {
 				comMedico.add(lista.get(i));
 			}
 		}
