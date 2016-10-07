@@ -1,3 +1,14 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Classe basica que guarda a definicao do que é um Endereco
+ */
 package br.ufrpe.clinica_medica.negocio.beans;
 
 public class Endereco {

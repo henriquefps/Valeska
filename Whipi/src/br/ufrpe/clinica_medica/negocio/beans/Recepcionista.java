@@ -1,3 +1,14 @@
+/* Consulta 
+ * 
+ * Versão 0.1
+ * 
+ * 6/7/2016
+ * 
+ * Copyright Whipi® Inc.
+ * Todos os direitos reservados.
+ * 
+ * Classe basica que herda atributos e metodos de pessoa e guarda a definicao de recepcionista
+ */
 package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.time.LocalDate;
