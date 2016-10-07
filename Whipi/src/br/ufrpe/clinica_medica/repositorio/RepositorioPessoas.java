@@ -89,7 +89,7 @@ public class RepositorioPessoas {
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, String senha, Medico medico) {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, Medico medico) {
 		medico.setNome(nome);
 		medico.setCpf(cpf);
 		medico.setRg(rg);
@@ -100,6 +100,7 @@ public class RepositorioPessoas {
 		medico.setDataDeNascimento(dataDeNascimento);
 		medico.setNumCRM(numCRM);
 		medico.setSenha(senha);
+		medico.setConsultasPorDia(consultasPorDia);
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
