@@ -45,8 +45,7 @@ public class GerenciamentoConsulta {
 		if (numConsultas < medico.getConsultasPorDia()) {
 			if (horario.toLocalTime().getHour() >= 8 && horario.toLocalTime().getMinute() >= 0
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SATURDAY
-					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY && horario.toLocalTime().getHour() < 18
-					&& consultas.getConsultasComPacienteNoDia(paciente, horario.toLocalDate()).isEmpty()) {
+					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY && horario.toLocalTime().getHour() < 18) {
 				consultas.cadastrar(new Consulta(paciente, horario, medico));
 			} else {
 				System.out.println("erro");
