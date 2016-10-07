@@ -93,6 +93,7 @@ public class Consulta {
 	public String toString() {
 		String resultado = "ID:" + this.id + "\n";
 		resultado += "Paciente: " + this.paciente.getNome() + "\n";
+		resultado += "CPF do paciente: " + this.paciente.getCpf() + "\n";
 		resultado += "Medico: " + this.medico.getNome() + "\n";
 		resultado += "Horario: " + this.horario + "\n";
 		resultado += "Descricao: " + this.descricao + "\n";
