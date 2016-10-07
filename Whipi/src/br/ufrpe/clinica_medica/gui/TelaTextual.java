@@ -49,6 +49,7 @@ public class TelaTextual {
 			System.out.print("Selecionou: ");
 			int opcao = 0;
 			opcao = scan.nextInt();
+			scan.nextLine();
 			if (opcao == 1) {
 				System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.now()));
 			} else if (opcao == 2) {
