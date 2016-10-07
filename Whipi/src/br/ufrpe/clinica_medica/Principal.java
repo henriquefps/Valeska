@@ -32,9 +32,6 @@ public class Principal {
 				LocalDate.of(1992, 9, 24));
 		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
 		consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.of(2016, 10, 7, 16, 00));
-		RepositorioConsultas datac = RepositorioConsultas.getInstance();
-		System.out.println(datac.getConsultasComMedicoNoDia(a.pesquisarMedico("123"), LocalDate.of(2016, 10, 7)));
-		
 		
 		while (true) {
 			Pessoa logada = tela.inicio();
