@@ -36,30 +36,24 @@ public class RepositorioPessoas {
 		return instance;
 	}
 
-	public ArrayList<Medico> getListaMedicos() {
-		ArrayList<Medico> lista = new ArrayList<Medico>();
+	public String getListaMedicos() {
+		String resp = "";
 		for (int i = 0; i < repositorio.size(); i++) {
-			if (this.repositorio.get(i) instanceof Medico) {
-				lista.add((Medico) this.repositorio.get(i));
+			if (repositorio.get(i) instanceof Medico) {
+				resp += repositorio.get(i).toString() + "\n";
 			}
 		}
-		if (lista.size() > 0) {
-			return lista;
-		}
-		return null;
+		return resp;
 	}
 	
-	public ArrayList<Paciente> getListaPacientes() {
-		ArrayList<Paciente> lista = new ArrayList<Paciente>();
+	public String getListaPacientes() {
+		String resp = "";
 		for (int i = 0; i < repositorio.size(); i++) {
-			if (this.repositorio.get(i) instanceof Paciente) {
-				lista.add((Paciente) this.repositorio.get(i));
+			if (repositorio.get(i) instanceof Paciente) {
+				resp += repositorio.get(i).toString() + "\n";
 			}
 		}
-		if (lista.size() > 0) {
-			return lista;
-		}
-		return null;
+		return resp;
 	}
 	
 	public String getListaRecepcionista(){
