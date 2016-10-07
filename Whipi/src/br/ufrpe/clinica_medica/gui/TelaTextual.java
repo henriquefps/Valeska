@@ -452,7 +452,7 @@ public class TelaTextual {
 					if (dia <= 31 && mes <= 12) {
 						doutor.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
 								new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
-								numCrm, senha);
+								numCrm, consultasPorDia, senha);
 					}
 				}
 				
