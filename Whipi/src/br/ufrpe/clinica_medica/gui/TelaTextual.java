@@ -125,6 +125,7 @@ public class TelaTextual {
 				int numCrm = scan.nextInt();
 				System.out.println("Digite o numero de consultas por dia: ");
 				int consultasPorDia = scan.nextInt();
+				scan.nextLine();
 				System.out.println("Digite sua nova senha: ");
 				String senha = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
