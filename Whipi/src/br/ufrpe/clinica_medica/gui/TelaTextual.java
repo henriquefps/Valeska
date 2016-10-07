@@ -69,7 +69,6 @@ public class TelaTextual {
 				}
 			} else if (opcao == 3) {
 				System.out.print("Digite o cpf do paciente: ");
-				scan.nextLine();
 				String cpfDoPaciente = scan.nextLine();
 				int dia = 0;
 				int mes = 0;
