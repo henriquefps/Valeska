@@ -46,6 +46,15 @@ public class RepositorioPessoas {
 		}
 		return null;
 	}
+	public String getListaRecepcionista(){
+		String resp = "";
+		for (int i = 0; i < repositorio.size(); i++) {
+			if (repositorio.get(i) instanceof Recepcionista) {
+				resp += repositorio.get(i).toString();
+			}
+		}
+		return resp;
+	}
 
 	public void cadastrar(Pessoa cadastro) {
 		repositorio.add(cadastro);
