@@ -50,7 +50,7 @@ public class RepositorioPessoas {
 		String resp = "";
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
-				resp += repositorio.get(i).toString() + "\n";
+				resp += repositorio.get(i).toString() + "\n\n";
 			}
 		}
 		return resp;
