@@ -327,6 +327,7 @@ public class TelaTextual {
 				System.out.println("1 - Sim");
 				System.out.println("outro - Nao");
 				int op2 = scan.nextInt();
+				scan.nextLine();
 				if (op2 == 1) {
 					break;
 
