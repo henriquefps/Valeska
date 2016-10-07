@@ -94,9 +94,11 @@ public class RepositorioConsultas {
 
 	public Consulta pesquisar(String cpfDoPaciente, LocalDate dia) {
 		Consulta achou = null;
-		for (int i = 0; i < lista.size() && achou == null; i++) {
-			if (lista.get(i).getPaciente().getCpf() == cpfDoPaciente
-					&& lista.get(i).getHorario().toLocalDate() == dia) {
+		for (int i = 0; i < lista.size(); i++) {
+			if (lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)
+					&& lista.get(i).getHorario().toLocalDate().getDayOfMonth() == dia.getDayOfMonth()
+					&& lista.get(i).getHorario().toLocalDate().getMonthValue() == dia.getMonthValue()
+					&& lista.get(i).getHorario().getYear() == dia.getYear()) {
 				achou = lista.get(i);
 			}
 		}
@@ -106,7 +108,7 @@ public class RepositorioConsultas {
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getMedico().equals(medico) && !lista.get(i).foiRealizada()
+			if (lista.get(i).getMedico().equals(medico)
 					&& lista.get(i).getHorario().toLocalDate().getDayOfMonth() == dia.getDayOfMonth()
 					&& lista.get(i).getHorario().toLocalDate().getMonthValue() == dia.getMonthValue()
 					&& lista.get(i).getHorario().toLocalDate().getYear() == dia.getYear()) {

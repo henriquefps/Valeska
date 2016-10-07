@@ -48,10 +48,10 @@ public class GerenciamentoConsulta {
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY && horario.toLocalTime().getHour() < 18
 					&& consultas.getConsultasComPacienteNoDia(paciente, horario.toLocalDate()).isEmpty()) {
 				consultas.cadastrar(new Consulta(paciente, horario, medico));
-			} else{
+			} else {
 				System.out.println("erro");
 			}
-		} else{
+		} else {
 			System.out.println("erro2");
 		}
 	}
@@ -81,10 +81,12 @@ public class GerenciamentoConsulta {
 	}
 
 	public void realizarConsulta(Consulta consulta, String descricao) {
-		consulta.setRealizada(true);
-		consulta.setDescricao(descricao);
+		if (consulta != null) {
+			consulta.setRealizada(true);
+			consulta.setDescricao(descricao);
+		}
 	}
-	
+
 	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		String resp = "";
 		ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);

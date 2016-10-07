@@ -68,6 +68,8 @@ public class TelaTextual {
 					System.out.println("Data invalida");
 				}
 			} else if (opcao == 3) {
+				System.out.print("Digite o cpf do paciente: ");
+				scan.nextLine();
 				String cpfDoPaciente = scan.nextLine();
 				int dia = 0;
 				int mes = 0;
@@ -78,8 +80,11 @@ public class TelaTextual {
 				mes = scan.nextInt();
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
+				System.out.print("Descreva a consulta: ");
+				scan.nextLine();
+				String descricao = scan.nextLine();
 				if (dia <= 31 && mes <= 12) {
-					fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia));
+					fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)), descricao);
 				} else {
 					System.out.println("Data invalida");
 				}
