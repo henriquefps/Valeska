@@ -36,6 +36,7 @@ public class RepositorioConsultas {
 
 	public void cadastrar(Consulta consulta) {
 		if (consulta != null) {
+			System.out.println("cadastrou!");
 			lista.add(consulta);
 		} else {
 			System.out.println("erro3");
