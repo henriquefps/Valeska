@@ -20,7 +20,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoPaciente {
-	private RepositorioPessoas pessoas;
+	private IRepositorioPessoas pessoas;
 
 	public GerenciamentoPaciente() {
 		pessoas = RepositorioPessoas.getInstance();

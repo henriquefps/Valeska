@@ -21,7 +21,7 @@ import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoRecepcionista {
 
-	private RepositorioPessoas pessoas;
+	private IRepositorioPessoas pessoas;
 
 	public GerenciamentoRecepcionista() {
 		pessoas = RepositorioPessoas.getInstance();

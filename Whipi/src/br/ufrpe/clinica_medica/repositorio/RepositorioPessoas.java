@@ -15,9 +15,10 @@ package br.ufrpe.clinica_medica.repositorio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.negocio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 
-public class RepositorioPessoas {
+public class RepositorioPessoas implements IRepositorioPessoas {
 
 	private ArrayList<Pessoa> repositorio;
 
@@ -29,7 +30,7 @@ public class RepositorioPessoas {
 		repositorio.add(admin);
 	}
 
-	public static RepositorioPessoas getInstance() {
+	public static IRepositorioPessoas getInstance() {
 		if (instance == null) {
 			instance = new RepositorioPessoas();
 		}

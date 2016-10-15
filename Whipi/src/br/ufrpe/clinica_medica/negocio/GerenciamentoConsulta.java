@@ -30,7 +30,7 @@ import java.time.LocalDate;
 @SuppressWarnings("unused")
 public class GerenciamentoConsulta {
 
-	private RepositorioConsultas consultas;
+	private IRepositorioConsultas consultas;
 
 	public GerenciamentoConsulta() {
 		consultas = RepositorioConsultas.getInstance();

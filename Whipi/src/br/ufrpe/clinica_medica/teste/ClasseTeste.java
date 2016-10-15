@@ -3,6 +3,8 @@ package br.ufrpe.clinica_medica.teste;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import br.ufrpe.clinica_medica.negocio.IRepositorioConsultas;
+import br.ufrpe.clinica_medica.negocio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
@@ -25,7 +27,7 @@ public class ClasseTeste {
 		Recepcionista r1 = new Recepcionista("Valeska", "69696969696", "666999", "34567452", "948338322", 'F', null,
 				LocalDate.of(1985, 10, 23), "77778");
 
-		RepositorioPessoas registroDePessoas = RepositorioPessoas.getInstance();
+		IRepositorioPessoas registroDePessoas = RepositorioPessoas.getInstance();
 		registroDePessoas.cadastrar(p1);
 		registroDePessoas.cadastrar(m1);
 		registroDePessoas.cadastrar(m2);
@@ -34,8 +36,8 @@ public class ClasseTeste {
 
 		System.out.println(registroDePessoas.pesquisar("2132131239").toString());
 		registroDePessoas.remover(registroDePessoas.pesquisar("2132131239"));
-		System.out.println(registroDePessoas.pesquisar("2132131239")); // Isso é
-																		// responsável
+		System.out.println(registroDePessoas.pesquisar("2132131239")); // Isso ï¿½
+																		// responsï¿½vel
 																		// pelo
 																		// null
 																		// do
@@ -44,9 +46,9 @@ public class ClasseTeste {
 
 		Consulta c1 = new Consulta(((Paciente) registroDePessoas.pesquisar("0123123955")),
 				LocalDateTime.of(2016, 10, 5, 16, 00), ((Medico) registroDePessoas.pesquisar("123145")));
-		RepositorioConsultas registroConsultas = RepositorioConsultas.getInstance();
+		IRepositorioConsultas registroConsultas = RepositorioConsultas.getInstance();
 		registroConsultas.cadastrar(c1);
-		System.out.println(registroConsultas.pesquisar(1));
+		//System.out.println(registroConsultas.pesquisar(1));
 	}
 
 }

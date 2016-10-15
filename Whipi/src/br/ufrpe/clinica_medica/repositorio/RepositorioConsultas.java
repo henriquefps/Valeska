@@ -17,9 +17,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.negocio.IRepositorioConsultas;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 
-public class RepositorioConsultas {
+public class RepositorioConsultas implements IRepositorioConsultas{
 	private ArrayList<Consulta> lista = new ArrayList<Consulta>();
 	private static RepositorioConsultas instance;
 
@@ -27,7 +28,7 @@ public class RepositorioConsultas {
 
 	}
 
-	public static RepositorioConsultas getInstance() {
+	public static IRepositorioConsultas getInstance() {
 		if (instance == null) {
 			instance = new RepositorioConsultas();
 		}

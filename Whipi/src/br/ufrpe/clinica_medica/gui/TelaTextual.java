@@ -147,7 +147,7 @@ public class TelaTextual {
 	}
 
 	public void recepcionista(Recepcionista recepcionista) {
-		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+		IRepositorioPessoas pessoas = RepositorioPessoas.getInstance();
 		int op = 0;
 		do {
 			System.out.println("Bem Vindo " + recepcionista.getNome());
@@ -470,7 +470,7 @@ public class TelaTextual {
 	}
 
 	public void admMed() {
-		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+		IRepositorioPessoas pessoas = RepositorioPessoas.getInstance();
 		while (true) {
 			System.out.println("======= ADM-Medicos =======");
 			System.out.println("1 - Listar medicos");
@@ -576,7 +576,7 @@ public class TelaTextual {
 	}
 
 	public void admRec() {
-		RepositorioPessoas pessoas = RepositorioPessoas.getInstance();
+		IRepositorioPessoas pessoas = RepositorioPessoas.getInstance();
 		while (true) {
 			System.out.println("======= ADM-Recepcionistas =======");
 			System.out.println("1-Listar Recepcionistas");
