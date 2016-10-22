@@ -1,7 +1,6 @@
 package br.ufrpe.clinica_medica.gui;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.*;
 import java.util.Scanner;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
@@ -209,17 +208,15 @@ public class TelaTextual {
 				mes = scan.nextInt();
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
-				if (dia <= 31 && mes <= 12) {
-					try {
-						System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
-					} catch (PNEException pne) {
-						System.out.println(pne.getMessage());
-					} catch (NCDException ncd) {
-						System.out.println(ncd.getMessage());
-					}
-				} else {
+				try {
+					System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
+				} catch (DateTimeException dte) {
 					System.out.println("Data invalida");
-				}
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
+				} catch (NCDException ncd) {
+					System.out.println(ncd.getMessage());
+				}	
 			} else if (op == 3) {
 				
 				System.out.println(recepcionista.getNome() + " voce escolheu a opcao de cadastrar consultas.");
@@ -239,16 +236,14 @@ public class TelaTextual {
 				int minC = scan.nextInt();
 				Medico a = fachada.pesquisarMedico(cpfMedico);
 				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
-				if (diaC <= 31 && mesC <= 12 && horaC <= 23 && horaC >= 0 && minC <= 59 && minC >= 0) {
-					try {
-						fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
-					} catch (PNEException pne) {
-						System.out.println(pne.getMessage());
-					} catch (ECException ec) {
-						System.out.println(ec.getMessage());
-					}
-				} else {
+				try {
+					fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+				} catch (DateTimeException dte) {
 					System.out.println("Data ou hora invalida");
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
+				} catch (ECException ec) {
+					System.out.println(ec.getMessage());
 				}
 			} else if (op == 4) {
 				try {
@@ -276,6 +271,8 @@ public class TelaTextual {
 					int minC2 = scan.nextInt();
 					fachada.alterarConsulta(fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)), 
 							fachada.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
+				} catch (DateTimeException dte) {
+					System.out.println("Data ou hora invalida");
 				} catch (CNEException cne) {
 					System.out.println(cne.getMessage());
 				} catch (PNEException pne) {
@@ -293,6 +290,8 @@ public class TelaTextual {
 				int diaC = scan.nextInt();
 				try {
 					fachada.removerConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC));
+				} catch (DateTimeException dte) {
+					System.out.println("Data invalida");
 				} catch (PNEException pne) {
 					System.out.println(pne.getMessage());
 				}
@@ -331,11 +330,11 @@ public class TelaTextual {
 				scan.nextLine();
 				System.out.print("Digite sua senha: ");
 				String senha = scan.nextLine();
-				if (dia <= 31 && mes <= 12) {
+				try {
 					fachada.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(),
 							telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
 							LocalDate.of(ano, mes, dia), senha);
-				} else {
+				} catch (DateTimeException dte) {
 					System.out.println("Data invalida.");
 				}
 
