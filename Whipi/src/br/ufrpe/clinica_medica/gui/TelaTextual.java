@@ -4,10 +4,7 @@ import java.time.*;
 import java.util.Scanner;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
-import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
-import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
-import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
+import br.ufrpe.clinica_medica.negocio.exceptions.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
