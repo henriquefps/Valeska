@@ -2,7 +2,10 @@ package br.ufrpe.clinica_medica.gui;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
+import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
@@ -480,7 +483,11 @@ public class TelaTextual {
 			System.out.println("5 - Voltar");
 			System.out.print("Selecionou: ");
 			int opcao = 0;
+			try{
 			opcao = scan.nextInt();
+			} catch(Exception a){
+				opcao = 10;
+			}
 			scan.nextLine();
 
 			if (opcao == 1) {
@@ -491,6 +498,7 @@ public class TelaTextual {
 				}
 
 			} else if (opcao == 2) {
+				try{
 				System.out.print("Digite o CPF: ");
 				String cpf = scan.nextLine();
 				System.out.print("Digite o RG: ");
@@ -537,7 +545,11 @@ public class TelaTextual {
 				fachada.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
 						new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
 						numCrm, consultasPorDia, senha);
-
+				} catch(InputMismatchException campoInvalido){
+					System.out.println("Data Invalida");
+				} catch(PessoaJaCadastradaExeception a){
+					System.out.println(a.getMessage());
+				}
 			} else if (opcao == 3) {
 				System.out.print("Digite o CPF do medico: ");
 				String cpf = scan.nextLine();

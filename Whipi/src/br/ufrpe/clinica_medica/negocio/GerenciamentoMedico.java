@@ -14,6 +14,7 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
+import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
@@ -26,12 +27,12 @@ public class GerenciamentoMedico {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PessoaJaCadastradaExeception {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 					consultasPorDia, senha));
 		} else{
-			System.out.println("CPF ja cadastrado");
+			throw new PessoaJaCadastradaExeception("CPF " + cpf+ " ja cadastrado no sistema");
 		}
 	}
 
