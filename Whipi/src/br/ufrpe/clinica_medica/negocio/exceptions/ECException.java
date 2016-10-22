@@ -1,10 +1,10 @@
-//Excesso de Consultas de um médico
+//Excesso de Consultas para um médico
 package br.ufrpe.clinica_medica.negocio.exceptions;
 
 public class ECException extends Exception {
 
 	public ECException() {
-		// TODO Auto-generated constructor stub
+		super("Excesso de consultas atingido");
 	}
 
 }
