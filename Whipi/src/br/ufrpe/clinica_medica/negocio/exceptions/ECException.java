@@ -6,5 +6,4 @@ public class ECException extends Exception {
 	public ECException() {
 		super("Excesso de consultas atingido");
 	}
-
 }

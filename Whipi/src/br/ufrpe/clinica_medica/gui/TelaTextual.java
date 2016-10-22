@@ -5,6 +5,10 @@ import java.time.LocalDateTime;
 import java.util.Scanner;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
+import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
+import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class TelaTextual {
@@ -51,7 +55,11 @@ public class TelaTextual {
 			opcao = scan.nextInt();
 			scan.nextLine();
 			if (opcao == 1) {
-				System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.now()));
+				try {
+					System.out.println(fachada.consultasDoDia(medico));
+				} catch (NCDException ncd) {
+					System.out.println(ncd.getMessage());
+				}
 			} else if (opcao == 2) {
 				int dia = 0;
 				int mes = 0;
@@ -63,30 +71,35 @@ public class TelaTextual {
 				System.out.print("Ano: ");
 				ano = scan.nextInt();
 				if (dia <= 31 && mes <= 12) {
-					System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
+					try {
+						System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
+					} catch (PNEException pne) {
+						System.out.println(pne.getMessage());
+					} catch (NCDException ncd) {
+						System.out.println(ncd.getMessage());
+					}
 				} else {
 					System.out.println("Data invalida");
 				}
 			} else if (opcao == 3) {
-				System.out.print("Digite o cpf do paciente: ");
-				String cpfDoPaciente = scan.nextLine();
-				int dia = 0;
-				int mes = 0;
-				int ano = 0;
-				System.out.print("Dia: ");
-				dia = scan.nextInt();
-				System.out.print("Mes: ");
-				mes = scan.nextInt();
-				System.out.print("Ano: ");
-				ano = scan.nextInt();
-				System.out.print("Descreva a consulta: ");
-				scan.nextLine();
-				String descricao = scan.nextLine();
-				if (dia <= 31 && mes <= 12) {
-					fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)),
-							descricao);
-				} else {
-					System.out.println("Data invalida");
+				try {
+					System.out.print("Digite o cpf do paciente: ");
+					String cpfDoPaciente = scan.nextLine();
+					int dia = 0;
+					int mes = 0;
+					int ano = 0;
+					System.out.print("Dia: ");
+					dia = scan.nextInt();
+					System.out.print("Mes: ");
+					mes = scan.nextInt();
+					System.out.print("Ano: ");
+					ano = scan.nextInt();
+					System.out.print("Descreva a consulta: ");
+					scan.nextLine();
+					String descricao = scan.nextLine();
+					fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)), descricao);
+				} catch (CNEException cne) {
+					cne.getMessage();
 				}
 			} else if (opcao == 4) {
 				System.out.print("Digite seu nome: ");
@@ -170,34 +183,39 @@ public class TelaTextual {
 				System.out.print("Digite o CPF do medico: ");
 				String cpf = scan.nextLine();
 				Medico medico = this.fachada.pesquisarMedico(cpf);
-				if (medico == null) {
-					System.out.println("CPF invalido.");
-				} else {
+				try {
 					System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.now()));
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
+				} catch (NCDException ncd) {
+					System.out.println(ncd.getMessage());
 				}
 			} else if (op == 2) {
 				System.out.print("Digite o CPF do medico: ");
 				String cpf = scan.nextLine();
 				Medico medico = this.fachada.pesquisarMedico(cpf);
-				if (medico == null) {
-					System.out.println("CPF invalido.");
-				} else {
-					int dia = 0;
-					int mes = 0;
-					int ano = 0;
-					System.out.print("Dia: ");
-					dia = scan.nextInt();
-					System.out.print("Mes: ");
-					mes = scan.nextInt();
-					System.out.print("Ano: ");
-					ano = scan.nextInt();
-					if (dia <= 31 && mes <= 12) {
+				int dia = 0;
+				int mes = 0;
+				int ano = 0;
+				System.out.print("Dia: ");
+				dia = scan.nextInt();
+				System.out.print("Mes: ");
+				mes = scan.nextInt();
+				System.out.print("Ano: ");
+				ano = scan.nextInt();
+				if (dia <= 31 && mes <= 12) {
+					try {
 						System.out.println(fachada.consultasComMedicoNoDia(medico, LocalDate.of(ano, mes, dia)));
-					} else {
-						System.out.println("Data invalida");
+					} catch (PNEException pne) {
+						System.out.println(pne.getMessage());
+					} catch (NCDException ncd) {
+						System.out.println(ncd.getMessage());
 					}
+				} else {
+					System.out.println("Data invalida");
 				}
 			} else if (op == 3) {
+				
 				System.out.println(recepcionista.getNome() + " voce escolheu a opcao de cadastrar consultas.");
 				System.out.print("Digite o cpf do medico: ");
 				String cpfMedico = scan.next();
@@ -215,43 +233,44 @@ public class TelaTextual {
 				int minC = scan.nextInt();
 				Medico a = fachada.pesquisarMedico(cpfMedico);
 				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
-				if (a != null && b != null && diaC <= 31 && mesC <= 12) {
+				try {
 					fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
+				} catch (ECException ec) {
+					System.out.println(ec.getMessage());
 				}
 			} else if (op == 4) {
-				System.out.println(recepcionista.getNome() + "voce escolheu a opcao de alterar consultas.");
-				System.out.print("Digite o cpf do paciente: ");
-				String cpfPaciente = scan.next();
-				System.out.print("Digite o ano: ");
-				int anoC = scan.nextInt();
-				System.out.print("Digite o mes: ");
-				int mesC = scan.nextInt();
-				System.out.print("Digite o dia: ");
-				int diaC = scan.nextInt();
-				System.out.println("-----Novos Dados-----");
-				System.out.print("Digite o cpf do novo medico: ");
-				String cpfMedico = scan.next();
-				System.out.print("Digite o ano: ");
-				int anoC2 = scan.nextInt();
-				System.out.print("Digite o mes: ");
-				int mesC2 = scan.nextInt();
-				System.out.print("Digite o dia: ");
-				int diaC2 = scan.nextInt();
-				System.out.print("Digite a hora: ");
-				int horaC2 = scan.nextInt();
-				System.out.print("Digite o minuto: ");
-				int minC2 = scan.nextInt();
-
-				boolean result = fachada.alterarConsulta(
-						fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)),
-						fachada.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
-
-				if (result == false) {
-					System.out.println("Problema ao atualizar!");
-				} else {
-					System.out.println("Atualizacao feita com sucesso!");
+				try {
+					System.out.println(recepcionista.getNome() + "voce escolheu a opcao de alterar consultas.");
+					System.out.print("Digite o cpf do paciente: ");
+					String cpfPaciente = scan.next();
+					System.out.print("Digite o ano: ");
+					int anoC = scan.nextInt();
+					System.out.print("Digite o mes: ");
+					int mesC = scan.nextInt();
+					System.out.print("Digite o dia: ");
+					int diaC = scan.nextInt();
+					System.out.println("-----Novos Dados-----");
+					System.out.print("Digite o cpf do novo medico: ");
+					String cpfMedico = scan.next();
+					System.out.print("Digite o ano: ");
+					int anoC2 = scan.nextInt();
+					System.out.print("Digite o mes: ");
+					int mesC2 = scan.nextInt();
+					System.out.print("Digite o dia: ");
+					int diaC2 = scan.nextInt();
+					System.out.print("Digite a hora: ");
+					int horaC2 = scan.nextInt();
+					System.out.print("Digite o minuto: ");
+					int minC2 = scan.nextInt();
+					fachada.alterarConsulta(fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)), 
+							fachada.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
+				} catch (CNEException cne) {
+					System.out.println(cne.getMessage());
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
 				}
-
 			} else if (op == 5) {
 				System.out.println(recepcionista.getNome() + "voce escolheu a opcao de cancelar consultas.");
 				System.out.print("Digite o cpf do paciente: ");
@@ -262,15 +281,11 @@ public class TelaTextual {
 				int mesC = scan.nextInt();
 				System.out.print("Digite o dia: ");
 				int diaC = scan.nextInt();
-
-				boolean result = fachada.removerConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC));
-
-				if (result == false) {
-					System.out.println("Problema ao remover!");
-				} else {
-					System.out.println("Remocao feita com sucesso!");
+				try {
+					fachada.removerConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC));
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
 				}
-
 			} else if (op == 7) {
 				System.out.print("Digite seu nome: ");
 				String nome = scan.nextLine();

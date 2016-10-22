@@ -10,6 +10,10 @@ import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
+import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
+import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class FachadaClinicaMedica {
 
@@ -36,31 +40,31 @@ public class FachadaClinicaMedica {
 		return instance;
 	}
 
-	public ArrayList<Consulta> consultasDoDia(Medico medico) {
+	public ArrayList<Consulta> consultasDoDia(Medico medico) throws NCDException {
 		return this.consulta.consultasDoDia(medico);
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) {
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws PNEException, ECException {
 		this.consulta.cadastrarConsulta(medico, paciente, horario);
 	}
 
-	public boolean removerConsulta(String cpfDoPaciente, LocalDate dia) {
-		return this.consulta.removerConsulta(cpfDoPaciente, dia);
+	public void removerConsulta(String cpfDoPaciente, LocalDate dia) throws PNEException {
+		this.consulta.removerConsulta(cpfDoPaciente, dia);
 	}
 
-	public boolean alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) {
-		return this.consulta.alterarConsulta(consulta, novoMedico, novoHorario);
+	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) throws PNEException, CNEException {
+		this.consulta.alterarConsulta(consulta, novoMedico, novoHorario);
 	}
 
 	public Consulta pesquisarConsulta(String cpfDoPaciente, LocalDate dia) {
 		return this.consulta.pesquisarConsulta(cpfDoPaciente, dia);
 	}
 
-	public void realizarConsulta(Consulta consulta, String descricao) {
+	public void realizarConsulta(Consulta consulta, String descricao) throws CNEException {
 		this.consulta.realizarConsulta(consulta, descricao);
 	}
 
-	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) {
+	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		return this.consulta.consultasComMedicoNoDia(medico, dia);
 	}
 

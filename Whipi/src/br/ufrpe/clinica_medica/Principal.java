@@ -12,6 +12,8 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -30,7 +32,13 @@ public class Principal {
 				new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 				LocalDate.of(1992, 9, 24));
 		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
-		consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.of(2016, 10, 7, 16, 00));
+		try {
+			consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.of(2016, 10, 7, 16, 00));
+		} catch (PNEException e) {
+			e.printStackTrace();
+		} catch (ECException e) {
+			e.printStackTrace();
+		}
 		
 		while (true) {
 			Pessoa logada = tela.inicio();
