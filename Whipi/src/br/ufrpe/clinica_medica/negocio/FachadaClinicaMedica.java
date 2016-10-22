@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -69,7 +70,7 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PessoaJaCadastradaExeception{
 		this.medico.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 				consultasPorDia, senha);
 	}

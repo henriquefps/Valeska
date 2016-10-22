@@ -3,6 +3,7 @@ package br.ufrpe.clinica_medica;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.gui.TelaTextual;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
@@ -20,9 +21,13 @@ public class Principal {
 	
 		TelaTextual tela = new TelaTextual();
 		GerenciamentoMedico a = new GerenciamentoMedico();
+		try{
 		a.cadastrarMedico("Dexter", "123", "234231", "33212314", "991239123", 'M',
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
 				1337, 10, "123");
+		} catch(PessoaJaCadastradaExeception b){
+			System.out.println(b.getMessage());
+		}
 		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
 		recep.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
 				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1990, 9, 27),
