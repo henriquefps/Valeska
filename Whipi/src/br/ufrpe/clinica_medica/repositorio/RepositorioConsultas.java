@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import br.ufrpe.clinica_medica.negocio.IRepositorioConsultas;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 
 public class RepositorioConsultas implements IRepositorioConsultas{

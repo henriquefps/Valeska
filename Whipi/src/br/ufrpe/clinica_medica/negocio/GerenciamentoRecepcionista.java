@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoRecepcionista {

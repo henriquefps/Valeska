@@ -1,4 +1,4 @@
-package br.ufrpe.clinica_medica.negocio;
+package br.ufrpe.clinica_medica.repositorio;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

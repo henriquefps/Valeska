@@ -3,8 +3,6 @@ package br.ufrpe.clinica_medica.teste;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import br.ufrpe.clinica_medica.negocio.IRepositorioConsultas;
-import br.ufrpe.clinica_medica.negocio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 

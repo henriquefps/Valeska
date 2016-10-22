@@ -22,12 +22,13 @@ import java.util.ArrayList;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.repositorio.IRepositorioConsultas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-@SuppressWarnings("unused")
+
 public class GerenciamentoConsulta {
 
 	private IRepositorioConsultas consultas;
@@ -45,7 +46,8 @@ public class GerenciamentoConsulta {
 		if (numConsultas < medico.getConsultasPorDia()) {
 			if (horario.toLocalTime().getHour() >= 8 && horario.toLocalTime().getMinute() >= 0
 					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SATURDAY
-					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY && horario.toLocalTime().getHour() < 18) {
+					&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY 
+					&& horario.toLocalTime().getHour() < 18) {
 				consultas.cadastrar(new Consulta(paciente, horario, medico));
 			} else {
 				System.out.println("erro");

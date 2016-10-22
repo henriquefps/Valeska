@@ -3,6 +3,7 @@ package br.ufrpe.clinica_medica.negocio;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoLogin {
