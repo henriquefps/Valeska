@@ -94,10 +94,14 @@ public class TelaTextual {
 					mes = scan.nextInt();
 					System.out.print("Ano: ");
 					ano = scan.nextInt();
-					System.out.print("Descreva a consulta: ");
-					scan.nextLine();
-					String descricao = scan.nextLine();
-					fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)), descricao);
+					if (dia <= 31 && mes <= 12) {
+						System.out.print("Descreva a consulta: ");
+						scan.nextLine();
+						String descricao = scan.nextLine();
+						fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)), descricao);
+					} else {
+						System.out.println("Data invalida");
+					}
 				} catch (CNEException cne) {
 					cne.getMessage();
 				}
@@ -145,6 +149,8 @@ public class TelaTextual {
 					fachada.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
 							new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
 							numCrm, consultasPorDia, senha);
+				} else {
+					System.out.println("Data de aniversario invalida");
 				}
 			} else if (opcao == 5) {
 				System.out.println("Tem certeza que deseja sair?");
@@ -233,12 +239,16 @@ public class TelaTextual {
 				int minC = scan.nextInt();
 				Medico a = fachada.pesquisarMedico(cpfMedico);
 				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
-				try {
-					fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
-				} catch (PNEException pne) {
-					System.out.println(pne.getMessage());
-				} catch (ECException ec) {
-					System.out.println(ec.getMessage());
+				if (diaC <= 31 && mesC <= 12 && horaC <= 23 && horaC >= 0 && minC <= 59 && minC >= 0) {
+					try {
+						fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+					} catch (PNEException pne) {
+						System.out.println(pne.getMessage());
+					} catch (ECException ec) {
+						System.out.println(ec.getMessage());
+					}
+				} else {
+					System.out.println("Data ou hora invalida");
 				}
 			} else if (op == 4) {
 				try {
