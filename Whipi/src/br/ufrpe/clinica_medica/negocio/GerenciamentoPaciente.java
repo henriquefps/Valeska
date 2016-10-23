@@ -18,6 +18,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
@@ -45,16 +46,20 @@ public class GerenciamentoPaciente {
 		return (Paciente) a;
 	}
 
-	public void removerPaciente(Paciente a) {
+	public void removerPaciente(Paciente a) throws PNEException {
 		if (a != null) {
 			pessoas.remover(a);
+		} else {
+			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
 	}
 
 	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento) {
+			char sexo, Endereco endereco, LocalDate dataDeNascimento) throws PNEException {
 		if (a != null) {
 			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, (Paciente) a);
+		} else {
+			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
 	}
 }

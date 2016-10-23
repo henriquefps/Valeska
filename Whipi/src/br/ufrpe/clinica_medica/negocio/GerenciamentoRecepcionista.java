@@ -18,6 +18,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
@@ -43,21 +44,24 @@ public class GerenciamentoRecepcionista {
 		Pessoa a = pessoas.pesquisar(cpf);
 		if (!(a instanceof Recepcionista)) {
 			a = null;
-			;
 		}
 		return (Recepcionista) a;
 	}
 
-	public void removerRecepcionista(Recepcionista a) {
+	public void removerRecepcionista(Recepcionista a) throws PNEException {
 		if (a != null) {
 			pessoas.remover(a);
+		} else {
+			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
 		}
 	}
 	
 	public void alterarRecepcionista(Recepcionista a, String nome, String novoCpf, String rg, String telefone,
-			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) {
+			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) throws PNEException {
 		if (a != null) {
 			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha, a);
+		} else {
+			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
 		}
 	}
 

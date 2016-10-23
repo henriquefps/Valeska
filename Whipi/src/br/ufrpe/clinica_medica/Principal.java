@@ -3,7 +3,6 @@ package br.ufrpe.clinica_medica;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.gui.TelaTextual;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;

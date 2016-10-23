@@ -37,9 +37,11 @@ public class GerenciamentoMedico {
 		}
 	}
 
-	public void removerMedico(Medico medico) {
+	public void removerMedico(Medico medico) throws PNEException {
 		if (medico != null) {
 			this.pessoas.remover(medico);
+		} else {
+			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
 	}
 
@@ -48,8 +50,8 @@ public class GerenciamentoMedico {
 		if (medico != null) {
 			pessoas.atualizar(nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM, consultasPorDia, senha,
 					medico);
-		} else{
-			throw new PNEException("Resultado nao encontrado");
+		} else {
+			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
 	}
 

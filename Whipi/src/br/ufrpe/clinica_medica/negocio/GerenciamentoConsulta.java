@@ -66,10 +66,10 @@ public class GerenciamentoConsulta {
 					throw new ECException();
 				}
 			} else {
-				throw new PNEException("Paciente não encontrado no sistema");
+				throw new PNEException("CPF do paciente não encontrado no sistema");
 			}
 		} else {
-			throw new PNEException("Medico não encontrado no sistema");
+			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
 	}
 
@@ -78,7 +78,7 @@ public class GerenciamentoConsulta {
 		if (con != null) {
 			consultas.excluir(con);
 		} else {
-			throw new PNEException("Paciente nao encontrado no sistema");
+			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
 	}
 
@@ -88,7 +88,7 @@ public class GerenciamentoConsulta {
 				consultas.modificar(consulta, novoHorario);
 				consultas.modificar(consulta, novoMedico);
 			} else {
-				throw new PNEException("Medico nao encontrado no sistema");
+				throw new PNEException("CPF do medico não encontrado no sistema");
 			}
 		} else {
 			throw new CNEException();
@@ -121,7 +121,7 @@ public class GerenciamentoConsulta {
 				throw new NCDException(dia);
 			}
 		} else {
-			throw new PNEException("Medico nao encontrado no sistema");
+			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
 	}
 }

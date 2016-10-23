@@ -342,6 +342,8 @@ public class TelaTextual {
 					fachada.alterarRecepcionista(recepcionista, nome, recepcionista.getCpf(), recepcionista.getRg(),
 							telefone, celular, sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
 							LocalDate.of(ano, mes, dia), senha);
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
 				} catch (DateTimeException dte) {
 					System.out.println("Data invalida.");
 				}
@@ -417,7 +419,11 @@ public class TelaTextual {
 					} else if (op2 == 3) {
 						System.out.print("Digite o cpf do paciente a ser removido: ");
 						String cpf = scan.nextLine();
-						fachada.removerPaciente(fachada.pesquisarPaciente(cpf));
+						try {
+							fachada.removerPaciente(fachada.pesquisarPaciente(cpf));
+						} catch (PNEException pne) {
+							System.out.println(pne.getMessage());
+						}
 					} else if (op2 == 4) {
 						System.out.print("Digite o cpf do paciente a ser alterado: ");
 						String cpf = scan.nextLine();
@@ -458,9 +464,15 @@ public class TelaTextual {
 						System.out.print("Ano: ");
 						ano = scan.nextInt();
 						scan.nextLine();
-						fachada.alterarPaciente(fachada.pesquisarPaciente(cpf), nome, novoCpf, rg, telefone, celular,
-								sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
-								LocalDate.of(ano, mes, dia));
+						try {
+							fachada.alterarPaciente(fachada.pesquisarPaciente(cpf), nome, novoCpf, rg, telefone, celular,
+									sexo, new Endereco(rua, cidade, bairro, estado, cep, complemento),
+									LocalDate.of(ano, mes, dia));
+						} catch (PNEException pne) {
+							System.out.println(pne.getMessage());
+						} catch (DateTimeException dte) {
+							System.out.println("Data invalida");
+						}
 					} else if (op2 == 5) {
 						break;
 					}
@@ -598,7 +610,7 @@ public class TelaTextual {
 				String cpfMed = scan.nextLine();
 				Medico medico = this.fachada.pesquisarMedico(cpfMed);
 				if (medico == null) {
-					System.out.println("CPF invalido!");
+					System.out.println("CPF invalido");
 				} else {
 					System.out.println("Tem certeza que quer excluir o Dr. " + medico.getNome() + "?");
 					System.out.println("1 - Sim");
@@ -606,8 +618,12 @@ public class TelaTextual {
 					int opcao2 = scan.nextInt();
 					scan.nextLine();
 					if (opcao2 == 1) {
-						this.fachada.removerMedico(medico);
-						System.out.println("Medico removido");
+						try {
+							this.fachada.removerMedico(medico);
+							System.out.println("Medico removido");
+						} catch (PNEException pne) {
+							System.out.println(pne.getMessage());
+						}
 					}
 				}
 
@@ -696,7 +712,12 @@ public class TelaTextual {
 			} else if (opcao == 4) {
 				System.out.print("Digite o cpf do recepcionista a ser removido: ");
 				String cpf = scan.nextLine();
-				fachada.removerRecepcionista(fachada.pesquisarRecepcionista(cpf));
+				try {
+					fachada.removerRecepcionista(fachada.pesquisarRecepcionista(cpf));
+					System.out.println("Recepcionista removido");
+				} catch (PNEException pne) {
+					System.out.println(pne.getMessage());
+				}
 
 			} else if (opcao == 5) {
 				return;

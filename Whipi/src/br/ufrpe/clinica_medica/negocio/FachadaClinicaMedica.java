@@ -75,7 +75,7 @@ public class FachadaClinicaMedica {
 				consultasPorDia, senha);
 	}
 
-	public void removerMedico(Medico medico) {
+	public void removerMedico(Medico medico) throws PNEException {
 		this.medico.removerMedico(medico);
 	}
 
@@ -98,12 +98,12 @@ public class FachadaClinicaMedica {
 		return this.paciente.pesquisarPaciente(cpf);
 	}
 
-	public void removerPaciente(Paciente a) {
+	public void removerPaciente(Paciente a) throws PNEException {
 		this.paciente.removerPaciente(a);
 	}
 
 	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento) {
+			char sexo, Endereco endereco, LocalDate dataDeNascimento) throws PNEException {
 		this.paciente.alterarPaciente(a, nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 	}
 
@@ -117,12 +117,12 @@ public class FachadaClinicaMedica {
 		return this.recepcionista.pesquisarRecepcionista(cpf);
 	}
 
-	public void removerRecepcionista(Recepcionista a) {
+	public void removerRecepcionista(Recepcionista a) throws PNEException {
 		this.recepcionista.removerRecepcionista(a);
 	}
 
 	public void alterarRecepcionista(Recepcionista a, String nome, String novoCpf, String rg, String telefone,
-			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) {
+			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) throws PNEException {
 		this.recepcionista.alterarRecepcionista(a, nome, novoCpf, rg, telefone, celular, sexo, endereco,
 				dataDeNascimento, senha);
 	}
