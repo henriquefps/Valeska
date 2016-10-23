@@ -15,7 +15,12 @@ package br.ufrpe.clinica_medica.repositorio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
+import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 
 public class RepositorioPessoas implements IRepositorioPessoas {
 
@@ -106,20 +111,12 @@ public class RepositorioPessoas implements IRepositorioPessoas {
 		}
 		return achou;
 	}
-
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, Medico medico) {
-		medico.setNome(nome);
-		medico.setCpf(cpf);
-		medico.setRg(rg);
-		medico.setTelefone(telefone);
-		medico.setCelular(celular);
-		medico.setSexo(sexo);
-		medico.setEndereco(endereco);
-		medico.setDataDeNascimento(dataDeNascimento);
-		medico.setNumCRM(numCRM);
-		medico.setSenha(senha);
-		medico.setConsultasPorDia(consultasPorDia);
+	
+	public void atualizar(Pessoa ant, Pessoa novo) {
+		if(ant != null && novo != null)
+			ant = novo;
+		else
+			throw new IllegalArgumentException();
 	}
 
 	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,

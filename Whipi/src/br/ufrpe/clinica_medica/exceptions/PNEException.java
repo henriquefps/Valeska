@@ -1,5 +1,5 @@
 //Pessoa não existe no sistema
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 public class PNEException extends Exception {
 	

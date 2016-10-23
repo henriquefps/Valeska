@@ -14,11 +14,12 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
+import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
-import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
@@ -56,13 +57,27 @@ public class GerenciamentoRecepcionista {
 		}
 	}
 	
-	public void alterarRecepcionista(Recepcionista a, String nome, String novoCpf, String rg, String telefone,
-			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) throws PNEException {
-		if (a != null) {
-			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha, a);
-		} else {
-			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
+	public void alterarRecepcionista(String cpf, Recepcionista novoRec) throws PNEException{
+		Pessoa p = null;
+		if(cpf != null){
+			p = pessoas.pesquisar(cpf);
 		}
+		else{
+			throw new IllegalArgumentException("CPF inválido");
+		}
+		if(p != null){
+			if(p instanceof Recepcionista){
+				pessoas.atualizar(p, novoRec);
+			}
+			else{
+				//Depois mudar a mensagem, estou sem criatividade
+				throw new IllegalArgumentException("CPF não é de um recepcionista");
+			}
+		}
+		else{
+			throw new PNEException("Recepcionista não encontrado");
+		}
+		
 	}
 
 }

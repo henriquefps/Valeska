@@ -45,19 +45,7 @@ public interface IRepositorioPessoas {
 	public boolean existe(String cpf);
 	
 	/*
-	 * atualiza as informacoes de um medico
+	 * atualiza as informacoes de uma pessoa
 	 */
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, Medico medico);
-	/*
-	 * atualiza as informacoes de um paciente
-	 */
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, Paciente paciente);
-	
-	/*
-	 * atualiza as informacoes de um recepcionista
-	 */
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha, Recepcionista recepcionista);
+	public void atualizar(Pessoa ant, Pessoa novo);
 }

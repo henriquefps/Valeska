@@ -14,11 +14,12 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
+import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
-import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
@@ -53,13 +54,26 @@ public class GerenciamentoPaciente {
 			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
 	}
-
-	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento) throws PNEException {
-		if (a != null) {
-			pessoas.atualizar(nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, (Paciente) a);
-		} else {
-			throw new PNEException("CPF do paciente nao encontrado no sistema");
+	
+	public void alterarPaciente(String cpf, Paciente novoPaciente) throws PNEException {
+		Pessoa p = null;
+		if(cpf != null){
+			p = pessoas.pesquisar(cpf);
+		}
+		else{
+			throw new IllegalArgumentException("CPF inválido");
+		}
+		if(p != null){
+			if(p instanceof Paciente){
+				pessoas.atualizar(p, novoPaciente);
+			}
+			else{
+				//Depois mudar a mensagem, estou sem criatividade
+				throw new IllegalArgumentException("CPF não é de um paciente");
+			}
+		}
+		else{
+			throw new PNEException("Paciente não encontrado");
 		}
 	}
 }

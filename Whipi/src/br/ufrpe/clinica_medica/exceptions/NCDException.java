@@ -1,5 +1,5 @@
 //Nenhuma consulta marcada para o dia
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 import java.time.LocalDate;
 

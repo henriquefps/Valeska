@@ -18,13 +18,13 @@ package br.ufrpe.clinica_medica.negocio;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.exceptions.CNEException;
+import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.NCDException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
-import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
-import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
-import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioConsultas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
 
@@ -49,31 +49,27 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws PNEException, ECException {
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException {
 		if (medico != null) {
 			if (paciente != null) {
 				int numConsultas = consultas.getConsultasComMedicoNoDia(medico, horario.toLocalDate()).size();
 				if (numConsultas < medico.getConsultasPorDia()) {
-					if (horario.toLocalTime().getHour() >= 8 && horario.toLocalTime().getMinute() >= 0
-							&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SATURDAY
-							&& horario.toLocalDate().getDayOfWeek() != DayOfWeek.SUNDAY 
-							&& horario.toLocalTime().getHour() < 18) {
 						consultas.cadastrar(new Consulta(paciente, horario, medico));
-					} else {
-						System.out.println("erro");
-					}
-				} else {
+				}
+				else {
 					throw new ECException();
 				}
-			} else {
-				throw new PNEException("CPF do paciente não encontrado no sistema");
+			} 
+			else {
+				throw new IllegalArgumentException("Médico Inválido");
 			}
-		} else {
-			throw new PNEException("CPF do medico não encontrado no sistema");
+		}
+		else {
+			throw new IllegalArgumentException("Paciente Inválido");
 		}
 	}
 
-	public void removerConsulta(String cpfDoPaciente, LocalDate dia) throws PNEException {
+	public void removerConsulta(String cpfDoPaciente, LocalDate dia) throws PNEException, CNEException {
 		Consulta con = consultas.pesquisar(cpfDoPaciente, dia);
 		if (con != null) {
 			consultas.excluir(con);

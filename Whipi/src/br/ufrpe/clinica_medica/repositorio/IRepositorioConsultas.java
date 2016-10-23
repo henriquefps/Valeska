@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.exceptions.CNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
@@ -33,7 +34,12 @@ public interface IRepositorioConsultas {
 	/*
 	 * exlclui uma consulta informada do sistema
 	 */
-	public void excluir(Consulta con);
+	public void excluir(int id) throws CNEException;
+	
+	/*
+	 * exlclui uma consulta informada do sistema
+	 */
+	public void excluir(Consulta con) throws CNEException;
 	
 	/*
 	 * altera o medico da consulta

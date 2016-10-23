@@ -14,9 +14,9 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
+import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.*;
-import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class GerenciamentoMedico {
@@ -45,15 +45,28 @@ public class GerenciamentoMedico {
 		}
 	}
 
-	public void alterarMedico(Medico medico, String nome, String novocpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PNEException{
-		if (medico != null) {
-			pessoas.atualizar(nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM, consultasPorDia, senha,
-					medico);
-		} else {
-			throw new PNEException("CPF do medico não encontrado no sistema");
+	public void alterarMedico(String cpf, Medico novoMedico) throws PNEException {
+		Pessoa p = null;
+		if(cpf != null){
+			p = pessoas.pesquisar(cpf);
+		}
+		else{
+			throw new IllegalArgumentException("CPF inválido");
+		}
+		if(p != null){
+			if(p instanceof Medico){
+				pessoas.atualizar(p, novoMedico);
+			}
+			else{
+				//Depois mudar a mensagem, estou sem criatividade
+				throw new IllegalArgumentException("CPF não é de um médico");
+			}
+		}
+		else{
+			throw new PNEException("Médico não encontrado");
 		}
 	}
+	
 
 	public Medico pesquisarMedico(String cpf) {
 		Pessoa aux = pessoas.pesquisar(cpf);

@@ -3,6 +3,9 @@ package br.ufrpe.clinica_medica;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.gui.TelaTextual;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
@@ -12,9 +15,6 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
-import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class Principal {
 	public static void main(String[] args) {
@@ -35,10 +35,10 @@ public class Principal {
 				LocalDate.of(1992, 9, 24));
 		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
 			consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.of(2016, 10, 7, 16, 00));
-		} catch (PNEException e) {
-			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			System.out.println(e.getMessage());
 		} catch (ECException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
 		} catch (PJCException e){
 			System.out.println(e.getMessage());
 		}

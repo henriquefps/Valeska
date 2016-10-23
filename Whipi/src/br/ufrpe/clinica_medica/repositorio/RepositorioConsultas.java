@@ -17,7 +17,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import br.ufrpe.clinica_medica.negocio.beans.*;
+import br.ufrpe.clinica_medica.exceptions.CNEException;
+import br.ufrpe.clinica_medica.negocio.beans.Consulta;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 
 public class RepositorioConsultas implements IRepositorioConsultas{
 	private ArrayList<Consulta> lista = new ArrayList<Consulta>();
@@ -34,11 +37,11 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 		return instance;
 	}
 
-	public void cadastrar(Consulta consulta) {
+	public void cadastrar(Consulta consulta) throws IllegalArgumentException {
 		if (consulta != null) {
 			lista.add(consulta);
 		} else {
-			System.out.println("erro3");
+			throw new IllegalArgumentException("Consulta Inválida!");
 		}
 	}
 
@@ -52,16 +55,22 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 		return achou;
 	}
 
-	public void excluir(int id) {
+	public void excluir(int id) throws CNEException {
 		Consulta con = pesquisar(id);
 		if (con != null) {
 			lista.remove(con);
 		}
+		else{
+			throw new CNEException();
+		}
 	}
 
-	public void excluir(Consulta con) {
+	public void excluir(Consulta con) throws CNEException {
 		if (con != null) {
 			lista.remove(con);
+		}
+		else{
+			throw new CNEException();
 		}
 	}
 
@@ -74,7 +83,6 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 	public void modificar(Consulta con, LocalDateTime horario) {
 		if (con != null) {
 			con.setHorario(horario);
-			;
 		}
 	}
 
@@ -92,19 +100,26 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 		}
 	}
 
-	public Consulta pesquisar(String cpfDoPaciente, LocalDate dia) {
+	public Consulta pesquisar(String cpfDoPaciente, LocalDate data) {
 		Consulta achou = null;
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)
-					&& lista.get(i).getHorario().toLocalDate().getDayOfMonth() == dia.getDayOfMonth()
-					&& lista.get(i).getHorario().toLocalDate().getMonthValue() == dia.getMonthValue()
-					&& lista.get(i).getHorario().getYear() == dia.getYear()) {
-				achou = lista.get(i);
+			
+			if (cpfDoPaciente != null && lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)){
+				
+				if(data != null && lista.get(i).getHorario().toLocalDate().getDayOfMonth() == data.getDayOfMonth()
+						&& lista.get(i).getHorario().toLocalDate().getMonthValue() == data.getMonthValue()
+						&& lista.get(i).getHorario().getYear() == data.getYear()) {
+					
+					achou = lista.get(i);
+				}
 			}
 		}
 		return achou;
 	}
-
+	
+	/**
+	 * retorna um ArrayList com todas as consultas com um determinado medico
+	 */
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
@@ -117,8 +132,10 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 		}
 		return comMedico;
 	}
-	// retorna um ArrayList com todas as consultas com um determinado medico
 
+	/**
+	 * retorna um ArrayList com todas as consultas de um determinado paciente
+	 */
 	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
@@ -128,7 +145,6 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 		}
 		return comPaciente;
 	}
-	// retorna um ArrayList com todas as consultas de um determinado paciente
 
 	public ArrayList<Consulta> getLista() {
 		return lista;

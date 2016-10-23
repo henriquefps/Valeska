@@ -1,5 +1,5 @@
 //Consulta não existe
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 public class CNEException extends Exception {
 

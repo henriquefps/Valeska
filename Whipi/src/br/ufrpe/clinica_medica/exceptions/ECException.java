@@ -1,9 +1,9 @@
 //Excesso de Consultas para um médico
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 public class ECException extends Exception {
 
 	public ECException() {
-		super("Excesso de consultas atingido");
+		super("Quantidade Máxima de Consultas Atingido");
 	}
 }

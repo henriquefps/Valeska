@@ -1,5 +1,5 @@
 //Falha na Autenticação
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 public class FAException extends Exception {
 

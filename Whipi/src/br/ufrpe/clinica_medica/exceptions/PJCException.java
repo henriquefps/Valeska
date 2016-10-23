@@ -1,5 +1,5 @@
 //Pessoa ja cadastrada no sistema
-package br.ufrpe.clinica_medica.negocio.exceptions;
+package br.ufrpe.clinica_medica.exceptions;
 
 public class PJCException extends Exception {
 	

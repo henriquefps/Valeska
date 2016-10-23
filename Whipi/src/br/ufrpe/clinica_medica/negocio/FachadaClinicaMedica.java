@@ -4,17 +4,17 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.exceptions.CNEException;
+import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.NCDException;
+import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
-import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
-import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
-import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
-import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class FachadaClinicaMedica {
 
@@ -45,11 +45,11 @@ public class FachadaClinicaMedica {
 		return this.consulta.consultasDoDia(medico);
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws PNEException, ECException {
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException {
 		this.consulta.cadastrarConsulta(medico, paciente, horario);
 	}
 
-	public void removerConsulta(String cpfDoPaciente, LocalDate dia) throws PNEException {
+	public void removerConsulta(String cpfDoPaciente, LocalDate dia) throws PNEException, CNEException {
 		this.consulta.removerConsulta(cpfDoPaciente, dia);
 	}
 
@@ -78,11 +78,9 @@ public class FachadaClinicaMedica {
 	public void removerMedico(Medico medico) throws PNEException {
 		this.medico.removerMedico(medico);
 	}
-
-	public void alterarMedico(Medico medico, String nome, String novocpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PNEException{
-		this.medico.alterarMedico(medico, nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento,
-				numCRM, consultasPorDia, senha);
+	
+	public void alterarMedico(String cpf, Medico novo) throws PNEException{
+		this.medico.alterarMedico(cpf, novo);
 	}
 
 	public Medico pesquisarMedico(String cpf) {
@@ -102,9 +100,8 @@ public class FachadaClinicaMedica {
 		this.paciente.removerPaciente(a);
 	}
 
-	public void alterarPaciente(Paciente a, String nome, String novoCpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento) throws PNEException {
-		this.paciente.alterarPaciente(a, nome, novoCpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
+	public void alterarPaciente(String cpf, Paciente novo) throws PNEException{
+		this.paciente.alterarPaciente(cpf, novo);
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
@@ -121,10 +118,8 @@ public class FachadaClinicaMedica {
 		this.recepcionista.removerRecepcionista(a);
 	}
 
-	public void alterarRecepcionista(Recepcionista a, String nome, String novoCpf, String rg, String telefone,
-			String celular, char sexo, Endereco endereco, LocalDate dataDeNascimento, String senha) throws PNEException {
-		this.recepcionista.alterarRecepcionista(a, nome, novoCpf, rg, telefone, celular, sexo, endereco,
-				dataDeNascimento, senha);
+	public void alterarRecepcionista(String cpf, Recepcionista novo) throws PNEException{
+		this.recepcionista.alterarRecepcionista(cpf, novo);
 	}
 	
 	public Pessoa efetuarLogin(String cpf, String senha) {
