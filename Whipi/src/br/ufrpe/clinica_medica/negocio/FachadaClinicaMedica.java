@@ -80,7 +80,7 @@ public class FachadaClinicaMedica {
 	}
 
 	public void alterarMedico(Medico medico, String nome, String novocpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
+			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PNEException{
 		this.medico.alterarMedico(medico, nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento,
 				numCRM, consultasPorDia, senha);
 	}

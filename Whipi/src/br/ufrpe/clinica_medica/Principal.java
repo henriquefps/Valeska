@@ -14,6 +14,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
 import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class Principal {
@@ -25,9 +26,6 @@ public class Principal {
 		a.cadastrarMedico("Dexter", "123", "234231", "33212314", "991239123", 'M',
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
 				1337, 10, "123");
-		} catch(PessoaJaCadastradaExeception b){
-			System.out.println(b.getMessage());
-		}
 		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
 		recep.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
 				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1990, 9, 27),
@@ -37,12 +35,13 @@ public class Principal {
 				new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 				LocalDate.of(1992, 9, 24));
 		GerenciamentoConsulta consulta = new GerenciamentoConsulta();
-		try {
 			consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"), LocalDateTime.of(2016, 10, 7, 16, 00));
 		} catch (PNEException e) {
 			e.printStackTrace();
 		} catch (ECException e) {
 			e.printStackTrace();
+		} catch (PJCException e){
+			System.out.println(e.getMessage());
 		}
 		
 		while (true) {

@@ -14,9 +14,9 @@ package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
 
-import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class GerenciamentoMedico {
@@ -44,10 +44,12 @@ public class GerenciamentoMedico {
 	}
 
 	public void alterarMedico(Medico medico, String nome, String novocpf, String rg, String telefone, String celular,
-			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
+			char sexo, Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PNEException{
 		if (medico != null) {
 			pessoas.atualizar(nome, novocpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM, consultasPorDia, senha,
 					medico);
+		} else{
+			throw new PNEException("Resultado nao encontrado");
 		}
 	}
 

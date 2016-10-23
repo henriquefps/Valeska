@@ -1,11 +1,8 @@
 package br.ufrpe.clinica_medica.gui;
 
-
 import java.time.*;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-
-import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.*;
 import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.negocio.exceptions.*;
@@ -98,7 +95,8 @@ public class TelaTextual {
 						System.out.print("Descreva a consulta: ");
 						scan.nextLine();
 						String descricao = scan.nextLine();
-						fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)), descricao);
+						fachada.realizarConsulta(fachada.pesquisarConsulta(cpfDoPaciente, LocalDate.of(ano, mes, dia)),
+								descricao);
 					} else {
 						System.out.println("Data invalida");
 					}
@@ -106,60 +104,69 @@ public class TelaTextual {
 					cne.getMessage();
 				}
 			} else if (opcao == 4) {
-				System.out.print("Digite seu nome: ");
-				String nome = scan.nextLine();
-				System.out.print("Digite seu telefone fixo: ");
-				String telefone = scan.nextLine();
-				System.out.print("Digite seu celular: ");
-				String celular = scan.nextLine();
-				System.out.print("Digite seu sexo: ");
-				String sexomf = scan.nextLine();
-				Character sexo = sexomf.charAt(0);
-				sexo = Character.toUpperCase(sexo);
-				System.out.print("Digite o nome da sua rua: ");
-				String rua = scan.nextLine();
-				System.out.print("Digite o CEP da sua residencia: ");
-				String cep = scan.nextLine();
-				System.out.print("Digite seu bairro: ");
-				String bairro = scan.nextLine();
-				System.out.print("Digite sua cidade: ");
-				String cidade = scan.nextLine();
-				System.out.print("Digite seu estado(PE, SP, AL): ");
-				String estado = scan.nextLine();
-				System.out.print("Digite o complemento da residencia: ");
-				String complemento = scan.nextLine();
-				int dia = 0;
-				int mes = 0;
-				int ano = 0;
-				System.out.println("Digite sua data de aniversario.");
-				System.out.print("Dia: ");
-				dia = scan.nextInt();
-				System.out.print("Mes: ");
-				mes = scan.nextInt();
-				System.out.print("Ano: ");
-				ano = scan.nextInt();
-				System.out.print("Digite o numero do CRM: ");
-				int numCrm = scan.nextInt();
-				System.out.print("Digite o numero de consultas por dia: ");
-				int consultasPorDia = scan.nextInt();
-				scan.nextLine();
-				System.out.print("Digite sua nova senha: ");
-				String senha = scan.nextLine();
-				if (dia <= 31 && mes <= 12) {
+				try {
+					System.out.print("Digite seu nome: ");
+					String nome = scan.nextLine();
+					System.out.print("Digite seu telefone fixo: ");
+					String telefone = scan.nextLine();
+					System.out.print("Digite seu celular: ");
+					String celular = scan.nextLine();
+					System.out.print("Digite seu sexo: ");
+					String sexomf = scan.nextLine();
+					Character sexo = sexomf.charAt(0);
+					sexo = Character.toUpperCase(sexo);
+					System.out.print("Digite o nome da sua rua: ");
+					String rua = scan.nextLine();
+					System.out.print("Digite o CEP da sua residencia: ");
+					String cep = scan.nextLine();
+					System.out.print("Digite seu bairro: ");
+					String bairro = scan.nextLine();
+					System.out.print("Digite sua cidade: ");
+					String cidade = scan.nextLine();
+					System.out.print("Digite seu estado(PE, SP, AL): ");
+					String estado = scan.nextLine();
+					System.out.print("Digite o complemento da residencia: ");
+					String complemento = scan.nextLine();
+					int dia = 0;
+					int mes = 0;
+					int ano = 0;
+					System.out.println("Digite sua data de aniversario.");
+					System.out.print("Dia: ");
+					dia = scan.nextInt();
+					System.out.print("Mes: ");
+					mes = scan.nextInt();
+					System.out.print("Ano: ");
+					ano = scan.nextInt();
+					System.out.print("Digite o numero do CRM: ");
+					int numCrm = scan.nextInt();
+					System.out.print("Digite o numero de consultas por dia: ");
+					int consultasPorDia = scan.nextInt();
+					scan.nextLine();
+					System.out.print("Digite sua nova senha: ");
+					String senha = scan.nextLine();
 					fachada.alterarMedico(medico, nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
 							new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
 							numCrm, consultasPorDia, senha);
-				} else {
-					System.out.println("Data de aniversario invalida");
+				} catch (PNEException a) {
+					System.out.println(a.getMessage());
+				} catch (DateTimeException a) {
+					System.out.println(a.getMessage());
+				} catch (InputMismatchException a) {
+					opcao = 6;
 				}
 			} else if (opcao == 5) {
 				System.out.println("Tem certeza que deseja sair?");
 				System.out.println("1 - Sim");
 				System.out.println("Outro - Nao");
-				int op2 = scan.nextInt();
-				scan.nextLine();
-				if (op2 == 1) {
-					break;
+				int op2;
+				try {
+					op2 = scan.nextInt();
+					scan.nextLine();
+					if (op2 == 1) {
+						break;
+					}
+				} catch (InputMismatchException a) {
+					op2 = 2;
 				}
 			}
 		}
@@ -217,9 +224,9 @@ public class TelaTextual {
 					System.out.println(pne.getMessage());
 				} catch (NCDException ncd) {
 					System.out.println(ncd.getMessage());
-				}	
+				}
 			} else if (op == 3) {
-				
+
 				System.out.println(recepcionista.getNome() + " voce escolheu a opcao de cadastrar consultas.");
 				System.out.print("Digite o cpf do medico: ");
 				String cpfMedico = scan.next();
@@ -270,7 +277,7 @@ public class TelaTextual {
 					int horaC2 = scan.nextInt();
 					System.out.print("Digite o minuto: ");
 					int minC2 = scan.nextInt();
-					fachada.alterarConsulta(fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)), 
+					fachada.alterarConsulta(fachada.pesquisarConsulta(cpfPaciente, LocalDate.of(anoC, mesC, diaC)),
 							fachada.pesquisarMedico(cpfMedico), LocalDateTime.of(anoC2, mesC2, diaC2, horaC2, minC2));
 				} catch (DateTimeException dte) {
 					System.out.println("Data ou hora invalida");
@@ -363,46 +370,50 @@ public class TelaTextual {
 					if (op2 == 1) {
 						System.out.println(pessoas.getListaPacientes());
 					} else if (op2 == 2) {
-						System.out.print("Digite o CPF: ");
-						String cpf = scan.nextLine();
-						System.out.print("Digite o RG: ");
-						String rg = scan.nextLine();
-						System.out.print("Digite o nome: ");
-						String nome = scan.nextLine();
-						System.out.print("Digite o telefone fixo: ");
-						String telefone = scan.nextLine();
-						System.out.print("Digite o celular: ");
-						String celular = scan.nextLine();
-						System.out.print("Digite o sexo: ");
-						String sexomf = scan.nextLine();
-						Character sexo = sexomf.charAt(0);
-						sexo = Character.toUpperCase(sexo);
-						System.out.print("Digite o nome da sua rua: ");
-						String rua = scan.nextLine();
-						System.out.print("Digite o CEP da sua residencia: ");
-						String cep = scan.nextLine();
-						System.out.print("Digite o bairro: ");
-						String bairro = scan.nextLine();
-						System.out.print("Digite a cidade: ");
-						String cidade = scan.nextLine();
-						System.out.print("Digite o estado(PE, SP, AL): ");
-						String estado = scan.nextLine();
-						System.out.print("Digite o complemento da residencia: ");
-						String complemento = scan.nextLine();
-						int dia = 0;
-						int mes = 0;
-						int ano = 0;
-						System.out.println("Digite a data de aniversario.");
-						System.out.print("Dia: ");
-						dia = scan.nextInt();
-						System.out.print("Mes: ");
-						mes = scan.nextInt();
-						System.out.print("Ano: ");
-						ano = scan.nextInt();
-						scan.nextLine();
-						fachada.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo,
-								new Endereco(rua, cidade, bairro, estado, cep, complemento),
-								LocalDate.of(ano, mes, dia));
+						try {
+							System.out.print("Digite o CPF: ");
+							String cpf = scan.nextLine();
+							System.out.print("Digite o RG: ");
+							String rg = scan.nextLine();
+							System.out.print("Digite o nome: ");
+							String nome = scan.nextLine();
+							System.out.print("Digite o telefone fixo: ");
+							String telefone = scan.nextLine();
+							System.out.print("Digite o celular: ");
+							String celular = scan.nextLine();
+							System.out.print("Digite o sexo: ");
+							String sexomf = scan.nextLine();
+							Character sexo = sexomf.charAt(0);
+							sexo = Character.toUpperCase(sexo);
+							System.out.print("Digite o nome da sua rua: ");
+							String rua = scan.nextLine();
+							System.out.print("Digite o CEP da sua residencia: ");
+							String cep = scan.nextLine();
+							System.out.print("Digite o bairro: ");
+							String bairro = scan.nextLine();
+							System.out.print("Digite a cidade: ");
+							String cidade = scan.nextLine();
+							System.out.print("Digite o estado(PE, SP, AL): ");
+							String estado = scan.nextLine();
+							System.out.print("Digite o complemento da residencia: ");
+							String complemento = scan.nextLine();
+							int dia = 0;
+							int mes = 0;
+							int ano = 0;
+							System.out.println("Digite a data de aniversario.");
+							System.out.print("Dia: ");
+							dia = scan.nextInt();
+							System.out.print("Mes: ");
+							mes = scan.nextInt();
+							System.out.print("Ano: ");
+							ano = scan.nextInt();
+							scan.nextLine();
+							fachada.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo,
+									new Endereco(rua, cidade, bairro, estado, cep, complemento),
+									LocalDate.of(ano, mes, dia));
+						} catch (PJCException a) {
+							System.out.println(a.getMessage());
+						}
 					} else if (op2 == 3) {
 						System.out.print("Digite o cpf do paciente a ser removido: ");
 						String cpf = scan.nextLine();
@@ -453,7 +464,7 @@ public class TelaTextual {
 					} else if (op2 == 5) {
 						break;
 					}
-					
+
 				}
 			}
 
@@ -505,9 +516,9 @@ public class TelaTextual {
 			System.out.println("5 - Voltar");
 			System.out.print("Selecionou: ");
 			int opcao = 0;
-			try{
-			opcao = scan.nextInt();
-			} catch(Exception a){
+			try {
+				opcao = scan.nextInt();
+			} catch (Exception a) {
 				opcao = 10;
 			}
 			scan.nextLine();
@@ -520,56 +531,56 @@ public class TelaTextual {
 				}
 
 			} else if (opcao == 2) {
-				try{
-				System.out.print("Digite o CPF: ");
-				String cpf = scan.nextLine();
-				System.out.print("Digite o RG: ");
-				String rg = scan.nextLine();
-				System.out.print("Digite o nome: ");
-				String nome = scan.nextLine();
-				System.out.print("Digite o telefone fixo: ");
-				String telefone = scan.nextLine();
-				System.out.print("Digite o celular: ");
-				String celular = scan.nextLine();
-				System.out.print("Digite o sexo: ");
-				String sexomf = scan.nextLine();
-				Character sexo = sexomf.charAt(0);
-				sexo = Character.toUpperCase(sexo);
-				System.out.print("Digite o nome da sua rua: ");
-				String rua = scan.nextLine();
-				System.out.print("Digite o CEP da sua residencia: ");
-				String cep = scan.nextLine();
-				System.out.print("Digite o bairro: ");
-				String bairro = scan.nextLine();
-				System.out.print("Digite a cidade: ");
-				String cidade = scan.nextLine();
-				System.out.print("Digite o estado(PE, SP, AL): ");
-				String estado = scan.nextLine();
-				System.out.print("Digite o complemento da residencia: ");
-				String complemento = scan.nextLine();
-				int dia = 0;
-				int mes = 0;
-				int ano = 0;
-				System.out.println("Digite a data de aniversario.");
-				System.out.print("Dia: ");
-				dia = scan.nextInt();
-				System.out.print("Mes: ");
-				mes = scan.nextInt();
-				System.out.print("Ano: ");
-				ano = scan.nextInt();
-				System.out.print("Digite o numero do CRM: ");
-				int numCrm = scan.nextInt();
-				System.out.print("Digite o numero de consultas por dia: ");
-				int consultasPorDia = scan.nextInt();
-				scan.nextLine();
-				System.out.print("Digite a senha: ");
-				String senha = scan.nextLine();
-				fachada.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
-						new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
-						numCrm, consultasPorDia, senha);
-				} catch(InputMismatchException campoInvalido){
+				try {
+					System.out.print("Digite o CPF: ");
+					String cpf = scan.nextLine();
+					System.out.print("Digite o RG: ");
+					String rg = scan.nextLine();
+					System.out.print("Digite o nome: ");
+					String nome = scan.nextLine();
+					System.out.print("Digite o telefone fixo: ");
+					String telefone = scan.nextLine();
+					System.out.print("Digite o celular: ");
+					String celular = scan.nextLine();
+					System.out.print("Digite o sexo: ");
+					String sexomf = scan.nextLine();
+					Character sexo = sexomf.charAt(0);
+					sexo = Character.toUpperCase(sexo);
+					System.out.print("Digite o nome da sua rua: ");
+					String rua = scan.nextLine();
+					System.out.print("Digite o CEP da sua residencia: ");
+					String cep = scan.nextLine();
+					System.out.print("Digite o bairro: ");
+					String bairro = scan.nextLine();
+					System.out.print("Digite a cidade: ");
+					String cidade = scan.nextLine();
+					System.out.print("Digite o estado(PE, SP, AL): ");
+					String estado = scan.nextLine();
+					System.out.print("Digite o complemento da residencia: ");
+					String complemento = scan.nextLine();
+					int dia = 0;
+					int mes = 0;
+					int ano = 0;
+					System.out.println("Digite a data de aniversario.");
+					System.out.print("Dia: ");
+					dia = scan.nextInt();
+					System.out.print("Mes: ");
+					mes = scan.nextInt();
+					System.out.print("Ano: ");
+					ano = scan.nextInt();
+					System.out.print("Digite o numero do CRM: ");
+					int numCrm = scan.nextInt();
+					System.out.print("Digite o numero de consultas por dia: ");
+					int consultasPorDia = scan.nextInt();
+					scan.nextLine();
+					System.out.print("Digite a senha: ");
+					String senha = scan.nextLine();
+					fachada.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
+							new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
+							numCrm, consultasPorDia, senha);
+				} catch (InputMismatchException campoInvalido) {
 					System.out.println("Data Invalida");
-				} catch(PJCException a){
+				} catch (PJCException a) {
 					System.out.println(a.getMessage());
 				}
 			} else if (opcao == 3) {
@@ -623,49 +634,52 @@ public class TelaTextual {
 			scan.nextLine();
 
 			if (opcao == 2) {
-				System.out.print("Digite o CPF: ");
-				String cpf = scan.nextLine();
-				System.out.print("Digite o RG: ");
-				String rg = scan.nextLine();
-				System.out.print("Digite o nome: ");
-				String nome = scan.nextLine();
-				System.out.print("Digite o telefone fixo: ");
-				String telefone = scan.nextLine();
-				System.out.print("Digite o celular: ");
-				String celular = scan.nextLine();
-				System.out.print("Digite o sexo: ");
-				String sexomf = scan.nextLine();
-				Character sexo = sexomf.charAt(0);
-				sexo = Character.toUpperCase(sexo);
-				System.out.print("Digite o nome da sua rua: ");
-				String rua = scan.nextLine();
-				System.out.print("Digite o CEP da sua residencia");
-				String cep = scan.nextLine();
-				System.out.print("Digite o bairro: ");
-				String bairro = scan.nextLine();
-				System.out.print("Digite a cidade: ");
-				String cidade = scan.nextLine();
-				System.out.print("Digite o estado(PE, SP, AL): ");
-				String estado = scan.nextLine();
-				System.out.print("Digite o complemento da residencia: ");
-				String complemento = scan.nextLine();
-				int dia = 0;
-				int mes = 0;
-				int ano = 0;
-				System.out.println("Digite a data de aniversario.");
-				System.out.print("Dia: ");
-				dia = scan.nextInt();
-				System.out.print("Mes: ");
-				mes = scan.nextInt();
-				System.out.print("Ano: ");
-				ano = scan.nextInt();
-				scan.nextLine();
-				System.out.print("Digite a senha: ");
-				String senha = scan.nextLine();
-				fachada.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo,
-						new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
-						senha);
-
+				try {
+					System.out.print("Digite o CPF: ");
+					String cpf = scan.nextLine();
+					System.out.print("Digite o RG: ");
+					String rg = scan.nextLine();
+					System.out.print("Digite o nome: ");
+					String nome = scan.nextLine();
+					System.out.print("Digite o telefone fixo: ");
+					String telefone = scan.nextLine();
+					System.out.print("Digite o celular: ");
+					String celular = scan.nextLine();
+					System.out.print("Digite o sexo: ");
+					String sexomf = scan.nextLine();
+					Character sexo = sexomf.charAt(0);
+					sexo = Character.toUpperCase(sexo);
+					System.out.print("Digite o nome da sua rua: ");
+					String rua = scan.nextLine();
+					System.out.print("Digite o CEP da sua residencia");
+					String cep = scan.nextLine();
+					System.out.print("Digite o bairro: ");
+					String bairro = scan.nextLine();
+					System.out.print("Digite a cidade: ");
+					String cidade = scan.nextLine();
+					System.out.print("Digite o estado(PE, SP, AL): ");
+					String estado = scan.nextLine();
+					System.out.print("Digite o complemento da residencia: ");
+					String complemento = scan.nextLine();
+					int dia = 0;
+					int mes = 0;
+					int ano = 0;
+					System.out.println("Digite a data de aniversario.");
+					System.out.print("Dia: ");
+					dia = scan.nextInt();
+					System.out.print("Mes: ");
+					mes = scan.nextInt();
+					System.out.print("Ano: ");
+					ano = scan.nextInt();
+					scan.nextLine();
+					System.out.print("Digite a senha: ");
+					String senha = scan.nextLine();
+					fachada.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo,
+							new Endereco(rua, cidade, bairro, estado, cep, complemento), LocalDate.of(ano, mes, dia),
+							senha);
+				} catch (PJCException a) {
+					System.out.println(a.getMessage());
+				}
 			} else if (opcao == 3) {
 				System.out.print("Digite o CPF do recepcionista: ");
 				String cpf = scan.nextLine();
