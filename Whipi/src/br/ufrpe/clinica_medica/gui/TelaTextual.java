@@ -569,7 +569,7 @@ public class TelaTextual {
 						numCrm, consultasPorDia, senha);
 				} catch(InputMismatchException campoInvalido){
 					System.out.println("Data Invalida");
-				} catch(PessoaJaCadastradaExeception a){
+				} catch(PJCException a){
 					System.out.println(a.getMessage());
 				}
 			} else if (opcao == 3) {

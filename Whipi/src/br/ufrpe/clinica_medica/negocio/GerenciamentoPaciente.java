@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
@@ -28,11 +29,11 @@ public class GerenciamentoPaciente {
 	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento) {
+			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Paciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento));
 		} else{
-			System.out.println("CPF ja cadastrado");
+			throw new PJCException("CPF " + cpf + " ja cadastrado");
 		}
 	}
 

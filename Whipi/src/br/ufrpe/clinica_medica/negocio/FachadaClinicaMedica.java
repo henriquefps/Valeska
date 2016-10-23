@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-import br.ufrpe.clinica_medica.execoes.PessoaJaCadastradaExeception;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -14,6 +13,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import br.ufrpe.clinica_medica.negocio.exceptions.CNEException;
 import br.ufrpe.clinica_medica.negocio.exceptions.ECException;
 import br.ufrpe.clinica_medica.negocio.exceptions.NCDException;
+import br.ufrpe.clinica_medica.negocio.exceptions.PJCException;
 import br.ufrpe.clinica_medica.negocio.exceptions.PNEException;
 
 public class FachadaClinicaMedica {
@@ -70,7 +70,7 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PessoaJaCadastradaExeception{
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PJCException{
 		this.medico.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 				consultasPorDia, senha);
 	}
@@ -90,7 +90,7 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento) {
+			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
 		this.paciente.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 	}
 
@@ -108,7 +108,7 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha) {
+			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException{
 		this.recepcionista.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento,
 				senha);
 	}
