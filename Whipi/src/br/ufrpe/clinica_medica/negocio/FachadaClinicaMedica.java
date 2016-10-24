@@ -86,6 +86,10 @@ public class FachadaClinicaMedica {
 	public Medico pesquisarMedico(String cpf) {
 		return this.medico.pesquisarMedico(cpf);
 	}
+	
+	public ArrayList<Medico> ListarMedicos(){
+		return medico.ListarMedicos();
+	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
 			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
@@ -102,6 +106,10 @@ public class FachadaClinicaMedica {
 
 	public void alterarPaciente(String cpf, Paciente novo) throws PNEException{
 		this.paciente.alterarPaciente(cpf, novo);
+	}
+	
+	public ArrayList<Paciente> ListarPacientes(){
+		return paciente.ListarPacientes();
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
@@ -125,5 +133,10 @@ public class FachadaClinicaMedica {
 	public Pessoa efetuarLogin(String cpf, String senha) {
 		return this.login.efetuarLogin(cpf, senha);
 	}
+	
+	public ArrayList<Recepcionista> ListarRecepcionistas(){
+		return recepcionista.ListarRecepcionistas();
+	}
+	
 
 }

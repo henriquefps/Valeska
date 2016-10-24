@@ -40,35 +40,38 @@ public class RepositorioPessoas implements IRepositorioPessoas {
 		}
 		return instance;
 	}
-
-	public String getListaMedicos() {
-		String resp = "";
+	
+	public ArrayList<Medico> getListaMedicos() {		
+		ArrayList<Medico> m = new ArrayList<>();
+		
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Medico) {
-				resp += repositorio.get(i).toString() + "\n";
+				m.add((Medico)repositorio.get(i));
 			}
 		}
-		return resp;
+		return m;
 	}
 	
-	public String getListaPacientes() {
-		String resp = "";
+	public ArrayList<Paciente> getListaPacientes() {		
+		ArrayList<Paciente> p = new ArrayList<>();
+		
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
-				resp += repositorio.get(i).toString() + "\n\n";
+				p.add((Paciente)repositorio.get(i));
 			}
 		}
-		return resp;
+		return p;
 	}
 	
-	public String getListaRecepcionista(){
-		String resp = "";
+	public ArrayList<Recepcionista> getListaRecepcionista() {		
+		ArrayList<Recepcionista> r = new ArrayList<>();
+		
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Recepcionista) {
-				resp += repositorio.get(i).toString() + "\n";
+				r.add((Recepcionista)repositorio.get(i));
 			}
 		}
-		return resp;
+		return r;
 	}
 
 	public void cadastrar(Pessoa cadastro) {

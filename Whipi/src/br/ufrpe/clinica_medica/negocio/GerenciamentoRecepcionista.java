@@ -13,11 +13,13 @@
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
@@ -79,5 +81,8 @@ public class GerenciamentoRecepcionista {
 		}
 		
 	}
-
+	
+	public ArrayList<Recepcionista> ListarRecepcionistas(){
+		return pessoas.getListaRecepcionista();
+	}
 }

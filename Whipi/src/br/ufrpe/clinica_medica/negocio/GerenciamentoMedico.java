@@ -13,6 +13,7 @@
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
@@ -74,5 +75,9 @@ public class GerenciamentoMedico {
 			aux = null;
 		}
 		return (Medico) aux;
+	}
+	
+	public ArrayList<Medico> ListarMedicos(){
+		return pessoas.getListaMedicos();
 	}
 }
