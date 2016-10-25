@@ -9,14 +9,38 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class App extends Application {
+	
+	private Stage primary;
 
 	@Override
 	public void start(Stage primaryStage) throws Exception {
-		URL fxml = getClass().getResource("./Principal.fxml");
+		primary = primaryStage;
+		URL fxml = getClass().getResource("Principal.fxml");
+		
+		FXMLLoader l = new FXMLLoader();
+		l.setLocation(App.class.getResource("Principal.fxml"));
+		PrincipalController c = l.getController();
+		c.setApp(this);
+		
 		Parent parent = FXMLLoader.load(fxml);
-		primaryStage.setTitle("Clínica Médica");
-		primaryStage.setScene(new Scene(parent));
+		primary.setTitle("Clínica Médica");
+		primary.setScene(new Scene(parent));
+		primary.show();
+		
+		
 	}
+	
+	public void telaCadatrarMedico() throws Exception{
+		URL url = getClass().getResource("TCadastrarMedicoController.fxml");
+		Parent parent = FXMLLoader.load(url);
+		Stage s = new Stage();
+		primary.close();
+		s.setTitle("Cadastro Médicos");
+		s.setScene(new Scene(parent));
+		primary = s;
+		primary.show();
+	}
+	
 
 	public static void main(String[] args) {
 		launch(args);

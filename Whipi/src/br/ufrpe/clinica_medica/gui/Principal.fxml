@@ -9,8 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.PrincipalController">
    <children>
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="500.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <menus>
@@ -43,10 +42,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Paciente" />
-            <Button mnemonicParsing="false" prefWidth="145.0" text="Cadastrar Consulta" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Médico" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Recepcionista" GridPane.rowIndex="2" />
+            <Button fx:id="btnPaciente" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Paciente" />
+            <Button fx:id="btnConsulta" mnemonicParsing="false" prefWidth="145.0" text="Cadastrar Consulta" GridPane.columnIndex="1" />
+            <Button fx:id="btnMedico" mnemonicParsing="false" onAction="#cadatrarMedico" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Médico" GridPane.rowIndex="1" />
+            <Button fx:id="btnRecepcionista" mnemonicParsing="false" prefHeight="25.0" prefWidth="145.0" text="Cadastrar Recepcionista" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
