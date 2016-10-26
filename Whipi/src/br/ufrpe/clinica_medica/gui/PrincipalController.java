@@ -22,21 +22,20 @@ public class PrincipalController implements Initializable {
 	@FXML
 	private Button btnConsulta;
 	
-	private App main;
-	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	public void setApp(App main){
-		this.main = main;
-	}
-	
 	@FXML
 	private void cadatrarMedico() throws Exception{
-		main.telaCadatrarMedico();
+		URL url = getClass().getResource("TCadastrarMedico.fxml");
+		Parent parent = FXMLLoader.load(url);
+		Stage s = new Stage();
+		s.setTitle("Cadastro Médicos");
+		s.setScene(new Scene(parent));
+		s.show();
 	}
 	
 

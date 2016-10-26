@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="550.0" prefWidth="500.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="br.ufrpe.clinica_medica.gui.DialogMedicoController">
+<AnchorPane prefHeight="550.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.DialogMedicoController">
    <children>
       <GridPane layoutX="43.0" layoutY="7.0" prefHeight="462.0" prefWidth="385.0">
         <columnConstraints>
@@ -28,6 +27,8 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
@@ -71,6 +72,10 @@
             <TextField fx:id="txfCRM" GridPane.columnIndex="1" GridPane.rowIndex="13" />
             <ComboBox fx:id="cbxEstados" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
             <TextField fx:id="txfConsultas" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+            <Label text="Senha" GridPane.rowIndex="15" />
+            <Label text="Confirmar Senha" GridPane.rowIndex="16" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="15" />
+            <TextField GridPane.columnIndex="1" GridPane.rowIndex="16" />
          </children>
       </GridPane>
       <HBox layoutX="26.0" layoutY="492.0" spacing="35.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0">
