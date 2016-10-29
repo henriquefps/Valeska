@@ -3,6 +3,7 @@ package br.ufrpe.clinica_medica.gui;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -10,6 +11,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
 	
@@ -52,6 +54,8 @@ public class DialogMedicoController implements Initializable {
 	@FXML
 	private RadioButton rbMasculino;
 	
+	private Stage dialog;
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -61,6 +65,7 @@ public class DialogMedicoController implements Initializable {
 	
 	@FXML
 	private void ok(){
+		//Medico m = new Medico(txfNome.getText(), txfCPF.getText(), txfRG.getText(), txfTelefone.getText(), txfCelular.getText(), sexo, endereco, dataDeNascimento, numCRM, consultasPorDia, senha)
 	}
 	
 	@FXML

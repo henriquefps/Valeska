@@ -1,4 +1,4 @@
-/* Consulta 
+/* Endereço 
  * 
  * VersÃ£o 0.1
  * 
@@ -31,9 +31,11 @@ public class Endereco {
 
 	public boolean equals(Endereco b) {
 		boolean achou = false;
-		if (b != null) {
-			if (rua == b.getRua() && cidade == b.getCidade() && bairro == b.getBairro() && cep == b.getCep()
-					&& complemento == b.getComplemento()) {
+		if (b != null){
+			if(this.rua != null && this.cidade != null && this.bairro != null && this.estado != null && this.cep != null)
+			if (this.rua.equals(b.getRua()) && this.cidade.equals(b.getCidade()) && this.bairro.equals(b.getBairro()) &&
+					this.cep.equals(b.getCep())) {
+				if(this.complemento == null && b.getComplemento() == null || this.complemento.equals(b.getComplemento()))
 				achou = true;
 			}
 		}

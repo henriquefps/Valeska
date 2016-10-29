@@ -121,30 +121,4 @@ public class RepositorioPessoas implements IRepositorioPessoas {
 		else
 			throw new IllegalArgumentException();
 	}
-
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, Paciente paciente) {
-		paciente.setNome(nome);
-		paciente.setCpf(cpf);
-		paciente.setRg(rg);
-		paciente.setTelefone(telefone);
-		paciente.setCelular(celular);
-		paciente.setSexo(sexo);
-		paciente.setEndereco(endereco);
-		paciente.setDataDeNascimento(dataDeNascimento);
-	}
-
-	public void atualizar(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha, Recepcionista recepcionista) {
-		recepcionista.setNome(nome);
-		recepcionista.setCpf(cpf);
-		recepcionista.setRg(rg);
-		recepcionista.setTelefone(telefone);
-		recepcionista.setCelular(celular);
-		recepcionista.setSexo(sexo);
-		recepcionista.setEndereco(endereco);
-		recepcionista.setDataDeNascimento(dataDeNascimento);
-		recepcionista.setSenha(senha);
-	}
-
 }
