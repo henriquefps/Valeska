@@ -89,7 +89,6 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 	public void modificar(Consulta con, String descricao) {
 		if (con != null) {
 			con.setDescricao(descricao);
-			;
 		}
 	}
 
