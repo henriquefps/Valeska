@@ -10,43 +10,43 @@ import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 
 public interface IRepositorioPessoas {
-	/*
-	 * cadastra uma pessoa criada no controlador
+	/**
+	 * Cadastra uma pessoa criada no controlador.
 	 */
 	public void cadastrar(Pessoa cadastro);
 	
-	/*
-	 * retorna o toString de todos os recepcionistas cadastrados
+	/**
+	 * Retorna o toString de todos os recepcionistas cadastrados.
 	 */
 	public ArrayList<Recepcionista> getListaRecepcionista();
 	
-	/*
-	 * retorna o toString de todos os pacientes cadastrados no sistema
+	/**
+	 * Retorna o toString de todos os pacientes cadastrados no sistema.
 	 */
 	public ArrayList<Paciente> getListaPacientes();
 	
-	/*
-	 * retorna o toString de todos os medicos cadastrados no sistema
+	/**
+	 * Retorna o toString de todos os medicos cadastrados no sistema.
 	 */
 	public ArrayList<Medico> getListaMedicos();
 	
-	/*
-	 * remove uma pessoa indicada pelo controlador
+	/**
+	 * Remove uma pessoa indicada pelo controlador.
 	 */
 	public boolean remover(Pessoa remover);
 	
-	/*
-	 * pesquisa uma pessoa atraves do cpf
+	/**
+	 * Pesquisa uma pessoa atraves do cpf.
 	 */
 	public Pessoa pesquisar(String cpf);
 	
-	/*
-	 * verifica se um cpf ja esta cadastrado no sitema
+	/**
+	 * Verifica se um cpf ja esta cadastrado no sitema.
 	 */
 	public boolean existe(String cpf);
 	
-	/*
-	 * atualiza as informacoes de uma pessoa
+	/**
+	 * Atualiza as informacoes de uma pessoa.
 	 */
 	public void atualizar(Pessoa ant, Pessoa novo);
 }

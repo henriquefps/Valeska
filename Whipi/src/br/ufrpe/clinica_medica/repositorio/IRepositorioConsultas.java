@@ -11,53 +11,53 @@ import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 
 public interface IRepositorioConsultas {
 	
-	/*
-	 * cadastra uma consulta no repositorio apos ser criada pelo controlador
+	/**
+	 * Cadastra uma consulta no repositorio apos ser criada pelo controlador.
 	 */
 	public void cadastrar(Consulta consulta);
 	
-	/*
-	 * pesquisa uma consulta salva para um paciente em um determinado dia
+	/**
+	 * Pesquisa uma consulta salva para um paciente em um determinado dia.
 	 */
 	public Consulta pesquisar(String cpfDoPaciente, LocalDate dia);
 	
-	/*
-	 * retorna todas as consultas de um determinado medico em uma data informada
+	/**
+	 * Retorna todas as consultas de um determinado medico em uma data informada.
 	 */
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia);
 	
-	/*
-	 * retorna todas as consultas com um paciente em um determinado dia
+	/**
+	 * Retorna todas as consultas com um paciente em um determinado dia.
 	 */
 	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia);
 	
-	/*
-	 * exlclui uma consulta informada do sistema
+	/**
+	 * Exlclui uma consulta informada do sistema.
 	 */
 	public void excluir(int id) throws CNEException;
 	
-	/*
-	 * exlclui uma consulta informada do sistema
+	/**
+	 * Exlclui uma consulta informada do sistema.
 	 */
 	public void excluir(Consulta con) throws CNEException;
 	
-	/*
-	 * altera o medico da consulta
+	/**
+	 * Altera o medico da consulta.
 	 */
 	public void modificar(Consulta con, Medico medico);
 	
-	/*
-	 * altera a descricao da consulta
+	/**
+	 * Altera a descricao da consulta.
 	 */
 	public void modificar(Consulta con, String descricao);
 	
-	/*
-	 * altera o horario da consulta
+	/**
+	 * Altera o horario da consulta.
 	 */
 	public void modificar(Consulta con, LocalDateTime horario);
 	
-	/*
-	 * modifica o paciente da consulta
+	/**
+	 * Modifica o paciente da consulta.
 	 */
 	public void modificar(Consulta con, Paciente paciente);
 }

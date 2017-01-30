@@ -117,7 +117,7 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 	}
 	
 	/**
-	 * retorna um ArrayList com todas as consultas com um determinado medico
+	 * Retorna um ArrayList com todas as consultas com um determinado medico.
 	 */
 	public ArrayList<Consulta> getConsultasComMedicoNoDia(Medico medico, LocalDate dia) {
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
@@ -133,7 +133,7 @@ public class RepositorioConsultas implements IRepositorioConsultas{
 	}
 
 	/**
-	 * retorna um ArrayList com todas as consultas de um determinado paciente
+	 * Retorna um ArrayList com todas as consultas de um determinado paciente.
 	 */
 	public ArrayList<Consulta> getConsultasComPacienteNoDia(Paciente paciente, LocalDate dia) {
 		ArrayList<Consulta> comPaciente = new ArrayList<Consulta>();
