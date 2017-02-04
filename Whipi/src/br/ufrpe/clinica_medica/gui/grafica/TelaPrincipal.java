@@ -22,6 +22,8 @@ public class TelaPrincipal implements Initializable {
 	public void validaLogin() {
 		String usuario = textField.getText();
 		String senha = passField.getText();
+		System.out.println("Usuário: " + usuario);
+		System.out.println("Senha: " + senha);
 		//TODO Código para passar pra camanda de negocio e fazer as checagens e posteriormente passar pra uma suposta tela.
 	}
 
