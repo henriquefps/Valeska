@@ -1,6 +1,6 @@
-package br.ufrpe.clinica_medica.gui.grafica;
+package br.ufrpe.clinica_medica;
 
-import java.net.URL;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -20,8 +20,26 @@ import javafx.stage.Stage;
 public class App extends Application {
 
 	@Override
-	public void start(Stage primaryStage) throws Exception {
+	public void start(Stage primaryStage) {
 		
+		criarDados();
+		
+		Parent root = null;
+		try {
+			root = FXMLLoader.load(getClass().getResource("gui/grafica/Principal.fxml"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		primaryStage.setTitle("Clínica Médica");
+		primaryStage.setMaximized(true);
+		primaryStage.setScene(new Scene(root));
+		primaryStage.show();
+		
+		
+	}
+	
+	public void criarDados(){
 		GerenciamentoMedico a = new GerenciamentoMedico();
 		try{
 		a.cadastrarMedico("Dexter", "123", "234231", "33212314", "991239123", 'M',
@@ -47,14 +65,6 @@ public class App extends Application {
 		} catch (PJCException e){
 			System.out.println(e.getMessage());
 		}
-		
-		URL fxml = getClass().getResource("Principal.fxml");
-		Parent parent = FXMLLoader.load(fxml);
-		primaryStage.setTitle("Clínica Médica");
-		primaryStage.setScene(new Scene(parent));
-		primaryStage.show();
-		
-		
 	}
 	
 
