@@ -13,8 +13,8 @@ import br.ufrpe.clinica_medica.negocio.GerenciamentoRecepcionista;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -24,16 +24,17 @@ public class App extends Application {
 		
 		criarDados();
 		
-		Parent root = null;
+		Pane root = null;
 		try {
-			root = FXMLLoader.load(getClass().getResource("gui/grafica/Principal.fxml"));
+			root = FXMLLoader.load(getClass().getResource("gui/grafica/TelaPrincipal.fxml"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		primaryStage.setTitle("Clínica Médica");
-		primaryStage.setMaximized(true);
 		primaryStage.setScene(new Scene(root));
+		primaryStage.setTitle("Clínica Médica");
+		primaryStage.centerOnScreen();
+		primaryStage.setResizable(false);
 		primaryStage.show();
 		
 		
