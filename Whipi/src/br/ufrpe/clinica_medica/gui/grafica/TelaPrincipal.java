@@ -17,6 +17,13 @@ public class TelaPrincipal implements Initializable {
 		
 		
 	}
+	
+	@FXML
+	public void validaLogin() {
+		String usuario = textField.getText();
+		String senha = passField.getText();
+		//TODO Código para passar pra camanda de negocio e fazer as checagens e posteriormente passar pra uma suposta tela.
+	}
 
 
 }

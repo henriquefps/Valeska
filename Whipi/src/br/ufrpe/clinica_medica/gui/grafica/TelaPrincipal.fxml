@@ -8,8 +8,8 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.TelaPrincipal">
    <children>
-      <TextField fx:id="textField" layoutX="226.0" layoutY="188.0" promptText="Username" />
-      <PasswordField fx:id="passField" layoutX="226.0" layoutY="224.0" promptText="Password" />
+      <TextField fx:id="textField" layoutX="226.0" layoutY="188.0" onAction="#validaLogin" promptText="Username" />
+      <PasswordField fx:id="passField" layoutX="226.0" layoutY="224.0" onAction="#validaLogin" promptText="Password" />
       <Text layoutX="147.0" layoutY="94.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clínica Médica">
          <font>
             <Font name="Times New Roman" size="50.0" />
