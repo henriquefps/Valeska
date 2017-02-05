@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.TelaPrincipalController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.TelaPrincipalController">
    <children>
       <TextField fx:id="txfUsuario" layoutX="226.0" layoutY="188.0" promptText="Username" />
       <PasswordField fx:id="psfSenha" layoutX="226.0" layoutY="224.0" promptText="Password" />
@@ -20,7 +17,7 @@
          </font>
       </Text>
       <Text layoutX="472.0" layoutY="382.0" opacity="0.65" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by VALESKA" />
-      <Button layoutX="313.0" layoutY="297.0" mnemonicParsing="false" onAction="#sair" text="Cancelar" />
-      <Button layoutX="238.0" layoutY="297.0" mnemonicParsing="false" onAction="#validaLogin" prefHeight="25.0" prefWidth="61.0" text="Entrar" />
+      <Button layoutX="314.0" layoutY="297.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="61.0" text="Sair" />
+      <Button layoutX="226.0" layoutY="297.0" mnemonicParsing="false" onAction="#validaLogin" prefHeight="25.0" prefWidth="61.0" text="Entrar" />
    </children>
 </Pane>
