@@ -46,8 +46,8 @@ public class TCadastrarMedicoController implements Initializable {
 		cbxTiposPesquisa.getItems().addAll(obj);		
 		this.fachada = FachadaClinicaMedica.getInstance();
 
-		columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));	
-		columnCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
+		//columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));	
+		//columnCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
 		tbMedico.setItems(FXCollections.observableArrayList(fachada.ListarMedicos()));
 
 	}
@@ -57,7 +57,7 @@ public class TCadastrarMedicoController implements Initializable {
 		URL url = getClass().getResource("DialogMedico.fxml");
 		Parent parent = FXMLLoader.load(url);
 		Stage s = new Stage();
-		s.setTitle("Edição");
+		s.setTitle("Ediï¿½ï¿½o");
 		s.setScene(new Scene(parent));
 		s.show();
 	}

@@ -23,6 +23,7 @@ public class TelaPrincipalController implements Initializable {
 	 
 	private FachadaClinicaMedica fachada;
 	private TelaAdmin admin;
+	private TelaRecepcionista recep;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -34,16 +35,17 @@ public class TelaPrincipalController implements Initializable {
 	public void validaLogin() {
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
-		System.out.println("Usuário: " + usuario);
+		System.out.println("Usuï¿½rio: " + usuario);
 		System.out.println("Senha: " + senha);
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
 		if (resultado instanceof Recepcionista) {
-			//TODO Tela de recepcionista
+			recep = new TelaRecepcionista();
+			recep.telaRecep();
 		} else if (resultado instanceof Medico) {
-			//TODO Tela de médico
+			//TODO Tela de mï¿½dico
 		} else if (resultado instanceof Pessoa) {
-			//Inicia a tela admin, mas não fecha a tela principal
-			//Pergunta: onde a tela principal está sendo invocada??
+			//Inicia a tela admin, mas nï¿½o fecha a tela principal
+			//Pergunta: onde a tela principal estï¿½ sendo invocada??
 			//TODO Fechar a tela principal ao invocar outra tela
 			admin = new TelaAdmin();
 			admin.telaAdmin();
@@ -54,7 +56,7 @@ public class TelaPrincipalController implements Initializable {
 	
 	public void sair(){
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 
@@ -69,8 +71,8 @@ public class TelaPrincipalController implements Initializable {
 	public void dadosInvalidos() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro de dados!");
-		alert.setHeaderText("Dados inválidos!");
-		alert.setContentText("Usuário ou senha inválidos.");
+		alert.setHeaderText("Dados invï¿½lidos!");
+		alert.setContentText("Usuï¿½rio ou senha invï¿½lidos.");
 
 		alert.showAndWait();
 	}

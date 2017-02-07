@@ -10,27 +10,33 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-public class TelaAdmin implements Initializable{
-
+/*
+ * controller da tela principal do recepcionista
+ */
+public class TelaRecepcionista implements Initializable{
+	private Stage s = new Stage();
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		
 	}
 	
+	
 	@FXML
-	public void telaAdmin() {
-		URL url = getClass().getResource("TelaAdmin.fxml");
+	void telaRecep(){
+		URL url = getClass().getResource("TelaRecepcionista.fxml");
 		Parent parent = null;
 		try {
 			parent = FXMLLoader.load(url);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		Stage s = new Stage();
-		s.setTitle("Admin");
+		
+		s.setTitle("Recepcionista");
 		s.setScene(new Scene(parent));
 		s.show();
 	}
-
+	void telaCadastrar_Recepcionista(){
+		
+	}
 }
