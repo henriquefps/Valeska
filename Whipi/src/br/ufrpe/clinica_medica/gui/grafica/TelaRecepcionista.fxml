@@ -9,7 +9,7 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="132.0" layoutY="83.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="96.0" text="Cadastrar" />
+            <Button layoutX="132.0" layoutY="83.0" mnemonicParsing="false" onAction="#telaCadastrar_Recepcionista" prefHeight="44.0" prefWidth="96.0" text="Cadastrar" />
             <Button layoutX="372.0" layoutY="83.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="98.0" text="Editar" />
             <Button layoutX="133.0" layoutY="280.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" text="Remover" />
             <Button layoutX="381.0" layoutY="280.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="80.0" text="Sair" />

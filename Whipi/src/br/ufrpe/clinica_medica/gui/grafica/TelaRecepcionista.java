@@ -36,7 +36,17 @@ public class TelaRecepcionista implements Initializable{
 		s.setScene(new Scene(parent));
 		s.show();
 	}
+	
+	@FXML
 	void telaCadastrar_Recepcionista(){
-		
+		URL url = getClass().getResource("TelaRecepcionista_Cadastro.fxml");
+		Parent parent = null;
+		try {
+			parent = FXMLLoader.load(url);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		s.setScene(new Scene(parent));
+		s.show();
 	}
 }
