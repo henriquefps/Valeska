@@ -11,14 +11,14 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="243.0" layoutY="35.0" prefHeight="46.0" prefWidth="114.0" text="Cadastro" textAlignment="CENTER">
+            <Button layoutX="127.0" layoutY="152.0" mnemonicParsing="false" text="Recepcionista" />
+            <Button layoutX="405.0" layoutY="152.0" mnemonicParsing="false" text="Paciente" />
+            <Button layoutX="271.0" layoutY="279.0" mnemonicParsing="false" text="Consulta" />
+            <Label layoutX="266.0" layoutY="54.0" prefHeight="47.0" prefWidth="82.0" text="Editar" textAlignment="CENTER">
                <font>
-                  <Font size="26.0" />
+                  <Font size="29.0" />
                </font>
             </Label>
-            <Button layoutX="111.0" layoutY="143.0" mnemonicParsing="false" text="Recepcionista" />
-            <Button layoutX="395.0" layoutY="143.0" mnemonicParsing="false" text="Paciente" />
-            <Button layoutX="265.0" layoutY="270.0" mnemonicParsing="false" text="Consulta" />
          </children>
       </Pane>
    </center>

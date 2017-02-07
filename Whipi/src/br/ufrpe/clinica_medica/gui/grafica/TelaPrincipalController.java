@@ -23,7 +23,7 @@ public class TelaPrincipalController implements Initializable {
 	 
 	private FachadaClinicaMedica fachada;
 	private TelaAdmin admin;
-	private TelaRecepcionista recep;
+	private TelaRecepcionistaController recep;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -39,7 +39,7 @@ public class TelaPrincipalController implements Initializable {
 		System.out.println("Senha: " + senha);
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
 		if (resultado instanceof Recepcionista) {
-			recep = new TelaRecepcionista();
+			recep = new TelaRecepcionistaController();
 			recep.telaRecep();
 		} else if (resultado instanceof Medico) {
 			//TODO Tela de m�dico
