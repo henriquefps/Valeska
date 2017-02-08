@@ -6,6 +6,8 @@ import java.time.LocalDateTime;
 
 import br.ufrpe.clinica_medica.exceptions.ECException;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.gui.grafica.TelaRecepcionistaController;
+import br.ufrpe.clinica_medica.gui.grafica.Telas;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoPaciente;
@@ -24,16 +26,15 @@ public class App extends Application {
 		
 		criarDados();
 		
-		Pane root = null;
-		try {
-			root = FXMLLoader.load(getClass().getResource("gui/grafica/TelaPrincipal.fxml"));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		Telas t = Telas.getInstance();
+		t.setStage(primaryStage);
+		
+		Pane root = (Pane) t.carregarFXML("TelaRecepcionista");
+		
 		primaryStage.setScene(new Scene(root));
 		primaryStage.setTitle("Clínica Médica");
 		primaryStage.centerOnScreen();
+		primaryStage.setMaximized(true);
 		primaryStage.setResizable(false);
 		primaryStage.show();
 		

@@ -22,6 +22,7 @@ public class TelaPrincipalController implements Initializable {
 	@FXML private PasswordField psfSenha;
 	 
 	private FachadaClinicaMedica fachada;
+	
 	private TelaAdmin admin;
 	private TelaRecepcionistaController recep;
 	
@@ -35,7 +36,7 @@ public class TelaPrincipalController implements Initializable {
 	public void validaLogin() {
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
-		System.out.println("Usuï¿½rio: " + usuario);
+		System.out.println("Usuário: " + usuario);
 		System.out.println("Senha: " + senha);
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
 		if (resultado instanceof Recepcionista) {

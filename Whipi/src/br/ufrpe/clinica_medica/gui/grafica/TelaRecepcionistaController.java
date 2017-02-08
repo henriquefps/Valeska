@@ -9,7 +9,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /*
@@ -22,10 +21,11 @@ public class TelaRecepcionistaController implements Initializable {
 	private Scene remover;
 	private Scene voltar;
 	private Scene atual;
+	private Telas t; 
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-
+		t = Telas.getInstance();
 	}
 
 	public TelaRecepcionistaController() {
@@ -34,6 +34,10 @@ public class TelaRecepcionistaController implements Initializable {
 		s.setResizable(false);
 		s.setTitle("Olá Recepcionista");
 		
+	}
+	
+	public void setStage(Stage s){
+		this.s = s;
 	}
 
 	public Stage getStageRecepcionista() {
@@ -49,16 +53,21 @@ public class TelaRecepcionistaController implements Initializable {
 		} catch (IOException a) {
 			a.printStackTrace();
 		}
-		showTelaRecepcionista();
+		//showTelaRecepcionista();
 	}
 	public void showTelaRecepcionista(){
+		//t.setScene(atual);
 		this.s.setScene(this.atual);
 		this.s.show();
 	}
 	@FXML
 	public void showTelaRecepcionista_Cadastro(){
-		s.setScene(this.cadastro);
-		s.show();
+		telaRecep();
+		Parent p = (Parent) t.carregarFXML("TelaRecepcionista_Cadastro");
+		t.setScene(new Scene(p));
+		t.abrirTela();
+		//s.setScene(this.cadastro);
+		//s.show();
 	}
 
 	@FXML
