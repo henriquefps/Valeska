@@ -1,4 +1,4 @@
-package br.ufrpe.clinica_medica.gui.grafica;
+package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.io.IOException;
 
@@ -46,7 +46,7 @@ public class Telas{
 	}
 	
 	public Node carregarFXML(String tela){
-		String r = "gui/grafica/" + tela + ".fxml";
+		String r = "gui/grafica/FXML/" + tela + ".fxml";
 		Node root = null;
 		App a = new App();
 		try {

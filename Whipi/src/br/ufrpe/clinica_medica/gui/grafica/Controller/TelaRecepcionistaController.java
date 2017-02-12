@@ -1,4 +1,4 @@
-package br.ufrpe.clinica_medica.gui.grafica;
+package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.io.IOException;
 import java.net.URL;
