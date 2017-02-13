@@ -28,14 +28,13 @@ public class App extends Application {
 		
 		Telas t = Telas.getInstance();
 		t.setStage(primaryStage);
-		
-		
-		primaryStage.setScene(new Scene((Pane) t.carregarFXML("TelaRecepcionista")));
-		primaryStage.setTitle("Clínica Médica");
-		primaryStage.centerOnScreen();
-		primaryStage.setMaximized(true);
-		primaryStage.setResizable(false);
-		primaryStage.show();
+		t.carregarFXML("TelaPrincipal");
+		t.setScene(new Scene((Pane) t.carregarFXML("TelaRecepcionista")));
+		t.getStage().setTitle("Clínica Médica");
+		t.getStage().centerOnScreen();
+		t.getStage().setMaximized(true);
+		t.getStage().setResizable(false);
+		t.getStage().show();
 		
 		
 	}

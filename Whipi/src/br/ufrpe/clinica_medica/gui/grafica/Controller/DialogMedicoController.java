@@ -1,4 +1,4 @@
-package br.ufrpe.clinica_medica.gui.grafica.Controller;
+ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
 import java.util.ResourceBundle;

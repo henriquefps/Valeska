@@ -15,7 +15,6 @@ import javafx.stage.Stage;
  * controller da tela principal do recepcionista
  */
 public class TelaRecepcionistaController implements Initializable {
-	private Stage s;
 	private Scene cadastro;
 	private Scene editar;
 	private Scene remover;
@@ -29,51 +28,23 @@ public class TelaRecepcionistaController implements Initializable {
 	}
 
 	public TelaRecepcionistaController() {
-		s = new Stage();
-		s.centerOnScreen();
-		s.setResizable(false);
-		s.setTitle("Ol√° Recepcionista");
+		t.getStage().centerOnScreen();
+		t.getStage().setResizable(false);
+		t.getStage().setTitle("Ol· Recepcionista");
 		
 	}
-	
-	public void setStage(Stage s){
-		this.s = s;
-	}
 
-	public Stage getStageRecepcionista() {
-		return s;
-	}
-
-	@FXML
-	public void telaRecep() {
-		try {
-			this.atual = new Scene(FXMLLoader.load(getClass().getResource("TelaRecepcionista.fxml")));
-			this.cadastro = new Scene(FXMLLoader.load(getClass().getResource("TelaRecepcionista_Cadastro.fxml")));
-			this.editar = new Scene(FXMLLoader.load(getClass().getResource("TelaRecepcionista_Editar.fxml")));
-		} catch (IOException a) {
-			a.printStackTrace();
-		}
-		//showTelaRecepcionista();
-	}
-	public void showTelaRecepcionista(){
-		//t.setScene(atual);
-		this.s.setScene(this.atual);
-		this.s.show();
-	}
 	@FXML
 	public void showTelaRecepcionista_Cadastro(){
-		telaRecep();
-		Parent p = (Parent) t.carregarFXML("TelaRecepcionista_Cadastro");
-		t.setScene(new Scene(p));
+	 
+		t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista_Cadastro")));
 		t.abrirTela();
-		//s.setScene(this.cadastro);
-		//s.show();
 	}
 
 	@FXML
 	public void showTelaRecepcionista_Editar(){
-		s.setScene(this.editar);
-		s.show();
+		t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista_Editar")));
+		t.abrirTela();
 	}
 	
 }
