@@ -92,6 +92,12 @@ public class TelaCadastrarPacienteController implements Initializable {
 			try {
 				fachada.cadastrarPaciente(paciente.getNome(), paciente.getCpf(), paciente.getRg(), paciente.getTelefone(), 
 						paciente.getCelular(), paciente.getSexo(), paciente.getEndereco(), paciente.getDataDeNascimento());
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Sucesso");
+				alert.setHeaderText("Cadastro");
+				alert.setContentText("Paciente cadastrado com sucesso");
+				alert.showAndWait();
+				fecharTela();
 			} catch (PJCException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro");
