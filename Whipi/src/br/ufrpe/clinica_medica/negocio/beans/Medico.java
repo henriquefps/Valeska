@@ -13,11 +13,16 @@ package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.time.LocalDate;
 
+import com.sun.accessibility.internal.resources.accessibility;
+
+import javafx.scene.control.CheckBox;
+
 public class Medico extends Pessoa {
 
 	private int numCRM;
 	private int consultasPorDia;
 	private String senha;
+	private DiasDeAtendimento diasDeTrabalho;
 
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
 			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
@@ -25,6 +30,7 @@ public class Medico extends Pessoa {
 		this.numCRM = numCRM;
 		this.consultasPorDia = consultasPorDia;
 		this.senha = senha;
+		this.diasDeTrabalho = new DiasDeAtendimento();
 	}
 
 	public int getNumCRM() {
