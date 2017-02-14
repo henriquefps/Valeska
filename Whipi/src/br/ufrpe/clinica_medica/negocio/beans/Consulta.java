@@ -11,9 +11,10 @@
  */
 package br.ufrpe.clinica_medica.negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Consulta {
+public class Consulta implements Serializable{
 
 	private static int proximoId = 1;
 	private int id;

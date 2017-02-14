@@ -16,7 +16,7 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class TelaCadastrarPaciente implements Initializable {
+public class TelaCadastrarPacienteController implements Initializable {
 
 	@FXML
 	private TextField txfNome;

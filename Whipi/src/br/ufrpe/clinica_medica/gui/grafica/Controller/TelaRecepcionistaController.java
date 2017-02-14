@@ -25,13 +25,10 @@ public class TelaRecepcionistaController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
-	}
-
-	public TelaRecepcionistaController() {
 		t.getStage().centerOnScreen();
+		t.getStage().setMaximized(true);
 		t.getStage().setResizable(false);
 		t.getStage().setTitle("Ol� Recepcionista");
-		
 	}
 
 	@FXML

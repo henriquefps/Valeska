@@ -60,4 +60,9 @@ public interface IRepositorioConsultas {
 	 * Modifica o paciente da consulta.
 	 */
 	public void modificar(Consulta con, Paciente paciente);
+	
+	/**
+	 * Salva a instância do Repositório de Consultas em Arquivo
+	 */
+	public void salvarConsultaEmArquivo();
 }

@@ -11,9 +11,10 @@
  */
 package br.ufrpe.clinica_medica.negocio.beans;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Pessoa {
+public class Pessoa implements Serializable{
 
 	private String nome;
 	private String cpf;

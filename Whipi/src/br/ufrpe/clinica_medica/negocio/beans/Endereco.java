@@ -11,7 +11,9 @@
  */
 package br.ufrpe.clinica_medica.negocio.beans;
 
-public class Endereco {
+import java.io.Serializable;
+
+public class Endereco implements Serializable{
 
 	private String rua;
 	private String cidade;

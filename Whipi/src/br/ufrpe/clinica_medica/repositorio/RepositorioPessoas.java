@@ -12,13 +12,20 @@
  */
 package br.ufrpe.clinica_medica.repositorio;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 
-public class RepositorioPessoas implements IRepositorioPessoas {
+public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 
 	private ArrayList<Pessoa> repositorio;
 
@@ -29,10 +36,69 @@ public class RepositorioPessoas implements IRepositorioPessoas {
 		Pessoa admin = new Pessoa("admin", "admin", null, null, null, 'm', null, null);
 		repositorio.add(admin);
 	}
+	
+	private static RepositorioPessoas lerDoArquivo(){
+		
+		File f = new File("Pessoas.dat");
+		if(!f.exists()){
+			try {
+				f.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		RepositorioPessoas rp = null;
+		FileInputStream fis = null;
+		ObjectInputStream ois = null;
+		
+		try {
+			fis = new FileInputStream(f);
+			ois = new ObjectInputStream(fis);
+			Object o = ois.readObject();
+			rp = (RepositorioPessoas) o;
+		} catch (Exception e) {
+			rp = new RepositorioPessoas();
+		} finally{
+			if(ois != null){
+				try {
+					ois.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+		
+		return rp;
+	}
+	
+	public void salvarPessoaEmArquivo() {
+		FileOutputStream fos = null;
+		ObjectOutputStream oos = null;
+		try {
+			fos = new FileOutputStream(new File("Pessoas.dat"));
+			oos = new ObjectOutputStream(fos);
+			oos.writeObject(instance);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			if(oos != null){
+				try {
+					oos.close();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+				
+		}
+	}
 
 	public static IRepositorioPessoas getInstance() {
 		if (instance == null) {
-			instance = new RepositorioPessoas();
+			instance = lerDoArquivo();
 		}
 		return instance;
 	}

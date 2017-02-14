@@ -49,4 +49,9 @@ public interface IRepositorioPessoas {
 	 * Atualiza as informacoes de uma pessoa.
 	 */
 	public void atualizar(Pessoa ant, Pessoa novo);
+	
+	/**
+	 * Salva a instância do Repositório de Pessoas em Arquivo
+	 */
+	public void salvarPessoaEmArquivo();
 }

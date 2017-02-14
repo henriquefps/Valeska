@@ -35,18 +35,16 @@ public class TelaPrincipalController implements Initializable {
 	public void validaLogin() {
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
-		System.out.println("Usuário: " + usuario);
-		System.out.println("Senha: " + senha);
+		
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
+		t.fecharTelaDialogo();
 		if (resultado instanceof Recepcionista) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")));
 			t.abrirTela();
 		} else if (resultado instanceof Medico) {
-			//TODO Tela de mï¿½dico
+			t.setScene(new Scene((Parent) t.carregarFXML("TelaMedico")));
+			t.abrirTela();
 		} else if (resultado instanceof Pessoa) {
-			//Inicia a tela admin, mas nï¿½o fecha a tela principal
-			//Pergunta: onde a tela principal estï¿½ sendo invocada??
-			//TODO Fechar a tela principal ao invocar outra tela
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaAdmin")));
 			t.abrirTela();
 		} else {
@@ -71,8 +69,8 @@ public class TelaPrincipalController implements Initializable {
 	public void dadosInvalidos() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro de dados!");
-		alert.setHeaderText("Dados invï¿½lidos!");
-		alert.setContentText("Usuï¿½rio ou senha invï¿½lidos.");
+		alert.setHeaderText("Dados inválidos!");
+		alert.setContentText("Usuário e/ou senha inválidos.");
 
 		alert.showAndWait();
 	}
