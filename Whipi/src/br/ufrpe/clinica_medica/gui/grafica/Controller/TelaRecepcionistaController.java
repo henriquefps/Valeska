@@ -30,7 +30,7 @@ public class TelaRecepcionistaController implements Initializable {
 	public TelaRecepcionistaController() {
 		t.getStage().centerOnScreen();
 		t.getStage().setResizable(false);
-		t.getStage().setTitle("Olá Recepcionista");
+		t.getStage().setTitle("Olï¿½ Recepcionista");
 		
 	}
 

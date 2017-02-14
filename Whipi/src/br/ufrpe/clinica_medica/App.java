@@ -29,8 +29,8 @@ public class App extends Application {
 		Telas t = Telas.getInstance();
 		t.setStage(primaryStage);
 		t.carregarFXML("TelaPrincipal");
-		t.setScene(new Scene((Pane) t.carregarFXML("TelaRecepcionista")));
-		t.getStage().setTitle("Clínica Médica");
+		t.setScene(new Scene((Pane) t.carregarFXML("TelaPrincipal")));
+		t.getStage().setTitle("Clï¿½nica Mï¿½dica");
 		t.getStage().centerOnScreen();
 		t.getStage().setMaximized(true);
 		t.getStage().setResizable(false);
@@ -45,7 +45,7 @@ public class App extends Application {
 		a.cadastrarMedico("Dexter", "123", "234231", "33212314", "991239123", 'M',
 				new Endereco("Rua amelia", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1980, 8, 13),
 				1337, 10, "123");
-		a.cadastrarMedico("Pedrão", "342", "1235465", "34657823", "993245862", 'M',
+		a.cadastrarMedico("Pedrï¿½o", "342", "1235465", "34657823", "993245862", 'M',
 				new Endereco("Rua Salvador", "Olinda", "Beberibe", "PE", "52012312", "APT1201"), LocalDate.of(1978, 2, 20),
 				1337, 10, "123");
 		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
