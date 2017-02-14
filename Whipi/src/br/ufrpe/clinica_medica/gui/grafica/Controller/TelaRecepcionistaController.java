@@ -33,9 +33,9 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	public void showTelaRecepcionista_Cadastro(){
-	 
-		t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista_Cadastro")));
-		t.abrirTela();
+		t.setDialogStage(new Stage());	 
+		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
+		t.abrirTelaDialogo();
 	}
 
 	@FXML

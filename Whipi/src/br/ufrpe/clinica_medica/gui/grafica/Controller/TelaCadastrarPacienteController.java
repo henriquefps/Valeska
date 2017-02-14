@@ -1,20 +1,24 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
 public class TelaCadastrarPacienteController implements Initializable {
 
@@ -29,7 +33,7 @@ public class TelaCadastrarPacienteController implements Initializable {
 	@FXML
 	private TextField txfCelular;
 	@FXML
-	private TextField txfEstado;
+	private ComboBox<String> cbxEstado;
 	@FXML
 	private TextField txfCidade;
 	@FXML
@@ -41,74 +45,120 @@ public class TelaCadastrarPacienteController implements Initializable {
 	@FXML
 	private TextField txfComplemento;
 	@FXML
-	private CheckBox choiceMasculino;
+	private ToggleGroup tgpSexo;
 	@FXML
-	private CheckBox choiceFeminino;
+	private RadioButton rbtMasculino;
 	@FXML
-	private Button btnSalvar;
-	@FXML
-	private Button btnSair;
+	private RadioButton rbtFeminino;
 	@FXML
 	private DatePicker dtpNascimento;
 
 	private FachadaClinicaMedica fachada;
+	
+	private Telas t;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		t = Telas.getInstance();
 		fachada = FachadaClinicaMedica.getInstance();
+		
+		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
+		cbxEstado.getItems().addAll(estados);
 	}
 
 	@FXML
 	private void salvarPaciente() {
-		char sexo;
-		if (choiceMasculino.isPressed() && !choiceFeminino.isPressed()) {
-			sexo = 'M';
-		} else if (!choiceMasculino.isPressed() && choiceFeminino.isPressed()) {
-			sexo = 'F';
-		} else {
-			boolean masc = choiceMasculino.isPressed();
-			boolean fem = choiceFeminino.isPressed();
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erro de dados!");
-			alert.setHeaderText("Sexo invalido!");
-			if (masc && fem) {
-				alert.setContentText("Dois sexos escolhidos!");
+		cadastrar();
+	}
+	
+	public void cadastrar(){
+		if(isInputValid()){
+			Paciente paciente = new Paciente();
+			paciente.setNome(txfNome.getText());
+			paciente.setCpf(txfCpf.getText());
+			paciente.setRg(txfRg.getText());
+			paciente.setCelular(txfCelular.getText());
+			paciente.setTelefone(txfTelefone.getText());
+			if(tgpSexo.getSelectedToggle().equals(rbtMasculino)){
+				paciente.setSexo('M');
 			}
-			if (!masc && !fem) {
-				alert.setContentText("Nenhum sexo escolhido!");
+			else{
+				paciente.setSexo('F');
 			}
-			alert.showAndWait();
-			return;
+			paciente.setDataDeNascimento(dtpNascimento.getValue());
+			paciente.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(), 
+					cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
+				
+			try {
+				fachada.cadastrarPaciente(paciente.getNome(), paciente.getCpf(), paciente.getRg(), paciente.getTelefone(), 
+						paciente.getCelular(), paciente.getSexo(), paciente.getEndereco(), paciente.getDataDeNascimento());
+			} catch (PJCException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro");
+				alert.setHeaderText("Cadastro inválido");
+				alert.setContentText("Paciente já cadastrado");
+				alert.showAndWait();
+			}
+			
 		}
-		String nome = txfNome.getText();
-		String cpf = txfCpf.getText();
-		String rg = txfRg.getText();
-		String telefone = txfTelefone.getText();
-		String celular = txfCelular.getText();
-		Endereco endereco = new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
-				txfEstado.getText(), txfCep.getText(), txfComplemento.getText());
-		LocalDate dataDeNascimento = dtpNascimento.getValue();
-		try {
-			fachada.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
-		} catch (PJCException e) {
+	}
+	
+	private boolean isInputValid(){
+		String errorMessage = "";
+		
+		if(txfNome.getText() == null || txfNome.getText().length() == 0){
+			errorMessage += "Nome inválido!\n";
+		}
+		if(txfCpf.getText() == null || txfCpf.getText().length() == 0){
+			errorMessage += "CPF inválido!\n";
+		}
+		if(txfRg.getText() == null || txfRg.getText().length() == 0){
+			errorMessage += "RG inválido!\n"; 
+		}
+		if(txfTelefone.getText() == null || txfTelefone.getText().length() == 0){
+			errorMessage += "Telefone inválido!\n"; 
+		}
+		if(cbxEstado.getValue() == null){
+			errorMessage += "Estado inválido!\n";
+		}
+		if(txfCidade.getText() == null || txfCidade.getText().length() == 0){
+			errorMessage += "Cidade inválida!\n"; 
+		}
+		if(txfBairro.getText() == null || txfBairro.getText().length() == 0){
+			errorMessage += "Bairro inválido!\n"; 
+		}
+		if(txfRua.getText() == null || txfRua.getText().length() == 0){
+			errorMessage += "Rua inválida!\n"; 
+		}
+		if(txfCep.getText() == null || txfCep.getText().length() == 0){
+			errorMessage += "CEP inválido!\n"; 
+		}
+		if(tgpSexo.getSelectedToggle() == null){
+			errorMessage += "Sexo inválido!\n";
+		}
+		
+		if(dtpNascimento.getValue() == null){
+			errorMessage += "Data de Nascimento inválida!\n";
+		}
+		
+		if(errorMessage.length() == 0){
+			return true;
+		}
+		else{
+			
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erro de dados!");
-			alert.setHeaderText("Cadastro invalido!");
-			alert.setContentText("Paciente ja cadastrado.");
+			alert.setTitle("Campos Inválidos");
+			alert.setHeaderText("Por favor, Corrija	os campos inválidos");
+			alert.setContentText(errorMessage);
 			alert.showAndWait();
-		} finally {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Cadastro Paciente");
-			alert.setHeaderText(null);
-			alert.setContentText("Cadastro realizado com sucesso!");
-			alert.showAndWait();
-			voltarTela();
+			
+			return false;
 		}
 	}
 
 	@FXML
-	private void voltarTela() {
-		
+	private void fecharTela() {
+		t.fecharTelaDialogo();
 	}
 
 }

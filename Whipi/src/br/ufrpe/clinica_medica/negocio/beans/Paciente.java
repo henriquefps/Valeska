@@ -21,6 +21,10 @@ public class Paciente extends Pessoa {
 
 	}
 
+	public Paciente() {
+		super();
+	}
+
 	public String toString() {
 		String resultado = "ID: " + this.getId() + "\n";
 		resultado += "Nome: " + this.getNome() + "\n";

@@ -26,6 +26,10 @@ public class Pessoa implements Serializable{
 	private LocalDate dataDeNascimento;
 	private static int proximoId = 1;
 	private int id;
+	
+	public Pessoa(){
+		
+	}
 
 	public Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
 			LocalDate dataDeNascimento) {
