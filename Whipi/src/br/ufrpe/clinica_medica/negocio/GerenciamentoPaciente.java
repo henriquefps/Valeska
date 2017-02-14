@@ -35,6 +35,7 @@ public class GerenciamentoPaciente {
 			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Paciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento));
+			pessoas.salvarPessoaEmArquivo();
 		} else{
 			throw new PJCException("CPF " + cpf + " ja cadastrado");
 		}
@@ -51,6 +52,7 @@ public class GerenciamentoPaciente {
 	public void removerPaciente(Paciente a) throws PNEException {
 		if (a != null) {
 			pessoas.remover(a);
+			pessoas.salvarPessoaEmArquivo();
 		} else {
 			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
@@ -67,6 +69,7 @@ public class GerenciamentoPaciente {
 		if(p != null){
 			if(p instanceof Paciente){
 				pessoas.atualizar(p, novoPaciente);
+				pessoas.salvarPessoaEmArquivo();
 			}
 			else{
 				//Depois mudar a mensagem, estou sem criatividade

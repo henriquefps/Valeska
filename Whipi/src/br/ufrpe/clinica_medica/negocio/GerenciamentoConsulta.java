@@ -55,6 +55,7 @@ public class GerenciamentoConsulta {
 				int numConsultas = consultas.getConsultasComMedicoNoDia(medico, horario.toLocalDate()).size();
 				if (numConsultas < medico.getConsultasPorDia()) {
 						consultas.cadastrar(new Consulta(paciente, horario, medico));
+						consultas.salvarConsultaEmArquivo();
 				}
 				else {
 					throw new ECException();
@@ -73,6 +74,7 @@ public class GerenciamentoConsulta {
 		Consulta con = consultas.pesquisar(cpfDoPaciente, dia);
 		if (con != null) {
 			consultas.excluir(con);
+			consultas.salvarConsultaEmArquivo();
 		} else {
 			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
@@ -83,6 +85,7 @@ public class GerenciamentoConsulta {
 			if (novoMedico != null) {
 				consultas.modificar(consulta, novoHorario);
 				consultas.modificar(consulta, novoMedico);
+				consultas.salvarConsultaEmArquivo();
 			} else {
 				throw new PNEException("CPF do medico não encontrado no sistema");
 			}
@@ -99,6 +102,7 @@ public class GerenciamentoConsulta {
 		if (consulta != null) {
 			consulta.setRealizada(true);
 			consulta.setDescricao(descricao);
+			consultas.salvarConsultaEmArquivo();
 		} else {
 			throw new CNEException();
 		}

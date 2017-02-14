@@ -21,8 +21,6 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
-		criarDados();
-		
 		Telas t = Telas.getInstance();
 		t.setStage(primaryStage);
 		t.setA(new App());

@@ -33,6 +33,7 @@ public class GerenciamentoMedico {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 					consultasPorDia, senha));
+			pessoas.salvarPessoaEmArquivo();
 		} else{
 			throw new PJCException("CPF " + cpf+ " ja cadastrado no sistema");
 		}
@@ -41,6 +42,7 @@ public class GerenciamentoMedico {
 	public void removerMedico(Medico medico) throws PNEException {
 		if (medico != null) {
 			this.pessoas.remover(medico);
+			pessoas.salvarPessoaEmArquivo();
 		} else {
 			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
@@ -57,6 +59,7 @@ public class GerenciamentoMedico {
 		if(p != null){
 			if(p instanceof Medico){
 				pessoas.atualizar(p, novoMedico);
+				pessoas.salvarPessoaEmArquivo();
 			}
 			else{
 				//Depois mudar a mensagem, estou sem criatividade

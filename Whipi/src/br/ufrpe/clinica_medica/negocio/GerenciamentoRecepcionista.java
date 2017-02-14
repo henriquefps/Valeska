@@ -36,8 +36,8 @@ public class GerenciamentoRecepcionista {
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
 			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException{
 		if (!pessoas.existe(cpf)) {
-			pessoas.cadastrar(
-					new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
+			pessoas.cadastrar(new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
+			pessoas.salvarPessoaEmArquivo();
 		} else{
 			throw new PJCException("CPF " + cpf + " ja cadastrado");
 		}
@@ -54,6 +54,7 @@ public class GerenciamentoRecepcionista {
 	public void removerRecepcionista(Recepcionista a) throws PNEException {
 		if (a != null) {
 			pessoas.remover(a);
+			pessoas.salvarPessoaEmArquivo();
 		} else {
 			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
 		}
@@ -70,6 +71,7 @@ public class GerenciamentoRecepcionista {
 		if(p != null){
 			if(p instanceof Recepcionista){
 				pessoas.atualizar(p, novoRec);
+				pessoas.salvarPessoaEmArquivo();
 			}
 			else{
 				//Depois mudar a mensagem, estou sem criatividade
