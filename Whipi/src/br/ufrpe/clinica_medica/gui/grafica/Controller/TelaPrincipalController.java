@@ -36,17 +36,17 @@ public class TelaPrincipalController implements Initializable {
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
 		
-		Pessoa resultado = fachada.efetuarLogin(usuario, senha);		
-		if (resultado instanceof Recepcionista) {
+		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
+		
+		if(resultado != null)
 			t.fecharTelaDialogo();
+		if (resultado instanceof Recepcionista) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")));
 			t.abrirTela();
 		} else if (resultado instanceof Medico) {
-			t.fecharTelaDialogo();
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaMedico")));
 			t.abrirTela();
 		} else if (resultado instanceof Pessoa) {
-			t.fecharTelaDialogo();
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaAdmin")));
 			t.abrirTela();
 		} else {
