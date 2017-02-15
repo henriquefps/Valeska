@@ -1,4 +1,4 @@
-//Excesso de Consultas para um médico
+// Excesso de Consultas para um médico.
 package br.ufrpe.clinica_medica.exceptions;
 
 public class ECException extends Exception {
