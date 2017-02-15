@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import br.ufrpe.clinica_medica.exceptions.ECException;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController;
 import br.ufrpe.clinica_medica.gui.grafica.Controller.Telas;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
@@ -25,9 +26,11 @@ public class App extends Application {
 		t.setStage(primaryStage);
 		t.setA(new App());
 		
+		
 		t.setDialogStage(new Stage());
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaPrincipal")));
 		t.abrirTelaDialogo();
+		
 	}
 	
 	public void criarDados(){

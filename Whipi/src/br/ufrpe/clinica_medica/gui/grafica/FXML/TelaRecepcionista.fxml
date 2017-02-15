@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
@@ -8,14 +10,50 @@
 <?import javafx.scene.layout.Pane?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
-   <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+   <top>
+      <AnchorPane prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="132.0" layoutY="83.0" mnemonicParsing="false" onAction="#showTelaRecepcionista_Cadastro" prefHeight="44.0" prefWidth="123.0" text="Cadastrar Paciente" />
-            <Button layoutX="372.0" layoutY="83.0" mnemonicParsing="false" onAction="#showTelaRecepcionista_Editar" prefHeight="45.0" prefWidth="98.0" text="Editar" />
-            <Button layoutX="133.0" layoutY="280.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="95.0" text="Remover" />
-            <Button layoutX="381.0" layoutY="280.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="80.0" text="Sair" />
+            <MenuButton layoutX="37.0" layoutY="36.0" mnemonicParsing="false" text="MenuButton" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Action 1" />
+                <MenuItem mnemonicParsing="false" text="Action 2" />
+              </items>
+            </MenuButton>
          </children>
-      </Pane>
-   </center>
+      </AnchorPane>
+   </top>
+   <bottom>
+      <HBox prefHeight="27.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label fx:id="lblData" text="label">
+               <HBox.margin>
+                  <Insets left="25.0" top="5.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </bottom>
+   <right>
+      <BorderPane fx:id="Right" minHeight="400.0" minWidth="200.0" prefHeight="400.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <top>
+            <ImageView fitHeight="150.0" fitWidth="206.0" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER">
+               <image>
+                  <Image url="@../../../../../../../../../../Documents/Designer/Imagens-em-png-queroimagem-ceiça-crispim%2520(4).png" />
+               </image>
+            </ImageView>
+         </top>
+      </BorderPane>
+   </right>
+   <left>
+      <AnchorPane prefHeight="299.0" prefWidth="400.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView layoutX="39.0" layoutY="33.0" prefHeight="307.0" prefWidth="339.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="3.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </left>
 </BorderPane>

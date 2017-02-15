@@ -58,6 +58,7 @@ public class Telas {
 	}
 
 	public void fecharTelaDialogo() {
+		this.cena.remove(cena.size() - 1);
 		dialogStage.close();
 	}
 

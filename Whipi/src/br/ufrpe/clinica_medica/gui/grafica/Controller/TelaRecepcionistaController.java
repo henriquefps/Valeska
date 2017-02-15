@@ -1,7 +1,9 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.ResourceBundle;
 
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
@@ -12,15 +14,18 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /*
  * controller da tela principal do recepcionista
  */
-public class TelaRecepcionistaController implements Initializable {
+public class TelaRecepcionistaController implements Initializable{
 	@FXML
 	private BorderPane Right;
+	@FXML
+	private Label lblData;
 	
 	private Telas t; 
 
@@ -35,8 +40,9 @@ public class TelaRecepcionistaController implements Initializable {
 		Node calen = dt.getPopupContent();
 		calen.prefHeight(400);
 		Right.setBottom(calen);
-		Right.getBottom().prefWidth(200);
+		Right.getBottom().prefWidth(300);
 		Right.getBottom().prefHeight(400);
+		
 	}
 
 	@FXML
