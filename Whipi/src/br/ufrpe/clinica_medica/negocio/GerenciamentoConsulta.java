@@ -31,7 +31,6 @@ import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-
 public class GerenciamentoConsulta {
 
 	private IRepositorioConsultas consultas;
@@ -52,21 +51,21 @@ public class GerenciamentoConsulta {
 	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException {
 		if (medico != null) {
 			if (paciente != null) {
-				int numConsultas = consultas.getConsultasComMedicoNoDia(medico, horario.toLocalDate()).size();
-				if (numConsultas < medico.getConsultasPorDia()) {
-						consultas.cadastrar(new Consulta(paciente, horario, medico));
-						consultas.salvarConsultaEmArquivo();
-				}
-				else {
+				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
+				if (medico.getDiasDeTrabalho()[diaDaSemana].isDia()
+						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
+						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getMinute() <= horario.getMinute()
+						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaFim().getHour() > horario.getHour()) {
+					consultas.cadastrar(new Consulta(paciente, horario, medico));
+					consultas.salvarConsultaEmArquivo();
+				} else {
 					throw new ECException();
 				}
-			} 
-			else {
-				throw new IllegalArgumentException("Médico Inválido");
+			} else {
+				throw new IllegalArgumentException("Medico Invalido");
 			}
-		}
-		else {
-			throw new IllegalArgumentException("Paciente Inválido");
+		} else {
+			throw new IllegalArgumentException("Paciente Invalido");
 		}
 	}
 
@@ -80,14 +79,15 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) throws PNEException, CNEException {
+	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario)
+			throws PNEException, CNEException {
 		if (consulta != null) {
 			if (novoMedico != null) {
 				consultas.modificar(consulta, novoHorario);
 				consultas.modificar(consulta, novoMedico);
 				consultas.salvarConsultaEmArquivo();
 			} else {
-				throw new PNEException("CPF do medico não encontrado no sistema");
+				throw new PNEException("CPF do medico nï¿½o encontrado no sistema");
 			}
 		} else {
 			throw new CNEException();
@@ -108,23 +108,20 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public ArrayList<Consulta> consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
+	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		if (medico != null) {
-			//String resp = "";
+			String resp = "";
 			ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);
-//			if (!comMedico.isEmpty()) {
-//				for (int i = 0; i < comMedico.size(); i++) {
-//					resp += comMedico.get(i).toString();
-//				}
-				return comMedico;
-			
+			if (!comMedico.isEmpty()) {
+				for (int i = 0; i < comMedico.size(); i++) {
+					resp += comMedico.get(i).toString();
+				}
+				return resp;
+			} else {
+				throw new NCDException(dia);
+			}
 		} else {
-			throw new PNEException("CPF do medico não encontrado no sistema");
+			throw new PNEException("CPF do medico nï¿½o encontrado no sistema");
 		}
 	}
-
-	public ArrayList<Consulta> listarConsultas(){
-		return consultas.getLista();
-	}
-
 }
