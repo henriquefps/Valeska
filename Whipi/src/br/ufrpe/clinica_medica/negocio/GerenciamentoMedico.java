@@ -44,7 +44,7 @@ public class GerenciamentoMedico {
 			this.pessoas.remover(medico);
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PNEException("CPF do medico não encontrado no sistema");
+			throw new PNEException("CPF do medico nï¿½o encontrado no sistema");
 		}
 	}
 
@@ -54,7 +54,7 @@ public class GerenciamentoMedico {
 			p = pessoas.pesquisar(cpf);
 		}
 		else{
-			throw new IllegalArgumentException("CPF inválido");
+			throw new IllegalArgumentException("CPF invï¿½lido");
 		}
 		if(p != null){
 			if(p instanceof Medico){
@@ -63,11 +63,11 @@ public class GerenciamentoMedico {
 			}
 			else{
 				//Depois mudar a mensagem, estou sem criatividade
-				throw new IllegalArgumentException("CPF não é de um médico");
+				throw new IllegalArgumentException("CPF nï¿½o ï¿½ de um mï¿½dico");
 			}
 		}
 		else{
-			throw new PNEException("Médico não encontrado");
+			throw new PNEException("Mï¿½dico nï¿½o encontrado");
 		}
 	}
 	
@@ -82,5 +82,13 @@ public class GerenciamentoMedico {
 	
 	public ArrayList<Medico> ListarMedicos(){
 		return pessoas.getListaMedicos();
+	}
+	
+	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF){
+		medico.getDiasDeTrabalho()[diaDaSemana].setDiaTrue(horaI, minutoI, horaF, minutoF);
+	}
+	
+	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana){
+		medico.getDiasDeTrabalho()[diaDaSemana].setDiaFalse();
 	}
 }

@@ -53,7 +53,8 @@ public class FachadaClinicaMedica {
 		this.consulta.removerConsulta(cpfDoPaciente, dia);
 	}
 
-	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario) throws PNEException, CNEException {
+	public void alterarConsulta(Consulta consulta, Medico novoMedico, LocalDateTime novoHorario)
+			throws PNEException, CNEException {
 		this.consulta.alterarConsulta(consulta, novoMedico, novoHorario);
 	}
 
@@ -70,7 +71,8 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PJCException{
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha)
+			throws PJCException {
 		this.medico.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 				consultasPorDia, senha);
 	}
@@ -78,21 +80,21 @@ public class FachadaClinicaMedica {
 	public void removerMedico(Medico medico) throws PNEException {
 		this.medico.removerMedico(medico);
 	}
-	
-	public void alterarMedico(String cpf, Medico novo) throws PNEException{
+
+	public void alterarMedico(String cpf, Medico novo) throws PNEException {
 		this.medico.alterarMedico(cpf, novo);
 	}
 
 	public Medico pesquisarMedico(String cpf) {
 		return this.medico.pesquisarMedico(cpf);
 	}
-	
-	public ArrayList<Medico> ListarMedicos(){
+
+	public ArrayList<Medico> ListarMedicos() {
 		return medico.ListarMedicos();
 	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
+			Endereco endereco, LocalDate dataDeNascimento) throws PJCException {
 		this.paciente.cadastrarPaciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 	}
 
@@ -104,16 +106,16 @@ public class FachadaClinicaMedica {
 		this.paciente.removerPaciente(a);
 	}
 
-	public void alterarPaciente(String cpf, Paciente novo) throws PNEException{
+	public void alterarPaciente(String cpf, Paciente novo) throws PNEException {
 		this.paciente.alterarPaciente(cpf, novo);
 	}
-	
-	public ArrayList<Paciente> ListarPacientes(){
+
+	public ArrayList<Paciente> ListarPacientes() {
 		return paciente.ListarPacientes();
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException{
+			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException {
 		this.recepcionista.cadastrarRecepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento,
 				senha);
 	}
@@ -126,17 +128,24 @@ public class FachadaClinicaMedica {
 		this.recepcionista.removerRecepcionista(a);
 	}
 
-	public void alterarRecepcionista(String cpf, Recepcionista novo) throws PNEException{
+	public void alterarRecepcionista(String cpf, Recepcionista novo) throws PNEException {
 		this.recepcionista.alterarRecepcionista(cpf, novo);
 	}
-	
+
 	public Pessoa efetuarLogin(String cpf, String senha) {
 		return this.login.efetuarLogin(cpf, senha);
 	}
-	
-	public ArrayList<Recepcionista> ListarRecepcionistas(){
+
+	public ArrayList<Recepcionista> ListarRecepcionistas() {
 		return recepcionista.ListarRecepcionistas();
 	}
-	
+
+	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
+		this.medico.trabalharDiaX(medico, diaDaSemana, horaI, minutoI, horaF, minutoF);
+	}
+
+	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
+		this.medico.cancelarDiaDeTrabalhoX(medico, diaDaSemana);
+	}
 
 }

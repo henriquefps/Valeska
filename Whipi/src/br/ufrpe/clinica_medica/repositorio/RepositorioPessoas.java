@@ -20,6 +20,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import br.ufrpe.clinica_medica.negocio.beans.DiasDeAtendimento;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
@@ -183,4 +185,6 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		else
 			throw new IllegalArgumentException();
 	}
+	
+	
 }
