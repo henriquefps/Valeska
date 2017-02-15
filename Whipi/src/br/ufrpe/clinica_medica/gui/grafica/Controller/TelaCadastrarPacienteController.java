@@ -165,6 +165,7 @@ public class TelaCadastrarPacienteController implements Initializable {
 
 	@FXML
 	private void fecharTela() {
+		t.voltarTela();
 		t.fecharTelaDialogo();
 	}
 

@@ -9,61 +9,68 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class Telas{
+public class Telas {
 	private Stage stage;
 	private Stage dialogStage;
 	private static Telas instance;
 	private App a;
 	private ArrayList<Scene> cena;
-	
-	private Telas(){
+
+	private Telas() {
 		cena = new ArrayList<Scene>();
 	}
-	
-	public static Telas getInstance(){
-		if(instance == null){
+
+	public static Telas getInstance() {
+		if (instance == null) {
 			instance = new Telas();
 		}
-		
+
 		return instance;
 	}
-	
-	public void setA(App a){
+
+	public void setA(App a) {
 		this.a = a;
 	}
-	public void setDialogStage(Stage dialogStage){
+
+	public void setDialogStage(Stage dialogStage) {
 		this.dialogStage = dialogStage;
 	}
-	public Stage getDialogStage(){
+
+	public Stage getDialogStage() {
 		return dialogStage;
 	}
-	public void setStage(Stage stage){
+
+	public void setStage(Stage stage) {
 		this.stage = stage;
 	}
-	public Stage getStage(){
+
+	public Stage getStage() {
 		return stage;
 	}
-	public void setScene(Scene s){
+
+	public void setScene(Scene s) {
 		this.cena.add(s);
 	}
-	
-	public void abrirTelaDialogo(){
+
+	public void abrirTelaDialogo() {
 		dialogStage.setScene(cena.get(cena.size() - 1));
 		dialogStage.showAndWait();
 	}
-	public void fecharTelaDialogo(){
+
+	public void fecharTelaDialogo() {
 		dialogStage.close();
 	}
-	
-	public void abrirTela(){
+
+	public void abrirTela() {
 		stage.setScene(this.cena.get(cena.size() - 1));
 		stage.show();
 	}
-	public void fecharTela(){
+
+	public void fecharTela() {
 		stage.close();
 	}
-	
-	public Node carregarFXML(String tela){
+
+	public Node carregarFXML(String tela) {
 		String r = "gui/grafica/FXML/" + tela + ".fxml";
 		Node root = null;
 		try {
@@ -72,10 +79,10 @@ public class Telas{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return root;
 	}
-	
+
 	public void voltarTela() {
 		this.cena.remove(cena.size() - 1);
 	}

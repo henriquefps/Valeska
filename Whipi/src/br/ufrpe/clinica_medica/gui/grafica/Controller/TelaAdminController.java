@@ -13,6 +13,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
@@ -36,6 +37,8 @@ public class TelaAdminController implements Initializable {
 	private Button atualizaPaciente;
 	@FXML
 	private Button removePaciente;
+	@FXML
+	private AnchorPane anchorAdm;
 	
 	private Telas t;
 
@@ -77,7 +80,9 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void telaCadastroPaciente() {
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
+		anchorAdm.setDisable(true);
 		t.abrirTelaDialogo();
+		anchorAdm.setDisable(false);
 	}
 
 	@FXML
