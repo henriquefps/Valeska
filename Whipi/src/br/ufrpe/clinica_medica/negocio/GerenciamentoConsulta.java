@@ -108,20 +108,23 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
+	public ArrayList<Consulta> consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		if (medico != null) {
-			String resp = "";
+			//String resp = "";
 			ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);
-			if (!comMedico.isEmpty()) {
-				for (int i = 0; i < comMedico.size(); i++) {
-					resp += comMedico.get(i).toString();
-				}
-				return resp;
-			} else {
-				throw new NCDException(dia);
-			}
+//			if (!comMedico.isEmpty()) {
+//				for (int i = 0; i < comMedico.size(); i++) {
+//					resp += comMedico.get(i).toString();
+//				}
+				return comMedico;
+			
 		} else {
 			throw new PNEException("CPF do medico não encontrado no sistema");
 		}
 	}
+
+	public ArrayList<Consulta> listarConsultas(){
+		return consultas.getLista();
+	}
+
 }
