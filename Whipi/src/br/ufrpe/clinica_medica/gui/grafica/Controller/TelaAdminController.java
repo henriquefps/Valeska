@@ -1,20 +1,19 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.control.Alert.AlertType;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class TelaAdminController implements Initializable {
@@ -80,9 +79,12 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void telaCadastroPaciente() {
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
-		anchorAdm.setDisable(true);
+//		anchorAdm.setDisable(true);
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
-		anchorAdm.setDisable(false);
+//		anchorAdm.setDisable(false);
 	}
 
 	@FXML
