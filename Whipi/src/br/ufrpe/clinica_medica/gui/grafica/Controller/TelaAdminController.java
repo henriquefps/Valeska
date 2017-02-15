@@ -12,65 +12,78 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
-public class TelaAdminController implements Initializable{
+public class TelaAdminController implements Initializable {
+
+	@FXML
+	private Button cadastroMedico;
+	@FXML
+	private Button atualizaMedico;
+	@FXML
+	private Button removeMedico;
+	@FXML
+	private Button cadastroRecepcionista;
+	@FXML
+	private Button atualizaRecepcionista;
+	@FXML
+	private Button removeRecepcionista;
+	@FXML
+	private Button cadastroPaciente;
+	@FXML
+	private Button atualizaPaciente;
+	@FXML
+	private Button removePaciente;
 	
-	@FXML private Button cadastroMedico;
-	@FXML private Button atualizaMedico;
-	@FXML private Button removeMedico;
-	@FXML private Button cadastroRecepcionista;
-	@FXML private Button atualizaRecepcionista;
-	@FXML private Button removeRecepcionista;
-	@FXML private Button cadastroPaciente;
-	@FXML private Button atualizaPaciente;
-	@FXML private Button removePaciente;
-	
+	private Telas t;
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		
+		t = Telas.getInstance();
 	}
-	
+
 	@FXML
 	private void telaCadastroMedico() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaAtualizaMedico() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaRemoveMedico() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaCadastroRecepcionista() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaAtualizaRecepcionista() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaRemoveRecepcionista() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaCadastroPaciente() {
-		
+		t.fecharTelaDialogo();
+		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
+		t.abrirTela();
 	}
-	
+
 	@FXML
 	private void telaAtualizaPaciente() {
-		
+
 	}
-	
+
 	@FXML
 	private void telaRemovePaciente() {
-		
+
 	}
 }
