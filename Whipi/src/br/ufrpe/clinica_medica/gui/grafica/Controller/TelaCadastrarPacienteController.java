@@ -13,6 +13,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
@@ -57,12 +58,14 @@ public class TelaCadastrarPacienteController implements Initializable {
 	private FachadaClinicaMedica fachada;
 
 	private Telas t;
+	private Scene telaAnterior;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
+		
 		fachada = FachadaClinicaMedica.getInstance();
-
+		
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
 		cbxEstado.getItems().addAll(estados);
 	}
@@ -70,8 +73,6 @@ public class TelaCadastrarPacienteController implements Initializable {
 	@FXML
 	private void salvarPaciente() {
 		cadastrar();
-		fecharTela();
-		
 	}
 
 	public void cadastrar() {
@@ -165,7 +166,8 @@ public class TelaCadastrarPacienteController implements Initializable {
 
 	@FXML
 	private void fecharTela() {
-		t.fecharTelaDialogo();
+		t.voltarTela();
+		t.abrirTela();
 	}
 
 }

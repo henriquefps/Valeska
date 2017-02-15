@@ -1,6 +1,7 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.App;
 import javafx.fxml.FXMLLoader;
@@ -11,11 +12,12 @@ import javafx.stage.Stage;
 public class Telas{
 	private Stage stage;
 	private Stage dialogStage;
-	private Scene scene;
 	private static Telas instance;
 	private App a;
+	private ArrayList<Scene> cena;
 	
 	private Telas(){
+		cena = new ArrayList<Scene>();
 	}
 	
 	public static Telas getInstance(){
@@ -42,14 +44,11 @@ public class Telas{
 		return stage;
 	}
 	public void setScene(Scene s){
-		this.scene = s;
-	}
-	public Scene getScene(){
-		return scene;
+		this.cena.add(s);
 	}
 	
 	public void abrirTelaDialogo(){
-		dialogStage.setScene(scene);
+		dialogStage.setScene(cena.get(cena.size() - 1));
 		dialogStage.showAndWait();
 	}
 	public void fecharTelaDialogo(){
@@ -57,7 +56,7 @@ public class Telas{
 	}
 	
 	public void abrirTela(){
-		stage.setScene(scene);
+		stage.setScene(this.cena.get(cena.size() - 1));
 		stage.show();
 	}
 	public void fecharTela(){
@@ -75,5 +74,9 @@ public class Telas{
 		}
 		
 		return root;
+	}
+	
+	public void voltarTela() {
+		this.cena.remove(cena.size() - 1);
 	}
 }
