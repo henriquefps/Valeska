@@ -58,7 +58,6 @@ public class TelaCadastrarPacienteController implements Initializable {
 	private FachadaClinicaMedica fachada;
 
 	private Telas t;
-	private Scene telaAnterior;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -166,8 +165,7 @@ public class TelaCadastrarPacienteController implements Initializable {
 
 	@FXML
 	private void fecharTela() {
-		t.voltarTela();
-		t.abrirTela();
+		t.fecharTelaDialogo();
 	}
 
 }

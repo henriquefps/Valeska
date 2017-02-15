@@ -76,9 +76,8 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaCadastroPaciente() {
-		t.fecharTelaDialogo();
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
-		t.abrirTela();
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
