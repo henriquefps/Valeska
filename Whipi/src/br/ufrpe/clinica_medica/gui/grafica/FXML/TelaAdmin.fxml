@@ -15,7 +15,7 @@
    <children>
       <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Administrador">
         <content>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
+            <AnchorPane fx:id="btListar" minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
                <children>
                   <BorderPane prefHeight="256.0" prefWidth="600.0">
                      <top>
@@ -35,11 +35,13 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
                                                 <Button fx:id="cadastroMedico" mnemonicParsing="false" onAction="#telaCadastroMedico" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
                                                 <Button fx:id="atualizaMedico" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Button fx:id="removeMedico" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Button fx:id="ListarMedico" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
                                        </children>

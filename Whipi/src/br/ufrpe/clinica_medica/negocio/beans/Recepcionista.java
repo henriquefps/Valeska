@@ -22,6 +22,11 @@ public class Recepcionista extends Pessoa {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.senha = senha;
 	}
+	
+	public Recepcionista(){
+		super(null,null,null,null,null,' ',null,null);
+		this.senha = null;
+	}
 
 	public String getSenha() {
 		return this.senha;

@@ -1,9 +1,12 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -37,15 +40,34 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private Button removePaciente;
 	@FXML
+	private Button listarMedico;
+	@FXML
 	private AnchorPane anchorAdm;
 	
 	private Telas t;
-
+	private FachadaClinicaMedica f;
+    
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
+		f = FachadaClinicaMedica.getInstance();
+		
 	}
 
+	@FXML
+	private void listarMedico(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		ArrayList<Medico> a = new ArrayList();
+		a = f.ListarMedicos();
+		alert.setTitle("Listar Médico");
+		alert.setHeaderText("Médicos: ");
+		String lista = null;
+		for(int i = 0 ; i < a.size();i++){
+			lista += "\n" + a.get(i).getNome() +" "+ a.get(i).getNumCRM();
+		}
+		alert.setContentText("lista");
+		alert.showAndWait();
+	}
 	@FXML
 	private void telaCadastroMedico() {
 
@@ -63,7 +85,11 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaCadastroRecepcionista() {
-
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
