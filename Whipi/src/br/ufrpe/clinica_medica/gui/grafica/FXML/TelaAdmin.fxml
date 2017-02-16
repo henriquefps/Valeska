@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -13,11 +17,11 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
+<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
    <children>
       <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Administrador">
         <content>
-            <AnchorPane fx:id="btListar" minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
                <children>
                   <BorderPane prefHeight="256.0" prefWidth="600.0">
                      <top>
@@ -119,7 +123,7 @@
                                                 <Button fx:id="detalhePaciente" disable="true" mnemonicParsing="false" onAction="#telaDetalhePaciente" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
-                                          <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="230.0" prefWidth="300.0">
+                                          <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="230.0" prefWidth="313.0">
                                              <columns>
                                                 <TableColumn fx:id="colunaPacienteNome" prefWidth="214.0" text="Nome" />
                                                 <TableColumn fx:id="colunaPacienteCPF" prefWidth="85.0" text="CPF" />

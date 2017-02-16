@@ -2,11 +2,16 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import br.ufrpe.clinica_medica.App;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 public class Telas {
@@ -15,6 +20,7 @@ public class Telas {
 	private static Telas instance;
 	private App a;
 	private ArrayList<Scene> cena;
+	private FXMLLoader f;
 
 	private Telas() {
 		cena = new ArrayList<Scene>();
@@ -26,6 +32,15 @@ public class Telas {
 		}
 
 		return instance;
+	}
+	
+	
+	public FXMLLoader getF() {
+		return f;
+	}
+
+	public void setF(FXMLLoader f) {
+		this.f = f;
 	}
 
 	public void setA(App a) {
@@ -58,7 +73,7 @@ public class Telas {
 	}
 
 	public void fecharTelaDialogo() {
-		//this.cena.remove(cena.size() - 1);
+		this.cena.remove(cena.size() - 1);
 		dialogStage.close();
 	}
 
@@ -74,8 +89,9 @@ public class Telas {
 	public Node carregarFXML(String tela) {
 		String r = "gui/grafica/FXML/" + tela + ".fxml";
 		Node root = null;
+		f = new FXMLLoader(a.getClass().getResource(r));
 		try {
-			root = FXMLLoader.load(a.getClass().getResource(r));
+			root = f.load();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -85,5 +101,26 @@ public class Telas {
 
 	public void voltarTela() {
 		this.cena.remove(cena.size() - 1);
+	}
+	
+	public void abrirTelaLogin(){
+		setDialogStage(new Stage());
+		setScene(new Scene((Parent) carregarFXML("TelaPrincipal")));
+		abrirTelaDialogo();
+	}
+	
+	public void logoff() {
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmação");
+		alert.setHeaderText("Logoff");
+		alert.setContentText("Deseja fazer logoff?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			fecharTelaDialogo();
+			abrirTelaLogin();
+		} else {
+		    alert.close();
+		}
 	}
 }

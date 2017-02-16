@@ -6,8 +6,9 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
-import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -69,11 +70,14 @@ public class TelaAdminController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
-		ArrayList<Paciente> pacientes = f.ListarPacientes();
-		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
-		tabelaPaciente.getColumns().addAll(colunaPacienteNome, colunaPacienteCPF);
+		preencherTableView();
+		
+		
+		DialogPacienteController a = t.getF().getController();		
+		a.mostrarDetalhes(null);
+		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(
+	            (observable, oldValue, newValue) -> a.mostrarDetalhes(newValue));
+
 	}
 	
 	@FXML
@@ -141,6 +145,7 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+		preencherTableView();
 	}
 
 	@FXML
@@ -164,18 +169,7 @@ public class TelaAdminController implements Initializable {
 	
 	@FXML
 	private void logoff() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
-		alert.setHeaderText("Logoff");
-		alert.setContentText("Deseja fazer logoff?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
-			t.voltarTela();
-			t.abrirTela();
-		} else {
-		    alert.close();
-		}
+		t.logoff();
 	}
 	
 	@FXML
@@ -206,5 +200,12 @@ public class TelaAdminController implements Initializable {
 	
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
+	}
+	
+	public void preencherTableView(){	
+		ArrayList<Paciente> pacientes = f.ListarPacientes();
+		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 	}
 }

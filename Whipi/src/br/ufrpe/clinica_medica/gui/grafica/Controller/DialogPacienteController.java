@@ -13,7 +13,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
@@ -72,6 +71,7 @@ public class DialogPacienteController implements Initializable {
 	@FXML
 	private void salvarPaciente() {
 		cadastrar();
+		fecharTela();
 	}
 
 	public void cadastrar() {
@@ -165,8 +165,45 @@ public class DialogPacienteController implements Initializable {
 
 	@FXML
 	private void fecharTela() {
-		t.voltarTela();
 		t.fecharTelaDialogo();
 	}
+	
+	protected void mostrarDetalhes(Paciente paciente) {
+	    if (paciente != null) {
+	    	txfNome.setText(paciente.getNome());
+	    	txfCpf.setText(paciente.getCpf());
+	    	txfRg.setText(paciente.getRg());
+	    	txfTelefone.setText(paciente.getTelefone());
+	    	txfCelular.setText(paciente.getCelular());
+	    	txfRua.setText(paciente.getEndereco().getRua());
+	    	txfBairro.setText(paciente.getEndereco().getBairro());
+	    	txfCidade.setText(paciente.getEndereco().getCidade());
+	    	txfComplemento.setText(paciente.getEndereco().getComplemento());
+	    	txfCep.setText(paciente.getEndereco().getCep());
+	    	cbxEstado.setValue(paciente.getEndereco().getEstado());
+	    	if(paciente.getSexo() == 'M'){
+	    		tgpSexo.selectToggle(rbtMasculino);
+	    	}
+	    	else{
+	    		tgpSexo.selectToggle(rbtFeminino);
+	    	}
+	    	dtpNascimento.setValue(paciente.getDataDeNascimento());
+	    		
+	    } else {
+	    	txfNome.setText("");
+	    	txfCpf.setText("");
+	    	txfRg.setText("");
+	    	txfTelefone.setText("");
+	    	txfCelular.setText("");
+	    	txfRua.setText("");
+	    	txfBairro.setText("");
+	    	txfCidade.setText("");
+	    	txfComplemento.setText("");
+	    	txfCep.setText("");
+	    	cbxEstado.setValue("");
+	    	dtpNascimento.setValue(LocalDate.now());
+	    }
+	}
+
 
 }

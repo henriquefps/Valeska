@@ -37,9 +37,7 @@ public class App extends Application {
 		t.setA(new App());
 		
 		
-		t.setDialogStage(new Stage());
-		t.setScene(new Scene((Parent) t.carregarFXML("TelaPrincipal")));
-		t.abrirTelaDialogo();
+		t.abrirTelaLogin();
 		
 	}
 	
