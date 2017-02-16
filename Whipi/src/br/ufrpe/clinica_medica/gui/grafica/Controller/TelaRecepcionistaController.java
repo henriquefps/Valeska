@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
@@ -48,6 +49,7 @@ public class TelaRecepcionistaController implements Initializable{
 	
 	private Telas t; 
 	private FachadaClinicaMedica f;
+	private Paciente pacienteAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -61,21 +63,46 @@ public class TelaRecepcionistaController implements Initializable{
 	}
 	
 	@FXML private void telaCadastroPaciente() {
-		t.setScene(new Scene((Parent) t.carregarFXML("DialogCadastro")), t.getLogada());
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+		preencherTableView();
 	}
 	@FXML private void telaAtualizaPaciente(){
-		
+			if (pacienteAtual == null) {
+				return;
+			}
+			t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
+			t.setDialogStage(new Stage());
+			t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+			t.getDialogStage().initOwner(t.getStage());
+			DialogPacienteController p = t.getF().getController();
+			p.mostrarDetalhes(pacienteAtual);
+			t.abrirTelaDialogo();
 	}
-	@FXML private void telaListarPaciente(){
-		
-	}
+	
 	@FXML private void telaRemovePaciente(){
-		
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmacao");
+		alert.setHeaderText("Remover Paciente");
+		alert.setContentText("Deseja remover o paciente " + pacienteAtual.getNome() + "?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+			try {
+				f.removerPaciente(pacienteAtual);
+			} catch (PNEException e) {
+				e.printStackTrace();
+			}
+			preencherTableView();
+			alert.close();
+		} else {
+		    alert.close();
+		}
 	}
+	
 	@FXML private void telaAtualizaRecepcionista(){
 		
 	}
@@ -125,5 +152,12 @@ public class TelaRecepcionistaController implements Initializable{
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
+	}
+	
+	@FXML private void nomePacienteClicado() {
+		Paciente clicado = tabelaPaciente.getSelectionModel().getSelectedItem();
+		if (clicado != null) {
+			pacienteAtual = clicado;
+		}
 	}
 }

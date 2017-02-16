@@ -164,7 +164,7 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		DialogPacienteController p = t.getF().getController();
-		p.verDetalhes(pacienteAtual);
+		p.mostrarDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
 	}
 	
