@@ -119,10 +119,10 @@
                                                 <Button fx:id="detalhePaciente" disable="true" mnemonicParsing="false" onAction="#telaDetalhePaciente" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
-                                          <TableView layoutY="25.0" prefHeight="230.0" prefWidth="300.0">
+                                          <TableView fx:id="tabelaPaciente" layoutY="25.0" prefHeight="230.0" prefWidth="300.0">
                                              <columns>
-                                                <TableColumn prefWidth="214.0" text="Nome" />
-                                                <TableColumn prefWidth="85.0" text="CPF" />
+                                                <TableColumn fx:id="colunaPacienteNome" prefWidth="214.0" text="Nome" />
+                                                <TableColumn fx:id="colunaPacienteCPF" prefWidth="85.0" text="CPF" />
                                              </columns>
                                           </TableView>
                                           <Label layoutX="125.0" layoutY="6.0" text="Pacientes" />
