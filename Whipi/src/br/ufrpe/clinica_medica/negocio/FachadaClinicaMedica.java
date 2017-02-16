@@ -162,5 +162,8 @@ public class FachadaClinicaMedica {
 			}
 		}
 	}
-
+	
+	public ArrayList<Consulta> listarConsultas(){
+		return consulta.listarConsultas();
+	}
 }

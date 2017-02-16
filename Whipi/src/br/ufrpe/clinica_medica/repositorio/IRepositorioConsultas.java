@@ -62,7 +62,9 @@ public interface IRepositorioConsultas {
 	public void modificar(Consulta con, Paciente paciente);
 	
 	/**
-	 * Salva a instância do Repositório de Consultas em Arquivo
+	 * Salva a instï¿½ncia do Repositï¿½rio de Consultas em Arquivo
 	 */
 	public void salvarConsultaEmArquivo();
+	
+	public ArrayList<Consulta> getLista();
 }

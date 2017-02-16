@@ -165,7 +165,7 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Logoff");
 		alert.setContentText("Deseja fazer logoff?");
 
@@ -181,7 +181,7 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 

@@ -124,4 +124,8 @@ public class GerenciamentoConsulta {
 			consultas.excluir(c);
 		}
 	}
+	
+	public ArrayList<Consulta> listarConsultas(){
+		return consultas.getLista();
+	}
 }
