@@ -28,17 +28,23 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private Button removeMedico;
 	@FXML
+	private Button detalheMedico;
+	@FXML
 	private Button cadastroRecepcionista;
 	@FXML
 	private Button atualizaRecepcionista;
 	@FXML
 	private Button removeRecepcionista;
 	@FXML
+	private Button detalheRecepcionista;
+	@FXML
 	private Button cadastroPaciente;
 	@FXML
 	private Button atualizaPaciente;
 	@FXML
 	private Button removePaciente;
+	@FXML
+	private Button detalhePaciente;
 	@FXML
 	private Button listarMedico;
 	@FXML
@@ -82,6 +88,11 @@ public class TelaAdminController implements Initializable {
 	private void telaRemoveMedico() {
 
 	}
+	
+	@FXML
+	private void telaDetalheMedico() {
+		
+	}
 
 	@FXML
 	private void telaCadastroRecepcionista() {
@@ -101,16 +112,19 @@ public class TelaAdminController implements Initializable {
 	private void telaRemoveRecepcionista() {
 
 	}
+	
+	@FXML
+	private void telaDetalheRecepcionista() {
+		
+	}
 
 	@FXML
 	private void telaCadastroPaciente() {
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaPacienteCadastro")));
-//		anchorAdm.setDisable(true);
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
-//		anchorAdm.setDisable(false);
 	}
 
 	@FXML
@@ -121,6 +135,11 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void telaRemovePaciente() {
 
+	}
+	
+	@FXML
+	private void telaDetalhePaciente() {
+		
 	}
 	
 	@FXML
