@@ -71,12 +71,6 @@ public class TelaAdminController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
-		
-		
-		DialogPacienteController a = t.getF().getController();		
-		a.mostrarDetalhes(null);
-		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(
-	            (observable, oldValue, newValue) -> a.mostrarDetalhes(newValue));
 
 	}
 	
@@ -150,10 +144,12 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaPaciente() {
-		t.setScene(new Scene((Parent) t.carregarFXML("AtualizaPaciente")));
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
+		DialogPacienteController p = t.getF().getController();
+		p.mostrarDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
 	}
 
@@ -164,7 +160,9 @@ public class TelaAdminController implements Initializable {
 	
 	@FXML
 	private void telaDetalhePaciente() {
-		
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setHeaderText(pacienteAtual.getNome());
+		alert.setContentText(pacienteAtual.toString());
 	}
 	
 	@FXML

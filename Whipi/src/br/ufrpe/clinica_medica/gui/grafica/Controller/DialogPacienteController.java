@@ -66,7 +66,9 @@ public class DialogPacienteController implements Initializable {
 		
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
 		cbxEstado.getItems().addAll(estados);
+	
 	}
+
 
 	@FXML
 	private void salvarPaciente() {
@@ -201,7 +203,6 @@ public class DialogPacienteController implements Initializable {
 	    	txfComplemento.setText("");
 	    	txfCep.setText("");
 	    	cbxEstado.setValue("");
-	    	dtpNascimento.setValue(LocalDate.now());
 	    }
 	}
 
