@@ -35,12 +35,12 @@ public class TelaMedicoController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
-		ArrayList<Consultas> consultas = f.
+		ArrayList<Consulta> consultas = f.listarConsultas();
 		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaNomeDoPaciente.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
 		colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
-		tabelaConsultas.setItems(FXCollections.observableArrayList(pacientes));
+		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 	}
 	
 	
