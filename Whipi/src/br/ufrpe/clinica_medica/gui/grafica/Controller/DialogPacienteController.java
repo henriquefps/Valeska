@@ -17,12 +17,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class DialogPacienteController implements Initializable {
-
+	
+	@FXML
+	private Label labelTitle;
 	@FXML
 	private TextField txfNome;
 	@FXML
@@ -171,6 +174,7 @@ public class DialogPacienteController implements Initializable {
 	}
 	
 	protected void mostrarDetalhes(Paciente paciente) {
+		this.labelTitle.setText("Atualiza Paciente");
 	    if (paciente != null) {
 	    	txfNome.setText(paciente.getNome());
 	    	txfCpf.setText(paciente.getCpf());
