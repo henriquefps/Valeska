@@ -45,9 +45,9 @@
                                                 <Button fx:id="atualizaMedico" disable="true" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Button fx:id="removeMedico" disable="true" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Button fx:id="detalheMedico" disable="true" mnemonicParsing="false" onAction="#telaDetalheMedico" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                                              <Button fx:id="atualizaMedico" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="removeMedico" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Button fx:id="ListarMedico" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                              <Button fx:id="atualizaMedico" disable="true" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="removeMedico" disable="true" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                                <Button fx:id="detalheMedico" disable="true" mnemonicParsing="false" onAction="#telaDetalheMedico" prefHeight="25.0" prefWidth="87.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 
                                              </children>
                                           </GridPane>

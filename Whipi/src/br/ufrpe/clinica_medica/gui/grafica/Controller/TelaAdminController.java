@@ -51,8 +51,6 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private Button detalhePaciente;
 	@FXML
-	private Button listarMedico;
-	@FXML
 	private AnchorPane anchorAdm;
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteNome;
