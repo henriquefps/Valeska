@@ -23,7 +23,7 @@
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                                  <children>
-                                    <GridPane layoutX="159.0" layoutY="32.0" prefHeight="116.0" prefWidth="281.0">
+                                    <GridPane layoutX="159.0" layoutY="-26.0" prefHeight="116.0" prefWidth="281.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -36,9 +36,6 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="cadastroMedico" mnemonicParsing="false" onAction="#telaCadastroMedico" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button fx:id="atualizaMedico" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button fx:id="removeMedico" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                           <Button fx:id="listarMedico" mnemonicParsing="false" onAction="#telaListarMedico" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
