@@ -145,6 +145,8 @@ public class TelaAdminController implements Initializable {
 		DialogPacienteController p = t.getF().getController();
 		p.mostrarDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
+		preencherTableView();
+		this.pacienteAtual = null;
 	}
 
 	@FXML
@@ -154,6 +156,9 @@ public class TelaAdminController implements Initializable {
 	
 	@FXML
 	private void telaDetalhePaciente() {
+		if (pacienteAtual == null) {
+			return;
+		}
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);

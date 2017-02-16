@@ -5,12 +5,15 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -211,6 +214,42 @@ public class DialogPacienteController implements Initializable {
 	    	txfCep.setText("");
 	    	cbxEstado.setValue("");
 	    }
+		btnSave.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+				atualizaPaciente(paciente);
+				fecharTela();
+			}});
+	}
+	
+	protected void atualizaPaciente(Paciente a) {
+		Paciente paciente = new Paciente();
+		paciente.setNome(txfNome.getText());
+		paciente.setCpf(txfCpf.getText());
+		paciente.setRg(txfRg.getText());
+		paciente.setCelular(txfCelular.getText());
+		paciente.setTelefone(txfTelefone.getText());
+		if (tgpSexo.getSelectedToggle().equals(rbtMasculino)) {
+			paciente.setSexo('M');
+		} else {
+			paciente.setSexo('F');
+		}
+		paciente.setDataDeNascimento(dtpNascimento.getValue());
+		paciente.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
+				cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
+		try {
+			fachada.removerPaciente(a);
+			try {
+				fachada.cadastrarPaciente(paciente.getNome(), paciente.getCpf(), paciente.getRg(),
+						paciente.getTelefone(), paciente.getCelular(), paciente.getSexo(), paciente.getEndereco(),
+						paciente.getDataDeNascimento());
+			} catch (PJCException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (PNEException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	protected void verDetalhes(Paciente paciente) {
