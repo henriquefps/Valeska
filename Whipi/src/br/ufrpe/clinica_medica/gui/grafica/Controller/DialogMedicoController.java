@@ -94,46 +94,46 @@ public class DialogMedicoController implements Initializable {
 		String errorMessage = "";
 
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
-			errorMessage += "Nome inválido!\n";
+			errorMessage += "Nome invï¿½lido!\n";
 		}
 		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
-			errorMessage += "Cpf inválido!\n";
+			errorMessage += "Cpf invï¿½lido!\n";
 		}
 		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
-			errorMessage += "Rg inválido!\n";
+			errorMessage += "Rg invï¿½lido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
-			errorMessage += "Telefone inválido!\n";
+			errorMessage += "Telefone invï¿½lido!\n";
 		}
 		if (cbxEstado.getValue() == null) {
-			errorMessage += "Estado inválido!\n";
+			errorMessage += "Estado invï¿½lido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
-			errorMessage += "Cidade inválida!\n";
+			errorMessage += "Cidade invï¿½lida!\n";
 		}
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
-			errorMessage += "Bairro inválido!\n";
+			errorMessage += "Bairro invï¿½lido!\n";
 		}
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
-			errorMessage += "Rua inválida!\n";
+			errorMessage += "Rua invï¿½lida!\n";
 		}
 		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
-			errorMessage += "Cep inválido!\n";
+			errorMessage += "Cep invï¿½lido!\n";
 		}
 		if (sexo.getSelectedToggle() == null) {
-			errorMessage += "Sexo inválido!\n";
+			errorMessage += "Sexo invï¿½lido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
-			errorMessage += "Data de nascimento inválida!\n";
+			errorMessage += "Data de nascimento invï¿½lida!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inválidos");
-			alert.setHeaderText("Por favor, corrija	os campos inválidos!");
+			alert.setTitle("Campos Invï¿½lidos");
+			alert.setHeaderText("Por favor, corrija	os campos invï¿½lidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
@@ -141,5 +141,30 @@ public class DialogMedicoController implements Initializable {
 		}
 	}
 	
+	public void mostrarDetalhes(Medico log){
+		txfBairro.setText(log.getEndereco().getBairro());
+		txfCelular.setText(log.getCelular());
+		txfCep.setText(log.getEndereco().getCep());
+		txfCidade.setText(log.getEndereco().getCidade());
+		txfComplemento.setText(log.getEndereco().getComplemento());
+		txfConfirmaSenha.setText(log.getSenha());
+		txfCpf.setText(log.getCpf());
+		txfCRM.setText(String.valueOf(log.getNumCRM()));
+		txfNome.setText(log.getNome());
+		txfNumConsultas.setText(String.valueOf(log.getConsultasPorDia()));
+		txfRg.setText(log.getRg());
+		txfRua.setText(log.getEndereco().getRua());
+		txfSenha.setText(log.getSenha());
+		txfTelefone.setText(log.getTelefone());
+		if(log.getSexo() == 'M'){
+    		sexo.selectToggle(rbMasculino);
+    	}
+    	else{
+    		sexo.selectToggle(rbFeminino);
+    	}
+    	dtpNascimento.setValue(log.getDataDeNascimento());
+		
+		
+	}
 
 }
