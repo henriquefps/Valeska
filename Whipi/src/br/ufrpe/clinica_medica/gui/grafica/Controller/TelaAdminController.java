@@ -19,6 +19,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
@@ -75,7 +76,11 @@ public class TelaAdminController implements Initializable {
 	
 	@FXML
 	private void telaCadastroMedico() {
-
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
@@ -104,6 +109,16 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaRecepcionista() {
+		TextInputDialog dialog = new TextInputDialog("CPF");
+		dialog.setTitle("Atualizar Recepcionista");
+		dialog.setHeaderText("Atualizar Recepcionista");
+		dialog.setContentText("Digite seu CPF:");
+
+		// Traditional way to get the response value.
+		Optional<String> result = dialog.showAndWait();
+		if (result.isPresent()){
+		    System.out.println("Your name: " + result.get());
+		}
 
 	}
 

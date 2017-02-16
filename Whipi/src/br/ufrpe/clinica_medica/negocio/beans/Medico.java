@@ -29,6 +29,11 @@ public class Medico extends Pessoa {
 		this.diasDeTrabalho = new DiasDeAtendimento[7];
 	}
 
+	public Medico() {
+		// TODO Auto-generated constructor stub
+		super(null,null,null,null,null,' ',null,null);
+	}
+
 	public int getNumCRM() {
 		return numCRM;
 	}
