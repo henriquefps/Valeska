@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -15,6 +17,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -49,6 +54,12 @@ public class TelaAdminController implements Initializable {
 	private Button listarMedico;
 	@FXML
 	private AnchorPane anchorAdm;
+	@FXML
+	private TableColumn<Paciente, String> colunaPacienteNome;
+	@FXML
+	private TableColumn<Paciente, String> colunaPacienteCPF;
+	@FXML
+	private TableView<Paciente> tabelaPaciente;
 	
 	private Telas t;
 	private FachadaClinicaMedica f;
@@ -57,7 +68,11 @@ public class TelaAdminController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
-		
+		ArrayList<Paciente> pacientes = f.ListarPacientes();
+		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
+		tabelaPaciente.getColumns().addAll(colunaPacienteNome, colunaPacienteCPF);
 	}
 
 	@FXML
