@@ -62,6 +62,8 @@ public class TelaAdminController implements Initializable {
 	
 	private Telas t;
 	private FachadaClinicaMedica f;
+	
+	private Paciente pacienteAtual;
     
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -143,7 +145,11 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaPaciente() {
-
+		t.setScene(new Scene((Parent) t.carregarFXML("AtualizaPaciente")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
@@ -194,6 +200,11 @@ public class TelaAdminController implements Initializable {
 			atualizaPaciente.setDisable(false);
 			removePaciente.setDisable(false);
 			detalhePaciente.setDisable(false);
+			pacienteAtual = clicado;
 		}
+	}
+	
+	public Paciente retornaPaciente() {
+		return this.pacienteAtual;
 	}
 }
