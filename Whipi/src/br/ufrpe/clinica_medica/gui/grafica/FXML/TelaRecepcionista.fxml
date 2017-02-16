@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -13,9 +17,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Recepcionista" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
+<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Recepcionista" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
    <content>
-      <AnchorPane fx:id="btListar" minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
          <children>
             <BorderPane prefHeight="256.0" prefWidth="600.0">
                <top>
@@ -38,7 +42,7 @@
                                           <RowConstraints maxHeight="34.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="listarMedico" mnemonicParsing="false" onAction="#telaListarMedico" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" />
+                                          <Button fx:id="btnListarMedico" mnemonicParsing="false" onAction="#telaListarMedico" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                     <TableView layoutX="14.0" layoutY="6.0" prefHeight="200.0" prefWidth="212.0">
@@ -67,7 +71,7 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="atualizaRecepcionista" mnemonicParsing="false" onAction="#telaAtualizaRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="btnAtualizaRecepcionista" mnemonicParsing="false" onAction="#telaAtualizaRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
@@ -94,10 +98,10 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="cadastroPaciente" mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button fx:id="atualizaPaciente" mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button fx:id="removePaciente" mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Button fx:id="listarPaciente" mnemonicParsing="false" onAction="#telaListarPaciente" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button fx:id="btnCadastroPaciente" mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                          <Button fx:id="btnAtualizaPaciente" mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="btnRemovePaciente" mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="btnListarPaciente" mnemonicParsing="false" onAction="#telaListarPaciente" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
                                     <TableView layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="200.0">
@@ -127,10 +131,10 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button fx:id="cadastroConsulta" mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button fx:id="atualizaConsulta" mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button fx:id="removeConsulta" mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Button fx:id="ListarConsulta" mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button fx:id="btnCadastroConsulta" mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                          <Button fx:id="btnAtualizaConsulta" mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="btnRemoveConsulta" mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="btnListarConsulta" mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
                                     <TableView layoutX="14.0" layoutY="-2.0" prefHeight="200.0" prefWidth="243.0">

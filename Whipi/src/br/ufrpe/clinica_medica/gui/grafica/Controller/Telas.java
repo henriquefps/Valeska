@@ -127,7 +127,7 @@ public class Telas {
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
-			fecharTelaDialogo();
+			fecharTela();
 			abrirTelaLogin();
 		} else {
 		    alert.close();

@@ -1,32 +1,24 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
-
-import com.sun.javafx.scene.control.skin.DatePickerSkin;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -34,6 +26,27 @@ import javafx.stage.Stage;
  * controller da tela principal do recepcionista
  */
 public class TelaRecepcionistaController implements Initializable{
+	
+	@FXML
+	private Button btnCadastroConsulta; 
+	@FXML
+	private Button btnListarMedico;
+	@FXML
+	private Button btnListarPaciente;
+	@FXML
+	private Button btnAtualizaPaciente;
+	@FXML
+	private Button btnRemoveConsulta;
+	@FXML
+	private Button btnRemovePaciente;
+	@FXML
+	private Button btnListarConsulta;
+	@FXML
+	private Button btnCadastroPaciente;
+	@FXML
+	private Button btnAtualizaConsulta;
+	@FXML
+	private Button btnAtualizaRecepcionista;
 	
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteNome;
@@ -48,11 +61,7 @@ public class TelaRecepcionistaController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
-		ArrayList<Paciente> pacientes = f.ListarPacientes();
-		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
-		tabelaPaciente.getColumns().addAll(colunaPacienteNome, colunaPacienteCPF);
+		preencherTableView();
 	}
 	
 	@FXML
@@ -80,7 +89,7 @@ public class TelaRecepcionistaController implements Initializable{
 		
 	}
 	@FXML
-	private void telaAtualizarRecepcionista(){
+	private void telaAtualizaRecepcionista(){
 		
 	}
 	@FXML
@@ -96,7 +105,7 @@ public class TelaRecepcionistaController implements Initializable{
 		
 	}
 	@FXML
-	private void telaListaConsulta(){
+	private void telaListarConsulta(){
 		
 	}
 	@FXML
@@ -128,5 +137,12 @@ public class TelaRecepcionistaController implements Initializable{
 		} else {
 		    alert.close();
 		}
+	}
+	
+	public void preencherTableView(){	
+		ArrayList<Paciente> pacientes = f.ListarPacientes();
+		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 	}
 }
