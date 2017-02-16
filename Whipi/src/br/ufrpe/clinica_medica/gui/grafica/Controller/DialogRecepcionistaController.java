@@ -81,7 +81,7 @@ public class DialogRecepcionistaController implements Initializable {
 	}
 
 	@FXML
-	private void salvarRecepcionista() {
+	private void salva() {
 		cadastrar();
 	}
 
@@ -177,25 +177,8 @@ public class DialogRecepcionistaController implements Initializable {
 			return false;
 		}
 	}
-
-	
 	@FXML
 	private void sair() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
-		alert.setHeaderText("Sair");
-		alert.setContentText("Deseja fechar o programa?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			System.exit(0);
-		} else {
-			alert.close();
-		}
-	}
-
-	@FXML
-	private void fecharTela() {
 		t.voltarTela();
 		t.fecharTelaDialogo();
 	}

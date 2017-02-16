@@ -7,6 +7,7 @@ import br.ufrpe.clinica_medica.exceptions.ECException;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController;
 import br.ufrpe.clinica_medica.gui.grafica.Controller.Telas;
+import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoConsulta;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoMedico;
 import br.ufrpe.clinica_medica.negocio.GerenciamentoPaciente;
@@ -42,8 +43,8 @@ public class App extends Application {
 		a.cadastrarMedico("Pedr�o", "342", "1235465", "34657823", "993245862", 'M',
 				new Endereco("Rua Salvador", "Olinda", "Beberibe", "PE", "52012312", "APT1201"), LocalDate.of(1978, 2, 20),
 				1337, 10, "123");
-		GerenciamentoRecepcionista recep = new GerenciamentoRecepcionista();
-		recep.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
+		FachadaClinicaMedica f = FachadaClinicaMedica.getInstance();
+		f.cadastrarRecepcionista("Jurema", "2341", "456", "789", "098", 'F',
 				new Endereco("Rua sosino", "Recife", "Gracas", "PE", "52012312", "APT1201"), LocalDate.of(1990, 9, 27),
 				"456");
 		GerenciamentoPaciente paciente = new GerenciamentoPaciente();

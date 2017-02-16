@@ -86,7 +86,7 @@
                   <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                </children>
             </GridPane>
-            <Button fx:id="btSalvar" layoutX="262.0" layoutY="498.0" mnemonicParsing="false" onAction="#salvarRecepcionista" prefHeight="25.0" prefWidth="54.0" text="Salvar" />
+            <Button fx:id="btSalvar" layoutX="262.0" layoutY="498.0" mnemonicParsing="false" onAction="#salva" prefHeight="25.0" prefWidth="54.0" text="Salvar" />
             <Button fx:id="btSair" layoutX="340.0" layoutY="498.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="49.0" text="Sair" />
          </children>
       </AnchorPane>
