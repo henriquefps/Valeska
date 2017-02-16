@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import br.ufrpe.clinica_medica.exceptions.CJAException;
 import br.ufrpe.clinica_medica.exceptions.CNEException;
 import br.ufrpe.clinica_medica.exceptions.ECException;
 import br.ufrpe.clinica_medica.exceptions.NCDException;
@@ -144,8 +145,17 @@ public class FachadaClinicaMedica {
 		this.medico.trabalharDiaX(medico, diaDaSemana, horaI, minutoI, horaF, minutoF);
 	}
 
-	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
+	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) throws NCDException, CJAException {
 		this.medico.cancelarDiaDeTrabalhoX(medico, diaDaSemana);
+		ArrayList<Consulta> cons = consulta.consultasDoDia(medico);
+		for (int i = 0; i < cons.size(); i++) {
+			if(cons.get(i).getHorario().getDayOfWeek().getValue() - 1 == diaDaSemana && !cons.get(i).foiRealizada()){
+				throw new CJAException(cons.get(i));			}
+		}
+	}
+	
+	public void cancelarTodasAsConsultasDeUmDia(Medico med, LocalDate dia){
+		ArrayList<Consulta> cons = consulta.consultasComMedicoNoDia(med, dia);
 	}
 
 }

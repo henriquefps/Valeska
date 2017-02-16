@@ -30,5 +30,13 @@ public class DiasDeAtendimento implements Serializable{
 		this.diaInicio = null;
 		this.diaFim = null;
 	}
+
+	public LocalTime getDiaInicio() {
+		return diaInicio;
+	}
+
+	public LocalTime getDiaFim() {
+		return diaFim;
+	}
 	
 }
