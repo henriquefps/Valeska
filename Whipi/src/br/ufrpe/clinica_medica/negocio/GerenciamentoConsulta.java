@@ -108,7 +108,7 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
+	public ArrayList<Consulta> consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		if (medico != null) {
 			String resp = "";
 			ArrayList<Consulta> comMedico = consultas.getConsultasComMedicoNoDia(medico, dia);
