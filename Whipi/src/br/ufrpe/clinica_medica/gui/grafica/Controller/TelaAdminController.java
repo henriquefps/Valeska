@@ -149,14 +149,18 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaRemovePaciente() {
-
+		
 	}
 	
 	@FXML
 	private void telaDetalhePaciente() {
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setHeaderText(pacienteAtual.getNome());
-		alert.setContentText(pacienteAtual.toString());
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogPacienteController p = t.getF().getController();
+		p.verDetalhes(pacienteAtual);
+		t.abrirTelaDialogo();
 	}
 	
 	@FXML

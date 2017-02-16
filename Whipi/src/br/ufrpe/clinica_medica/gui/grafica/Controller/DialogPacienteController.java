@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -56,6 +57,8 @@ public class DialogPacienteController implements Initializable {
 	private RadioButton rbtFeminino;
 	@FXML
 	private DatePicker dtpNascimento;
+	@FXML
+	private Button btnSave;
 
 	private FachadaClinicaMedica fachada;
 
@@ -208,6 +211,26 @@ public class DialogPacienteController implements Initializable {
 	    	txfCep.setText("");
 	    	cbxEstado.setValue("");
 	    }
+	}
+	
+	protected void verDetalhes(Paciente paciente) {
+		mostrarDetalhes(paciente);
+		this.labelTitle.setText("Detalhe Paciente");
+    	txfNome.setDisable(true);
+    	txfCpf.setDisable(true);
+    	txfRg.setDisable(true);
+    	txfTelefone.setDisable(true);
+    	txfCelular.setDisable(true);
+    	txfRua.setDisable(true);
+    	txfBairro.setDisable(true);
+    	txfCidade.setDisable(true);
+    	txfComplemento.setDisable(true);
+    	txfCep.setDisable(true);
+    	cbxEstado.setDisable(true);
+    	rbtMasculino.setDisable(true);
+    	rbtFeminino.setDisable(true);
+    	dtpNascimento.setDisable(true);
+    	btnSave.setVisible(false);
 	}
 
 
