@@ -29,23 +29,17 @@ import javafx.stage.Stage;
 public class TelaAdminController implements Initializable {
 
 	@FXML
-	private Button cadastroMedico;
-	@FXML
 	private Button atualizaMedico;
 	@FXML
 	private Button removeMedico;
 	@FXML
 	private Button detalheMedico;
 	@FXML
-	private Button cadastroRecepcionista;
-	@FXML
 	private Button atualizaRecepcionista;
 	@FXML
 	private Button removeRecepcionista;
 	@FXML
 	private Button detalheRecepcionista;
-	@FXML
-	private Button cadastroPaciente;
 	@FXML
 	private Button atualizaPaciente;
 	@FXML

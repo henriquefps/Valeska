@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -17,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
+<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
    <children>
       <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Administrador">
         <content>
@@ -44,7 +40,7 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Button fx:id="cadastroMedico" mnemonicParsing="false" onAction="#telaCadastroMedico" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                                <Button mnemonicParsing="false" onAction="#telaCadastroMedico" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
 
                                                 <Button fx:id="atualizaMedico" disable="true" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Button fx:id="removeMedico" disable="true" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
@@ -55,10 +51,10 @@
 
                                              </children>
                                           </GridPane>
-                                          <TableView layoutY="25.0" prefHeight="230.0" prefWidth="300.0">
+                                          <TableView layoutY="25.0" prefHeight="230.0" prefWidth="313.0">
                                             <columns>
-                                              <TableColumn prefWidth="214.0" text="Nome" />
-                                              <TableColumn prefWidth="85.0" text="CRM" />
+                                              <TableColumn editable="false" prefWidth="200.0" resizable="false" text="Nome" />
+                                              <TableColumn editable="false" prefWidth="120.0" resizable="false" text="CRM" />
                                             </columns>
                                           </TableView>
                                           <Label layoutX="128.0" layoutY="6.0" text="Médicos" />
@@ -84,16 +80,16 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button fx:id="cadastroRecepcionista" mnemonicParsing="false" onAction="#telaCadastroRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                                <Button mnemonicParsing="false" onAction="#telaCadastroRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
                                                 <Button fx:id="atualizaRecepcionista" disable="true" mnemonicParsing="false" onAction="#telaAtualizaRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Button fx:id="removeRecepcionista" disable="true" mnemonicParsing="false" onAction="#telaRemoveRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Button fx:id="detalheRecepcionista" disable="true" mnemonicParsing="false" onAction="#telaDetalheRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
-                                          <TableView layoutY="25.0" prefHeight="230.0" prefWidth="300.0">
+                                          <TableView layoutY="25.0" prefHeight="230.0" prefWidth="313.0">
                                              <columns>
-                                                <TableColumn prefWidth="214.0" text="Nome" />
-                                                <TableColumn prefWidth="85.0" text="CPF" />
+                                                <TableColumn editable="false" prefWidth="200.0" resizable="false" text="Nome" />
+                                                <TableColumn editable="false" prefWidth="120.0" resizable="false" text="CPF" />
                                              </columns>
                                           </TableView>
                                        </children>
@@ -117,7 +113,7 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Button fx:id="cadastroPaciente" mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                                <Button mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
                                                 <Button fx:id="atualizaPaciente" disable="true" mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                                 <Button fx:id="removePaciente" disable="true" mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                                 <Button fx:id="detalhePaciente" disable="true" mnemonicParsing="false" onAction="#telaDetalhePaciente" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
@@ -125,8 +121,8 @@
                                           </GridPane>
                                           <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="230.0" prefWidth="313.0">
                                              <columns>
-                                                <TableColumn fx:id="colunaPacienteNome" prefWidth="214.0" text="Nome" />
-                                                <TableColumn fx:id="colunaPacienteCPF" prefWidth="85.0" text="CPF" />
+                                                <TableColumn fx:id="colunaPacienteNome" editable="false" prefWidth="200.0" resizable="false" text="Nome" />
+                                                <TableColumn fx:id="colunaPacienteCPF" editable="false" prefWidth="120.0" resizable="false" text="CPF" />
                                              </columns>
                                           </TableView>
                                           <Label layoutX="125.0" layoutY="6.0" text="Pacientes" />
