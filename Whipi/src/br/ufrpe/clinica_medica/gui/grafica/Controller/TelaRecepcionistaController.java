@@ -34,6 +34,9 @@ public class TelaRecepcionistaController implements Initializable{
 		t = Telas.getInstance();
 		t.getStage().centerOnScreen();
 		t.getStage().setMaximized(true);
+
+		t.getStage().setResizable(false);
+		t.getStage().setTitle("Ola Recepcionista");
 		t.getStage().setTitle("Ol� Recepcionista");
 		
 		DatePickerSkin dt = new DatePickerSkin(new DatePicker(LocalDate.now()));
@@ -57,5 +60,13 @@ public class TelaRecepcionistaController implements Initializable{
 		t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista_Editar")));
 		t.abrirTela();
 	}
+	
+	@FXML
+	public void showTelaRecepcionista_Remover(){
+		t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista_Remover")));
+		t.abrirTela();
+	}
+	
+	
 	
 }

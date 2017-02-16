@@ -102,10 +102,7 @@ public class DialogRecepcionistaController implements Initializable {
 			recep.setSexo('M');
 		} else {
 			recep.setSexo('F');
-		}
-
-		if (btSalvar.isPressed()) {
-			try {
+		}try {
 				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
 						recep.getCelular(), recep.getSexo(), recep.getEndereco(), recep.getDataDeNascimento(),
 						recep.getSenha());
@@ -121,20 +118,7 @@ public class DialogRecepcionistaController implements Initializable {
 				alert.setHeaderText(null);
 				alert.setContentText(recep.getNome() + "Cadastrado com sucesso");
 				alert.showAndWait();
-				limparTela();
 			}
-		} else if (btSair.isPressed()) {
-			voltarTela();
-		}
-	}
-
-	private void voltarTela() {
-		t.fecharTela();
-	}
-
-	private void limparTela() {
-		t.fecharTela();
-		t.abrirTela();
 	}
 
 	private boolean isInputValid() {

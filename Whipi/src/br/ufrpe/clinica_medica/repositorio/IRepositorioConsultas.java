@@ -65,6 +65,4 @@ public interface IRepositorioConsultas {
 	 * Salva a instância do Repositório de Consultas em Arquivo
 	 */
 	public void salvarConsultaEmArquivo();
-	
-	public ArrayList<Consulta> getLista();
 }

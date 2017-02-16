@@ -66,7 +66,7 @@ public class FachadaClinicaMedica {
 		this.consulta.realizarConsulta(consulta, descricao);
 	}
 
-	public ArrayList<Consulta> consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
+	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		return this.consulta.consultasComMedicoNoDia(medico, dia);
 	}
 

@@ -56,6 +56,8 @@ public class DialogMedicoController implements Initializable {
 	
 	private Stage dialog;
 	
+	
+	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {

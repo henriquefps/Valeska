@@ -38,5 +38,25 @@ public class PrincipalController implements Initializable {
 		s.show();
 	}
 	
+	@FXML
+	private void cadastrarRecepcionista() throws Exception{
+		URL url = getClass().getResource("TelaRecepcionista_cadastro.fxml");
+		Parent parent = FXMLLoader.load(url);
+		Stage s = new Stage();
+		s.setTitle("Cadastro recepcionista");
+		s.setScene(new Scene(parent));
+		s.show();
+	}
+	
+	@FXML
+	private void cadastrarPaciente() throws Exception{
+		URL url = getClass().getResource("TelaPacienteCadastro.fxml");
+		Parent parent = FXMLLoader.load(url);
+		Stage s = new Stage();
+		s.setTitle("Cadastro Paciente");
+		s.setScene(new Scene(parent));
+		s.show();
+	}
+	
 
 }
