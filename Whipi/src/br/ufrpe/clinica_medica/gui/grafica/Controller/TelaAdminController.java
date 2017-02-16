@@ -176,7 +176,9 @@ public class TelaAdminController implements Initializable {
 	private void nomePacienteClicado() {
 		Paciente clicado = tabelaPaciente.getSelectionModel().getSelectedItem();
 		if (clicado != null) {
-			System.out.println(clicado.getCpf());
+			atualizaPaciente.setDisable(false);
+			removePaciente.setDisable(false);
+			detalhePaciente.setDisable(false);
 		}
 	}
 }
