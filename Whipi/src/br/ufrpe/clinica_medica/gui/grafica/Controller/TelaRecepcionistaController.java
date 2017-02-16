@@ -27,33 +27,25 @@ import javafx.stage.Stage;
  */
 public class TelaRecepcionistaController implements Initializable{
 	
-	@FXML
-	private Button btnCadastroConsulta; 
-	@FXML
-	private Button btnListarMedico;
-	@FXML
-	private Button btnListarPaciente;
-	@FXML
-	private Button btnAtualizaPaciente;
-	@FXML
-	private Button btnRemoveConsulta;
-	@FXML
-	private Button btnRemovePaciente;
-	@FXML
-	private Button btnListarConsulta;
-	@FXML
-	private Button btnCadastroPaciente;
-	@FXML
-	private Button btnAtualizaConsulta;
-	@FXML
-	private Button btnAtualizaRecepcionista;
+//	@FXML private Button btnCadastroConsulta; 
+//	@FXML private Button btnListarMedico;
+//	@FXML private Button btnListarPaciente;
+//	@FXML private Button btnAtualizaPaciente;
+//	@FXML private Button btnRemoveConsulta;
+//	@FXML private Button btnRemovePaciente;
+//	@FXML private Button btnListarConsulta;
+//	@FXML private Button btnCadastroPaciente;
+//	@FXML private Button btnAtualizaConsulta;
+//	@FXML private Button btnAtualizaRecepcionista;
+//	
+//	@FXML private Button botaoLogoff;
+//	
+//	@FXML private Button botaoSair;
 	
-	@FXML
-	private TableColumn<Paciente, String> colunaPacienteNome;
-	@FXML
-	private TableColumn<Paciente, String> colunaPacienteCPF;
-	@FXML
-	private TableView<Paciente> tabelaPaciente;
+	@FXML private TableColumn<Paciente, String> colunaPacienteNome;
+	@FXML private TableColumn<Paciente, String> colunaPacienteCPF;
+	@FXML private TableView<Paciente> tabelaPaciente;
+	
 	private Telas t; 
 	private FachadaClinicaMedica f;
 
@@ -64,52 +56,42 @@ public class TelaRecepcionistaController implements Initializable{
 		preencherTableView();
 	}
 	
-	@FXML
-	private void telaListarMedico(){
+	@FXML private void telaListarMedico(){
 		
 	}
-	@FXML
-	private void telaCadastroPaciente() {
+	
+	@FXML private void telaCadastroPaciente() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogCadastro")), t.getLogada());
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
 	}
-	@FXML
-	private void telaAtualizaPaciente(){
+	@FXML private void telaAtualizaPaciente(){
 		
 	}
-	@FXML
-	private void telaListarPaciente(){
+	@FXML private void telaListarPaciente(){
 		
 	}
-	@FXML
-	private void telaRemovePaciente(){
+	@FXML private void telaRemovePaciente(){
 		
 	}
-	@FXML
-	private void telaAtualizaRecepcionista(){
+	@FXML private void telaAtualizaRecepcionista(){
 		
 	}
-	@FXML
-	private void telaCadastroConsulta(){
+	@FXML private void telaCadastroConsulta(){
 		
 	}
-	@FXML
-	private void telaAtualizaConsulta(){
+	@FXML private void telaAtualizaConsulta(){
 		
 	}
-	@FXML
-	private void telaRemoveConsulta(){
+	@FXML private void telaRemoveConsulta(){
 		
 	}
-	@FXML
-	private void telaListarConsulta(){
+	@FXML private void telaListarConsulta(){
 		
 	}
-	@FXML
-	private void logoff() {
+	@FXML private void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirma��o");
 		alert.setHeaderText("Logoff");
@@ -124,8 +106,7 @@ public class TelaRecepcionistaController implements Initializable{
 		}
 	}
 	
-	@FXML
-	private void sair() {
+	@FXML private void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirma��o");
 		alert.setHeaderText("Sair");
