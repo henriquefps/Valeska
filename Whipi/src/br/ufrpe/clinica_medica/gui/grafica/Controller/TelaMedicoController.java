@@ -34,13 +34,13 @@ public class TelaMedicoController implements Initializable{
 	
 	@FXML private TableColumn<Consulta, Boolean> colunaRealizada;
 	
-	@FXML private Button botaoAlterarDiasDeTrabalho;
-	
-	@FXML private Button botaoEditarPerfil;
-	
-	@FXML private Button botaoRealizarConsulta;
-	
-	@FXML private Button botaoCancelarDiaDeTrabalho;
+//	@FXML private Button botaoAlterarDiasDeTrabalho;
+//	
+//	@FXML private Button botaoEditarPerfil;
+//	
+//	@FXML private Button botaoRealizarConsulta;
+//	
+//	@FXML private Button botaoCancelarDiaDeTrabalho;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
@@ -73,7 +73,7 @@ public class TelaMedicoController implements Initializable{
 		t.abrirTelaDialogo();
 	}
 	
-	@FXML public void cancelarDiaDeTrabalho(){
+	@FXML public void cancelarConsultasDeUmDia(){
 		
 	}
 	

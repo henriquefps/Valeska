@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 import br.ufrpe.clinica_medica.App;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -21,6 +22,14 @@ public class Telas {
 	private App a;
 	private ArrayList<Scene> cena;
 	private FXMLLoader f;
+	private Pessoa logada;
+	public Pessoa getLogada() {
+		return logada;
+	}
+
+	public void setLogada(Pessoa logada) {
+		this.logada = logada;
+	}
 
 	private Telas() {
 		cena = new ArrayList<Scene>();
@@ -63,8 +72,9 @@ public class Telas {
 		return stage;
 	}
 
-	public void setScene(Scene s) {
+	public void setScene(Scene s, Pessoa log) {
 		this.cena.add(s);
+		this.logada = log;
 	}
 
 	public void abrirTelaDialogo() {
@@ -111,7 +121,7 @@ public class Telas {
 	
 	public void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Logoff");
 		alert.setContentText("Deseja fazer logoff?");
 
