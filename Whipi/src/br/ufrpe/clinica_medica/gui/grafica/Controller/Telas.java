@@ -77,7 +77,6 @@ public class Telas {
 		try {
 			root = FXMLLoader.load(a.getClass().getResource(r));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 

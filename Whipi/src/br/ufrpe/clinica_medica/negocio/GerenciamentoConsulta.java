@@ -28,7 +28,6 @@ import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioConsultas;
 import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class GerenciamentoConsulta {
