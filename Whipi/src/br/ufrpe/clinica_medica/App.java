@@ -23,6 +23,15 @@ public class App extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		
+		try {
+			FachadaClinicaMedica.getInstance().cadastrarMedico("Pedr�o", "342", "1235465", "34657823", "993245862", 'M',
+					new Endereco("Rua Salvador", "Olinda", "Beberibe", "PE", "52012312", "APT1201"), LocalDate.of(1978, 2, 20),
+					1337, 10, "123");
+		} catch (PJCException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Telas t = Telas.getInstance();
 		t.setStage(primaryStage);
 		t.setA(new App());

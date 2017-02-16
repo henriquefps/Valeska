@@ -41,7 +41,8 @@ public class TelaPrincipalController implements Initializable {
 		if(resultado != null)
 			t.fecharTelaDialogo();
 		if (resultado instanceof Recepcionista) {
-			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")));
+			t.carregarCenaTeste("TelaRecepcionista");
+			t.setTeste();
 			t.abrirTela();
 		} else if (resultado instanceof Medico) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaMedico")));
@@ -56,7 +57,7 @@ public class TelaPrincipalController implements Initializable {
 	
 	public void sair(){
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 
@@ -71,8 +72,8 @@ public class TelaPrincipalController implements Initializable {
 	public void dadosInvalidos() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro de dados!");
-		alert.setHeaderText("Dados inválidos!");
-		alert.setContentText("Usuário e/ou senha inválidos.");
+		alert.setHeaderText("Dados invï¿½lidos!");
+		alert.setContentText("Usuï¿½rio e/ou senha invï¿½lidos.");
 
 		alert.showAndWait();
 	}

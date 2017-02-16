@@ -1,5 +1,6 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
+import java.awt.Button;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -14,9 +15,13 @@ import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class TelaMedicoController implements Initializable{
 	@FXML private TableView<Consulta> tabelaConsultas;
@@ -28,9 +33,18 @@ public class TelaMedicoController implements Initializable{
 	@FXML private TableColumn<Consulta, LocalDateTime> colunaHorario;
 	
 	@FXML private TableColumn<Consulta, Boolean> colunaRealizada;
+	
+	@FXML private Button botaoAlterarDiasDeTrabalho;
+	
+	@FXML private Button botaoEditarPerfil;
+	
+	@FXML private Button botaoRealizarConsulta;
+	
+	@FXML private Button botaoCancelarDiaDeTrabalho;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
+	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
@@ -43,6 +57,24 @@ public class TelaMedicoController implements Initializable{
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 	}
 	
+	@FXML public void alterarDiasDeTrabalho(){
+		
+	}
 	
+	@FXML public void realizarConsulta(){
+		
+	}
+	
+	@FXML public void editarPerfil(){
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
+	}
+	
+	@FXML public void cancelarDiaDeTrabalho(){
+		
+	}
 	
 }
