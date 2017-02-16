@@ -67,7 +67,7 @@ public class FachadaClinicaMedica {
 		this.consulta.realizarConsulta(consulta, descricao);
 	}
 
-	public String consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
+	public ArrayList<Consulta> consultasComMedicoNoDia(Medico medico, LocalDate dia) throws PNEException, NCDException {
 		return this.consulta.consultasComMedicoNoDia(medico, dia);
 	}
 
@@ -154,8 +154,13 @@ public class FachadaClinicaMedica {
 		}
 	}
 	
-	public void cancelarTodasAsConsultasDeUmDia(Medico med, LocalDate dia){
+	public void cancelarTodasAsConsultasDeUmDia(Medico med, LocalDate dia) throws PNEException, NCDException, CNEException{
 		ArrayList<Consulta> cons = consulta.consultasComMedicoNoDia(med, dia);
+		if (cons != null) {
+			for (int i = 0; i < cons.size(); i++) {
+				consulta.removerConsulta(cons.get(i));
+			}
+		}
 	}
 
 }
