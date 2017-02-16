@@ -119,7 +119,7 @@
                                                 <Button fx:id="detalhePaciente" disable="true" mnemonicParsing="false" onAction="#telaDetalhePaciente" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                              </children>
                                           </GridPane>
-                                          <TableView fx:id="tabelaPaciente" layoutY="25.0" prefHeight="230.0" prefWidth="300.0">
+                                          <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="230.0" prefWidth="300.0">
                                              <columns>
                                                 <TableColumn fx:id="colunaPacienteNome" prefWidth="214.0" text="Nome" />
                                                 <TableColumn fx:id="colunaPacienteCPF" prefWidth="85.0" text="CPF" />

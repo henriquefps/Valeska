@@ -171,4 +171,12 @@ public class TelaAdminController implements Initializable {
 		    alert.close();
 		}
 	}
+	
+	@FXML
+	private void nomePacienteClicado() {
+		Paciente clicado = tabelaPaciente.getSelectionModel().getSelectedItem();
+		if (clicado != null) {
+			System.out.println(clicado.getCpf());
+		}
+	}
 }
