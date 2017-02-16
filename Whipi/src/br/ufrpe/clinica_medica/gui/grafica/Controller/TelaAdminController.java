@@ -72,21 +72,7 @@ public class TelaAdminController implements Initializable {
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 		tabelaPaciente.getColumns().addAll(colunaPacienteNome, colunaPacienteCPF);
 	}
-
-	@FXML
-	private void listarMedico(){
-		Alert alert = new Alert(AlertType.INFORMATION);
-		ArrayList<Medico> a = new ArrayList();
-		a = f.ListarMedicos();
-		alert.setTitle("Listar Médico");
-		alert.setHeaderText("Médicos: ");
-		String lista = null;
-		for(int i = 0 ; i < a.size();i++){
-			lista += "\n" + a.get(i).getNome() +" "+ a.get(i).getNumCRM();
-		}
-		alert.setContentText("lista");
-		alert.showAndWait();
-	}
+	
 	@FXML
 	private void telaCadastroMedico() {
 
