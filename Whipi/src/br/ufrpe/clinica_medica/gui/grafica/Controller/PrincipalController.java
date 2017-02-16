@@ -30,7 +30,7 @@ public class PrincipalController implements Initializable {
 	
 	@FXML
 	private void cadatrarMedico() throws Exception{
-		URL url = getClass().getResource("TCadastrarMedico.fxml");
+		URL url = getClass().getResource("DialogMedico.fxml");
 		Parent parent = FXMLLoader.load(url);
 		Stage s = new Stage();
 		s.setTitle("Cadastro Médicos");
@@ -40,7 +40,7 @@ public class PrincipalController implements Initializable {
 	
 	@FXML
 	private void cadastrarRecepcionista() throws Exception{
-		URL url = getClass().getResource("TelaRecepcionista_cadastro.fxml");
+		URL url = getClass().getResource("DialogRecepcionista.fxml");
 		Parent parent = FXMLLoader.load(url);
 		Stage s = new Stage();
 		s.setTitle("Cadastro recepcionista");

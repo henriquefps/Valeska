@@ -22,7 +22,7 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
-public class TelaCadastrarPacienteController implements Initializable {
+public class DialogPacienteController implements Initializable {
 
 	@FXML
 	private TextField txfNome;
