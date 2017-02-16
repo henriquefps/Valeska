@@ -76,6 +76,10 @@ public class Telas {
 		this.cena.add(s);
 		this.logada = log;
 	}
+	
+	public void setScene(Scene s) {
+		this.cena.add(s);
+	}
 
 	public void abrirTelaDialogo() {
 		dialogStage.setScene(cena.get(cena.size() - 1));
@@ -115,7 +119,7 @@ public class Telas {
 	
 	public void abrirTelaLogin(){
 		setDialogStage(new Stage());
-		setScene(new Scene((Parent) carregarFXML("TelaPrincipal")));
+		setScene(new Scene((Parent) carregarFXML("TelaPrincipal")), logada);
 		abrirTelaDialogo();
 	}
 	
