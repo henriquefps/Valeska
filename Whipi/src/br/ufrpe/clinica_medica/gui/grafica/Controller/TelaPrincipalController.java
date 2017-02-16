@@ -43,7 +43,6 @@ public class TelaPrincipalController implements Initializable {
 		if (resultado instanceof Recepcionista) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")));
 			t.abrirTela();
-			t.abrirTela();
 		} else if (resultado instanceof Medico) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaMedico")));
 			t.abrirTela();
