@@ -124,5 +124,13 @@ public class GerenciamentoConsulta {
 		} else {
 			throw new PNEException("CPF do medico nao encontrado no sistema");
 		}
+		
+		
+	}
+	
+	public void removerConsulta(Consulta c) throws CNEException {
+		if(c != null){
+			consultas.excluir(c);
+		}
 	}
 }
