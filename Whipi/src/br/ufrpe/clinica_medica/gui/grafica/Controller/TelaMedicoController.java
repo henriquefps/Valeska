@@ -34,6 +34,7 @@ public class TelaMedicoController implements Initializable{
 	
 	@FXML private TableColumn<Consulta, Boolean> colunaRealizada;
 	
+	private Medico logado;
 //	@FXML private Button botaoAlterarDiasDeTrabalho;
 //	
 //	@FXML private Button botaoEditarPerfil;
@@ -55,6 +56,7 @@ public class TelaMedicoController implements Initializable{
 		colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
 		colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
+		logado = (Medico) t.getLogada();
 	}
 	
 	@FXML public void alterarDiasDeTrabalho(){
@@ -66,7 +68,7 @@ public class TelaMedicoController implements Initializable{
 	}
 	
 	@FXML public void editarPerfil(){
-		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")), t.getLogada());
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());

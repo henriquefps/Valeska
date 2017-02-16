@@ -61,7 +61,7 @@ public class TelaRecepcionistaController implements Initializable{
 	}
 	@FXML
 	private void telaCadastroPaciente() {
-		t.setScene(new Scene((Parent) t.carregarFXML("DialogCadastro")));
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogCadastro")), t.getLogada());
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
@@ -102,7 +102,7 @@ public class TelaRecepcionistaController implements Initializable{
 	@FXML
 	private void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Logoff");
 		alert.setContentText("Deseja fazer logoff?");
 
@@ -118,7 +118,7 @@ public class TelaRecepcionistaController implements Initializable{
 	@FXML
 	private void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
+		alert.setTitle("Confirmaï¿½ï¿½o");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 
