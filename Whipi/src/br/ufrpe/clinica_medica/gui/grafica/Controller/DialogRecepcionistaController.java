@@ -2,7 +2,6 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
@@ -15,58 +14,51 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
-import javafx.scene.control.CheckBox;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.ComboBoxBase;
 import javafx.scene.control.DatePicker;
-import javafx.scene.control.Labeled;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
 
 public class DialogRecepcionistaController implements Initializable {
 
 	@FXML
 	private TextField txfNome;
 	@FXML
-	private TextField txfCPF;
+	private TextField txfCpf;
 	@FXML
-	private TextField txfRG;
+	private TextField txfRg;
 	@FXML
 	private TextField txfTelefone;
 	@FXML
 	private TextField txfCelular;
 	@FXML
-	private TextField txfEndereco;
-	@FXML
 	private TextField txfBairro;
 	@FXML
 	private TextField txfCidade;
 	@FXML
-	private TextField txfRual;
+	private TextField txfRua;
 	@FXML
 	private TextField txfComplemento;
 	@FXML
-	private TextField txfCEP;
+	private TextField txfCep;
 	@FXML
-	private TextField txfSenha;
+	private PasswordField pswSenha;
+	@FXML
+	private PasswordField pswConfirmarSenha;
 	@FXML
 	private ComboBox<String> cbxEstado;
 	@FXML
-	private DatePicker dtpNasc;
+	private DatePicker dtpNascimento;
 	@FXML
 	private ToggleGroup tgpSexo;
 	@FXML
-	private RadioButton rbFeminino;
+	private RadioButton rbtFeminino;
 	@FXML
-	private RadioButton rbMasculino;
-	@FXML
-	private Button btSalvar;
-	@FXML
-	private Button btSair;
+	private RadioButton rbtMasculino;
+	
 	private FachadaClinicaMedica fachada;
 	private Telas t;
 
@@ -81,7 +73,7 @@ public class DialogRecepcionistaController implements Initializable {
 	}
 
 	@FXML
-	private void salva() {
+	private void salvar() {
 		cadastrar();
 	}
 
@@ -89,16 +81,16 @@ public class DialogRecepcionistaController implements Initializable {
 		if (isInputValid()) {
 			Recepcionista recep = new Recepcionista();
 			recep.setNome(txfNome.getText());
-			recep.setCpf(txfCPF.getText());
-			recep.setRg(txfRG.getText());
-			recep.setDataDeNascimento(dtpNasc.getValue());
+			recep.setCpf(txfCpf.getText());
+			recep.setRg(txfRg.getText());
+			recep.setDataDeNascimento(dtpNascimento.getValue());
 			recep.setCelular(txfCelular.getText());
 			recep.setTelefone(txfTelefone.getText());
-			recep.setSenha(txfSenha.getText());
-			recep.setEndereco(new Endereco(txfEndereco.getText(), txfCidade.getText(), txfBairro.getText(),
-					cbxEstado.getValue(), txfCEP.getText(), txfComplemento.getText()));
+			recep.setSenha(pswSenha.getText());
+			recep.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
+					cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
 
-			if (tgpSexo.getSelectedToggle().equals(rbMasculino)) {
+			if (tgpSexo.getSelectedToggle().equals(rbtMasculino)) {
 				recep.setSexo('M');
 			} else {
 				recep.setSexo('F');
@@ -131,10 +123,10 @@ public class DialogRecepcionistaController implements Initializable {
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
 			errorMessage += "Nome inválido!\n";
 		}
-		if (txfCPF.getText() == null || txfCPF.getText().length() == 0) {
+		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
 			errorMessage += "Cpf inválido!\n";
 		}
-		if (txfRG.getText() == null || txfRG.getText().length() == 0) {
+		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
 			errorMessage += "Rg inválido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
@@ -149,21 +141,27 @@ public class DialogRecepcionistaController implements Initializable {
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
 			errorMessage += "Bairro inválido!\n";
 		} // ajeitar!!
-		if (txfEndereco.getText() == null || txfEndereco.getText().length() == 0) {
+		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
 			errorMessage += "Rua inválida!\n";
 		}
-		if (txfCEP.getText() == null || txfCEP.getText().length() == 0) {
+		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
 			errorMessage += "Cep inválido!\n";
 		}
-		if (rbMasculino == null || rbFeminino == null) {
+		if (rbtMasculino == null || rbtFeminino == null) {
 			errorMessage += "Sexo inválido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
-		if (dtpNasc.getValue() == null || dtpNasc.getValue().isAfter(hoje)) {
+		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
 			errorMessage += "Data de nascimento inválida!\n";
 		}
-		if (txfSenha.getText() == null || txfSenha.getText().length() == 0) {
+		if (pswSenha.getText() == null || pswSenha.getText().length() == 0) {
 			errorMessage += "Senha inválida!\n";
+		}
+		if (pswConfirmarSenha.getText() == null || pswConfirmarSenha.getText().length() == 0) {
+			errorMessage += "Confirmação de Senha inválida!\n";
+		}
+		if(!pswSenha.getText().equals(pswConfirmarSenha.getText())){
+			errorMessage += "Senhas não coincidem!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
