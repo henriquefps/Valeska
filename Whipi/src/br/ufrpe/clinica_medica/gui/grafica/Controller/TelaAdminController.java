@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.beans.property.StringProperty;
@@ -65,7 +66,6 @@ public class TelaAdminController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
-
 	}
 	
 	@FXML
@@ -138,6 +138,9 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaPaciente() {
+		if (pacienteAtual == null) {
+			return;
+		}
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogPaciente")));
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
@@ -151,7 +154,25 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaRemovePaciente() {
-		
+		if (pacienteAtual == null) {
+			return;
+		}
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Remover paciente");
+		alert.setHeaderText("Deseja remover o paciente " + pacienteAtual.getNome() + "?");
+		//alert.setContentText("Are you ok with this?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK){
+		    try {
+				f.removerPaciente(pacienteAtual);
+				preencherTableView();
+			} catch (PNEException e) {
+				e.printStackTrace();
+			}
+		} else {
+			return;
+		}
 	}
 	
 	@FXML
@@ -164,7 +185,7 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		DialogPacienteController p = t.getF().getController();
-		p.mostrarDetalhes(pacienteAtual);
+		p.verDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
 	}
 	

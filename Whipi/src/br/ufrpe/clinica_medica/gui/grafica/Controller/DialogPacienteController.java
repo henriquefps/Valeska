@@ -82,7 +82,6 @@ public class DialogPacienteController implements Initializable {
 	@FXML
 	private void salvarPaciente() {
 		cadastrar();
-		fecharTela();
 	}
 
 	public void cadastrar() {

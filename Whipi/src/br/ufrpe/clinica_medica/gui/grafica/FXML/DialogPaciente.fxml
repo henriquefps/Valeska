@@ -64,6 +64,7 @@
                   <RadioButton fx:id="rbtFeminino" mnemonicParsing="false" text="Feminino" toggleGroup="$tgpSexo" GridPane.columnIndex="1" />
                </children>
             </GridPane>
+            <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
             <TextField fx:id="txfCidade" promptText="Cidade" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <TextField fx:id="txfBairro" promptText="Bairro" GridPane.columnIndex="1" GridPane.rowIndex="8" />
             <TextField fx:id="txfRua" promptText="Rua" GridPane.columnIndex="1" GridPane.rowIndex="9" />
@@ -77,7 +78,6 @@
             <Label text="Complemento:" GridPane.rowIndex="11" />
             <Label text="Data:" GridPane.rowIndex="12" />
             <DatePicker fx:id="dtpNascimento" promptText="Data de nascimento" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
          </children>
       </GridPane>
       <Label fx:id="labelTitle" layoutX="135.0" layoutY="14.0" text="Cadastro Paciente">
