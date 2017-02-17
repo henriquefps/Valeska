@@ -10,9 +10,9 @@ public class DiasDeAtendimento implements Serializable{
 	private LocalTime diaFim;
 	
 	public DiasDeAtendimento(){
-		dia = false;
-		diaInicio = null;
-		diaFim = null;
+		dia = true;
+		diaInicio = LocalTime.of(9, 0);
+		diaFim = LocalTime.of(18, 0);
 	}
 
 	public boolean isDia() {

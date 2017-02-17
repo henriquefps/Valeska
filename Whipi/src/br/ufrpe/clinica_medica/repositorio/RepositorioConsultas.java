@@ -105,8 +105,10 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 	public void cadastrar(Consulta consulta) throws IllegalArgumentException {
 		if (consulta != null) {
 			lista.add(consulta);
+			System.out.println("ok");
 		} else {
-			throw new IllegalArgumentException("Consulta Inválida!");
+			System.out.println("Deu bronca no repositorio");
+			throw new IllegalArgumentException("Consulta Invï¿½lida!");
 		}
 	}
 

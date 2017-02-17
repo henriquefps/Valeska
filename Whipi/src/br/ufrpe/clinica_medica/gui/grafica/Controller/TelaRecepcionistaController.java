@@ -1,12 +1,15 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.Consulta;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
@@ -46,6 +49,12 @@ public class TelaRecepcionistaController implements Initializable{
 	@FXML private TableColumn<Paciente, String> colunaPacienteNome;
 	@FXML private TableColumn<Paciente, String> colunaPacienteCPF;
 	@FXML private TableView<Paciente> tabelaPaciente;
+	
+	@FXML private TableView<Consulta> tabelaConsultas;
+	@FXML private TableColumn<Consulta, Medico> colunaConsultaMedico;
+	@FXML private TableColumn<Consulta, Paciente> colunaConsultaPaciente;
+	@FXML private TableColumn<Consulta, LocalDateTime> colunaConsultaHorario;
+	@FXML private TableColumn<Consulta, Boolean> colunaConsultaRealizada;
 	
 	private Telas t; 
 	private FachadaClinicaMedica f;
@@ -119,18 +128,19 @@ public class TelaRecepcionistaController implements Initializable{
 		
 	}
 	@FXML private void logoff() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
-		alert.setHeaderText("Logoff");
-		alert.setContentText("Deseja fazer logoff?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
-			t.voltarTela();
-			t.abrirTela();
-		} else {
-		    alert.close();
-		}
+//		Alert alert = new Alert(AlertType.CONFIRMATION);
+//		alert.setTitle("Confirmacao");
+//		alert.setHeaderText("Logoff");
+//		alert.setContentText("Deseja fazer logoff?");
+//
+//		Optional<ButtonType> result = alert.showAndWait();
+//		if (result.get() == ButtonType.OK){
+//			t.voltarTela();
+//			t.abrirTela();
+//		} else {
+//		    alert.close();
+//		}
+		t.logoff();
 	}
 	
 	@FXML private void sair() {
@@ -159,5 +169,14 @@ public class TelaRecepcionistaController implements Initializable{
 		if (clicado != null) {
 			pacienteAtual = clicado;
 		}
+	}
+	
+	public void preencherTableViewConsultas(){	
+		ArrayList<Consulta> consultas = f.listarConsultas();
+		colunaConsultaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
+		colunaConsultaMedico.setCellValueFactory(new PropertyValueFactory<>("medico"));
+		colunaConsultaPaciente.setCellValueFactory(new PropertyValueFactory<>("paciente"));
+		colunaConsultaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
+		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 	}
 }

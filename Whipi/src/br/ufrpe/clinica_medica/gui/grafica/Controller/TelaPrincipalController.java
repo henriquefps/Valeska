@@ -33,6 +33,7 @@ public class TelaPrincipalController implements Initializable {
 	
 	@FXML
 	public void validaLogin() {
+		System.out.println(fachada.listarConsultas());
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
 		

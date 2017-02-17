@@ -49,22 +49,27 @@ public class GerenciamentoConsulta {
 
 	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException {
 		if (medico != null) {
+			System.out.println("Medico nao e nulo");
 			if (paciente != null) {
+				System.out.println("Paciente nao e nulo");
 				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
-				if (medico.getDiasDeTrabalho()[diaDaSemana].isDia()
-						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
+				System.out.println("Horario nao e null");
+				if (//medico.getDiasDeTrabalho()[diaDaSemana].isDia()
+						 medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getMinute() <= horario.getMinute()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaFim().getHour() > horario.getHour()) {
+					System.out.println("Chegou no gerenciamento");
 					consultas.cadastrar(new Consulta(paciente, horario, medico));
 					consultas.salvarConsultaEmArquivo();
 				} else {
+					System.out.println("Deu bronca nos dias");
 					throw new ECException();
 				}
 			} else {
-				throw new IllegalArgumentException("Medico Invalido");
+				throw new IllegalArgumentException("Paciente Invalido");
 			}
 		} else {
-			throw new IllegalArgumentException("Paciente Invalido");
+			throw new IllegalArgumentException("Medico Invalido");
 		}
 	}
 
