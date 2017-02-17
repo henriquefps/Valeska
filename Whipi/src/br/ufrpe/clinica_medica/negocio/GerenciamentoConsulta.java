@@ -54,13 +54,8 @@ public class GerenciamentoConsulta {
 				System.out.println("Paciente nao e nulo");
 				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
 				System.out.println("Horario nao e null");
-<<<<<<< Updated upstream
-				if (// medico.getDiasDeTrabalho()[diaDaSemana].isDia()
-				medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
-=======
 				if (medico.getDiasDeTrabalho()[diaDaSemana].isDia()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
->>>>>>> Stashed changes
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getMinute() <= horario.getMinute()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaFim().getHour() > horario.getHour()) {
 					System.out.println("Chegou no gerenciamento");
