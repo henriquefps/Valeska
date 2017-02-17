@@ -86,9 +86,8 @@ public class DialogRecepcionistaController implements Initializable {
 	}
 
 	public void cadastrar() {
-		Recepcionista recep = new Recepcionista();
 		if (isInputValid()) {
-
+			Recepcionista recep = new Recepcionista();
 			recep.setNome(txfNome.getText());
 			recep.setCpf(txfCPF.getText());
 			recep.setRg(txfRG.getText());
@@ -112,14 +111,15 @@ public class DialogRecepcionistaController implements Initializable {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro de dados!");
 				alert.setHeaderText("Cadastro invalido!");
-				alert.setContentText(recep.getNome() + "ja cadastrado.");
+				alert.setContentText(recep.getNome() + " ja cadastrado.");
 				alert.showAndWait();
 			} finally {
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Cadastro Medico");
+				alert.setTitle("Cadastro Recepcionista");
 				alert.setHeaderText(null);
-				alert.setContentText(recep.getNome() + "Cadastrado com sucesso");
+				alert.setContentText(recep.getNome() + " cadastrado com sucesso");
 				alert.showAndWait();
+				sair();
 			}
 		}
 
@@ -181,7 +181,6 @@ public class DialogRecepcionistaController implements Initializable {
 
 	@FXML
 	private void sair() {
-		t.voltarTela();
 		t.fecharTelaDialogo();
 	}
 }
