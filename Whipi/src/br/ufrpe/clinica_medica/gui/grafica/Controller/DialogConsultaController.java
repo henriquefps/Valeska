@@ -66,6 +66,15 @@ public class DialogConsultaController implements Initializable {
 		preencherTableViewPaciente(this.txfPesquisaPaciente.getText());
 	}
 	
+	@FXML
+	private void verificaSave() {
+		if (dtpConsulta.getValue() != null && txfHorario.getText().length() != 0) {
+			btnSave.setDisable(false);
+		} else {
+			btnSave.setDisable(true);
+		}
+	}
+	
 	public void preencherTableViewPaciente(String inicial) {
 		ArrayList<Paciente> pacientes = fachada.listarPacientes(inicial);
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
