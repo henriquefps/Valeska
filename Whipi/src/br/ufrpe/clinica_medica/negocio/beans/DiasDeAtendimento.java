@@ -3,13 +3,13 @@ package br.ufrpe.clinica_medica.negocio.beans;
 import java.io.Serializable;
 import java.time.LocalTime;
 
-public class DiasDeAtendimento implements Serializable{
-	
+public class DiasDeAtendimento implements Serializable {
+
 	private boolean dia;
 	private LocalTime diaInicio;
 	private LocalTime diaFim;
-	
-	public DiasDeAtendimento(){
+
+	public DiasDeAtendimento() {
 		dia = true;
 		diaInicio = LocalTime.of(9, 0);
 		diaFim = LocalTime.of(18, 0);
@@ -24,8 +24,8 @@ public class DiasDeAtendimento implements Serializable{
 		this.diaInicio = LocalTime.of(horaI, minutoI);
 		this.diaFim = LocalTime.of(horaF, minutoF);
 	}
-	
-	public void setDiaFalse(){
+
+	public void setDiaFalse() {
 		this.dia = false;
 		this.diaInicio = null;
 		this.diaFim = null;
@@ -38,5 +38,5 @@ public class DiasDeAtendimento implements Serializable{
 	public LocalTime getDiaFim() {
 		return diaFim;
 	}
-	
+
 }

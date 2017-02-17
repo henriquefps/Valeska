@@ -38,11 +38,11 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		Pessoa admin = new Pessoa("admin", "admin", null, null, null, 'm', null, null);
 		repositorio.add(admin);
 	}
-	
-	private static RepositorioPessoas lerDoArquivo(){
-		
+
+	private static RepositorioPessoas lerDoArquivo() {
+
 		File f = new File("Pessoas.dat");
-		if(!f.exists()){
+		if (!f.exists()) {
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -53,7 +53,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		RepositorioPessoas rp = null;
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
-		
+
 		try {
 			fis = new FileInputStream(f);
 			ois = new ObjectInputStream(fis);
@@ -61,8 +61,8 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 			rp = (RepositorioPessoas) o;
 		} catch (Exception e) {
 			rp = new RepositorioPessoas();
-		} finally{
-			if(ois != null){
+		} finally {
+			if (ois != null) {
 				try {
 					ois.close();
 				} catch (IOException e) {
@@ -71,10 +71,10 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 				}
 			}
 		}
-		
+
 		return rp;
 	}
-	
+
 	public void salvarPessoaEmArquivo() {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
@@ -86,7 +86,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if(oos != null){
+			if (oos != null) {
 				try {
 					oos.close();
 				} catch (IOException e) {
@@ -94,7 +94,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 					e.printStackTrace();
 				}
 			}
-				
+
 		}
 	}
 
@@ -104,35 +104,35 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		}
 		return instance;
 	}
-	
-	public ArrayList<Medico> getListaMedicos() {		
+
+	public ArrayList<Medico> getListaMedicos() {
 		ArrayList<Medico> m = new ArrayList<>();
-		
+
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Medico) {
-				m.add((Medico)repositorio.get(i));
+				m.add((Medico) repositorio.get(i));
 			}
 		}
 		return m;
 	}
-	
-	public ArrayList<Paciente> getListaPacientes() {		
+
+	public ArrayList<Paciente> getListaPacientes() {
 		ArrayList<Paciente> p = new ArrayList<>();
-		
+
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
-				p.add((Paciente)repositorio.get(i));
+				p.add((Paciente) repositorio.get(i));
 			}
 		}
 		return p;
 	}
-	
-	public ArrayList<Recepcionista> getListaRecepcionista() {		
+
+	public ArrayList<Recepcionista> getListaRecepcionista() {
 		ArrayList<Recepcionista> r = new ArrayList<>();
-		
+
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Recepcionista) {
-				r.add((Recepcionista)repositorio.get(i));
+				r.add((Recepcionista) repositorio.get(i));
 			}
 		}
 		return r;
@@ -145,12 +145,12 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 	public boolean remover(Pessoa remover) {
 		boolean result = false;
 		boolean existe = this.existe(remover);
-		if (existe == true){
+		if (existe == true) {
 			repositorio.remove(remover);
 			result = true;
 		}
 		return result;
-		
+
 	}
 
 	public Pessoa pesquisar(String cpf) {
@@ -178,13 +178,12 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		}
 		return achou;
 	}
-	
+
 	public void atualizar(Pessoa ant, Pessoa novo) {
-		if(ant != null && novo != null)
+		if (ant != null && novo != null)
 			ant = novo;
 		else
 			throw new IllegalArgumentException();
 	}
-	
-	
+
 }

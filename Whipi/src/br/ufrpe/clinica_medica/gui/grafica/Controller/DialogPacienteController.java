@@ -27,7 +27,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
 public class DialogPacienteController implements Initializable {
-	
+
 	@FXML
 	private Label labelTitle;
 	@FXML
@@ -70,14 +70,13 @@ public class DialogPacienteController implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
-		
+
 		fachada = FachadaClinicaMedica.getInstance();
-		
+
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
 		cbxEstado.getItems().addAll(estados);
-	
-	}
 
+	}
 
 	@FXML
 	private void salvarPaciente() {
@@ -177,50 +176,50 @@ public class DialogPacienteController implements Initializable {
 	private void fecharTela() {
 		t.fecharTelaDialogo();
 	}
-	
+
 	protected void mostrarDetalhes(Paciente paciente) {
 		this.labelTitle.setText("Atualiza Paciente");
-	    if (paciente != null) {
-	    	txfNome.setText(paciente.getNome());
-	    	txfCpf.setText(paciente.getCpf());
-	    	txfRg.setText(paciente.getRg());
-	    	txfTelefone.setText(paciente.getTelefone());
-	    	txfCelular.setText(paciente.getCelular());
-	    	txfRua.setText(paciente.getEndereco().getRua());
-	    	txfBairro.setText(paciente.getEndereco().getBairro());
-	    	txfCidade.setText(paciente.getEndereco().getCidade());
-	    	txfComplemento.setText(paciente.getEndereco().getComplemento());
-	    	txfCep.setText(paciente.getEndereco().getCep());
-	    	cbxEstado.setValue(paciente.getEndereco().getEstado());
-	    	if(paciente.getSexo() == 'M'){
-	    		tgpSexo.selectToggle(rbtMasculino);
-	    	}
-	    	else{
-	    		tgpSexo.selectToggle(rbtFeminino);
-	    	}
-	    	dtpNascimento.setValue(paciente.getDataDeNascimento());
-	    		
-	    } else {
-	    	txfNome.setText("");
-	    	txfCpf.setText("");
-	    	txfRg.setText("");
-	    	txfTelefone.setText("");
-	    	txfCelular.setText("");
-	    	txfRua.setText("");
-	    	txfBairro.setText("");
-	    	txfCidade.setText("");
-	    	txfComplemento.setText("");
-	    	txfCep.setText("");
-	    	cbxEstado.setValue("");
-	    }
+		if (paciente != null) {
+			txfNome.setText(paciente.getNome());
+			txfCpf.setText(paciente.getCpf());
+			txfRg.setText(paciente.getRg());
+			txfTelefone.setText(paciente.getTelefone());
+			txfCelular.setText(paciente.getCelular());
+			txfRua.setText(paciente.getEndereco().getRua());
+			txfBairro.setText(paciente.getEndereco().getBairro());
+			txfCidade.setText(paciente.getEndereco().getCidade());
+			txfComplemento.setText(paciente.getEndereco().getComplemento());
+			txfCep.setText(paciente.getEndereco().getCep());
+			cbxEstado.setValue(paciente.getEndereco().getEstado());
+			if (paciente.getSexo() == 'M') {
+				tgpSexo.selectToggle(rbtMasculino);
+			} else {
+				tgpSexo.selectToggle(rbtFeminino);
+			}
+			dtpNascimento.setValue(paciente.getDataDeNascimento());
+
+		} else {
+			txfNome.setText("");
+			txfCpf.setText("");
+			txfRg.setText("");
+			txfTelefone.setText("");
+			txfCelular.setText("");
+			txfRua.setText("");
+			txfBairro.setText("");
+			txfCidade.setText("");
+			txfComplemento.setText("");
+			txfCep.setText("");
+			cbxEstado.setValue("");
+		}
 		btnSave.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent evento) {
 				atualizaPaciente(paciente);
 				fecharTela();
-			}});
+			}
+		});
 	}
-	
+
 	protected void atualizaPaciente(Paciente a) {
 		Paciente paciente = new Paciente();
 		paciente.setNome(txfNome.getText());
@@ -250,26 +249,25 @@ public class DialogPacienteController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
+
 	protected void verDetalhes(Paciente paciente) {
 		mostrarDetalhes(paciente);
 		this.labelTitle.setText("Detalhe Paciente");
-    	txfNome.setDisable(true);
-    	txfCpf.setDisable(true);
-    	txfRg.setDisable(true);
-    	txfTelefone.setDisable(true);
-    	txfCelular.setDisable(true);
-    	txfRua.setDisable(true);
-    	txfBairro.setDisable(true);
-    	txfCidade.setDisable(true);
-    	txfComplemento.setDisable(true);
-    	txfCep.setDisable(true);
-    	cbxEstado.setDisable(true);
-    	rbtMasculino.setDisable(true);
-    	rbtFeminino.setDisable(true);
-    	dtpNascimento.setDisable(true);
-    	btnSave.setVisible(false);
+		txfNome.setDisable(true);
+		txfCpf.setDisable(true);
+		txfRg.setDisable(true);
+		txfTelefone.setDisable(true);
+		txfCelular.setDisable(true);
+		txfRua.setDisable(true);
+		txfBairro.setDisable(true);
+		txfCidade.setDisable(true);
+		txfComplemento.setDisable(true);
+		txfCep.setDisable(true);
+		cbxEstado.setDisable(true);
+		rbtMasculino.setDisable(true);
+		rbtFeminino.setDisable(true);
+		dtpNascimento.setDisable(true);
+		btnSave.setVisible(false);
 	}
-
 
 }

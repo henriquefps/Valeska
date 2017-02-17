@@ -54,8 +54,8 @@ public class GerenciamentoConsulta {
 				System.out.println("Paciente nao e nulo");
 				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
 				System.out.println("Horario nao e null");
-				if (//medico.getDiasDeTrabalho()[diaDaSemana].isDia()
-						 medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
+				if (// medico.getDiasDeTrabalho()[diaDaSemana].isDia()
+				medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getHour() <= horario.getHour()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaInicio().getMinute() <= horario.getMinute()
 						&& medico.getDiasDeTrabalho()[diaDaSemana].getDiaFim().getHour() > horario.getHour()) {
 					System.out.println("Chegou no gerenciamento");
@@ -120,17 +120,16 @@ public class GerenciamentoConsulta {
 		} else {
 			throw new PNEException("CPF do medico nao encontrado no sistema");
 		}
-		
-		
+
 	}
-	
+
 	public void removerConsulta(Consulta c) throws CNEException {
-		if(c != null){
+		if (c != null) {
 			consultas.excluir(c);
 		}
 	}
-	
-	public ArrayList<Consulta> listarConsultas(){
+
+	public ArrayList<Consulta> listarConsultas() {
 		return consultas.getLista();
 	}
 }

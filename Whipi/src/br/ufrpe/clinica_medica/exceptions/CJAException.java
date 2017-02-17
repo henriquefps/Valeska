@@ -7,13 +7,13 @@ import br.ufrpe.clinica_medica.negocio.beans.Consulta;
  */
 public class CJAException extends Exception {
 	private Consulta aSerTratada;
-	
-	public CJAException(Consulta a){
+
+	public CJAException(Consulta a) {
 		super("Esta Consulta esta cadastrada no dia a ser cancelado");
 		aSerTratada = a;
 	}
-	
-	public Consulta getASerTratada(){
+
+	public Consulta getASerTratada() {
 		return aSerTratada;
 	}
 }

@@ -29,17 +29,17 @@ import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 
-public class RepositorioConsultas implements IRepositorioConsultas, Serializable{
+public class RepositorioConsultas implements IRepositorioConsultas, Serializable {
 	private ArrayList<Consulta> lista;
 	private static RepositorioConsultas instance;
 
 	private RepositorioConsultas() {
 		lista = new ArrayList<Consulta>();
 	}
-	
-	private static RepositorioConsultas lerDoArquivo(){
+
+	private static RepositorioConsultas lerDoArquivo() {
 		File f = new File("Consultas.dat");
-		if(!f.exists()){
+		if (!f.exists()) {
 			try {
 				f.createNewFile();
 			} catch (IOException e) {
@@ -50,7 +50,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 		RepositorioConsultas rc = null;
 		FileInputStream fis = null;
 		ObjectInputStream ois = null;
-		
+
 		try {
 			fis = new FileInputStream(f);
 			ois = new ObjectInputStream(fis);
@@ -58,8 +58,8 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 			rc = (RepositorioConsultas) o;
 		} catch (Exception e) {
 			rc = new RepositorioConsultas();
-		} finally{
-			if(ois != null){
+		} finally {
+			if (ois != null) {
 				try {
 					ois.close();
 				} catch (IOException e) {
@@ -68,10 +68,10 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 				}
 			}
 		}
-		
+
 		return rc;
 	}
-	
+
 	public void salvarConsultaEmArquivo() {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
@@ -83,7 +83,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} finally {
-			if(oos != null){
+			if (oos != null) {
 				try {
 					oos.close();
 				} catch (IOException e) {
@@ -91,7 +91,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 					e.printStackTrace();
 				}
 			}
-				
+
 		}
 	}
 
@@ -126,8 +126,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 		Consulta con = pesquisar(id);
 		if (con != null) {
 			lista.remove(con);
-		}
-		else{
+		} else {
 			throw new CNEException();
 		}
 	}
@@ -135,8 +134,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 	public void excluir(Consulta con) throws CNEException {
 		if (con != null) {
 			lista.remove(con);
-		}
-		else{
+		} else {
 			throw new CNEException();
 		}
 	}
@@ -169,20 +167,20 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 	public Consulta pesquisar(String cpfDoPaciente, LocalDate data) {
 		Consulta achou = null;
 		for (int i = 0; i < lista.size(); i++) {
-			
-			if (cpfDoPaciente != null && lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)){
-				
-				if(data != null && lista.get(i).getHorario().toLocalDate().getDayOfMonth() == data.getDayOfMonth()
+
+			if (cpfDoPaciente != null && lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)) {
+
+				if (data != null && lista.get(i).getHorario().toLocalDate().getDayOfMonth() == data.getDayOfMonth()
 						&& lista.get(i).getHorario().toLocalDate().getMonthValue() == data.getMonthValue()
 						&& lista.get(i).getHorario().getYear() == data.getYear()) {
-					
+
 					achou = lista.get(i);
 				}
 			}
 		}
 		return achou;
 	}
-	
+
 	/**
 	 * Retorna um ArrayList com todas as consultas com um determinado medico.
 	 */

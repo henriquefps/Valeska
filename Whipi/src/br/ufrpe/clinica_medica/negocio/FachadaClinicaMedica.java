@@ -149,12 +149,14 @@ public class FachadaClinicaMedica {
 		this.medico.cancelarDiaDeTrabalhoX(medico, diaDaSemana);
 		ArrayList<Consulta> cons = consulta.consultasDoDia(medico);
 		for (int i = 0; i < cons.size(); i++) {
-			if(cons.get(i).getHorario().getDayOfWeek().getValue() - 1 == diaDaSemana && !cons.get(i).foiRealizada()){
-				throw new CJAException(cons.get(i));			}
+			if (cons.get(i).getHorario().getDayOfWeek().getValue() - 1 == diaDaSemana && !cons.get(i).foiRealizada()) {
+				throw new CJAException(cons.get(i));
+			}
 		}
 	}
-	
-	public void cancelarTodasAsConsultasDeUmDia(Medico med, LocalDate dia) throws PNEException, NCDException, CNEException{
+
+	public void cancelarTodasAsConsultasDeUmDia(Medico med, LocalDate dia)
+			throws PNEException, NCDException, CNEException {
 		ArrayList<Consulta> cons = consulta.consultasComMedicoNoDia(med, dia);
 		if (cons != null) {
 			for (int i = 0; i < cons.size(); i++) {
@@ -162,8 +164,8 @@ public class FachadaClinicaMedica {
 			}
 		}
 	}
-	
-	public ArrayList<Consulta> listarConsultas(){
+
+	public ArrayList<Consulta> listarConsultas() {
 		return consulta.listarConsultas();
 	}
 }

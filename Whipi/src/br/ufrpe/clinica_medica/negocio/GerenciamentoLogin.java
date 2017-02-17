@@ -13,7 +13,7 @@ public class GerenciamentoLogin {
 	public GerenciamentoLogin() {
 		this.pessoas = RepositorioPessoas.getInstance();
 	}
-	
+
 	public Pessoa efetuarLogin(String cpf, String senha) {
 		Pessoa individuo = pessoas.pesquisar(cpf);
 		boolean senhaCorreta = false;
@@ -31,5 +31,5 @@ public class GerenciamentoLogin {
 		}
 		return individuo;
 	}
-	
+
 }

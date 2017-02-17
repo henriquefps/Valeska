@@ -55,19 +55,19 @@ public class TelaAdminController implements Initializable {
 	private TableColumn<Paciente, String> colunaPacienteCPF;
 	@FXML
 	private TableView<Paciente> tabelaPaciente;
-	
+
 	private Telas t;
 	private FachadaClinicaMedica f;
-	
+
 	private Paciente pacienteAtual;
-    
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
 	}
-	
+
 	@FXML
 	private void telaCadastroMedico() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
@@ -86,10 +86,10 @@ public class TelaAdminController implements Initializable {
 	private void telaRemoveMedico() {
 
 	}
-	
+
 	@FXML
 	private void telaDetalheMedico() {
-		
+
 	}
 
 	@FXML
@@ -110,8 +110,8 @@ public class TelaAdminController implements Initializable {
 
 		// Traditional way to get the response value.
 		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()){
-		    System.out.println("Your name: " + result.get());
+		if (result.isPresent()) {
+			System.out.println("Your name: " + result.get());
 		}
 
 	}
@@ -120,10 +120,10 @@ public class TelaAdminController implements Initializable {
 	private void telaRemoveRecepcionista() {
 
 	}
-	
+
 	@FXML
 	private void telaDetalheRecepcionista() {
-		
+
 	}
 
 	@FXML
@@ -162,8 +162,8 @@ public class TelaAdminController implements Initializable {
 		alert.setHeaderText("Deseja remover o paciente " + pacienteAtual.getNome() + "?");
 
 		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
-		    try {
+		if (result.get() == ButtonType.OK) {
+			try {
 				f.removerPaciente(pacienteAtual);
 				preencherTableView();
 			} catch (PNEException e) {
@@ -173,7 +173,7 @@ public class TelaAdminController implements Initializable {
 			return;
 		}
 	}
-	
+
 	@FXML
 	private void telaDetalhePaciente() {
 		if (pacienteAtual == null) {
@@ -187,12 +187,12 @@ public class TelaAdminController implements Initializable {
 		p.verDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
 	}
-	
+
 	@FXML
 	private void logoff() {
 		t.logoff();
 	}
-	
+
 	@FXML
 	private void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
@@ -201,13 +201,13 @@ public class TelaAdminController implements Initializable {
 		alert.setContentText("Deseja fechar o programa?");
 
 		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
+		if (result.get() == ButtonType.OK) {
 			System.exit(0);
 		} else {
-		    alert.close();
+			alert.close();
 		}
 	}
-	
+
 	@FXML
 	private void nomePacienteClicado() {
 		Paciente clicado = tabelaPaciente.getSelectionModel().getSelectedItem();
@@ -218,12 +218,12 @@ public class TelaAdminController implements Initializable {
 			pacienteAtual = clicado;
 		}
 	}
-	
+
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
 	}
-	
-	public void preencherTableView(){	
+
+	public void preencherTableView() {
 		ArrayList<Paciente> pacientes = f.ListarPacientes();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));

@@ -23,6 +23,7 @@ public class Telas {
 	private ArrayList<Scene> cena;
 	private FXMLLoader f;
 	private Pessoa logada;
+
 	public Pessoa getLogada() {
 		return logada;
 	}
@@ -42,8 +43,7 @@ public class Telas {
 
 		return instance;
 	}
-	
-	
+
 	public FXMLLoader getF() {
 		return f;
 	}
@@ -76,7 +76,7 @@ public class Telas {
 		this.cena.add(s);
 		this.logada = log;
 	}
-	
+
 	public void setScene(Scene s) {
 		this.cena.add(s);
 	}
@@ -116,13 +116,13 @@ public class Telas {
 	public void voltarTela() {
 		this.cena.remove(cena.size() - 1);
 	}
-	
-	public void abrirTelaLogin(){
+
+	public void abrirTelaLogin() {
 		setDialogStage(new Stage());
 		setScene(new Scene((Parent) carregarFXML("TelaPrincipal")), logada);
 		abrirTelaDialogo();
 	}
-	
+
 	public void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirma��o");
@@ -130,11 +130,11 @@ public class Telas {
 		alert.setContentText("Deseja fazer logoff?");
 
 		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
+		if (result.get() == ButtonType.OK) {
 			fecharTela();
 			abrirTelaLogin();
 		} else {
-		    alert.close();
+			alert.close();
 		}
 	}
 }

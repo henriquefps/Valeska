@@ -8,51 +8,71 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaMedicoController">
-   <children>
-      <TitledPane alignment="CENTER" collapsible="false" prefHeight="400.0" prefWidth="600.0" text="Médico">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <BorderPane prefHeight="374.0" prefWidth="600.0">
-                     <top>
-                        <Accordion BorderPane.alignment="CENTER">
-                          <panes>
-                            <TitledPane text="Dados">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Button layoutX="215.0" layoutY="41.0" mnemonicParsing="false" onAction="#alterarDiasDeTrabalho" text="Alterar Dias De Trabalho" />
-                                          <Button layoutX="254.0" layoutY="105.0" mnemonicParsing="false" onAction="#editarPerfil" text="Editar Perfil" />
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </TitledPane>
-                            <TitledPane prefHeight="368.0" prefWidth="600.0" text="Consultas">
-                              <content>
-                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <Button layoutX="415.0" layoutY="95.0" mnemonicParsing="false" onAction="#realizarConsulta" text="Realizar Consultas" />
-                                          <Button layoutX="378.0" layoutY="186.0" mnemonicParsing="false" onAction="#cancelarConsultasDeUmDia" text="Cancelar Consultas De Um Dia" />
-                                          <TableView fx:id="tabelaConsultas" prefHeight="318.0" prefWidth="363.0">
-                                            <columns>
-                                              <TableColumn fx:id="colunaNomeDoMedico" prefWidth="75.0" text="Médico" />
-                                              <TableColumn fx:id="colunaNomeDoPaciente" prefWidth="75.0" text="Paciente" />
-                                                <TableColumn fx:id="colunaHorario" prefWidth="130.0" text="Horario" />
-                                                <TableColumn fx:id="colunaRealizada" prefWidth="81.0" text="Realizada" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                              </content>
-                            </TitledPane>
-                          </panes>
-                        </Accordion>
-                     </top>
-                  </BorderPane>
-               </children>
-            </AnchorPane>
-        </content>
-      </TitledPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity"
+	minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0"
+	prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1"
+	fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaMedicoController">
+	<children>
+		<TitledPane alignment="CENTER" collapsible="false"
+			prefHeight="400.0" prefWidth="600.0" text="Médico">
+			<content>
+				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0"
+					prefWidth="200.0">
+					<children>
+						<BorderPane prefHeight="374.0" prefWidth="600.0">
+							<top>
+								<Accordion BorderPane.alignment="CENTER">
+									<panes>
+										<TitledPane text="Dados">
+											<content>
+												<AnchorPane minHeight="0.0" minWidth="0.0"
+													prefHeight="180.0" prefWidth="200.0">
+													<children>
+														<Button layoutX="215.0" layoutY="41.0"
+															mnemonicParsing="false" onAction="#alterarDiasDeTrabalho"
+															text="Alterar Dias De Trabalho" />
+														<Button layoutX="254.0" layoutY="105.0"
+															mnemonicParsing="false" onAction="#editarPerfil" text="Editar Perfil" />
+													</children>
+												</AnchorPane>
+											</content>
+										</TitledPane>
+										<TitledPane prefHeight="368.0" prefWidth="600.0"
+											text="Consultas">
+											<content>
+												<AnchorPane minHeight="0.0" minWidth="0.0"
+													prefHeight="180.0" prefWidth="200.0">
+													<children>
+														<Button layoutX="415.0" layoutY="95.0"
+															mnemonicParsing="false" onAction="#realizarConsulta"
+															text="Realizar Consultas" />
+														<Button layoutX="378.0" layoutY="186.0"
+															mnemonicParsing="false" onAction="#cancelarConsultasDeUmDia"
+															text="Cancelar Consultas De Um Dia" />
+														<TableView fx:id="tabelaConsultas" prefHeight="318.0"
+															prefWidth="363.0">
+															<columns>
+																<TableColumn fx:id="colunaNomeDoMedico"
+																	prefWidth="75.0" text="Médico" />
+																<TableColumn fx:id="colunaNomeDoPaciente"
+																	prefWidth="75.0" text="Paciente" />
+																<TableColumn fx:id="colunaHorario"
+																	prefWidth="130.0" text="Horario" />
+																<TableColumn fx:id="colunaRealizada"
+																	prefWidth="81.0" text="Realizada" />
+															</columns>
+														</TableView>
+													</children>
+												</AnchorPane>
+											</content>
+										</TitledPane>
+									</panes>
+								</Accordion>
+							</top>
+						</BorderPane>
+					</children>
+				</AnchorPane>
+			</content>
+		</TitledPane>
+	</children>
 </AnchorPane>

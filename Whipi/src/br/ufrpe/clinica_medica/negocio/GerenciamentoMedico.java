@@ -21,7 +21,7 @@ import br.ufrpe.clinica_medica.negocio.beans.*;
 import br.ufrpe.clinica_medica.repositorio.*;
 
 public class GerenciamentoMedico {
-	
+
 	private IRepositorioPessoas pessoas;
 
 	public GerenciamentoMedico() {
@@ -29,13 +29,14 @@ public class GerenciamentoMedico {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) throws PJCException {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha)
+			throws PJCException {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 					consultasPorDia, senha));
 			pessoas.salvarPessoaEmArquivo();
-		} else{
-			throw new PJCException("CPF " + cpf+ " ja cadastrado no sistema");
+		} else {
+			throw new PJCException("CPF " + cpf + " ja cadastrado no sistema");
 		}
 	}
 
@@ -50,27 +51,23 @@ public class GerenciamentoMedico {
 
 	public void alterarMedico(String cpf, Medico novoMedico) throws PNEException {
 		Pessoa p = null;
-		if(cpf != null){
+		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
-		}
-		else{
+		} else {
 			throw new IllegalArgumentException("CPF inv�lido");
 		}
-		if(p != null){
-			if(p instanceof Medico){
+		if (p != null) {
+			if (p instanceof Medico) {
 				pessoas.atualizar(p, novoMedico);
 				pessoas.salvarPessoaEmArquivo();
-			}
-			else{
-				//Depois mudar a mensagem, estou sem criatividade
+			} else {
+				// Depois mudar a mensagem, estou sem criatividade
 				throw new IllegalArgumentException("CPF n�o � de um m�dico");
 			}
-		}
-		else{
+		} else {
 			throw new PNEException("M�dico n�o encontrado");
 		}
 	}
-	
 
 	public Medico pesquisarMedico(String cpf) {
 		Pessoa aux = pessoas.pesquisar(cpf);
@@ -79,16 +76,16 @@ public class GerenciamentoMedico {
 		}
 		return (Medico) aux;
 	}
-	
-	public ArrayList<Medico> ListarMedicos(){
+
+	public ArrayList<Medico> ListarMedicos() {
 		return pessoas.getListaMedicos();
 	}
-	
-	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF){
+
+	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
 		medico.getDiasDeTrabalho()[diaDaSemana].setDiaTrue(horaI, minutoI, horaF, minutoF);
 	}
-	
-	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana){
+
+	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
 		medico.getDiasDeTrabalho()[diaDaSemana].setDiaFalse();
 	}
 }

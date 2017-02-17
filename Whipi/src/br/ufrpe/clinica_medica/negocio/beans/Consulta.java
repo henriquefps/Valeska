@@ -14,7 +14,7 @@ package br.ufrpe.clinica_medica.negocio.beans;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Consulta implements Serializable{
+public class Consulta implements Serializable {
 
 	private static int proximoId = 1;
 	private int id;
@@ -38,7 +38,7 @@ public class Consulta implements Serializable{
 		return realizada;
 	}
 
-	public void setRealizada(boolean a){
+	public void setRealizada(boolean a) {
 		this.realizada = a;
 	}
 
@@ -84,16 +84,16 @@ public class Consulta implements Serializable{
 
 	public boolean equals(Consulta outra) {
 		boolean achou = false;
-		if(outra != null){
-			if(this.medico != null && this.paciente != null && this.horario != null &&	outra.getMedico() != null && 
-					outra.paciente != null && outra.getHorario() != null ){
-				if (this.medico.equals(outra.getMedico()) && this.paciente.equals(outra.getPaciente()) 
-						&& this.horario.equals(outra.getHorario())){
+		if (outra != null) {
+			if (this.medico != null && this.paciente != null && this.horario != null && outra.getMedico() != null
+					&& outra.paciente != null && outra.getHorario() != null) {
+				if (this.medico.equals(outra.getMedico()) && this.paciente.equals(outra.getPaciente())
+						&& this.horario.equals(outra.getHorario())) {
 					achou = true;
 				}
 			}
 		}
-		
+
 		return achou;
 	}
 

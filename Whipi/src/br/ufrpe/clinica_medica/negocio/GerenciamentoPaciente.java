@@ -32,11 +32,11 @@ public class GerenciamentoPaciente {
 	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento) throws PJCException{
+			Endereco endereco, LocalDate dataDeNascimento) throws PJCException {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Paciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento));
 			pessoas.salvarPessoaEmArquivo();
-		} else{
+		} else {
 			throw new PJCException("CPF " + cpf + " ja cadastrado");
 		}
 	}
@@ -57,31 +57,28 @@ public class GerenciamentoPaciente {
 			throw new PNEException("CPF do paciente nao encontrado no sistema");
 		}
 	}
-	
+
 	public void alterarPaciente(String cpf, Paciente novoPaciente) throws PNEException {
 		Pessoa p = null;
-		if(cpf != null){
+		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
-		}
-		else{
+		} else {
 			throw new IllegalArgumentException("CPF inválido");
 		}
-		if(p != null){
-			if(p instanceof Paciente){
+		if (p != null) {
+			if (p instanceof Paciente) {
 				pessoas.atualizar(p, novoPaciente);
 				pessoas.salvarPessoaEmArquivo();
-			}
-			else{
-				//Depois mudar a mensagem, estou sem criatividade
+			} else {
+				// Depois mudar a mensagem, estou sem criatividade
 				throw new IllegalArgumentException("CPF não é de um paciente");
 			}
-		}
-		else{
+		} else {
 			throw new PNEException("Paciente não encontrado");
 		}
 	}
-	
-	public ArrayList<Paciente> ListarPacientes(){
+
+	public ArrayList<Paciente> ListarPacientes() {
 		return pessoas.getListaPacientes();
 	}
 }

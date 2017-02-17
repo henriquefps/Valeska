@@ -34,11 +34,12 @@ public class GerenciamentoRecepcionista {
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException{
+			Endereco endereco, LocalDate dataDeNascimento, String senha) throws PJCException {
 		if (!pessoas.existe(cpf)) {
-			pessoas.cadastrar(new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
+			pessoas.cadastrar(
+					new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
 			pessoas.salvarPessoaEmArquivo();
-		} else{
+		} else {
 			throw new PJCException("CPF " + cpf + " ja cadastrado");
 		}
 	}
@@ -59,32 +60,29 @@ public class GerenciamentoRecepcionista {
 			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
 		}
 	}
-	
-	public void alterarRecepcionista(String cpf, Recepcionista novoRec) throws PNEException{
+
+	public void alterarRecepcionista(String cpf, Recepcionista novoRec) throws PNEException {
 		Pessoa p = null;
-		if(cpf != null){
+		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
-		}
-		else{
+		} else {
 			throw new IllegalArgumentException("CPF inválido");
 		}
-		if(p != null){
-			if(p instanceof Recepcionista){
+		if (p != null) {
+			if (p instanceof Recepcionista) {
 				pessoas.atualizar(p, novoRec);
 				pessoas.salvarPessoaEmArquivo();
-			}
-			else{
-				//Depois mudar a mensagem, estou sem criatividade
+			} else {
+				// Depois mudar a mensagem, estou sem criatividade
 				throw new IllegalArgumentException("CPF não é de um recepcionista");
 			}
-		}
-		else{
+		} else {
 			throw new PNEException("Recepcionista não encontrado");
 		}
-		
+
 	}
-	
-	public ArrayList<Recepcionista> ListarRecepcionistas(){
+
+	public ArrayList<Recepcionista> ListarRecepcionistas() {
 		return pessoas.getListaRecepcionista();
 	}
 }

@@ -14,7 +14,7 @@ package br.ufrpe.clinica_medica.negocio.beans;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Pessoa implements Serializable{
+public class Pessoa implements Serializable {
 
 	private String nome;
 	private String cpf;
@@ -26,9 +26,9 @@ public class Pessoa implements Serializable{
 	private LocalDate dataDeNascimento;
 	private static int proximoId = 1;
 	private int id;
-	
-	public Pessoa(){
-		
+
+	public Pessoa() {
+
 	}
 
 	public Pessoa(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
@@ -120,15 +120,15 @@ public class Pessoa implements Serializable{
 	@Override
 	public boolean equals(Object obj) {
 		boolean res = false;
-		
-		if(obj != null)	{
-			if(obj.getClass() == this.getClass()){
-				if(this.cpf != null && this.cpf.equals(((Pessoa)obj).getCpf())){
+
+		if (obj != null) {
+			if (obj.getClass() == this.getClass()) {
+				if (this.cpf != null && this.cpf.equals(((Pessoa) obj).getCpf())) {
 					res = true;
 				}
 			}
-		}		
+		}
 		return res;
 	}
-	
+
 }

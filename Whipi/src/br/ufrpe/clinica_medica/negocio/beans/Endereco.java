@@ -13,7 +13,7 @@ package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.io.Serializable;
 
-public class Endereco implements Serializable{
+public class Endereco implements Serializable {
 
 	private String rua;
 	private String cidade;
@@ -33,13 +33,15 @@ public class Endereco implements Serializable{
 
 	public boolean equals(Endereco b) {
 		boolean achou = false;
-		if (b != null){
-			if(this.rua != null && this.cidade != null && this.bairro != null && this.estado != null && this.cep != null)
-			if (this.rua.equals(b.getRua()) && this.cidade.equals(b.getCidade()) && this.bairro.equals(b.getBairro()) &&
-					this.cep.equals(b.getCep())) {
-				if(this.complemento == null && b.getComplemento() == null || this.complemento.equals(b.getComplemento()))
-				achou = true;
-			}
+		if (b != null) {
+			if (this.rua != null && this.cidade != null && this.bairro != null && this.estado != null
+					&& this.cep != null)
+				if (this.rua.equals(b.getRua()) && this.cidade.equals(b.getCidade())
+						&& this.bairro.equals(b.getBairro()) && this.cep.equals(b.getCep())) {
+					if (this.complemento == null && b.getComplemento() == null
+							|| this.complemento.equals(b.getComplemento()))
+						achou = true;
+				}
 		}
 		return achou;
 	}

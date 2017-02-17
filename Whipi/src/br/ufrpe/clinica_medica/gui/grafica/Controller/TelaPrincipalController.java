@@ -19,27 +19,29 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
 public class TelaPrincipalController implements Initializable {
-	
-	@FXML private TextField txfUsuario;
-	@FXML private PasswordField psfSenha;
+
+	@FXML
+	private TextField txfUsuario;
+	@FXML
+	private PasswordField psfSenha;
 	private FachadaClinicaMedica fachada;
 	private Telas t;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
 	}
-	
+
 	@FXML
 	public void validaLogin() {
 		System.out.println(fachada.listarConsultas());
 		String usuario = txfUsuario.getText();
 		String senha = psfSenha.getText();
-		
+
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
-		
-		if(resultado != null)
+
+		if (resultado != null)
 			t.fecharTelaDialogo();
 		if (resultado instanceof Recepcionista) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")), resultado);
@@ -54,21 +56,21 @@ public class TelaPrincipalController implements Initializable {
 			this.dadosInvalidos();
 		}
 	}
-	
-	public void sair(){
+
+	public void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirma��o");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 
 		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK){
+		if (result.get() == ButtonType.OK) {
 			System.exit(0);
 		} else {
-		    alert.close();
+			alert.close();
 		}
 	}
-	
+
 	public void dadosInvalidos() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro de dados!");

@@ -31,7 +31,7 @@ public class Medico extends Pessoa {
 
 	public Medico() {
 		// TODO Auto-generated constructor stub
-		super(null,null,null,null,null,' ',null,null);
+		super(null, null, null, null, null, ' ', null, null);
 	}
 
 	public int getNumCRM() {
@@ -71,8 +71,8 @@ public class Medico extends Pessoa {
 		resultado += "Celular: " + this.getCelular() + "\n\n";
 		return resultado;
 	}
-	
-	public DiasDeAtendimento[] getDiasDeTrabalho(){
+
+	public DiasDeAtendimento[] getDiasDeTrabalho() {
 		return diasDeTrabalho;
 	}
 }

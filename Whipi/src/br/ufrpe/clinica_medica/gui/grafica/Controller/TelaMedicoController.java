@@ -23,29 +23,34 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-public class TelaMedicoController implements Initializable{
-	@FXML private TableView<Consulta> tabelaConsultas;
-	
-	@FXML private TableColumn<Medico, String> colunaNomeDoMedico;
-	
-	@FXML private TableColumn<Paciente, String> colunaNomeDoPaciente;
-	
-	@FXML private TableColumn<Consulta, LocalDateTime> colunaHorario;
-	
-	@FXML private TableColumn<Consulta, Boolean> colunaRealizada;
-	
+public class TelaMedicoController implements Initializable {
+	@FXML
+	private TableView<Consulta> tabelaConsultas;
+
+	@FXML
+	private TableColumn<Medico, String> colunaNomeDoMedico;
+
+	@FXML
+	private TableColumn<Paciente, String> colunaNomeDoPaciente;
+
+	@FXML
+	private TableColumn<Consulta, LocalDateTime> colunaHorario;
+
+	@FXML
+	private TableColumn<Consulta, Boolean> colunaRealizada;
+
 	private Medico logado;
-//	@FXML private Button botaoAlterarDiasDeTrabalho;
-//	
-//	@FXML private Button botaoEditarPerfil;
-//	
-//	@FXML private Button botaoRealizarConsulta;
-//	
-//	@FXML private Button botaoCancelarDiaDeTrabalho;
+	// @FXML private Button botaoAlterarDiasDeTrabalho;
+	//
+	// @FXML private Button botaoEditarPerfil;
+	//
+	// @FXML private Button botaoRealizarConsulta;
+	//
+	// @FXML private Button botaoCancelarDiaDeTrabalho;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
@@ -58,25 +63,29 @@ public class TelaMedicoController implements Initializable{
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 		logado = (Medico) t.getLogada();
 	}
-	
-	@FXML public void alterarDiasDeTrabalho(){
-		
+
+	@FXML
+	public void alterarDiasDeTrabalho() {
+
 	}
-	
-	@FXML public void realizarConsulta(){
-		
+
+	@FXML
+	public void realizarConsulta() {
+
 	}
-	
-	@FXML public void editarPerfil(){
+
+	@FXML
+	public void editarPerfil() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")), t.getLogada());
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
 	}
-	
-	@FXML public void cancelarConsultasDeUmDia(){
-		
+
+	@FXML
+	public void cancelarConsultasDeUmDia() {
+
 	}
-	
+
 }

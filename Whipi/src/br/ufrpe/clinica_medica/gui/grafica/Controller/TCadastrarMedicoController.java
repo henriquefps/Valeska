@@ -20,7 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
 public class TCadastrarMedicoController implements Initializable {
-	
+
 	@FXML
 	private Button btnCadastrar;
 	@FXML
@@ -37,23 +37,23 @@ public class TCadastrarMedicoController implements Initializable {
 	private TableColumn<Medico, String> columnNome;
 	@FXML
 	private TableColumn<Medico, String> columnCRM;
-	
+
 	private FachadaClinicaMedica fachada;
 
 	@Override
-	public void initialize(URL location, ResourceBundle resources){		
-		String[] obj = {"Nome", "CPF", "CRM"};		
-		cbxTiposPesquisa.getItems().addAll(obj);		
+	public void initialize(URL location, ResourceBundle resources) {
+		String[] obj = { "Nome", "CPF", "CRM" };
+		cbxTiposPesquisa.getItems().addAll(obj);
 		this.fachada = FachadaClinicaMedica.getInstance();
 
-		//columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));	
-		//columnCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
+		// columnNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		// columnCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
 		tbMedico.setItems(FXCollections.observableArrayList(fachada.ListarMedicos()));
 
 	}
-	
+
 	@FXML
-	private void cadastrar() throws Exception{
+	private void cadastrar() throws Exception {
 		URL url = getClass().getResource("DialogMedico.fxml");
 		Parent parent = FXMLLoader.load(url);
 		Stage s = new Stage();
@@ -61,15 +61,15 @@ public class TCadastrarMedicoController implements Initializable {
 		s.setScene(new Scene(parent));
 		s.show();
 	}
-	
+
 	@FXML
-	private void remover(){
-		
+	private void remover() {
+
 	}
-	
+
 	@FXML
-	private void alterar(){
-		
+	private void alterar() {
+
 	}
 
 }

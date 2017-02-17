@@ -87,43 +87,44 @@ public class DialogRecepcionistaController implements Initializable {
 
 	public void cadastrar() {
 		Recepcionista recep = new Recepcionista();
-        if(isInputValid()){
-        	
-        	recep.setNome(txfNome.getText());
-    		recep.setCpf(txfCPF.getText());
-    		recep.setRg(txfRG.getText());
-    		recep.setDataDeNascimento(dtpNasc.getValue());
-    		recep.setCelular(txfCelular.getText());
-    		recep.setTelefone(txfTelefone.getText());
-    		recep.setSenha(txfSenha.getText());
-    		recep.setEndereco(new Endereco(txfEndereco.getText(), txfCidade.getText(), txfBairro.getText(),
-    				cbxEstado.getValue(), txfCEP.getText(), txfComplemento.getText()));
+		if (isInputValid()) {
 
-    		if (tgpSexo.getSelectedToggle().equals(rbMasculino)) {
-    			recep.setSexo('M');
-    		} else {
-    			recep.setSexo('F');
-    		}try {
-    				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
-    						recep.getCelular(), recep.getSexo(), recep.getEndereco(), recep.getDataDeNascimento(),
-    						recep.getSenha());
-    			} catch (PJCException e) {
-    				Alert alert = new Alert(AlertType.ERROR);
-    				alert.setTitle("Erro de dados!");
-    				alert.setHeaderText("Cadastro invalido!");
-    				alert.setContentText(recep.getNome() + "ja cadastrado.");
-    				alert.showAndWait();
-    			} finally {
-    				Alert alert = new Alert(AlertType.INFORMATION);
-    				alert.setTitle("Cadastro Medico");
-    				alert.setHeaderText(null);
-    				alert.setContentText(recep.getNome() + "Cadastrado com sucesso");
-    				alert.showAndWait();
-    			}
-        }
-		
+			recep.setNome(txfNome.getText());
+			recep.setCpf(txfCPF.getText());
+			recep.setRg(txfRG.getText());
+			recep.setDataDeNascimento(dtpNasc.getValue());
+			recep.setCelular(txfCelular.getText());
+			recep.setTelefone(txfTelefone.getText());
+			recep.setSenha(txfSenha.getText());
+			recep.setEndereco(new Endereco(txfEndereco.getText(), txfCidade.getText(), txfBairro.getText(),
+					cbxEstado.getValue(), txfCEP.getText(), txfComplemento.getText()));
+
+			if (tgpSexo.getSelectedToggle().equals(rbMasculino)) {
+				recep.setSexo('M');
+			} else {
+				recep.setSexo('F');
+			}
+			try {
+				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
+						recep.getCelular(), recep.getSexo(), recep.getEndereco(), recep.getDataDeNascimento(),
+						recep.getSenha());
+			} catch (PJCException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro de dados!");
+				alert.setHeaderText("Cadastro invalido!");
+				alert.setContentText(recep.getNome() + "ja cadastrado.");
+				alert.showAndWait();
+			} finally {
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Cadastro Medico");
+				alert.setHeaderText(null);
+				alert.setContentText(recep.getNome() + "Cadastrado com sucesso");
+				alert.showAndWait();
+			}
+		}
+
 	}
-	
+
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -177,6 +178,7 @@ public class DialogRecepcionistaController implements Initializable {
 			return false;
 		}
 	}
+
 	@FXML
 	private void sair() {
 		t.voltarTela();

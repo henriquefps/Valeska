@@ -1,4 +1,4 @@
- package br.ufrpe.clinica_medica.gui.grafica.Controller;
+package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
 import java.time.LocalDate;
@@ -21,7 +21,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
-	
+
 	@FXML
 	private TextField txfNome;
 	@FXML
@@ -60,11 +60,9 @@ public class DialogMedicoController implements Initializable {
 	private RadioButton rbFeminino;
 	@FXML
 	private RadioButton rbMasculino;
-	
+
 	private Stage dialog;
 	private FachadaClinicaMedica fachada;
-	
-	
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -73,23 +71,24 @@ public class DialogMedicoController implements Initializable {
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
 		cbxEstado.getItems().addAll(estados);
 	}
+
 	@FXML
-	private void salvarMedico(){
-		
+	private void salvarMedico() {
+
 	}
-	
-	public void cadastrar(){
+
+	public void cadastrar() {
 		Medico m = new Medico();
-		if(isInputValid()){
+		if (isInputValid()) {
 			m.setNome(txfNome.getText());
 			m.setCpf(txfCpf.getText());
 			m.setDataDeNascimento(dtpNascimento.getValue());
 			m.setCelular(txfCelular.getText());
-		//Parei Aqui...
-			
+			// Parei Aqui...
+
 		}
 	}
-	
+
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -140,8 +139,8 @@ public class DialogMedicoController implements Initializable {
 			return false;
 		}
 	}
-	
-	public void mostrarDetalhes(Medico log){
+
+	public void mostrarDetalhes(Medico log) {
 		txfBairro.setText(log.getEndereco().getBairro());
 		txfCelular.setText(log.getCelular());
 		txfCep.setText(log.getEndereco().getCep());
@@ -156,15 +155,18 @@ public class DialogMedicoController implements Initializable {
 		txfRua.setText(log.getEndereco().getRua());
 		txfSenha.setText(log.getSenha());
 		txfTelefone.setText(log.getTelefone());
-		if(log.getSexo() == 'M'){
-    		sexo.selectToggle(rbMasculino);
-    	}
-    	else{
-    		sexo.selectToggle(rbFeminino);
-    	}
-    	dtpNascimento.setValue(log.getDataDeNascimento());
-		
-		
+		if (log.getSexo() == 'M') {
+			sexo.selectToggle(rbMasculino);
+		} else {
+			sexo.selectToggle(rbFeminino);
+		}
+		dtpNascimento.setValue(log.getDataDeNascimento());
+
+	}
+
+	@FXML
+	private void sair() {
+
 	}
 
 }
