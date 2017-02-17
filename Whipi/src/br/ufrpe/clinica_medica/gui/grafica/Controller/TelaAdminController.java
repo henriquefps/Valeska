@@ -160,7 +160,6 @@ public class TelaAdminController implements Initializable {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Remover paciente");
 		alert.setHeaderText("Deseja remover o paciente " + pacienteAtual.getNome() + "?");
-		//alert.setContentText("Are you ok with this?");
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK){
