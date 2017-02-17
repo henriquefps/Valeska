@@ -2,6 +2,7 @@ package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.io.Serializable;
 import java.time.LocalTime;
+import java.util.ArrayList;
 
 public class DiasDeAtendimento implements Serializable {
 
@@ -37,6 +38,14 @@ public class DiasDeAtendimento implements Serializable {
 
 	public LocalTime getDiaFim() {
 		return diaFim;
+	}
+	
+	public ArrayList<LocalTime> getConsultasPossiveis() {
+		ArrayList<LocalTime> resultado = new ArrayList<LocalTime>();
+		for (int i = 9; i >= 0; i--) {
+			resultado.add(LocalTime.of(18 - i, 0));
+		}
+		return resultado;
 	}
 
 }

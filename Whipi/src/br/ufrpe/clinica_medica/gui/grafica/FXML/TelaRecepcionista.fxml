@@ -109,7 +109,7 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane animated="false" text="Consultas">
+                        <TitledPane text="Consultas">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="598.0">
                                  <children>
@@ -132,7 +132,7 @@
                                           <Button mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
-                                    <TableView fx:id="tabelaConsultas" layoutX="14.0" layoutY="-2.0" prefHeight="200.0" prefWidth="362.0">
+                                    <TableView fx:id="tabelaConsultas" layoutX="14.0" layoutY="12.0" prefHeight="200.0" prefWidth="362.0">
                                       <columns>
                                         <TableColumn fx:id="colunaConsultaMedico" prefWidth="75.0" text="Medico" />
                                         <TableColumn fx:id="colunaConsultaPaciente" prefWidth="75.0" text="Paciente" />

@@ -13,12 +13,16 @@
 package br.ufrpe.clinica_medica.negocio;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
-import br.ufrpe.clinica_medica.negocio.beans.*;
-import br.ufrpe.clinica_medica.repositorio.*;
+import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
+import br.ufrpe.clinica_medica.repositorio.RepositorioPessoas;
 
 public class GerenciamentoMedico {
 
@@ -91,5 +95,11 @@ public class GerenciamentoMedico {
 
 	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
 		medico.getDiasDeTrabalho()[diaDaSemana].setDiaFalse();
+	}
+	
+	public ArrayList<LocalTime> getConsultasPossiveis() {
+		ArrayList<LocalTime> resultado = null;
+		//TODO Fazer um metodo que retorna um ArrayList de hora possivel de um medico!
+		return resultado;
 	}
 }

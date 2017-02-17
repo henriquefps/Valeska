@@ -1,10 +1,12 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
@@ -33,6 +35,8 @@ public class DialogConsultaController implements Initializable {
 	@FXML
 	private TableView<Medico> tabelaMedico;
 	@FXML
+	private TableView<LocalTime> tabelaConsulta;
+	@FXML
 	private TableColumn<Paciente, String> colunaPacienteNome;
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteCPF;
@@ -41,11 +45,11 @@ public class DialogConsultaController implements Initializable {
 	@FXML
 	private TableColumn<Medico, String> colunaMedicoCRM;
 	@FXML
+	private TableColumn<LocalTime, String> colunaConsultaHorario;
+	@FXML
 	private TextField txfPesquisaPaciente;
 	@FXML
 	private TextField txfPesquisaMedico;
-	@FXML
-	private TextField txfHorario;
 	@FXML
 	private Label labelPaciente;
 	@FXML
@@ -61,15 +65,26 @@ public class DialogConsultaController implements Initializable {
 	
 	private Telas t;
 	
-	@FXML
-	private void pesquisaPaciente() {
-		preencherTableViewPaciente(this.txfPesquisaPaciente.getText());
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		fachada = FachadaClinicaMedica.getInstance();
+		t = Telas.getInstance();
+		preencherTableViewPaciente();
 	}
 	
 	@FXML
-	private void verificaSave() {
-		if (dtpConsulta.getValue() != null && txfHorario.getText().length() != 0) {
-			btnSave.setDisable(false);
+	private void pesquisaPaciente() {
+		if (txfPesquisaPaciente.getText().length() == 0) {
+			preencherTableViewPaciente();
+		} else {
+			preencherTableViewPaciente(this.txfPesquisaPaciente.getText());
+		}
+	}
+	
+	@FXML
+	private void verificaHorario() {
+		if (dtpConsulta.getValue() != null) {
+			
 		} else {
 			btnSave.setDisable(true);
 		}
@@ -82,9 +97,20 @@ public class DialogConsultaController implements Initializable {
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 	}
 	
+	public void preencherTableViewPaciente() {
+		ArrayList<Paciente> pacientes = fachada.ListarPacientes();
+		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
+	}
+	
 	@FXML
 	private void pesquisaMedico() {
-		preencherTableViewMedico(this.txfPesquisaMedico.getText());
+		if (txfPesquisaMedico.getText().length() == 0) {
+			preencherTableViewMedico();
+		} else {
+			preencherTableViewMedico(this.txfPesquisaMedico.getText());
+		}
 	}
 	
 	public void preencherTableViewMedico(String inicial) {
@@ -93,11 +119,12 @@ public class DialogConsultaController implements Initializable {
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("crm"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
-
-	@Override
-	public void initialize(URL arg0, ResourceBundle arg1) {
-		fachada = FachadaClinicaMedica.getInstance();
-		t = Telas.getInstance();
+	
+	public void preencherTableViewMedico() {
+		ArrayList<Medico> medicos = fachada.ListarMedicos();
+		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("crm"));
+		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
 	
 	@FXML
@@ -120,6 +147,7 @@ public class DialogConsultaController implements Initializable {
 					txfPesquisaPaciente.setDisable(true);
 					txfPesquisaMedico.setVisible(true);
 					txfPesquisaMedico.setDisable(false);
+					preencherTableViewMedico();
 				}
 			});
 		}
@@ -139,9 +167,9 @@ public class DialogConsultaController implements Initializable {
 					txfPesquisaMedico.setDisable(true);
 					dtpConsulta.setVisible(true);
 					dtpConsulta.setDisable(false);
-					txfHorario.setVisible(true);
-					txfHorario.setDisable(false);
 					btnProximo.setDisable(true);
+					tabelaConsulta.setVisible(true);
+					tabelaConsulta.setDisable(false);
 				}
 			});
 		}
