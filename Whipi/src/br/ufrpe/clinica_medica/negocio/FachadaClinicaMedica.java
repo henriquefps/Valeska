@@ -93,6 +93,10 @@ public class FachadaClinicaMedica {
 	public ArrayList<Medico> ListarMedicos() {
 		return medico.ListarMedicos();
 	}
+	
+	public ArrayList<Medico> listarMedicos(String inicial) {
+		return medico.listarMedicos(inicial);
+	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
 			Endereco endereco, LocalDate dataDeNascimento) throws PJCException {
@@ -113,6 +117,10 @@ public class FachadaClinicaMedica {
 
 	public ArrayList<Paciente> ListarPacientes() {
 		return paciente.ListarPacientes();
+	}
+	
+	public ArrayList<Paciente> listarPacientes(String inicial) {
+		return paciente.listarPacientes(inicial);
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,

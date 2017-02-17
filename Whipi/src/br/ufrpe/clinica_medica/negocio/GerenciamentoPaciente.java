@@ -81,4 +81,8 @@ public class GerenciamentoPaciente {
 	public ArrayList<Paciente> ListarPacientes() {
 		return pessoas.getListaPacientes();
 	}
+	
+	public ArrayList<Paciente> listarPacientes(String inicial) {
+		return pessoas.getListaPacientes(inicial);
+	}
 }

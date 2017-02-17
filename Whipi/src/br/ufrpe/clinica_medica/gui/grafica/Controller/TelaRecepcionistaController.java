@@ -133,7 +133,11 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	private void telaCadastroConsulta() {
-
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogConsulta")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
 	}
 
 	@FXML

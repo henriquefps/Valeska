@@ -115,6 +115,19 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		}
 		return m;
 	}
+	
+	public ArrayList<Medico> getListaMedicos(String inicial) {
+		ArrayList<Medico> m = new ArrayList<>();
+		
+		for (int i = 0; i < repositorio.size(); i++) {
+			if (repositorio.get(i) instanceof Medico) {
+				if (repositorio.get(i).getNome().startsWith(inicial)) {
+					m.add((Medico) repositorio.get(i));					
+				}
+			}
+		}
+		return m;
+	}
 
 	public ArrayList<Paciente> getListaPacientes() {
 		ArrayList<Paciente> p = new ArrayList<>();
@@ -122,6 +135,19 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
 				p.add((Paciente) repositorio.get(i));
+			}
+		}
+		return p;
+	}
+	
+	public ArrayList<Paciente> getListaPacientes(String inicial) {
+		ArrayList<Paciente> p = new ArrayList<>();
+		
+		for (int i = 0; i < repositorio.size(); i++) {
+			if (repositorio.get(i) instanceof Paciente) {
+				if (repositorio.get(i).getNome().startsWith(inicial)) {
+					p.add((Paciente) repositorio.get(i));					
+				}
 			}
 		}
 		return p;

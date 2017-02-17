@@ -80,6 +80,10 @@ public class GerenciamentoMedico {
 	public ArrayList<Medico> ListarMedicos() {
 		return pessoas.getListaMedicos();
 	}
+	
+	public ArrayList<Medico> listarMedicos(String inicial) {
+		return pessoas.getListaMedicos(inicial);
+	}
 
 	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
 		medico.getDiasDeTrabalho()[diaDaSemana].setDiaTrue(horaI, minutoI, horaF, minutoF);
