@@ -137,5 +137,10 @@ public class DialogConsultaController implements Initializable {
 			});
 		}
 	}
+	
+	@FXML
+	private void fecharTela() {
+		
+	}
 
 }
