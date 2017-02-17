@@ -102,6 +102,7 @@ public class TelaRecepcionistaController implements Initializable {
 		DialogPacienteController p = t.getF().getController();
 		p.mostrarDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
+		preencherTableView();
 	}
 
 	@FXML

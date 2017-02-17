@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import javax.swing.text.TabableView;
+
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.beans.property.StringProperty;
 import javafx.beans.value.ObservableValue;
@@ -56,16 +59,22 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private TableView<Paciente> tabelaPaciente;
 
+	@FXML private TableColumn<Medico, String> colunaNomeDoMedico;
+	@FXML private TableView<Medico> tabelaMedico;
+	@FXML private TableColumn<Medico, String> colunaCpfDoMedico;
+	
 	private Telas t;
 	private FachadaClinicaMedica f;
 
 	private Paciente pacienteAtual;
+	private Medico medicoAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
+		preencherTableViewMedico();
 	}
 
 	@FXML
@@ -75,11 +84,23 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+		preencherTableViewMedico();
 	}
 
 	@FXML
 	private void telaAtualizaMedico() {
-
+		if (medicoAtual == null) {
+			return;
+		}
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogMedicoController p = t.getF().getController();
+		p.mostrarDetalhes(medicoAtual);
+		t.abrirTelaDialogo();
+		preencherTableViewMedico();
+		this.medicoAtual = null;
 	}
 
 	@FXML
@@ -218,6 +239,12 @@ public class TelaAdminController implements Initializable {
 			pacienteAtual = clicado;
 		}
 	}
+	@FXML private void nomeMedicoClicado() {
+		Medico clicado = tabelaMedico.getSelectionModel().getSelectedItem();
+		if (clicado != null) {
+			medicoAtual = clicado;
+		}
+	}
 
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
@@ -228,5 +255,12 @@ public class TelaAdminController implements Initializable {
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
+	}
+	
+	public void preencherTableViewMedico() {
+		ArrayList<Medico> medico = f.ListarMedicos();
+		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaCpfDoMedico.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaMedico.setItems(FXCollections.observableArrayList(medico));
 	}
 }

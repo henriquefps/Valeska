@@ -1,5 +1,6 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
+import java.awt.Button;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
@@ -25,9 +26,9 @@ public class DialogMedicoController implements Initializable {
 	@FXML
 	private TextField txfNome;
 	@FXML
-	private TextField txfCpf;
+	private TextField txfCPF;
 	@FXML
-	private TextField txfRg;
+	private TextField txfRG;
 	@FXML
 	private TextField txfTelefone;
 	@FXML
@@ -41,17 +42,17 @@ public class DialogMedicoController implements Initializable {
 	@FXML
 	private TextField txfComplemento;
 	@FXML
-	private TextField txfCep;
+	private TextField txfCEP;
 	@FXML
 	private TextField txfCRM;
 	@FXML
-	private TextField txfNumConsultas;
+	private TextField txfConsultas;
 	@FXML
 	private TextField txfSenha;
 	@FXML
 	private TextField txfConfirmaSenha;
 	@FXML
-	private ComboBox<String> cbxEstado;
+	private ComboBox<String> cbxEstados;
 	@FXML
 	private DatePicker dtpNascimento;
 	@FXML
@@ -60,6 +61,9 @@ public class DialogMedicoController implements Initializable {
 	private RadioButton rbFeminino;
 	@FXML
 	private RadioButton rbMasculino;
+	
+//	@FXML private Button btnSalvar;
+//	@FXML private Button btnSair;
 
 	private Stage dialog;
 	private FachadaClinicaMedica fachada;
@@ -69,19 +73,19 @@ public class DialogMedicoController implements Initializable {
 		// TODO Auto-generated method stub
 		fachada = FachadaClinicaMedica.getInstance();
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
-		cbxEstado.getItems().addAll(estados);
+		cbxEstados.getItems().addAll(estados);
 	}
 
 	@FXML
 	private void salvarMedico() {
-
+		cadastrar();
 	}
 
 	public void cadastrar() {
 		Medico m = new Medico();
 		if (isInputValid()) {
 			m.setNome(txfNome.getText());
-			m.setCpf(txfCpf.getText());
+			m.setCpf(txfCPF.getText());
 			m.setDataDeNascimento(dtpNascimento.getValue());
 			m.setCelular(txfCelular.getText());
 			// Parei Aqui...
@@ -95,16 +99,16 @@ public class DialogMedicoController implements Initializable {
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
 			errorMessage += "Nome inv�lido!\n";
 		}
-		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
+		if (txfCPF.getText() == null || txfCPF.getText().length() == 0) {
 			errorMessage += "Cpf inv�lido!\n";
 		}
-		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
+		if (txfRG.getText() == null || txfRG.getText().length() == 0) {
 			errorMessage += "Rg inv�lido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
 			errorMessage += "Telefone inv�lido!\n";
 		}
-		if (cbxEstado.getValue() == null) {
+		if (cbxEstados.getValue() == null) {
 			errorMessage += "Estado inv�lido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
@@ -116,7 +120,7 @@ public class DialogMedicoController implements Initializable {
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
 			errorMessage += "Rua inv�lida!\n";
 		}
-		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
+		if (txfCEP.getText() == null || txfCEP.getText().length() == 0) {
 			errorMessage += "Cep inv�lido!\n";
 		}
 		if (sexo.getSelectedToggle() == null) {
@@ -143,15 +147,15 @@ public class DialogMedicoController implements Initializable {
 	public void mostrarDetalhes(Medico log) {
 		txfBairro.setText(log.getEndereco().getBairro());
 		txfCelular.setText(log.getCelular());
-		txfCep.setText(log.getEndereco().getCep());
+		txfCEP.setText(log.getEndereco().getCep());
 		txfCidade.setText(log.getEndereco().getCidade());
 		txfComplemento.setText(log.getEndereco().getComplemento());
 		txfConfirmaSenha.setText(log.getSenha());
-		txfCpf.setText(log.getCpf());
+		txfCPF.setText(log.getCpf());
 		txfCRM.setText(String.valueOf(log.getNumCRM()));
 		txfNome.setText(log.getNome());
-		txfNumConsultas.setText(String.valueOf(log.getConsultasPorDia()));
-		txfRg.setText(log.getRg());
+		txfConsultas.setText(String.valueOf(log.getConsultasPorDia()));
+		txfRG.setText(log.getRg());
 		txfRua.setText(log.getEndereco().getRua());
 		txfSenha.setText(log.getSenha());
 		txfTelefone.setText(log.getTelefone());
@@ -166,7 +170,8 @@ public class DialogMedicoController implements Initializable {
 
 	@FXML
 	private void sair() {
-
+		Telas.getInstance().voltarTela();
+		Telas.getInstance().fecharTelaDialogo();
 	}
 
 }
