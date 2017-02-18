@@ -79,10 +79,10 @@ public class GerenciamentoPaciente {
 	}
 
 	public ArrayList<Paciente> ListarPacientes() {
-		return pessoas.getListaPacientes();
+		return pessoas.listaTodosPacientes();
 	}
 	
-	public ArrayList<Paciente> listarPacientes(String inicial) {
-		return pessoas.getListaPacientes(inicial);
+	public ArrayList<Paciente> listarPacientes() {
+		return pessoas.listaTodosPacientes();
 	}
 }

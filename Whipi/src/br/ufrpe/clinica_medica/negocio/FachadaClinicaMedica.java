@@ -94,8 +94,8 @@ public class FachadaClinicaMedica {
 		return medico.ListarMedicos();
 	}
 	
-	public ArrayList<Medico> listarMedicos(String inicial) {
-		return medico.listarMedicos(inicial);
+	public ArrayList<Medico> listarMedicos() {
+		return medico.listarMedicos();
 	}
 
 	public void cadastrarPaciente(String nome, String cpf, String rg, String telefone, String celular, char sexo,
@@ -119,8 +119,8 @@ public class FachadaClinicaMedica {
 		return paciente.ListarPacientes();
 	}
 	
-	public ArrayList<Paciente> listarPacientes(String inicial) {
-		return paciente.listarPacientes(inicial);
+	public ArrayList<Paciente> listarPacientes() {
+		return paciente.listarPacientes();
 	}
 
 	public void cadastrarRecepcionista(String nome, String cpf, String rg, String telefone, String celular, char sexo,

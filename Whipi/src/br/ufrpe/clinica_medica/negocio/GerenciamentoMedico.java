@@ -82,11 +82,11 @@ public class GerenciamentoMedico {
 	}
 
 	public ArrayList<Medico> ListarMedicos() {
-		return pessoas.getListaMedicos();
+		return pessoas.listarTodosMedicos();
 	}
 	
-	public ArrayList<Medico> listarMedicos(String inicial) {
-		return pessoas.getListaMedicos(inicial);
+	public ArrayList<Medico> listarMedicos() {
+		return pessoas.listarTodosMedicos();
 	}
 
 	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {

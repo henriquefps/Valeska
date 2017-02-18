@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -9,14 +13,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogConsultaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogConsultaController">
    <children>
       <Label layoutX="136.0" layoutY="33.0" text="Cadastro Consulta">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="btnSave" disable="true" layoutX="219.0" layoutY="461.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="70.0" text="Salvar" />
+      <Button fx:id="btnSave" disable="true" layoutX="219.0" layoutY="461.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="70.0" text="Salvar" />
       <Button layoutX="305.0" layoutY="461.0" mnemonicParsing="false" onAction="#fecharTela" prefHeight="25.0" prefWidth="70.0" text="Sair" />
       <TableView fx:id="tabelaPaciente" layoutX="63.0" layoutY="180.0" onMousePressed="#nomePacienteClicado" prefHeight="200.0" prefWidth="280.0">
         <columns>

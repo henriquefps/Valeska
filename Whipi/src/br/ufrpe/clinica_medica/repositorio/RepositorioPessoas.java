@@ -21,7 +21,6 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import br.ufrpe.clinica_medica.negocio.beans.DiasDeAtendimento;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
@@ -105,7 +104,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return instance;
 	}
 
-	public ArrayList<Medico> getListaMedicos() {
+	public ArrayList<Medico> listarTodosMedicos() {
 		ArrayList<Medico> m = new ArrayList<>();
 
 		for (int i = 0; i < repositorio.size(); i++) {
@@ -116,7 +115,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return m;
 	}
 	
-	public ArrayList<Medico> getListaMedicos(String inicial) {
+	public ArrayList<Medico> pesquisarMedicos(String inicial) {
 		ArrayList<Medico> m = new ArrayList<>();
 		
 		for (int i = 0; i < repositorio.size(); i++) {
@@ -129,7 +128,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return m;
 	}
 
-	public ArrayList<Paciente> getListaPacientes() {
+	public ArrayList<Paciente> listaTodosPacientes() {
 		ArrayList<Paciente> p = new ArrayList<>();
 
 		for (int i = 0; i < repositorio.size(); i++) {
@@ -140,7 +139,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return p;
 	}
 	
-	public ArrayList<Paciente> getListaPacientes(String inicial) {
+	public ArrayList<Paciente> pesquisarPacientes(String inicial) {
 		ArrayList<Paciente> p = new ArrayList<>();
 		
 		for (int i = 0; i < repositorio.size(); i++) {

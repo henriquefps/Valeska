@@ -82,16 +82,16 @@ public class DialogConsultaController implements Initializable {
 	}
 	
 	@FXML
-	private void verificaHorario() {
-		if (dtpConsulta.getValue() != null) {
-			
+	private void verificaSave() {
+		if (dtpConsulta.getValue() != null && (txfHorario.getText() != null || txfHorario.getText().length() != 0)) {
+			btnSave.setDisable(false);
 		} else {
 			btnSave.setDisable(true);
 		}
 	}
 	
-	public void preencherTableViewPaciente(String inicial) {
-		ArrayList<Paciente> pacientes = fachada.listarPacientes(inicial);
+	public void preencherTableViewPaciente() {
+		ArrayList<Paciente> pacientes = fachada.listarPacientes();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
@@ -113,8 +113,8 @@ public class DialogConsultaController implements Initializable {
 		}
 	}
 	
-	public void preencherTableViewMedico(String inicial) {
-		ArrayList<Medico> medicos = fachada.listarMedicos(inicial);
+	public void preencherTableViewMedico() {
+		ArrayList<Medico> medicos = fachada.listarMedicos();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("crm"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
@@ -177,6 +177,11 @@ public class DialogConsultaController implements Initializable {
 	
 	@FXML
 	private void fecharTela() {
+		t.fecharTelaDialogo();
+	}
+	
+	@FXML
+	private void salvar(){
 		
 	}
 

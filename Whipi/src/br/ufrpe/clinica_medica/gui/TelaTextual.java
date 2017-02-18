@@ -433,7 +433,7 @@ public class TelaTextual {
 					op2 = scan.nextInt();
 					scan.nextLine();
 					if (op2 == 1) {
-						System.out.println(pessoas.getListaPacientes());
+						System.out.println(pessoas.listaTodosPacientes());
 					} else if (op2 == 2) {
 						try {
 							System.out.print("Digite o CPF: ");
@@ -632,8 +632,8 @@ public class TelaTextual {
 			scan.nextLine();
 
 			if (opcao == 1) {
-				if (pessoas.getListaMedicos() != null) {
-					System.out.println(pessoas.getListaMedicos());
+				if (pessoas.listarTodosMedicos() != null) {
+					System.out.println(pessoas.listarTodosMedicos());
 				} else {
 					System.out.println("Nao ha medicos cadastrados no sistema.");
 				}
