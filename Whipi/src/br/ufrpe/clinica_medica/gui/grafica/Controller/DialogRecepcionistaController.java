@@ -213,7 +213,6 @@ public class DialogRecepcionistaController implements Initializable {
 				tgpSexo.selectToggle(rbtFeminino);
 			}
 			dtpNascimento.setValue(m.getDataDeNascimento());
-			pswSenha.setText(m.getSenha());
 		} else {
 			txfNome.setText("");
 			txfCpf.setText("");
@@ -226,7 +225,6 @@ public class DialogRecepcionistaController implements Initializable {
 			txfComplemento.setText("");
 			txfCep.setText("");
 			cbxEstado.setValue("");
-			pswSenha.setText("");
 		}bntSave.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent evento) {
