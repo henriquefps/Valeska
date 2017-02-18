@@ -9,6 +9,7 @@ import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -263,5 +264,28 @@ public class DialogRecepcionistaController implements Initializable {
 		} catch (PNEException e) {
 			e.printStackTrace();
 		}
+	}
+	@FXML private Label lC;
+	protected void verDetalhes(Recepcionista recepcionista) {
+		mostrarDetalhes(recepcionista);
+		this.labelTitle.setText("Detalhe Paciente");
+		txfNome.setDisable(true);
+		txfCpf.setDisable(true);
+		txfRg.setDisable(true);
+		txfTelefone.setDisable(true);
+		txfCelular.setDisable(true);
+		txfRua.setDisable(true);
+		txfBairro.setDisable(true);
+		txfCidade.setDisable(true);
+		txfComplemento.setDisable(true);
+		txfCep.setDisable(true);
+		cbxEstado.setDisable(true);
+		rbtMasculino.setDisable(true);
+		rbtFeminino.setDisable(true);
+		dtpNascimento.setDisable(true);
+		pswSenha.setDisable(true);
+		pswConfirmarSenha.setVisible(false);
+		bntSave.setVisible(false);
+		lC.setVisible(false);
 	}
 }

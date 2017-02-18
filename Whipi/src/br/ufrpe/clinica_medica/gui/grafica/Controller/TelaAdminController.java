@@ -220,7 +220,7 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		DialogRecepcionistaController p = t.getF().getController();
-		p.mostrarDetalhes(recepcionistaAtual);
+		p.verDetalhes(recepcionistaAtual);
 		t.abrirTelaDialogo();
 	}
 
