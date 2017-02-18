@@ -99,7 +99,7 @@ public class TelaAdminController implements Initializable {
 		DialogMedicoController p = t.getF().getController();
 		p.mostrarDetalhes(medicoAtual);
 		t.abrirTelaDialogo();
-		preencherTableViewMedico();
+		preencherTableView();
 		this.medicoAtual = null;
 	}
 
@@ -243,9 +243,16 @@ public class TelaAdminController implements Initializable {
 		Medico clicado = tabelaMedico.getSelectionModel().getSelectedItem();
 		if (clicado != null) {
 			medicoAtual = clicado;
+			atualizaMedico.setDisable(false);
+			removeMedico.setDisable(false);
+			detalheMedico.setDisable(false);
+			medicoAtual = clicado;
 		}
 	}
 
+	public Medico retornaMedico(){
+		return this.medicoAtual;
+	}
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
 	}

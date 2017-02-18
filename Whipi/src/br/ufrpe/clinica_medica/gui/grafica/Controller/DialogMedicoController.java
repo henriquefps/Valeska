@@ -6,21 +6,27 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
@@ -63,10 +69,10 @@ public class DialogMedicoController implements Initializable {
 	private RadioButton rbFeminino;
 	@FXML
 	private RadioButton rbMasculino;
-	
-//	@FXML private Button btnSalvar;
-//	@FXML private Button btnSair;
-
+	@FXML
+	private Label labelTitle;
+    @FXML
+    private Button btnSave;
 	private Stage dialog;
 	private FachadaClinicaMedica fachada;
     private Telas t;
@@ -182,29 +188,85 @@ public class DialogMedicoController implements Initializable {
 		}
 	}
 
-	public void mostrarDetalhes(Medico log) {
-		txfBairro.setText(log.getEndereco().getBairro());
-		txfCelular.setText(log.getCelular());
-		txfCEP.setText(log.getEndereco().getCep());
-		txfCidade.setText(log.getEndereco().getCidade());
-		txfComplemento.setText(log.getEndereco().getComplemento());
-		txfConfirmaSenha.setText(log.getSenha());
-		txfCPF.setText(log.getCpf());
-		txfCRM.setText(String.valueOf(log.getNumCRM()));
-		txfNome.setText(log.getNome());
-		txfConsultas.setText(String.valueOf(log.getConsultasPorDia()));
-		txfRG.setText(log.getRg());
-		txfRua.setText(log.getEndereco().getRua());
-		txfSenha.setText(log.getSenha());
-		txfTelefone.setText(log.getTelefone());
-		if (log.getSexo() == 'M') {
-			sexo.selectToggle(rbMasculino);
+	protected void mostrarDetalhes(Medico m) {
+		this.labelTitle.setText("Atualiza Medico");
+		if (m != null) {
+			txfNome.setText(m.getNome());
+			txfCPF.setText(m.getCpf());
+			txfRG.setText(m.getRg());
+			txfTelefone.setText(m.getTelefone());
+			txfCelular.setText(m.getCelular());
+			txfRua.setText(m.getEndereco().getRua());
+			txfBairro.setText(m.getEndereco().getBairro());
+			txfCidade.setText(m.getEndereco().getCidade());
+			txfComplemento.setText(m.getEndereco().getComplemento());
+			txfCEP.setText(m.getEndereco().getCep());
+			cbxEstados.setValue(m.getEndereco().getEstado());
+			if (m.getSexo() == 'M') {
+				sexo.selectToggle(rbMasculino);
+			} else {
+				sexo.selectToggle(rbFeminino);
+			}
+			dtpNascimento.setValue(m.getDataDeNascimento());
+			txfSenha.setText(m.getSenha());
+			txfCRM.setText(Integer.toString(m.getNumCRM()));
+			txfConsultas.setText(Integer.toString(m.getConsultasPorDia()));
 		} else {
-			sexo.selectToggle(rbFeminino);
-		}
-		dtpNascimento.setValue(log.getDataDeNascimento());
-
+			txfNome.setText("");
+			txfCPF.setText("");
+			txfRG.setText("");
+			txfTelefone.setText("");
+			txfCelular.setText("");
+			txfRua.setText("");
+			txfBairro.setText("");
+			txfCidade.setText("");
+			txfComplemento.setText("");
+			txfCEP.setText("");
+			cbxEstados.setValue("");
+			txfSenha.setText("");
+			txfCRM.setText("");
+			txfConsultas.setText("");
+		}btnSave.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+				atualizaMedico(m);
+				fecharTela();
+			}
+		});
 	}
+	protected void atualizaMedico(Medico m) {
+		Medico medico = new Medico();
+		medico.setNome(txfNome.getText());
+		medico.setCpf(txfCPF.getText());
+		medico.setRg(txfRG.getText());
+		medico.setCelular(txfCelular.getText());
+		medico.setTelefone(txfTelefone.getText());
+		if (sexo.getSelectedToggle().equals(rbMasculino)) {
+			medico.setSexo('M');
+		} else {
+			medico.setSexo('F');
+		}
+		medico.setDataDeNascimento(dtpNascimento.getValue());
+		medico.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
+				cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));
+		medico.setConsultasPorDia(txfConsultas.getAnchor());
+		medico.setNumCRM(txfCRM.getAnchor());
+		medico.setSenha(txfSenha.getText());
+		try {
+			fachada.removerMedico(m);
+			try {
+				fachada.cadastrarMedico(medico.getNome(), medico.getCpf(), medico.getRg(), medico.getTelefone(), medico.getCelular(), medico.getSexo(),
+				medico.getEndereco(), medico.getDataDeNascimento(), medico.getNumCRM(), 
+				medico.getConsultasPorDia(), medico.getSenha());
+			} catch (PJCException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (PNEException e) {
+			e.printStackTrace();
+		}
+	}
+
 
 	@FXML
 	private void sair() {

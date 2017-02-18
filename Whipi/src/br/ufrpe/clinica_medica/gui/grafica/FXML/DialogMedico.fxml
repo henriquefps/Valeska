@@ -86,12 +86,12 @@
 		</GridPane>
 		<HBox layoutX="26.0" layoutY="492.0" spacing="35.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0">
 			<children>
-				<Button layoutX="26.0" layoutY="492.0" mnemonicParsing="false" onAction="#salvarMedico" prefWidth="100.0" text="Salvar" />
+				<Button fx:id="btnSave" layoutX="26.0" layoutY="492.0" mnemonicParsing="false" onAction="#salvarMedico" prefWidth="100.0" text="Salvar" />
 				<Button layoutX="126.0" layoutY="492.0" mnemonicParsing="false" onAction="#sair" prefWidth="100.0" text="Sair" />
 			</children>
 		</HBox>
 		<HBox layoutX="22.0" layoutY="497.0" spacing="10.0" />
-		<Label layoutX="150.0" layoutY="14.0" text="Cadastro Médico">
+		<Label fx:id="labelTitle" layoutX="150.0" layoutY="14.0" text="Cadastro Médico">
 			<font>
 				<Font name="Times New Roman" size="18.0" />
 			</font>
