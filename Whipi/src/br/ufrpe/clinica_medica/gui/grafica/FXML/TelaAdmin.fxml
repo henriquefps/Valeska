@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -13,7 +17,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
+<AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
 	<children>
 		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#clicadoForaDaTabela" prefHeight="400.0" prefWidth="600.0" text="Administrador">
 			<content>
@@ -133,7 +137,7 @@
 								</Accordion>
 							</top>
 						</BorderPane>
-						<Button layoutX="319.0" layoutY="339.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
+						<Button layoutX="319.0" layoutY="339.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="51.0" text="Sair" />
 						<Button layoutX="232.0" layoutY="339.0" mnemonicParsing="false" onAction="#logoff" text="Logoff" />
 						<Label layoutX="476.0" layoutY="352.0" opacity="0.5" text="Powered By: Valeska" />
 					</children>

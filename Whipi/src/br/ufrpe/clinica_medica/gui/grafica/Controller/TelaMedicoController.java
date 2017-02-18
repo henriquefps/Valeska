@@ -1,24 +1,26 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
-import java.awt.Button;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
-
-import javax.swing.text.TabableView;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -61,7 +63,12 @@ public class TelaMedicoController implements Initializable {
 		colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
 		colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
-		logado = (Medico) t.getLogada();
+		Pessoa p = t.getLogada();
+		if(p instanceof Medico){
+			
+			logado = (Medico) p; 
+		}
+		
 	}
 
 	@FXML
@@ -86,6 +93,25 @@ public class TelaMedicoController implements Initializable {
 	@FXML
 	public void cancelarConsultasDeUmDia() {
 
+	}
+	
+	public void sair(){
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmação");
+		alert.setHeaderText("Sair");
+		alert.setContentText("Deseja fechar o programa?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			System.exit(0);
+		} else {
+			alert.close();
+		}
+		
+	}
+	
+	public void logoff(){
+		t.logoff();
 	}
 
 }

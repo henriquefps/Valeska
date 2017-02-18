@@ -305,7 +305,7 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmaï¿½ï¿½o");
+		alert.setTitle("Confirmação");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 

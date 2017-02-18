@@ -9,7 +9,6 @@ import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
-import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -131,55 +130,55 @@ public class DialogRecepcionistaController implements Initializable {
 		String errorMessage = "";
 
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
-			errorMessage += "Nome inv�lido!\n";
+			errorMessage += "Nome inválido!\n";
 		}
 		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
-			errorMessage += "Cpf inv�lido!\n";
+			errorMessage += "Cpf inválido!\n";
 		}
 		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
-			errorMessage += "Rg inv�lido!\n";
+			errorMessage += "Rg inválido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
-			errorMessage += "Telefone inv�lido!\n";
+			errorMessage += "Telefone inválido!\n";
 		}
 		if (cbxEstado.getValue() == null) {
-			errorMessage += "Estado inv�lido!\n";
+			errorMessage += "Estado inválido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
-			errorMessage += "Cidade inv�lida!\n";
+			errorMessage += "Cidade inválida!\n";
 		}
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
-			errorMessage += "Bairro inv�lido!\n";
+			errorMessage += "Bairro inválido!\n";
 		} // ajeitar!!
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
-			errorMessage += "Rua inv�lida!\n";
+			errorMessage += "Rua inválida!\n";
 		}
 		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
-			errorMessage += "Cep inv�lido!\n";
+			errorMessage += "Cep inválido!\n";
 		}
 		if (rbtMasculino == null || rbtFeminino == null) {
-			errorMessage += "Sexo inv�lido!\n";
+			errorMessage += "Sexo inválido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
-			errorMessage += "Data de nascimento inv�lida!\n";
+			errorMessage += "Data de nascimento inválido!\n";
 		}
 		if (pswSenha.getText() == null || pswSenha.getText().length() == 0) {
-			errorMessage += "Senha inv�lida!\n";
+			errorMessage += "Senha inválida!\n";
 		}
 		if (pswConfirmarSenha.getText() == null || pswConfirmarSenha.getText().length() == 0) {
-			errorMessage += "Confirma��o de Senha inv�lida!\n";
+			errorMessage += "Confirmação de Senha inválida!\n";
 		}
 		if(!pswSenha.getText().equals(pswConfirmarSenha.getText())){
-			errorMessage += "Senhas n�o coincidem!\n";
+			errorMessage += "Senhas não coincidem!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inv�lidos");
-			alert.setHeaderText("Por favor, corrija	os campos inv�lidos!");
+			alert.setTitle("Campos Inválidos");
+			alert.setHeaderText("Por favor, corrija	os campos inválidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
