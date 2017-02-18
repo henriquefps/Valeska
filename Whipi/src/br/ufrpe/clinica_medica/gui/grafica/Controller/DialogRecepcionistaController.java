@@ -5,18 +5,24 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
@@ -58,6 +64,10 @@ public class DialogRecepcionistaController implements Initializable {
 	private RadioButton rbtFeminino;
 	@FXML
 	private RadioButton rbtMasculino;
+	@FXML
+	private Button bntSave;
+	@FXML
+	private Label labelTitle;
 	
 	private FachadaClinicaMedica fachada;
 	private Telas t;
@@ -180,5 +190,79 @@ public class DialogRecepcionistaController implements Initializable {
 	@FXML
 	private void sair() {
 		t.fecharTelaDialogo();
+	}
+
+	protected void mostrarDetalhes(Recepcionista m) {
+		// TODO Auto-generated method stub
+		this.labelTitle.setText("Atualiza Medico");
+		if (m != null) {
+			txfNome.setText(m.getNome());
+			txfCpf.setText(m.getCpf());
+			txfRg.setText(m.getRg());
+			txfTelefone.setText(m.getTelefone());
+			txfCelular.setText(m.getCelular());
+			txfRua.setText(m.getEndereco().getRua());
+			txfBairro.setText(m.getEndereco().getBairro());
+			txfCidade.setText(m.getEndereco().getCidade());
+			txfComplemento.setText(m.getEndereco().getComplemento());
+			txfCep.setText(m.getEndereco().getCep());
+			cbxEstado.setValue(m.getEndereco().getEstado());
+			if (m.getSexo() == 'M') {
+				tgpSexo.selectToggle(rbtMasculino);
+			} else {
+				tgpSexo.selectToggle(rbtFeminino);
+			}
+			dtpNascimento.setValue(m.getDataDeNascimento());
+			pswSenha.setText(m.getSenha());
+		} else {
+			txfNome.setText("");
+			txfCpf.setText("");
+			txfRg.setText("");
+			txfTelefone.setText("");
+			txfCelular.setText("");
+			txfRua.setText("");
+			txfBairro.setText("");
+			txfCidade.setText("");
+			txfComplemento.setText("");
+			txfCep.setText("");
+			cbxEstado.setValue("");
+			pswSenha.setText("");
+		}bntSave.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent evento) {
+		        atualizaRecepcionista(m);
+				sair();
+			}
+		});
+	}
+	protected void atualizaRecepcionista(Recepcionista m) {
+		Recepcionista recep = new Recepcionista();
+		recep.setNome(txfNome.getText());
+		recep.setCpf(txfCpf.getText());
+		recep.setRg(txfRg.getText());
+		recep.setCelular(txfCelular.getText());
+		recep.setTelefone(txfTelefone.getText());
+		if (tgpSexo.getSelectedToggle().equals(rbtMasculino)) {
+			recep.setSexo('M');
+		} else {
+			recep.setSexo('F');
+		}
+		recep.setDataDeNascimento(dtpNascimento.getValue());
+		recep.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
+				cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
+		recep.setSenha(pswSenha.getText());
+		try {
+			fachada.removerRecepcionista(m);
+			try {
+				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
+						recep.getCelular(), recep.getSexo(), recep.getEndereco(), 
+						recep.getDataDeNascimento(), recep.getSenha());
+			} catch (PJCException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		} catch (PNEException e) {
+			e.printStackTrace();
+		}
 	}
 }

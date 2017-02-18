@@ -69,6 +69,7 @@ public class TelaAdminController implements Initializable {
 
 	private Paciente pacienteAtual;
 	private Medico medicoAtual;
+	private Recepcionista recepcionistaAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -166,6 +167,21 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaRecepcionista() {
+		if (recepcionistaAtual == null) {
+			return;
+		}
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogRecepcionistaController p = t.getF().getController();
+		p.mostrarDetalhes(recepcionistaAtual);
+		t.abrirTelaDialogo();
+		preencherTableViewPaciente();
+		this.pacienteAtual = null;
+		atualizaPaciente.setDisable(true);
+		removePaciente.setDisable(true);
+		detalhePaciente.setDisable(true);
 
 	}
 
@@ -291,12 +307,27 @@ public class TelaAdminController implements Initializable {
 			medicoAtual = clicado;
 		}
 	}
+	
+	@FXML private void nomeRecepcionistaClicado(){
+		Recepcionista clicado = tabelaRecepcionista.getSelectionModel().getSelectedItem();
+		if(clicado != null){
+			recepcionistaAtual = clicado;
+			atualizaRecepcionista.setDisable(false);
+			removeRecepcionista.setDisable(false);
+			detalheRecepcionista.setDisable(false);
+			recepcionistaAtual =  clicado;
+		}
+	}
 
 	public Medico retornaMedico(){
 		return this.medicoAtual;
 	}
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
+	}
+	public Recepcionista retornaRecepcionista(){
+		return this.recepcionistaAtual;
+		
 	}
 	
 	@FXML
@@ -312,6 +343,7 @@ public class TelaAdminController implements Initializable {
 		detalhePaciente.setDisable(true);
 		this.medicoAtual = null;
 		this.pacienteAtual = null;
+		this.recepcionistaAtual = null;
 	}
 
 	public void preencherTableViewPaciente() {
