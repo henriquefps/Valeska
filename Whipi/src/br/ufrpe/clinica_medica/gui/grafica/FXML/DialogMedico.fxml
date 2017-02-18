@@ -41,7 +41,7 @@
 				<RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
 			</rowConstraints>
 			<children>
-				<TextField fx:id="txfNome" GridPane.columnIndex="1" />
+				<TextField fx:id="txfNome" promptText="Nome" GridPane.columnIndex="1" />
 				<Label text="Nome" />
 				<Label text="Endereço" GridPane.rowIndex="6" />
 				<Label text="Sexo" GridPane.rowIndex="5" />
@@ -57,10 +57,10 @@
 				<Label text="Data de Nascimento" GridPane.rowIndex="12" />
 				<Label text="CRM" GridPane.rowIndex="13" />
 				<Label text="Número de Consultas" GridPane.rowIndex="14" />
-				<TextField fx:id="txfCPF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-				<TextField fx:id="txfRG" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-				<TextField fx:id="txfTelefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-				<TextField fx:id="txfCelular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+				<TextField fx:id="txfCPF" promptText="CPF" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+				<TextField fx:id="txfRG" promptText="RG" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+				<TextField fx:id="txfTelefone" promptText="Telefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+				<TextField fx:id="txfCelular" promptText="Celular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
 				<HBox alignment="CENTER" prefHeight="24.0" prefWidth="241.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
 					<children>
 						<RadioButton fx:id="rbFeminino" mnemonicParsing="false" text="Feminino">
@@ -71,29 +71,27 @@
 						<RadioButton fx:id="rbMasculino" mnemonicParsing="false" text="Masculino" toggleGroup="$sexo" />
 					</children>
 				</HBox>
-				<TextField fx:id="txfRua" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-				<TextField fx:id="txfBairro" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-				<TextField fx:id="txfCEP" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-				<TextField fx:id="txfComplemento" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-				<TextField fx:id="txfCidade" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-				<DatePicker fx:id="dtpNascimento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
-				<TextField fx:id="txfCRM" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+				<TextField fx:id="txfRua" promptText="Endereço" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+				<TextField fx:id="txfBairro" promptText="Bairro" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+				<TextField fx:id="txfCEP" promptText="CEP" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+				<TextField fx:id="txfComplemento" promptText="Complemento" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+				<TextField fx:id="txfCidade" promptText="Cidade" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+				<DatePicker fx:id="dtpNascimento" promptText="Data de Nascimento" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="12" />
+				<TextField fx:id="txfCRM" promptText="CRM" GridPane.columnIndex="1" GridPane.rowIndex="13" />
 				<ComboBox fx:id="cbxEstados" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
-				<TextField fx:id="txfConsultas" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+				<TextField fx:id="txfConsultas" promptText="Número de Consultas" GridPane.columnIndex="1" GridPane.rowIndex="14" />
 				<Label text="Senha" GridPane.rowIndex="15" />
-				<Label text="Confirmar Senha" GridPane.rowIndex="16" />
-				<TextField fx:id="txfSenha" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-				<TextField fx:id="txfConfirmaSenha" GridPane.columnIndex="1" GridPane.rowIndex="16" />
+				<TextField fx:id="txfSenha" promptText="Senha" GridPane.columnIndex="1" GridPane.rowIndex="15" />
 			</children>
 		</GridPane>
 		<HBox layoutX="26.0" layoutY="492.0" spacing="35.0" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="50.0">
 			<children>
-				<Button layoutX="26.0" layoutY="492.0" mnemonicParsing="false" onAction="#salvarMedico" prefWidth="100.0" text="Salvar" />
+				<Button fx:id="btnSave" layoutX="26.0" layoutY="492.0" mnemonicParsing="false" onAction="#salvarMedico" prefWidth="100.0" text="Salvar" />
 				<Button layoutX="126.0" layoutY="492.0" mnemonicParsing="false" onAction="#sair" prefWidth="100.0" text="Sair" />
 			</children>
 		</HBox>
 		<HBox layoutX="22.0" layoutY="497.0" spacing="10.0" />
-		<Label layoutX="150.0" layoutY="14.0" text="Cadastro Médico">
+		<Label fx:id="labelTitle" layoutX="150.0" layoutY="14.0" text="Cadastro Médico">
 			<font>
 				<Font name="Times New Roman" size="18.0" />
 			</font>

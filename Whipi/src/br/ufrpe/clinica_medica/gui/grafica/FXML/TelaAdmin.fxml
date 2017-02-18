@@ -15,17 +15,17 @@
 
 <AnchorPane fx:id="anchorAdm" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
 	<children>
-		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Administrador">
+		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#clicadoForaDaTabela" prefHeight="400.0" prefWidth="600.0" text="Administrador">
 			<content>
-				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
+				<AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#clicadoForaDaTabela" prefHeight="257.0" prefWidth="598.0">
 					<children>
 						<BorderPane prefHeight="256.0" prefWidth="600.0">
 							<top>
 								<Accordion prefHeight="330.0" BorderPane.alignment="CENTER">
 									<panes>
-										<TitledPane text="Médico">
+										<TitledPane onMousePressed="#clicadoForaDaTabela" text="Médico">
 											<content>
-												<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+												<AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#clicadoForaDaTabela" prefHeight="180.0" prefWidth="200.0">
 													<children>
 														<GridPane layoutX="400.0" layoutY="69.0" prefHeight="150.0" prefWidth="300.0">
 															<columnConstraints>
@@ -41,13 +41,9 @@
 															</rowConstraints>
 															<children>
 																<Button mnemonicParsing="false" onAction="#telaCadastroMedico" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-
-																<Button fx:id="atualizaMedico" disable="true" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 																<Button fx:id="removeMedico" disable="true" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
 																<Button fx:id="detalheMedico" disable="true" mnemonicParsing="false" onAction="#telaDetalheMedico" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-																<Button fx:id="atualizaMedico" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-																<Button fx:id="removeMedico" mnemonicParsing="false" onAction="#telaRemoveMedico" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-																<Button fx:id="detalheMedico" mnemonicParsing="false" onAction="#telaDetalheMedico" prefHeight="25.0" prefWidth="87.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+																<Button fx:id="atualizaMedico" disable="true" mnemonicParsing="false" onAction="#telaAtualizaMedico" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
 
 															</children>
 														</GridPane>
@@ -62,9 +58,9 @@
 												</AnchorPane>
 											</content>
 										</TitledPane>
-										<TitledPane text="Recepcionista">
+										<TitledPane onMousePressed="#clicadoForaDaTabela" text="Recepcionista">
 											<content>
-												<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+												<AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#clicadoForaDaTabela" prefHeight="180.0" prefWidth="200.0">
 													<children>
 														<Label layoutX="111.0" layoutY="6.0" text="Recepcionistas" />
 														<GridPane layoutX="400.0" layoutY="69.0" prefHeight="150.0" prefWidth="300.0">
@@ -96,9 +92,9 @@
 												</AnchorPane>
 											</content>
 										</TitledPane>
-										<TitledPane pickOnBounds="false" text="Paciente">
+										<TitledPane onMousePressed="#clicadoForaDaTabela" pickOnBounds="false" text="Paciente">
 											<content>
-												<AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="180.0" prefWidth="598.0" visible="false">
+												<AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#clicadoForaDaTabela" pickOnBounds="false" prefHeight="180.0" prefWidth="598.0" visible="false">
 													<children>
 														<GridPane layoutX="400.0" layoutY="69.0" prefHeight="150.0" prefWidth="300.0">
 															<columnConstraints>
