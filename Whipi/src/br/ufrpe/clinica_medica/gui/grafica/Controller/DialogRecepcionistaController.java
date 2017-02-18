@@ -131,55 +131,55 @@ public class DialogRecepcionistaController implements Initializable {
 		String errorMessage = "";
 
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
-			errorMessage += "Nome inválido!\n";
+			errorMessage += "Nome invï¿½lido!\n";
 		}
 		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
-			errorMessage += "Cpf inválido!\n";
+			errorMessage += "Cpf invï¿½lido!\n";
 		}
 		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
-			errorMessage += "Rg inválido!\n";
+			errorMessage += "Rg invï¿½lido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
-			errorMessage += "Telefone inválido!\n";
+			errorMessage += "Telefone invï¿½lido!\n";
 		}
 		if (cbxEstado.getValue() == null) {
-			errorMessage += "Estado inválido!\n";
+			errorMessage += "Estado invï¿½lido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
-			errorMessage += "Cidade inválida!\n";
+			errorMessage += "Cidade invï¿½lida!\n";
 		}
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
-			errorMessage += "Bairro inválido!\n";
+			errorMessage += "Bairro invï¿½lido!\n";
 		} // ajeitar!!
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
-			errorMessage += "Rua inválida!\n";
+			errorMessage += "Rua invï¿½lida!\n";
 		}
 		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
-			errorMessage += "Cep inválido!\n";
+			errorMessage += "Cep invï¿½lido!\n";
 		}
 		if (rbtMasculino == null || rbtFeminino == null) {
-			errorMessage += "Sexo inválido!\n";
+			errorMessage += "Sexo invï¿½lido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
-			errorMessage += "Data de nascimento inválida!\n";
+			errorMessage += "Data de nascimento invï¿½lida!\n";
 		}
 		if (pswSenha.getText() == null || pswSenha.getText().length() == 0) {
-			errorMessage += "Senha inválida!\n";
+			errorMessage += "Senha invï¿½lida!\n";
 		}
 		if (pswConfirmarSenha.getText() == null || pswConfirmarSenha.getText().length() == 0) {
-			errorMessage += "Confirmação de Senha inválida!\n";
+			errorMessage += "Confirmaï¿½ï¿½o de Senha invï¿½lida!\n";
 		}
 		if(!pswSenha.getText().equals(pswConfirmarSenha.getText())){
-			errorMessage += "Senhas não coincidem!\n";
+			errorMessage += "Senhas nï¿½o coincidem!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inválidos");
-			alert.setHeaderText("Por favor, corrija	os campos inválidos!");
+			alert.setTitle("Campos Invï¿½lidos");
+			alert.setHeaderText("Por favor, corrija	os campos invï¿½lidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
@@ -193,8 +193,7 @@ public class DialogRecepcionistaController implements Initializable {
 	}
 
 	protected void mostrarDetalhes(Recepcionista m) {
-		// TODO Auto-generated method stub
-		this.labelTitle.setText("Atualiza Medico");
+		this.labelTitle.setText("Atualiza Recepcionista");
 		if (m != null) {
 			txfNome.setText(m.getNome());
 			txfCpf.setText(m.getCpf());

@@ -187,12 +187,42 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaRemoveRecepcionista() {
+		if (recepcionistaAtual == null) {
+			return;
+		}
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Remover recepcionista");
+		alert.setHeaderText("Deseja remover o recepcionista " + recepcionistaAtual.getNome() + "?");
 
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			try {
+				f.removerRecepcionista(recepcionistaAtual);
+				this.recepcionistaAtual = null;
+				atualizaRecepcionista.setDisable(true);
+				removeRecepcionista.setDisable(true);
+				detalheRecepcionista.setDisable(true);
+				preencherTableViewRecepcionista();
+			} catch (PNEException e) {
+				e.printStackTrace();
+			}
+		} else {
+			return;
+		}
 	}
 
 	@FXML
 	private void telaDetalheRecepcionista() {
-
+		if (recepcionistaAtual == null) {
+			return;
+		}
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogRecepcionistaController p = t.getF().getController();
+		p.mostrarDetalhes(recepcionistaAtual);
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
