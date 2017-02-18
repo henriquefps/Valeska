@@ -267,6 +267,28 @@ public class DialogMedicoController implements Initializable {
 		}
 	}
 
+	protected void verDetalhes(Medico m) {
+		mostrarDetalhes(m);
+		this.labelTitle.setText("Detalhe Medico");
+		txfNome.setDisable(true);
+		txfCPF.setDisable(true);
+		txfRG.setDisable(true);
+		txfTelefone.setDisable(true);
+		txfCelular.setDisable(true);
+		txfRua.setDisable(true);
+		txfBairro.setDisable(true);
+		txfCidade.setDisable(true);
+		txfComplemento.setDisable(true);
+		txfCEP.setDisable(true);
+		cbxEstados.setDisable(true);
+		rbMasculino.setDisable(true);
+		rbFeminino.setDisable(true);
+		dtpNascimento.setDisable(true);
+		btnSave.setVisible(false);
+		txfConsultas.setDisable(true);
+		txfCRM.setDisable(true);
+		txfSenha.setDisable(true);
+	}
 
 	@FXML
 	private void sair() {

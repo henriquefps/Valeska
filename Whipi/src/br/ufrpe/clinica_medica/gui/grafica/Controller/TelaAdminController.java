@@ -105,12 +105,38 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaRemoveMedico() {
+		if (medicoAtual == null) {
+			return;
+		}
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Remover medico");
+		alert.setHeaderText("Deseja remover o medico " + medicoAtual.getNome() + "?");
 
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			try {
+				f.removerMedico(medicoAtual);
+				preencherTableView();
+			} catch (PNEException e) {
+				e.printStackTrace();
+			}
+		} else {
+			return;
+		}
 	}
 
 	@FXML
 	private void telaDetalheMedico() {
-
+		if (medicoAtual == null) {
+			return;
+		}
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogMedicoController p = t.getF().getController();
+		p.verDetalhes(medicoAtual);
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
@@ -124,16 +150,6 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void telaAtualizaRecepcionista() {
-		TextInputDialog dialog = new TextInputDialog("CPF");
-		dialog.setTitle("Atualizar Recepcionista");
-		dialog.setHeaderText("Atualizar Recepcionista");
-		dialog.setContentText("Digite seu CPF:");
-
-		// Traditional way to get the response value.
-		Optional<String> result = dialog.showAndWait();
-		if (result.isPresent()) {
-			System.out.println("Your name: " + result.get());
-		}
 
 	}
 
