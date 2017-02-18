@@ -56,7 +56,7 @@ public class TelaRecepcionistaController implements Initializable {
 	@FXML
 	private TableView<Consulta> tabelaConsultas;
 	@FXML
-	private TableColumn<Consulta, Medico> colunaConsultaMedico;
+	private TableColumn<Medico, String> colunaConsultaMedico;
 	@FXML
 	private TableColumn<Consulta, Paciente> colunaConsultaPaciente;
 	@FXML
