@@ -137,4 +137,18 @@ public class Telas {
 			alert.close();
 		}
 	}
+	
+	public void sairDoSistema(){
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Confirmação");
+		alert.setHeaderText("Sair");
+		alert.setContentText("Deseja fechar o programa?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			System.exit(0);
+		} else {
+			alert.close();
+		}
+	}
 }

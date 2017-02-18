@@ -3,7 +3,6 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
@@ -16,11 +15,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -42,13 +38,6 @@ public class TelaMedicoController implements Initializable {
 	private TableColumn<Consulta, Boolean> colunaRealizada;
 
 	private Medico logado;
-	// @FXML private Button botaoAlterarDiasDeTrabalho;
-	//
-	// @FXML private Button botaoEditarPerfil;
-	//
-	// @FXML private Button botaoRealizarConsulta;
-	//
-	// @FXML private Button botaoCancelarDiaDeTrabalho;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
@@ -96,17 +85,7 @@ public class TelaMedicoController implements Initializable {
 	}
 	
 	public void sair(){
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
-		alert.setHeaderText("Sair");
-		alert.setContentText("Deseja fechar o programa?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			System.exit(0);
-		} else {
-			alert.close();
-		}
+		t.sairDoSistema();
 		
 	}
 	

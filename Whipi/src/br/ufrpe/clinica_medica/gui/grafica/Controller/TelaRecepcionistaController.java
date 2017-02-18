@@ -31,21 +31,6 @@ import javafx.stage.Stage;
  */
 public class TelaRecepcionistaController implements Initializable {
 
-	// @FXML private Button btnCadastroConsulta;
-	// @FXML private Button btnListarMedico;
-	// @FXML private Button btnListarPaciente;
-	// @FXML private Button btnAtualizaPaciente;
-	// @FXML private Button btnRemoveConsulta;
-	// @FXML private Button btnRemovePaciente;
-	// @FXML private Button btnListarConsulta;
-	// @FXML private Button btnCadastroPaciente;
-	// @FXML private Button btnAtualizaConsulta;
-	// @FXML private Button btnAtualizaRecepcionista;
-	//
-	// @FXML private Button botaoLogoff;
-	//
-	// @FXML private Button botaoSair;
-
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteNome;
 	@FXML
@@ -157,34 +142,12 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	private void logoff() {
-		// Alert alert = new Alert(AlertType.CONFIRMATION);
-		// alert.setTitle("Confirmacao");
-		// alert.setHeaderText("Logoff");
-		// alert.setContentText("Deseja fazer logoff?");
-		//
-		// Optional<ButtonType> result = alert.showAndWait();
-		// if (result.get() == ButtonType.OK){
-		// t.voltarTela();
-		// t.abrirTela();
-		// } else {
-		// alert.close();
-		// }
 		t.logoff();
 	}
 
 	@FXML
 	private void sair() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
-		alert.setHeaderText("Sair");
-		alert.setContentText("Deseja fechar o programa?");
-
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			System.exit(0);
-		} else {
-			alert.close();
-		}
+		t.sairDoSistema();
 	}
 
 	public void preencherTableView() {

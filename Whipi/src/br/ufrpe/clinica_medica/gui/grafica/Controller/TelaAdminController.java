@@ -11,7 +11,6 @@ import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -304,17 +303,8 @@ public class TelaAdminController implements Initializable {
 
 	@FXML
 	private void sair() {
-		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirmação");
-		alert.setHeaderText("Sair");
-		alert.setContentText("Deseja fechar o programa?");
+		t.sairDoSistema();
 
-		Optional<ButtonType> result = alert.showAndWait();
-		if (result.get() == ButtonType.OK) {
-			System.exit(0);
-		} else {
-			alert.close();
-		}
 	}
 
 	@FXML
