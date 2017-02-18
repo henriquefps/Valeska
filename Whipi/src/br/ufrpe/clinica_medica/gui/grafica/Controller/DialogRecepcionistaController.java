@@ -74,7 +74,6 @@ public class DialogRecepcionistaController implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
-		// TODO Auto-generated method stub
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
 

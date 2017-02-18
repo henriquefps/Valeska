@@ -76,6 +76,8 @@ public class TelaMedicoController implements Initializable {
 		t.setDialogStage(new Stage());
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
+		DialogMedicoController p = t.getF().getController();
+		p.mostrarDetalhes((Medico)t.getLogada());
 		t.abrirTelaDialogo();
 	}
 
