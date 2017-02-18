@@ -82,10 +82,10 @@
 																<Button fx:id="detalheRecepcionista" disable="true" mnemonicParsing="false" onAction="#telaDetalheRecepcionista" prefHeight="25.0" prefWidth="85.0" text="Ver detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
 															</children>
 														</GridPane>
-														<TableView layoutY="25.0" prefHeight="230.0" prefWidth="313.0">
+														<TableView fx:id="tabelaRecepcionista" layoutY="25.0" prefHeight="230.0" prefWidth="313.0">
 															<columns>
-																<TableColumn editable="false" prefWidth="200.0" resizable="false" text="Nome" />
-																<TableColumn editable="false" prefWidth="120.0" resizable="false" text="CPF" />
+																<TableColumn fx:id="colunaNomeDoRecepcionista" editable="false" prefWidth="200.0" resizable="false" text="Nome" />
+																<TableColumn fx:id="colunaCpfDoRecepcionista" editable="false" prefWidth="120.0" resizable="false" text="CPF" />
 															</columns>
 														</TableView>
 													</children>

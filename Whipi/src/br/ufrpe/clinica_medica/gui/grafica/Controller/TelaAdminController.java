@@ -9,6 +9,7 @@ import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -59,6 +60,10 @@ public class TelaAdminController implements Initializable {
 	@FXML private TableView<Medico> tabelaMedico;
 	@FXML private TableColumn<Medico, String> colunaCpfDoMedico;
 	
+	@FXML private TableColumn<Recepcionista, String> colunaNomeDoRecepcionista;
+	@FXML private TableView<Recepcionista> tabelaRecepcionista;
+	@FXML private TableColumn<Recepcionista, String> colunaCpfDoRecepcionista;
+	
 	private Telas t;
 	private FachadaClinicaMedica f;
 
@@ -69,8 +74,9 @@ public class TelaAdminController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
-		preencherTableView();
+		preencherTableViewPaciente();
 		preencherTableViewMedico();
+		preencherTableViewRecepcionista();
 	}
 
 	@FXML
@@ -152,6 +158,10 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+		preencherTableViewRecepcionista();
+		atualizaRecepcionista.setDisable(true);
+		removeRecepcionista.setDisable(true);
+		detalheRecepcionista.setDisable(true);
 	}
 
 	@FXML
@@ -176,7 +186,7 @@ public class TelaAdminController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
-		preencherTableView();
+		preencherTableViewPaciente();
 		atualizaPaciente.setDisable(true);
 		removePaciente.setDisable(true);
 		detalhePaciente.setDisable(true);
@@ -194,7 +204,7 @@ public class TelaAdminController implements Initializable {
 		DialogPacienteController p = t.getF().getController();
 		p.mostrarDetalhes(pacienteAtual);
 		t.abrirTelaDialogo();
-		preencherTableView();
+		preencherTableViewPaciente();
 		this.pacienteAtual = null;
 		atualizaPaciente.setDisable(true);
 		removePaciente.setDisable(true);
@@ -218,7 +228,7 @@ public class TelaAdminController implements Initializable {
 				removePaciente.setDisable(true);
 				detalhePaciente.setDisable(true);
 				this.pacienteAtual = null;
-				preencherTableView();
+				preencherTableViewPaciente();
 			} catch (PNEException e) {
 				e.printStackTrace();
 			}
@@ -304,7 +314,7 @@ public class TelaAdminController implements Initializable {
 		this.pacienteAtual = null;
 	}
 
-	public void preencherTableView() {
+	public void preencherTableViewPaciente() {
 		ArrayList<Paciente> pacientes = f.ListarPacientes();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -320,5 +330,14 @@ public class TelaAdminController implements Initializable {
 		tabelaMedico.setItems(FXCollections.observableArrayList(medico));
 		tabelaMedico.getColumns().get(0).setVisible(false);
 		tabelaMedico.getColumns().get(0).setVisible(true);
+	}
+	
+	public void preencherTableViewRecepcionista(){
+		ArrayList<Recepcionista> recepcionista = f.ListarRecepcionistas();
+		colunaNomeDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaCpfDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaRecepcionista.setItems(FXCollections.observableArrayList(recepcionista));
+		tabelaRecepcionista.getColumns().get(0).setVisible(false);
+		tabelaRecepcionista.getColumns().get(0).setVisible(true);
 	}
 }
