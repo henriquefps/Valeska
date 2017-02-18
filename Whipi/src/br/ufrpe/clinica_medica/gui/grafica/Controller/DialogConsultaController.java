@@ -77,13 +77,13 @@ public class DialogConsultaController implements Initializable {
 		if (txfPesquisaPaciente.getText().length() == 0) {
 			preencherTableViewPaciente();
 		} else {
-			preencherTableViewPaciente(this.txfPesquisaPaciente.getText());
+			preencherTableViewPaciente();
 		}
 	}
 	
 	@FXML
 	private void verificaSave() {
-		if (dtpConsulta.getValue() != null && (txfHorario.getText() != null || txfHorario.getText().length() != 0)) {
+		if (dtpConsulta.getValue() != null) {
 			btnSave.setDisable(false);
 		} else {
 			btnSave.setDisable(true);
@@ -97,19 +97,12 @@ public class DialogConsultaController implements Initializable {
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 	}
 	
-	public void preencherTableViewPaciente() {
-		ArrayList<Paciente> pacientes = fachada.ListarPacientes();
-		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
-		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
-	}
-	
 	@FXML
 	private void pesquisaMedico() {
 		if (txfPesquisaMedico.getText().length() == 0) {
 			preencherTableViewMedico();
 		} else {
-			preencherTableViewMedico(this.txfPesquisaMedico.getText());
+			preencherTableViewMedico();
 		}
 	}
 	
@@ -120,12 +113,6 @@ public class DialogConsultaController implements Initializable {
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
 	
-	public void preencherTableViewMedico() {
-		ArrayList<Medico> medicos = fachada.ListarMedicos();
-		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("crm"));
-		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
-	}
 	
 	@FXML
 	private void nomePacienteClicado() {
