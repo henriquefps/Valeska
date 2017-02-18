@@ -1,12 +1,14 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
-import java.awt.Button;
+
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -67,11 +69,12 @@ public class DialogMedicoController implements Initializable {
 
 	private Stage dialog;
 	private FachadaClinicaMedica fachada;
-
+    private Telas t;
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method stub
 		fachada = FachadaClinicaMedica.getInstance();
+		t = Telas.getInstance();
 		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
 		cbxEstados.getItems().addAll(estados);
 	}
@@ -86,13 +89,46 @@ public class DialogMedicoController implements Initializable {
 		if (isInputValid()) {
 			m.setNome(txfNome.getText());
 			m.setCpf(txfCPF.getText());
+			m.setRg(txfRG.getText());
 			m.setDataDeNascimento(dtpNascimento.getValue());
 			m.setCelular(txfCelular.getText());
-			// Parei Aqui...
-
+			m.setTelefone(txfTelefone.getText());
+			m.setConsultasPorDia(txfConsultas.getAnchor());
+			m.setSenha(txfSenha.getText());
+			m.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
+					cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));
+			m.setNumCRM(txfCRM.getAnchor());
+			m.setSenha(txfSenha.getText());
+			if(sexo.getSelectedToggle().equals(rbMasculino)){
+			   m.setSexo('M');
+			}else{
+				m.setSexo('F');
+			}
+			
+			try{
+				fachada.cadastrarMedico(m.getNome(), m.getCpf(), m.getRg(), m.getTelefone(), m.getCelular(), m.getSexo(),
+						m.getEndereco(), m.getDataDeNascimento(), m.getNumCRM(), 
+						m.getConsultasPorDia(), m.getSenha());
+				Alert alert = new Alert(AlertType.INFORMATION);
+				alert.setTitle("Sucesso!");
+				alert.setHeaderText("Cadastro!");
+				alert.setContentText("Medico cadastrado com sucesso!");
+				alert.showAndWait();
+				fecharTela();
+				
+			} catch (PJCException e){
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro!");
+				alert.setHeaderText("Cadastro invalido!");
+				alert.setContentText("Medico ja cadastrado!");
+				alert.showAndWait();
+			}
 		}
 	}
 
+	private void fecharTela(){
+		t.fecharTelaDialogo();
+	}
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -130,6 +166,9 @@ public class DialogMedicoController implements Initializable {
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
 			errorMessage += "Data de nascimento invï¿½lida!\n";
 		}
+		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
+			errorMessage += "Senha inválida!\n";
+		}
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
@@ -139,7 +178,6 @@ public class DialogMedicoController implements Initializable {
 			alert.setHeaderText("Por favor, corrija	os campos invï¿½lidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
-
 			return false;
 		}
 	}
