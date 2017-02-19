@@ -18,7 +18,7 @@ public interface IRepositorioPessoas {
 	/**
 	 * Retorna o toString de todos os recepcionistas cadastrados.
 	 */
-	public ArrayList<Recepcionista> getListaRecepcionista();
+	public ArrayList<Recepcionista> listarTodosRecepcionistas();
 
 	/**
 	 * Retorna o toString de todos os pacientes cadastrados no sistema.
@@ -28,7 +28,9 @@ public interface IRepositorioPessoas {
 	/**
 	 * Retorna um ArrayList de pacientes com as iniciais "inicial"
 	 */
-	public ArrayList<Paciente> pesquisarPacientes(String inicial);
+	public ArrayList<Paciente> pesquisarPacienteCPF(String inicial);
+	
+	public ArrayList<Paciente> pesquisarPacienteNome(String nome);
 
 	/**
 	 * Retorna o toString de todos os medicos cadastrados no sistema.
@@ -40,7 +42,9 @@ public interface IRepositorioPessoas {
 	 * @param inicial String para busca.
 	 * @return Retorna um ArrayList de medicos com a string "inicial".
 	 */
-	public ArrayList<Medico> pesquisarMedicos(String inicial);
+	public ArrayList<Medico> pesquisarMedicoCPF(String inicial);
+	
+	public ArrayList<Medico> pesquisarMedicoNome(String nome);
 
 	/**
 	 * Remove uma pessoa indicada pelo controlador.

@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
-import br.ufrpe.clinica_medica.negocio.beans.Medico;
-import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
@@ -73,7 +71,7 @@ public class GerenciamentoRecepcionista {
 				pessoas.atualizar(p, novoRec);
 				pessoas.salvarPessoaEmArquivo();
 			} else {
-				// Depois mudar a mensagem, estou sem criatividade
+				// TODO Depois mudar a mensagem, estou sem criatividade
 				throw new IllegalArgumentException("CPF não é de um recepcionista");
 			}
 		} else {
@@ -83,6 +81,6 @@ public class GerenciamentoRecepcionista {
 	}
 
 	public ArrayList<Recepcionista> ListarRecepcionistas() {
-		return pessoas.getListaRecepcionista();
+		return pessoas.listarTodosRecepcionistas();
 	}
 }

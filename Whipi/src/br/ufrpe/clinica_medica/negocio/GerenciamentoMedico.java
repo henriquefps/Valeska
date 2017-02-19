@@ -81,8 +81,8 @@ public class GerenciamentoMedico {
 		return (Medico) aux;
 	}
 
-	public ArrayList<Medico> ListarMedicos() {
-		return pessoas.listarTodosMedicos();
+	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
+		return pessoas.pesquisarMedicoNome(nome);
 	}
 	
 	public ArrayList<Medico> listarMedicos() {

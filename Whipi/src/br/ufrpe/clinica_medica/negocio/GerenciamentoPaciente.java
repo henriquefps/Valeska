@@ -78,8 +78,8 @@ public class GerenciamentoPaciente {
 		}
 	}
 
-	public ArrayList<Paciente> ListarPacientes() {
-		return pessoas.listaTodosPacientes();
+	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
+		return pessoas.pesquisarPacienteNome(nome);
 	}
 	
 	public ArrayList<Paciente> listarPacientes() {

@@ -115,7 +115,7 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return m;
 	}
 	
-	public ArrayList<Medico> pesquisarMedicos(String inicial) {
+	public ArrayList<Medico> pesquisarMedicoCPF(String inicial) {
 		ArrayList<Medico> m = new ArrayList<>();
 		
 		for (int i = 0; i < repositorio.size(); i++) {
@@ -126,6 +126,22 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 			}
 		}
 		return m;
+	}
+	
+	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
+		ArrayList<Medico> m = new ArrayList<>();
+		
+		for (Pessoa pessoa : repositorio) {
+			if(pessoa instanceof Medico){
+				Medico medico = (Medico) pessoa;
+				if(medico.getNome().startsWith(nome)){
+					m.add(medico);
+				}
+			}
+		}
+		
+		return m;
+		
 	}
 
 	public ArrayList<Paciente> listaTodosPacientes() {
@@ -139,20 +155,37 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		return p;
 	}
 	
-	public ArrayList<Paciente> pesquisarPacientes(String inicial) {
+	public ArrayList<Paciente> pesquisarPacienteCPF(String inicial) {
 		ArrayList<Paciente> p = new ArrayList<>();
 		
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
-				if (repositorio.get(i).getNome().startsWith(inicial)) {
+				if (repositorio.get(i).getCpf().startsWith(inicial)) {
 					p.add((Paciente) repositorio.get(i));					
 				}
 			}
 		}
 		return p;
 	}
+	
+	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
+		ArrayList<Paciente> p = new ArrayList<>();
+		
+		for (Pessoa pessoa : repositorio) {
+			if(pessoa instanceof Paciente){
+				Paciente paciente = (Paciente) pessoa;
+				if(paciente.getNome().startsWith(nome)){
+					p.add(paciente);
+				}
+			}
+		}
+		
+		return p;
+		
+	}
+	
 
-	public ArrayList<Recepcionista> getListaRecepcionista() {
+	public ArrayList<Recepcionista> listarTodosRecepcionistas() {
 		ArrayList<Recepcionista> r = new ArrayList<>();
 
 		for (int i = 0; i < repositorio.size(); i++) {

@@ -165,7 +165,7 @@ public class TelaRecepcionistaController implements Initializable {
 	}
 
 	public void preencherTableView() {
-		ArrayList<Paciente> pacientes = f.ListarPacientes();
+		ArrayList<Paciente> pacientes = f.listarPacientes();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));

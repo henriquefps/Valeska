@@ -803,7 +803,7 @@ public class TelaTextual {
 				}
 
 			} else if (opcao == 1) {
-				System.out.println(pessoas.getListaRecepcionista());
+				System.out.println(pessoas.listarTodosRecepcionistas());
 
 			} else if (opcao == 4) {
 				System.out.print("Digite o cpf do recepcionista a ser removido: ");

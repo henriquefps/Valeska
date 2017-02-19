@@ -22,29 +22,29 @@
       </Label>
       <Button fx:id="btnSave" disable="true" layoutX="219.0" layoutY="461.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="70.0" text="Salvar" />
       <Button layoutX="305.0" layoutY="461.0" mnemonicParsing="false" onAction="#fecharTela" prefHeight="25.0" prefWidth="70.0" text="Sair" />
-      <TableView fx:id="tabelaPaciente" layoutX="63.0" layoutY="180.0" onMousePressed="#nomePacienteClicado" prefHeight="200.0" prefWidth="280.0">
+      <TableView fx:id="tabelaPaciente" layoutX="63.0" layoutY="180.0" prefHeight="200.0" prefWidth="280.0">
         <columns>
           <TableColumn fx:id="colunaPacienteNome" prefWidth="167.0" text="Nome" />
           <TableColumn fx:id="colunaPacienteCPF" prefWidth="112.0" text="CPF" />
         </columns>
       </TableView>
-      <TextField fx:id="txfPesquisaPaciente" layoutX="142.0" layoutY="83.0" onKeyPressed="#pesquisaPaciente" prefHeight="25.0" prefWidth="200.0" promptText="Nome do paciente" />
+      <TextField fx:id="txfPesquisaPaciente" layoutX="142.0" layoutY="83.0" prefHeight="25.0" prefWidth="200.0" promptText="Nome do paciente" />
       <Label layoutX="60.0" layoutY="87.0" text="Pesquisar:" />
       <Label layoutX="62.0" layoutY="116.0" text="Paciente:" />
-      <Button fx:id="btnProximo" disable="true" layoutX="239.0" layoutY="387.0" mnemonicParsing="false" text="Próximo" />
-      <Button fx:id="btnAnterior" disable="true" layoutX="136.0" layoutY="387.0" mnemonicParsing="false" text="Anterior" />
+      <Button fx:id="btnProximo" disable="true" layoutX="239.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleProximo" text="Próximo" />
+      <Button fx:id="btnAnterior" disable="true" layoutX="136.0" layoutY="387.0" mnemonicParsing="false" onAction="#handleAnterior" text="Anterior" />
       <Label layoutX="62.0" layoutY="133.0" text="Médico:" />
-      <Label fx:id="labelPaciente" layoutX="142.0" layoutY="116.0" text="labelPaciente" underline="true" visible="false" />
-      <Label fx:id="labelMedico" layoutX="142.0" layoutY="133.0" text="labelMedico" underline="true" visible="false" />
-      <DatePicker fx:id="dtpConsulta" disable="true" layoutX="120.0" layoutY="151.0" onKeyPressed="#verificaHorario" promptText="Dia da consulta" visible="false" />
-      <TableView fx:id="tabelaMedico" disable="true" layoutX="63.0" layoutY="180.0" onMousePressed="#nomeMedicoClicado" prefHeight="200.0" prefWidth="280.0" visible="false">
+      <Label fx:id="labelPaciente" layoutX="142.0" layoutY="116.0" underline="true" />
+      <Label fx:id="labelMedico" layoutX="142.0" layoutY="133.0" underline="true" />
+      <DatePicker fx:id="dtpConsulta" layoutX="120.0" layoutY="151.0" promptText="Dia da consulta" visible="false" />
+      <TableView fx:id="tabelaMedico" layoutX="63.0" layoutY="180.0" prefHeight="200.0" prefWidth="280.0" visible="false">
          <columns>
             <TableColumn fx:id="colunaMedicoNome" prefWidth="167.0" text="Nome" />
             <TableColumn fx:id="colunaMedicoCRM" prefWidth="112.0" text="CRM" />
          </columns>
       </TableView>
-      <TextField fx:id="txfPesquisaMedico" disable="true" layoutX="142.0" layoutY="83.0" onKeyPressed="#pesquisaMedico" prefHeight="25.0" prefWidth="200.0" promptText="Nome do médico" visible="false" />
-      <TableView fx:id="tabelaConsulta" disable="true" layoutX="63.0" layoutY="180.0" onMousePressed="#nomePacienteClicado" prefHeight="200.0" prefWidth="280.0" visible="false">
+      <TextField fx:id="txfPesquisaMedico" layoutX="142.0" layoutY="83.0" prefHeight="25.0" prefWidth="200.0" promptText="Nome do médico" visible="false" />
+      <TableView fx:id="tabelaConsulta" layoutX="63.0" layoutY="180.0" prefHeight="200.0" prefWidth="280.0" visible="false">
          <columns>
             <TableColumn fx:id="colunaConsultaHorario" prefWidth="279.0" text="Horário" />
          </columns>

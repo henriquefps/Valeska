@@ -367,7 +367,7 @@ public class TelaAdminController implements Initializable {
 	}
 
 	public void preencherTableViewPaciente() {
-		ArrayList<Paciente> pacientes = f.ListarPacientes();
+		ArrayList<Paciente> pacientes = f.listarPacientes();
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
@@ -376,7 +376,7 @@ public class TelaAdminController implements Initializable {
 	}
 	
 	public void preencherTableViewMedico() {
-		ArrayList<Medico> medico = f.ListarMedicos();
+		ArrayList<Medico> medico = f.listarMedicos();
 		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaCpfDoMedico.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medico));

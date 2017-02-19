@@ -90,8 +90,8 @@ public class FachadaClinicaMedica {
 		return this.medico.pesquisarMedico(cpf);
 	}
 
-	public ArrayList<Medico> ListarMedicos() {
-		return medico.ListarMedicos();
+	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
+		return medico.pesquisarMedicoNome(nome);
 	}
 	
 	public ArrayList<Medico> listarMedicos() {
@@ -115,8 +115,8 @@ public class FachadaClinicaMedica {
 		this.paciente.alterarPaciente(cpf, novo);
 	}
 
-	public ArrayList<Paciente> ListarPacientes() {
-		return paciente.ListarPacientes();
+	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
+		return paciente.pesquisarPacienteNome(nome);
 	}
 	
 	public ArrayList<Paciente> listarPacientes() {
