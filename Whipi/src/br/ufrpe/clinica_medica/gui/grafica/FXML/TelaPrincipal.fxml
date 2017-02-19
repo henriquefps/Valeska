@@ -17,10 +17,10 @@
 		</AnchorPane>
 	</bottom>
 	<center>
-		<AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+		<AnchorPane focusTraversable="true" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
-				<TextField fx:id="txfUsuario" layoutX="200.0" layoutY="146.0" promptText="Username" />
-				<PasswordField fx:id="psfSenha" layoutX="200.0" layoutY="203.0" promptText="Password" />
+				<TextField fx:id="txfUsuario" layoutX="200.0" layoutY="146.0" promptText="Usuário" />
+				<PasswordField fx:id="psfSenha" layoutX="200.0" layoutY="203.0" promptText="Senha" />
 				<Text fill="WHITE" layoutX="174.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-header" text="Clínica Médica">
 					<font>
 						<Font name="Times New Roman" size="50.0" />
