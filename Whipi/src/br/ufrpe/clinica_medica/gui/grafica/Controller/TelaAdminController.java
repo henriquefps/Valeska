@@ -176,11 +176,11 @@ public class TelaAdminController implements Initializable {
 		DialogRecepcionistaController p = t.getF().getController();
 		p.mostrarDetalhes(recepcionistaAtual);
 		t.abrirTelaDialogo();
-		preencherTableViewPaciente();
-		this.pacienteAtual = null;
-		atualizaPaciente.setDisable(true);
-		removePaciente.setDisable(true);
-		detalhePaciente.setDisable(true);
+		preencherTableViewRecepcionista();
+		this.recepcionistaAtual = null;
+		atualizaRecepcionista.setDisable(true);
+		removeRecepcionista.setDisable(true);
+		detalheRecepcionista.setDisable(true);
 
 	}
 

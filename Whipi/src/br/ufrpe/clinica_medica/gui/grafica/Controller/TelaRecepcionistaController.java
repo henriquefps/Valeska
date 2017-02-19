@@ -11,6 +11,7 @@ import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -58,6 +59,7 @@ public class TelaRecepcionistaController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
+		
 	}
 
 	@FXML
@@ -113,9 +115,21 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	private void telaAtualizaRecepcionista() {
-
+          Recepcionista recep = (Recepcionista) t.getLogada();
+          t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+          t.setDialogStage(new Stage());
+          t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+          t.getDialogStage().initOwner(t.getStage());
+          DialogRecepcionistaController p = t.getF().getController();
+  		  p.mostrarDetalhes(recep);
+  		  t.abrirTelaDialogo();
+  		  
 	}
 
+	@FXML
+	private void verDetalhes(){
+		
+	}
 	@FXML
 	private void telaCadastroConsulta() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogConsulta")));
