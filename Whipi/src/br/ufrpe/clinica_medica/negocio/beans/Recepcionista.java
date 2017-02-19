@@ -44,7 +44,7 @@ public class Recepcionista extends Pessoa {
 		resultado += "Sexo: " + this.getSexo() + "\n";
 		resultado += this.getEndereco() + "\n";
 		resultado += "Telefone: " + this.getTelefone() + "\n";
-		resultado += "Celular: " + this.getCelular();
+		resultado += "Celular: " + this.getCelular() + "\n";
 		return resultado;
 	}
 

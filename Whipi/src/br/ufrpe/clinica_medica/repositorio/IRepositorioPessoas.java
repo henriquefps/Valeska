@@ -67,7 +67,7 @@ public interface IRepositorioPessoas {
 	public void atualizar(Pessoa ant, Pessoa novo);
 
 	/**
-	 * Salva a inst�ncia do Reposit�rio de Pessoas em Arquivo
+	 * Salva a instância do Repositârio de Pessoas em Arquivo
 	 */
 	public void salvarPessoaEmArquivo();
 

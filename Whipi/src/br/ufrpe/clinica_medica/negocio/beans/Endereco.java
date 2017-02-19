@@ -1,4 +1,4 @@
-/* Endereço 
+/* Endereï¿½o 
  * 
  * VersÃ£o 0.1
  * 
@@ -48,7 +48,7 @@ public class Endereco implements Serializable {
 
 	public String toString() {
 		return "Endereco:\nRua: " + rua + "\nCidade: " + cidade + "\nBairro: " + bairro + "\nEstado: " + estado
-				+ "\nCep: " + cep + "\nComplemento: " + complemento;
+				+ "\nCep: " + cep + "\nComplemento: " + complemento + "\n";
 	}
 
 	public String getRua() {

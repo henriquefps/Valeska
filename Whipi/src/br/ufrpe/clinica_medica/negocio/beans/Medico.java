@@ -19,7 +19,9 @@ public class Medico extends Pessoa {
 	private int consultasPorDia;
 	private String senha;
 	private DiasDeAtendimento diasDeTrabalho[];
+	private EspecialidadeMedico especialidade;
 
+	
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
 			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
@@ -30,8 +32,7 @@ public class Medico extends Pessoa {
 	}
 
 	public Medico() {
-		// TODO Auto-generated constructor stub
-		super(null, null, null, null, null, ' ', null, null);
+		super();
 	}
 
 	public int getNumCRM() {
@@ -57,6 +58,17 @@ public class Medico extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	public DiasDeAtendimento[] getDiasDeTrabalho() {
+		return diasDeTrabalho;
+	}
+
+	public EspecialidadeMedico getEspecialidade() {
+		return especialidade;
+	}
+
+	public void setEspecialidade(EspecialidadeMedico especialidade) {
+		this.especialidade = especialidade;
+	}
 
 	@Override
 	public String toString() {
@@ -68,11 +80,8 @@ public class Medico extends Pessoa {
 		resultado += "Sexo: " + this.getSexo() + "\n";
 		resultado += this.getEndereco() + "\n";
 		resultado += "Telefone: " + this.getTelefone() + "\n";
-		resultado += "Celular: " + this.getCelular() + "\n\n";
+		resultado += "Celular: " + this.getCelular() + "\n";
+		resultado += this.especialidade;
 		return resultado;
-	}
-
-	public DiasDeAtendimento[] getDiasDeTrabalho() {
-		return diasDeTrabalho;
 	}
 }
