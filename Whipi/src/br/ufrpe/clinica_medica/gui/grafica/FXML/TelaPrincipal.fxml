@@ -8,26 +8,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaPrincipalController">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaPrincipalController">
 	<bottom>
 		<AnchorPane prefHeight="83.0" prefWidth="600.0" BorderPane.alignment="CENTER">
 			<children>
-				<Text opacity="0.65" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by VALESKA" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
+				<Text fill="WHITE" opacity="0.65" strokeType="OUTSIDE" strokeWidth="0.0" text="Powered by VALESKA" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0" />
 			</children>
 		</AnchorPane>
 	</bottom>
 	<center>
 		<AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
 			<children>
-				<TextField fx:id="txfUsuario" layoutX="226.0" layoutY="146.0" promptText="Username" />
-				<PasswordField fx:id="psfSenha" layoutX="226.0" layoutY="203.0" promptText="Password" />
-				<Text layoutX="147.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clínica Médica">
+				<TextField fx:id="txfUsuario" layoutX="200.0" layoutY="146.0" promptText="Username" />
+				<PasswordField fx:id="psfSenha" layoutX="200.0" layoutY="203.0" promptText="Password" />
+				<Text fill="WHITE" layoutX="174.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="label-header" text="Clínica Médica">
 					<font>
 						<Font name="Times New Roman" size="50.0" />
 					</font>
 				</Text>
-				<Button layoutX="226.0" layoutY="278.0" mnemonicParsing="false" onAction="#validaLogin" prefHeight="25.0" prefWidth="61.0" text="Entrar" />
-				<Button layoutX="314.0" layoutY="278.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="61.0" text="Sair" />
+				<Button layoutX="200.0" layoutY="278.0" mnemonicParsing="false" onAction="#validaLogin" prefHeight="33.0" prefWidth="100.0" stylesheets="@DarkTheme.css" text="Entrar" />
+				<Button layoutX="306.0" layoutY="278.0" mnemonicParsing="false" onAction="#sair" prefHeight="33.0" prefWidth="100.0" stylesheets="@DarkTheme.css" text="Sair" />
 			</children>
 		</AnchorPane>
 	</center>
