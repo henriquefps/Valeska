@@ -93,7 +93,19 @@ public class DialogConsultaController implements Initializable {
 			}
 		});
 		
-		dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>(){
+		tabelaConsulta.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LocalTime>(){
+			@Override
+			public void changed(ObservableValue<? extends LocalTime> arg0, LocalTime arg1, LocalTime arg2) {
+				if (arg2 != null) {
+					btnSave.setDisable(false);
+				} else {
+					btnSave.setDisable(true);
+				}		
+			}
+			
+		});
+		
+		/*dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>(){
 			@Override
 			public void changed(ObservableValue<? extends LocalDate> arg0, LocalDate arg1, LocalDate arg2) {
 				if (arg2 != null) {
@@ -103,7 +115,7 @@ public class DialogConsultaController implements Initializable {
 				}		
 			}
 			
-		});
+		});*/
 		
 		
 		txfPesquisaPaciente.lengthProperty().addListener(new ChangeListener<Number>(){
