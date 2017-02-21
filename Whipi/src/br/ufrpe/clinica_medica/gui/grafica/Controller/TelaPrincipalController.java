@@ -58,7 +58,7 @@ public class TelaPrincipalController implements Initializable {
 
 	public void sair() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
+		alert.setTitle("Confirmação");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 
@@ -73,8 +73,8 @@ public class TelaPrincipalController implements Initializable {
 	public void dadosInvalidos() {
 		Alert alert = new Alert(AlertType.ERROR);
 		alert.setTitle("Erro de dados!");
-		alert.setHeaderText("Dados inv�lidos!");
-		alert.setContentText("Usu�rio e/ou senha inv�lidos.");
+		alert.setHeaderText("Dados inválidos!");
+		alert.setContentText("Usuário e/ou senha inválidos.");
 
 		alert.showAndWait();
 	}

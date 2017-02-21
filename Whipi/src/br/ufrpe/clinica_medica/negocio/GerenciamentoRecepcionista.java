@@ -38,7 +38,7 @@ public class GerenciamentoRecepcionista {
 					new Recepcionista(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, senha));
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PJCException("CPF " + cpf + " ja cadastrado");
+			throw new PJCException("CPF " + cpf + " j√° cadastrado");
 		}
 	}
 
@@ -55,7 +55,7 @@ public class GerenciamentoRecepcionista {
 			pessoas.remover(a);
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PNEException("CPF do recepcionista nao encontrado no sistema");
+			throw new PNEException("CPF do recepcionista n√£o encontrado no sistema");
 		}
 	}
 
@@ -64,7 +64,7 @@ public class GerenciamentoRecepcionista {
 		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
 		} else {
-			throw new IllegalArgumentException("CPF inv·lido");
+			throw new IllegalArgumentException("CPF inv√°lido");
 		}
 		if (p != null) {
 			if (p instanceof Recepcionista) {
@@ -72,15 +72,15 @@ public class GerenciamentoRecepcionista {
 				pessoas.salvarPessoaEmArquivo();
 			} else {
 				// TODO Depois mudar a mensagem, estou sem criatividade
-				throw new IllegalArgumentException("CPF n„o È de um recepcionista");
+				throw new IllegalArgumentException("CPF n√£o √© de um recepcionista");
 			}
 		} else {
-			throw new PNEException("Recepcionista n„o encontrado");
+			throw new PNEException("Recepcionista n√£o encontrado");
 		}
 
 	}
 
-	public ArrayList<Recepcionista> ListarRecepcionistas() {
+	public ArrayList<Recepcionista> listarRecepcionistas() {
 		return pessoas.listarTodosRecepcionistas();
 	}
 }

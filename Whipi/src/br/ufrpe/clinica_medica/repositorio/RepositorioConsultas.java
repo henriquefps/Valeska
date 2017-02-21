@@ -141,26 +141,33 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 
 	public void modificar(Consulta con, Paciente paciente) {
 		if (con != null && paciente != null) {
+			int i = lista.indexOf(con);
 			con.setPaciente(paciente);
+			lista.set(i, con);
 		}
 	}
 
 	public void modificar(Consulta con, LocalDateTime horario) {
 		if (con != null) {
+			int i = lista.indexOf(con);
 			con.setHorario(horario);
+			lista.set(i, con);
 		}
 	}
 
 	public void modificar(Consulta con, String descricao) {
 		if (con != null) {
+			int i = lista.indexOf(con);
 			con.setDescricao(descricao);
+			lista.set(i, con);
 		}
 	}
 
 	public void modificar(Consulta con, Medico medico) {
 		if (con != null && medico != null) {
+			int i = lista.indexOf(con);
 			con.setMedico(medico);
-			;
+			lista.set(i, con);
 		}
 	}
 

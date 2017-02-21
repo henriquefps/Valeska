@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import br.ufrpe.clinica_medica.exceptions.CJAException;
 import br.ufrpe.clinica_medica.exceptions.CNEException;
 import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.EMEException;
+import br.ufrpe.clinica_medica.exceptions.EMNEException;
 import br.ufrpe.clinica_medica.exceptions.NCDException;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
@@ -24,6 +27,7 @@ public class FachadaClinicaMedica {
 	private GerenciamentoPaciente paciente;
 	private GerenciamentoRecepcionista recepcionista;
 	private GerenciamentoLogin login;
+	private GerenciamentoEspecialidadeMedico especialidade;
 
 	private static FachadaClinicaMedica instance;
 
@@ -33,6 +37,7 @@ public class FachadaClinicaMedica {
 		this.paciente = new GerenciamentoPaciente();
 		this.recepcionista = new GerenciamentoRecepcionista();
 		this.login = new GerenciamentoLogin();
+		this.especialidade = new GerenciamentoEspecialidadeMedico();
 	}
 
 	public static FachadaClinicaMedica getInstance() {
@@ -72,10 +77,10 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha)
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade)
 			throws PJCException {
 		this.medico.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
-				consultasPorDia, senha);
+				consultasPorDia, senha, especialidade);
 	}
 
 	public void removerMedico(Medico medico) throws PNEException {
@@ -145,8 +150,8 @@ public class FachadaClinicaMedica {
 		return this.login.efetuarLogin(cpf, senha);
 	}
 
-	public ArrayList<Recepcionista> ListarRecepcionistas() {
-		return recepcionista.ListarRecepcionistas();
+	public ArrayList<Recepcionista> listarRecepcionistas() {
+		return recepcionista.listarRecepcionistas();
 	}
 
 	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
@@ -175,5 +180,25 @@ public class FachadaClinicaMedica {
 
 	public ArrayList<Consulta> listarConsultas() {
 		return consulta.listarConsultas();
+	}
+	
+	public void cadastrarEspecialidade(String nome) throws EMEException{
+		especialidade.cadastrar(nome);
+	}
+	
+	public void removerEspecialidade(EspecialidadeMedico esp) throws EMNEException{
+		especialidade.remover(esp);
+	}
+	
+	public void alterarEspecialidade(String nome, EspecialidadeMedico novo) throws EMNEException{
+		especialidade.atualizar(nome, novo);
+	}
+	
+	public ArrayList<EspecialidadeMedico> pesquisarEspecialidade(String nome){
+		return especialidade.pesquisar(nome);
+	}
+	
+	public ArrayList<EspecialidadeMedico> listarTodosEspecialidade(){
+		return especialidade.listarTodos();
 	}
 }

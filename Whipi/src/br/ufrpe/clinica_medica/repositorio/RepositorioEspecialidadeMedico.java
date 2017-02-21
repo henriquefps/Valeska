@@ -77,11 +77,6 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 	}
 
 	@Override
-	public EspecialidadeMedico pesquisar(int id) {
-		return lista.get(id);
-	}
-
-	@Override
 	public ArrayList<EspecialidadeMedico> pesquisar(String nome) {
 		ArrayList<EspecialidadeMedico> em = new ArrayList<>();
 		
@@ -124,6 +119,23 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 			}
 		}
 		
+	}
+
+	@Override
+	public boolean existe(String nome) {
+		boolean achou = false;
+		if (!pesquisar(nome).isEmpty()) {
+			achou = true;
+		}
+		return achou;
+	}
+
+	@Override
+	public void atualizar(EspecialidadeMedico ant, EspecialidadeMedico novo) {
+		if(ant == null || novo == null)
+				throw new IllegalArgumentException();
+		
+		lista.set(lista.indexOf(ant), novo);
 	}
 
 }

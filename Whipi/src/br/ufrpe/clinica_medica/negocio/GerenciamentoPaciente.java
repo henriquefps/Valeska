@@ -37,7 +37,7 @@ public class GerenciamentoPaciente {
 			pessoas.cadastrar(new Paciente(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento));
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PJCException("CPF " + cpf + " ja cadastrado");
+			throw new PJCException("CPF " + cpf + " já cadastrado");
 		}
 	}
 
@@ -50,11 +50,15 @@ public class GerenciamentoPaciente {
 	}
 
 	public void removerPaciente(Paciente a) throws PNEException {
-		if (a != null) {
+		if (a == null)
+			throw new IllegalArgumentException("Parâmetro inválido");
+		
+		if(pessoas.existe(a.getCpf())){
 			pessoas.remover(a);
 			pessoas.salvarPessoaEmArquivo();
-		} else {
-			throw new PNEException("CPF do paciente nao encontrado no sistema");
+		}
+		else{
+			throw new PNEException("CPF do paciente não encontrado no sistema");
 		}
 	}
 
@@ -63,18 +67,18 @@ public class GerenciamentoPaciente {
 		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
 		} else {
-			throw new IllegalArgumentException("CPF inv�lido");
+			throw new IllegalArgumentException("CPF inválido");
 		}
 		if (p != null) {
 			if (p instanceof Paciente) {
 				pessoas.atualizar(p, novoPaciente);
 				pessoas.salvarPessoaEmArquivo();
 			} else {
-				// Depois mudar a mensagem, estou sem criatividade
-				throw new IllegalArgumentException("CPF n�o � de um paciente");
+				// TODO Depois mudar a mensagem, estou sem criatividade
+				throw new IllegalArgumentException("CPF não é de um paciente");
 			}
 		} else {
-			throw new PNEException("Paciente n�o encontrado");
+			throw new PNEException("Paciente não encontrado");
 		}
 	}
 

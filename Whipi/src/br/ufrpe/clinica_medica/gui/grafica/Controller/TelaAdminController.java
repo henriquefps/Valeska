@@ -5,11 +5,16 @@ import java.util.ArrayList;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.EMEException;
+import br.ufrpe.clinica_medica.exceptions.EMNEException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -21,8 +26,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -35,33 +40,50 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private Button detalheMedico;
 	@FXML
+	
 	private Button atualizaRecepcionista;
 	@FXML
 	private Button removeRecepcionista;
 	@FXML
 	private Button detalheRecepcionista;
 	@FXML
+	
 	private Button atualizaPaciente;
 	@FXML
 	private Button removePaciente;
 	@FXML
 	private Button detalhePaciente;
+	
 	@FXML
-	private AnchorPane anchorAdm;
+	private Button atualizaEspecialidade;
 	@FXML
+	private Button removeEspecialidade;
+	
+	@FXML	
 	private TableColumn<Paciente, String> colunaPacienteNome;
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteCPF;
 	@FXML
 	private TableView<Paciente> tabelaPaciente;
 
-	@FXML private TableColumn<Medico, String> colunaNomeDoMedico;
-	@FXML private TableView<Medico> tabelaMedico;
-	@FXML private TableColumn<Medico, String> colunaCpfDoMedico;
+	@FXML
+	private TableColumn<Medico, String> colunaNomeDoMedico;
+	@FXML
+	private TableView<Medico> tabelaMedico;
+	@FXML
+	private TableColumn<Medico, String> colunaCpfDoMedico;
 	
-	@FXML private TableColumn<Recepcionista, String> colunaNomeDoRecepcionista;
-	@FXML private TableView<Recepcionista> tabelaRecepcionista;
-	@FXML private TableColumn<Recepcionista, String> colunaCpfDoRecepcionista;
+	@FXML
+	private TableColumn<Recepcionista, String> colunaNomeDoRecepcionista;
+	@FXML
+	private TableView<Recepcionista> tabelaRecepcionista;
+	@FXML
+	private TableColumn<Recepcionista, String> colunaCpfDoRecepcionista;
+	
+	@FXML
+	private TableView<EspecialidadeMedico> tabelaEspecialidades;
+	@FXML
+	private TableColumn<EspecialidadeMedico, String> colunaEspecialidade;
 	
 	private Telas t;
 	private FachadaClinicaMedica f;
@@ -69,6 +91,7 @@ public class TelaAdminController implements Initializable {
 	private Paciente pacienteAtual;
 	private Medico medicoAtual;
 	private Recepcionista recepcionistaAtual;
+	private EspecialidadeMedico especialidadeAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -77,6 +100,22 @@ public class TelaAdminController implements Initializable {
 		preencherTableViewPaciente();
 		preencherTableViewMedico();
 		preencherTableViewRecepcionista();
+		preencherTableViewEspecialidade();
+		
+		
+		tabelaEspecialidades.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EspecialidadeMedico>(){
+
+			@Override
+			public void changed(ObservableValue<? extends EspecialidadeMedico> observable, EspecialidadeMedico oldValue,
+					EspecialidadeMedico newValue) {
+				especialidadeAtual = newValue;
+				atualizaEspecialidade.setDisable(false);
+				removeEspecialidade.setDisable(false);
+			}
+
+			
+		});
+		
 	}
 
 	@FXML
@@ -117,8 +156,8 @@ public class TelaAdminController implements Initializable {
 			return;
 		}
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Remover medico");
-		alert.setHeaderText("Deseja remover o medico " + medicoAtual.getNome() + "?");
+		alert.setTitle("Remover médico");
+		alert.setHeaderText("Deseja remover o médico " + medicoAtual.getNome() + "?");
 
 		Optional<ButtonType> result = alert.showAndWait();
 		if (result.get() == ButtonType.OK) {
@@ -129,8 +168,17 @@ public class TelaAdminController implements Initializable {
 				removeMedico.setDisable(true);
 				detalheMedico.setDisable(true);
 				preencherTableViewMedico();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Remoção realizada com sucesso");
+				a.setContentText(null);
+				
 			} catch (PNEException e) {
-				e.printStackTrace();
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Erro");
+				a.setHeaderText("Remoção inválida");
+				a.setContentText(e.getMessage());
 			}
 		} else {
 			return;
@@ -202,8 +250,17 @@ public class TelaAdminController implements Initializable {
 				removeRecepcionista.setDisable(true);
 				detalheRecepcionista.setDisable(true);
 				preencherTableViewRecepcionista();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Remoção realizada com sucesso");
+				a.setContentText(null);
+				
 			} catch (PNEException e) {
-				e.printStackTrace();
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Erro");
+				a.setHeaderText("Remoção inválida");
+				a.setContentText(e.getMessage());
 			}
 		} else {
 			return;
@@ -274,8 +331,17 @@ public class TelaAdminController implements Initializable {
 				detalhePaciente.setDisable(true);
 				this.pacienteAtual = null;
 				preencherTableViewPaciente();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Remoção realizada com sucesso");
+				a.setContentText(null);
+				
 			} catch (PNEException e) {
-				e.printStackTrace();
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Erro");
+				a.setHeaderText("Remoção inválida");
+				a.setContentText(e.getMessage());
 			}
 		} else {
 			return;
@@ -361,9 +427,12 @@ public class TelaAdminController implements Initializable {
 		atualizaPaciente.setDisable(true);
 		removePaciente.setDisable(true);
 		detalhePaciente.setDisable(true);
+		atualizaEspecialidade.setDisable(true);
+		removeEspecialidade.setDisable(true);
 		this.medicoAtual = null;
 		this.pacienteAtual = null;
 		this.recepcionistaAtual = null;
+		this.especialidadeAtual = null;
 	}
 
 	public void preencherTableViewPaciente() {
@@ -385,11 +454,113 @@ public class TelaAdminController implements Initializable {
 	}
 	
 	public void preencherTableViewRecepcionista(){
-		ArrayList<Recepcionista> recepcionista = f.ListarRecepcionistas();
+		ArrayList<Recepcionista> recepcionista = f.listarRecepcionistas();
 		colunaNomeDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaCpfDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaRecepcionista.setItems(FXCollections.observableArrayList(recepcionista));
 		tabelaRecepcionista.getColumns().get(0).setVisible(false);
 		tabelaRecepcionista.getColumns().get(0).setVisible(true);
 	}
+	
+	public void preencherTableViewEspecialidade(){
+		ArrayList<EspecialidadeMedico> especialidade = f.listarTodosEspecialidade();
+		colunaEspecialidade.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		tabelaEspecialidades.setItems(FXCollections.observableArrayList(especialidade));
+		tabelaEspecialidades.getColumns().get(0).setVisible(false);
+		tabelaEspecialidades.getColumns().get(0).setVisible(true);
+	}
+	
+	public void telaCadastroEspecialidade(){
+		TextInputDialog tid = new TextInputDialog();
+		tid.setTitle("Cadastro Especialidade");
+		tid.setHeaderText(null);
+		tid.setContentText("Digite a especialidade:");
+		Optional<String> result = tid.showAndWait();
+		if(result.isPresent()){
+			try {
+				f.cadastrarEspecialidade(result.get());
+				atualizaEspecialidade.setDisable(true);
+				removeEspecialidade.setDisable(true);
+				this.especialidadeAtual = null;
+				preencherTableViewEspecialidade();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Cadastro realizado com sucesso");
+				a.setContentText(null);
+				a.showAndWait();
+				
+			} catch (EMEException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro");
+				alert.setHeaderText("Cadastro inválido");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+			}
+		}
+	}
+	
+	public void telaAtualizaEspecialidade(){
+		TextInputDialog tid = new TextInputDialog();
+		tid.setTitle("Atualizar Especialidade");
+		tid.setHeaderText(null);
+		tid.setContentText("Digite a atualização:");
+		Optional<String> result = tid.showAndWait();
+		if(result.isPresent()){
+			try {
+				f.alterarEspecialidade(especialidadeAtual.getNome(), new EspecialidadeMedico(result.get()));
+				atualizaEspecialidade.setDisable(true);
+				removeEspecialidade.setDisable(true);
+				this.especialidadeAtual = null;
+				preencherTableViewEspecialidade();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Alteração realizada com sucesso");
+				a.setContentText(null);
+				a.showAndWait();
+				
+			} catch (EMNEException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro");
+				alert.setHeaderText("Alteração inválida");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
+			}
+		}
+	}	
+	
+	public void telaRemoveEspecialidade(){
+		Alert alert = new Alert(AlertType.CONFIRMATION);
+		alert.setTitle("Remover paciente");
+		alert.setHeaderText("Deseja remover a especialidade " + especialidadeAtual.getNome() + "?");
+
+		Optional<ButtonType> result = alert.showAndWait();
+		if (result.get() == ButtonType.OK) {
+			try {
+				f.removerEspecialidade(especialidadeAtual);
+				atualizaEspecialidade.setDisable(true);
+				removeEspecialidade.setDisable(true);
+				this.especialidadeAtual = null;
+				preencherTableViewEspecialidade();
+				
+				Alert a = new Alert(AlertType.INFORMATION);
+				a.setTitle("Sucesso");
+				a.setHeaderText("Remoção realizada com sucesso");
+				a.setContentText(null);
+				a.showAndWait();
+				
+			} catch (EMNEException e) {
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Erro");
+				a.setHeaderText("Remoção inválida");
+				a.setContentText(e.getMessage());
+				a.showAndWait();
+			}
+		} else {
+			return;
+		}
+	}
+	
+	
 }

@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.repositorio.IRepositorioPessoas;
@@ -33,14 +34,14 @@ public class GerenciamentoMedico {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha)
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade)
 			throws PJCException {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
-					consultasPorDia, senha));
+					consultasPorDia, senha, especialidade));
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PJCException("CPF " + cpf + " ja cadastrado no sistema");
+			throw new PJCException("CPF " + cpf + " já cadastrado no sistema");
 		}
 	}
 
@@ -49,7 +50,7 @@ public class GerenciamentoMedico {
 			this.pessoas.remover(medico);
 			pessoas.salvarPessoaEmArquivo();
 		} else {
-			throw new PNEException("CPF do medico n�o encontrado no sistema");
+			throw new PNEException("CPF não encontrado no sistema");
 		}
 	}
 
@@ -58,7 +59,7 @@ public class GerenciamentoMedico {
 		if (cpf != null) {
 			p = pessoas.pesquisar(cpf);
 		} else {
-			throw new IllegalArgumentException("CPF inv�lido");
+			throw new IllegalArgumentException("CPF inválido");
 		}
 		if (p != null) {
 			if (p instanceof Medico) {
@@ -66,10 +67,10 @@ public class GerenciamentoMedico {
 				pessoas.salvarPessoaEmArquivo();
 			} else {
 				// Depois mudar a mensagem, estou sem criatividade
-				throw new IllegalArgumentException("CPF n�o � de um m�dico");
+				throw new IllegalArgumentException("CPF não é de um médico");
 			}
 		} else {
-			throw new PNEException("M�dico n�o encontrado");
+			throw new PNEException("Médico não encontrado");
 		}
 	}
 

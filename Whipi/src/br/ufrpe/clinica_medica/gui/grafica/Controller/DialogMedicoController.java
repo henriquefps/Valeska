@@ -3,6 +3,7 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.PJCException;
@@ -10,24 +11,26 @@ import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
+import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
-import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
 
@@ -73,16 +76,39 @@ public class DialogMedicoController implements Initializable {
 	private Label labelTitle;
     @FXML
     private Button btnSave;
-	private Stage dialog;
+    @FXML
+    private ListView<EspecialidadeMedico> listEspecialidades;
+    private ArrayList<EspecialidadeMedico> especialidades;
+
 	private FachadaClinicaMedica fachada;
     private Telas t;
+    
+    public DialogMedicoController(){
+    	especialidades = new ArrayList<>();
+    }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
-		ObservableList<String> estados = FXCollections.observableArrayList(Estados.pegarEstados());
-		cbxEstados.getItems().addAll(estados);
+		cbxEstados.getItems().addAll(FXCollections.observableArrayList(Estados.pegarEstados()));
+		listEspecialidades.getItems().addAll(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
+		
+		
+		
+		listEspecialidades.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+		
+		ObservableList<EspecialidadeMedico> list = listEspecialidades.getSelectionModel().getSelectedItems();
+		list.addListener((ListChangeListener.Change<? extends EspecialidadeMedico> c) -> {
+			while(c.next()){
+				for(EspecialidadeMedico e : c.getAddedSubList())
+					especialidades.add(e);
+				
+				for(EspecialidadeMedico e : c.getRemoved())
+					especialidades.remove(e);
+			}
+		});
+		
+		
 	}
 
 	@FXML
@@ -114,19 +140,19 @@ public class DialogMedicoController implements Initializable {
 			try{
 				fachada.cadastrarMedico(m.getNome(), m.getCpf(), m.getRg(), m.getTelefone(), m.getCelular(), m.getSexo(),
 						m.getEndereco(), m.getDataDeNascimento(), m.getNumCRM(), 
-						m.getConsultasPorDia(), m.getSenha());
+						m.getConsultasPorDia(), m.getSenha(), null);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Sucesso!");
 				alert.setHeaderText("Cadastro!");
-				alert.setContentText("Medico cadastrado com sucesso!");
+				alert.setContentText("Médico cadastrado com sucesso!");
 				alert.showAndWait();
 				fecharTela();
 				
 			} catch (PJCException e){
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro!");
-				alert.setHeaderText("Cadastro invalido!");
-				alert.setContentText("Medico ja cadastrado!");
+				alert.setHeaderText("Cadastro inválido!");
+				alert.setContentText(e.getMessage());
 				alert.showAndWait();
 			}
 		}
@@ -139,49 +165,50 @@ public class DialogMedicoController implements Initializable {
 		String errorMessage = "";
 
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
-			errorMessage += "Nome inv�lido!\n";
+			errorMessage += "Nome inválido!\n";
 		}
 		if (txfCPF.getText() == null || txfCPF.getText().length() == 0) {
-			errorMessage += "Cpf inv�lido!\n";
+			errorMessage += "Cpf inválido!\n";
 		}
 		if (txfRG.getText() == null || txfRG.getText().length() == 0) {
-			errorMessage += "Rg inv�lido!\n";
+			errorMessage += "Rg inválido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
-			errorMessage += "Telefone inv�lido!\n";
+			errorMessage += "Telefone inválido!\n";
 		}
 		if (cbxEstados.getValue() == null) {
-			errorMessage += "Estado inv�lido!\n";
+			errorMessage += "Estado inválido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
-			errorMessage += "Cidade inv�lida!\n";
+			errorMessage += "Cidade inválida!\n";
 		}
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
-			errorMessage += "Bairro inv�lido!\n";
+			errorMessage += "Bairro inválido!\n";
 		}
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
-			errorMessage += "Rua inv�lida!\n";
+			errorMessage += "Rua inválida!\n";
 		}
 		if (txfCEP.getText() == null || txfCEP.getText().length() == 0) {
-			errorMessage += "Cep inv�lido!\n";
+			errorMessage += "Cep inválido!\n";
 		}
 		if (sexo.getSelectedToggle() == null) {
-			errorMessage += "Sexo inv�lido!\n";
+			errorMessage += "Sexo inválido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
-			errorMessage += "Data de nascimento inv�lida!\n";
+			errorMessage += "Data de nascimento inválida!\n";
 		}
 		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
-			errorMessage += "Senha inv�lida!\n";
+			errorMessage += "Senha inválida!\n";
 		}
+		
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inv�lidos");
-			alert.setHeaderText("Por favor, corrija	os campos inv�lidos!");
+			alert.setTitle("Campos Inválidos");
+			alert.setHeaderText("Por favor, corrija	os campos inválidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 			return false;
@@ -257,10 +284,13 @@ public class DialogMedicoController implements Initializable {
 			try {
 				fachada.cadastrarMedico(medico.getNome(), medico.getCpf(), medico.getRg(), medico.getTelefone(), medico.getCelular(), medico.getSexo(),
 				medico.getEndereco(), medico.getDataDeNascimento(), medico.getNumCRM(), 
-				medico.getConsultasPorDia(), medico.getSenha());
+				medico.getConsultasPorDia(), medico.getSenha(), null);
 			} catch (PJCException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro!");
+				alert.setHeaderText("Cadastro inválido!");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 			}
 		} catch (PNEException e) {
 			e.printStackTrace();
@@ -295,5 +325,4 @@ public class DialogMedicoController implements Initializable {
 		Telas.getInstance().voltarTela();
 		Telas.getInstance().fecharTelaDialogo();
 	}
-
 }

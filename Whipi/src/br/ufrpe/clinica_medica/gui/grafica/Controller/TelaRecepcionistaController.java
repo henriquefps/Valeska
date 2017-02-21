@@ -19,7 +19,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -104,7 +103,11 @@ public class TelaRecepcionistaController implements Initializable {
 			try {
 				f.removerPaciente(pacienteAtual);
 			} catch (PNEException e) {
-				e.printStackTrace();
+				Alert a = new Alert(AlertType.ERROR);
+				a.setTitle("Erro!");
+				a.setHeaderText("Remoção inválido!");
+				a.setContentText(e.getMessage());
+				a.showAndWait();
 			}
 			preencherTableView();
 			alert.close();

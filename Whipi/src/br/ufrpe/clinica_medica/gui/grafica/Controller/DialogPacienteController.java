@@ -113,8 +113,8 @@ public class DialogPacienteController implements Initializable {
 			} catch (PJCException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro!");
-				alert.setHeaderText("Cadastro inv·lido!");
-				alert.setContentText("Paciente j· cadastrado!");
+				alert.setHeaderText("Cadastro inv√°lido!");
+				alert.setContentText(e.getMessage());
 				alert.showAndWait();
 			}
 
@@ -125,46 +125,46 @@ public class DialogPacienteController implements Initializable {
 		String errorMessage = "";
 
 		if (txfNome.getText() == null || txfNome.getText().length() == 0) {
-			errorMessage += "Nome inv·lido!\n";
+			errorMessage += "Nome inv√°lido!\n";
 		}
 		if (txfCpf.getText() == null || txfCpf.getText().length() == 0) {
-			errorMessage += "Cpf inv·lido!\n";
+			errorMessage += "Cpf inv√°lido!\n";
 		}
 		if (txfRg.getText() == null || txfRg.getText().length() == 0) {
-			errorMessage += "Rg inv·lido!\n";
+			errorMessage += "Rg inv√°lido!\n";
 		}
 		if (txfTelefone.getText() == null || txfTelefone.getText().length() == 0) {
-			errorMessage += "Telefone inv·lido!\n";
+			errorMessage += "Telefone inv√°lido!\n";
 		}
 		if (cbxEstado.getValue() == null) {
-			errorMessage += "Estado inv·lido!\n";
+			errorMessage += "Estado inv√°lido!\n";
 		}
 		if (txfCidade.getText() == null || txfCidade.getText().length() == 0) {
-			errorMessage += "Cidade inv·lida!\n";
+			errorMessage += "Cidade inv√°lida!\n";
 		}
 		if (txfBairro.getText() == null || txfBairro.getText().length() == 0) {
-			errorMessage += "Bairro inv·lido!\n";
+			errorMessage += "Bairro inv√°lido!\n";
 		}
 		if (txfRua.getText() == null || txfRua.getText().length() == 0) {
-			errorMessage += "Rua inv·lida!\n";
+			errorMessage += "Rua inv√°lida!\n";
 		}
 		if (txfCep.getText() == null || txfCep.getText().length() == 0) {
-			errorMessage += "Cep inv·lido!\n";
+			errorMessage += "Cep inv√°lido!\n";
 		}
 		if (tgpSexo.getSelectedToggle() == null) {
-			errorMessage += "Sexo inv·lido!\n";
+			errorMessage += "Sexo inv√°lido!\n";
 		}
 		LocalDate hoje = LocalDate.now();
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
-			errorMessage += "Data de nascimento inv·lida!\n";
+			errorMessage += "Data de nascimento inv√°lida!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
 
 			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Campos Inv·lidos");
-			alert.setHeaderText("Por favor, corrija	os campos inv·lidos!");
+			alert.setTitle("Campos Inv√°lidos");
+			alert.setHeaderText("Por favor, corrija	os campos inv√°lidos!");
 			alert.setContentText(errorMessage);
 			alert.showAndWait();
 
@@ -235,19 +235,17 @@ public class DialogPacienteController implements Initializable {
 		paciente.setDataDeNascimento(dtpNascimento.getValue());
 		paciente.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
 				cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
+
 		try {
-			fachada.removerPaciente(a);
-			try {
-				fachada.cadastrarPaciente(paciente.getNome(), paciente.getCpf(), paciente.getRg(),
-						paciente.getTelefone(), paciente.getCelular(), paciente.getSexo(), paciente.getEndereco(),
-						paciente.getDataDeNascimento());
-			} catch (PJCException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			fachada.alterarPaciente(paciente.getCpf(), paciente);
 		} catch (PNEException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro!");
+			alert.setHeaderText("Altera√ß√£o inv√°lida!");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		}
+		
 	}
 
 	protected void verDetalhes(Paciente paciente) {

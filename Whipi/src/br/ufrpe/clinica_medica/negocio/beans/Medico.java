@@ -12,6 +12,7 @@
 package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Medico extends Pessoa {
 
@@ -19,16 +20,17 @@ public class Medico extends Pessoa {
 	private int consultasPorDia;
 	private String senha;
 	private DiasDeAtendimento diasDeTrabalho[];
-	private EspecialidadeMedico especialidade;
+	private ArrayList<EspecialidadeMedico> especialidade;
 
 	
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
-			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha) {
+			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.numCRM = numCRM;
 		this.consultasPorDia = consultasPorDia;
 		this.senha = senha;
 		this.diasDeTrabalho = new DiasDeAtendimento[7];
+		this.especialidade = especialidade;
 	}
 
 	public Medico() {
@@ -62,11 +64,11 @@ public class Medico extends Pessoa {
 		return diasDeTrabalho;
 	}
 
-	public EspecialidadeMedico getEspecialidade() {
+	public ArrayList<EspecialidadeMedico> getEspecialidade() {
 		return especialidade;
 	}
 
-	public void setEspecialidade(EspecialidadeMedico especialidade) {
+	public void setEspecialidade(ArrayList<EspecialidadeMedico> especialidade) {
 		this.especialidade = especialidade;
 	}
 
@@ -81,7 +83,11 @@ public class Medico extends Pessoa {
 		resultado += this.getEndereco() + "\n";
 		resultado += "Telefone: " + this.getTelefone() + "\n";
 		resultado += "Celular: " + this.getCelular() + "\n";
-		resultado += this.especialidade;
+		resultado += "Especialidade:\n";
+		for (EspecialidadeMedico esp : especialidade) {
+			resultado += esp;
+		}
+		
 		return resultado;
 	}
 }

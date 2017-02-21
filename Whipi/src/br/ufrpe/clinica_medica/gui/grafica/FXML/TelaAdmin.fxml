@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
@@ -14,7 +19,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="anchorAdm" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
+<AnchorPane styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
 	<children>
 		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#clicadoForaDaTabela" prefHeight="600.0" prefWidth="800.0" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Administrador">
 			<content>
@@ -166,6 +171,38 @@
 												</AnchorPane>
 											</content>
 										</TitledPane>
+                              <TitledPane animated="false" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Especialidades">
+                                <content>
+                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background" stylesheets="@DarkTheme.css">
+                                       <children>
+                                          <TableView fx:id="tabelaEspecialidades" onMouseClicked="#nomePacienteClicado" prefHeight="367.0" prefWidth="272.0">
+                                             <columns>
+                                                <TableColumn fx:id="colunaEspecialidade" editable="false" maxWidth="1.7976931348623157E308" minWidth="199.0" prefWidth="250.0" resizable="false" sortable="false" text="Nome" />
+                                             </columns>
+                                          </TableView>
+                                          <VBox layoutX="620.0" layoutY="50.0" prefHeight="200.0" prefWidth="125.0" spacing="20.0">
+                                             <children>
+                                                <Button mnemonicParsing="false" onAction="#telaCadastroEspecialidade" prefHeight="25.0" prefWidth="110.0" text="Cadastrar">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="atualizaEspecialidade" disable="true" mnemonicParsing="false" onAction="#telaAtualizaEspecialidade" prefWidth="110.0" text="Atualizar">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                                <Button fx:id="removeEspecialidade" disable="true" mnemonicParsing="false" onAction="#telaRemoveEspecialidade" prefHeight="25.0" prefWidth="110.0" text="Remover">
+                                                   <cursor>
+                                                      <Cursor fx:constant="HAND" />
+                                                   </cursor>
+                                                </Button>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </AnchorPane>
+                                </content>
+                              </TitledPane>
 									</panes>
 								</Accordion>
 							</top>

@@ -9,7 +9,6 @@ import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
-import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -68,6 +67,8 @@ public class DialogRecepcionistaController implements Initializable {
 	private Button bntSave;
 	@FXML
 	private Label labelTitle;
+	@FXML
+	private Label lC;
 	
 	private FachadaClinicaMedica fachada;
 	private Telas t;
@@ -108,22 +109,21 @@ public class DialogRecepcionistaController implements Initializable {
 				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
 						recep.getCelular(), recep.getSexo(), recep.getEndereco(), recep.getDataDeNascimento(),
 						recep.getSenha());
-			} catch (PJCException e) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erro de dados!");
-				alert.setHeaderText("Cadastro invalido!");
-				alert.setContentText(recep.getNome() + " ja cadastrado.");
-				alert.showAndWait();
-			} finally {
+				
 				Alert alert = new Alert(AlertType.INFORMATION);
-				alert.setTitle("Cadastro Recepcionista");
+				alert.setTitle("Sucesso");
 				alert.setHeaderText(null);
-				alert.setContentText(recep.getNome() + " cadastrado com sucesso");
+				alert.setContentText("cadastrado realizado com sucesso");
 				alert.showAndWait();
 				sair();
+			} catch (PJCException e) {
+				Alert alert = new Alert(AlertType.ERROR);
+				alert.setTitle("Erro");
+				alert.setHeaderText("Cadastro inválido!");
+				alert.setContentText(e.getMessage());
+				alert.showAndWait();
 			}
 		}
-
 	}
 
 	private boolean isInputValid() {
@@ -192,7 +192,6 @@ public class DialogRecepcionistaController implements Initializable {
 	}
 
 	protected void mostrarDetalhes(Recepcionista m) {
-		// TODO Auto-generated method stub
 		this.labelTitle.setText("Atualiza Medico");
 		if (m != null) {
 			txfNome.setText(m.getNome());
@@ -250,21 +249,19 @@ public class DialogRecepcionistaController implements Initializable {
 		recep.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
 				cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
 		recep.setSenha(pswSenha.getText());
+		
 		try {
-			fachada.removerRecepcionista(m);
-			try {
-				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
-						recep.getCelular(), recep.getSexo(), recep.getEndereco(), 
-						recep.getDataDeNascimento(), recep.getSenha());
-			} catch (PJCException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			fachada.alterarRecepcionista(recep.getCpf(), recep);
+			
 		} catch (PNEException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro!");
+			alert.setHeaderText("Cadastro inválido!");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		}
 	}
-	@FXML private Label lC;
+	
 	protected void verDetalhes(Recepcionista recepcionista) {
 		mostrarDetalhes(recepcionista);
 		this.labelTitle.setText("Detalhe Paciente");

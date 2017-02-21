@@ -29,7 +29,7 @@ public class EspecialidadeMedico implements Serializable{
 	}
 	
 	public String toString(){
-		String res = "Especialidade: " + nome + "\n";
+		String res = nome + "\n";
 		
 		return res;
 	}

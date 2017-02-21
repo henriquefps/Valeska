@@ -238,8 +238,9 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 	}
 
 	public void atualizar(Pessoa ant, Pessoa novo) {
-		if (ant != null && novo != null)
-			ant = novo;
+		if (ant != null && novo != null){
+			repositorio.set(repositorio.indexOf(ant), novo);
+		}
 		else
 			throw new IllegalArgumentException();
 	}

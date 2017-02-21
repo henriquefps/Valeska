@@ -1,6 +1,7 @@
 package br.ufrpe.clinica_medica.gui;
 
 import java.time.*;
+import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
@@ -172,10 +173,16 @@ public class TelaTextual {
 				System.out.print("Digite sua nova senha: ");
 				String senha = scan.nextLine();
 				scan.nextLine();
+				
+				System.out.print("Digite sua Especialidade: ");
+				String especialidade = scan.nextLine();
+				scan.nextLine();
+				ArrayList<EspecialidadeMedico> lista = new ArrayList<EspecialidadeMedico>();
+				lista.add(new EspecialidadeMedico(especialidade));
 
 				Medico m = new Medico(nome, medico.getCpf(), medico.getRg(), telefone, celular, sexo,
 						new Endereco(rua, cidade, bairro, estado, cep, complemento), medico.getDataDeNascimento(),
-						medico.getNumCRM(), consultasPorDia, senha);
+						medico.getNumCRM(), consultasPorDia, senha, lista);
 				try {
 
 					fachada.alterarMedico(medico.getCpf(), m);
@@ -683,9 +690,13 @@ public class TelaTextual {
 					scan.nextLine();
 					System.out.print("Digite a senha: ");
 					String senha = scan.nextLine();
+					System.out.print("Digite a senha: ");
+					String especialidade = scan.nextLine();
+					ArrayList<EspecialidadeMedico> lista = new ArrayList<EspecialidadeMedico>();
+					lista.add(new EspecialidadeMedico(especialidade));
 					fachada.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo,
 							new Endereco(rua, cep, bairro, cidade, estado, complemento), LocalDate.of(ano, mes, dia),
-							numCrm, consultasPorDia, senha);
+							numCrm, consultasPorDia, senha, lista);
 				} catch (InputMismatchException campoInvalido) {
 					System.out.println("Data Invalida");
 				} catch (PJCException a) {
