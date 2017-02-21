@@ -38,8 +38,14 @@ public class TelaRecepcionistaController implements Initializable {
 	private TableColumn<Paciente, String> colunaPacienteCPF;
 	@FXML
 	private TableView<Paciente> tabelaPaciente;
-
+	@FXML 
+	private TableView<Medico> tabelaMedico;
+    
 	@FXML
+    private TableColumn<Medico, String> colunaNomeMedico;
+    @FXML
+    private TableColumn<Medico, String> colunaCpfMedico;
+    @FXML
 	private TableView<Consulta> tabelaConsultas;
 	@FXML
 	private TableColumn<Medico, String> colunaConsultaMedico;
@@ -59,12 +65,8 @@ public class TelaRecepcionistaController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		preencherTableView();
+		preencherTableViewMedico();
 		
-	}
-
-	@FXML
-	private void telaListarMedico() {
-
 	}
 
 	@FXML
@@ -128,7 +130,14 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	private void verDetalhes(){
-		
+		Recepcionista recep = (Recepcionista) t.getLogada(); 
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+         t.setDialogStage(new Stage());
+         t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+         t.getDialogStage().initOwner(t.getStage());
+         DialogRecepcionistaController p = t.getF().getController();
+         p.verDetalhes(recep);
+         t.abrirTelaDialogo();
 	}
 	@FXML
 	private void telaCadastroConsulta() {
@@ -186,5 +195,13 @@ public class TelaRecepcionistaController implements Initializable {
 		colunaConsultaPaciente.setCellValueFactory(new PropertyValueFactory<>("paciente"));
 		colunaConsultaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
+	}
+	
+	public void preencherTableViewMedico(){
+		ArrayList<Medico> med = f.listarMedicos();
+		colunaNomeMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
+		colunaCpfMedico.setCellValueFactory(new PropertyValueFactory<>("cpf"));
+		tabelaMedico.setItems(FXCollections.observableArrayList(med));
+		
 	}
 }

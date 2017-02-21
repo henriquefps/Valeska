@@ -2,9 +2,8 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.MenuButton?>
-<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -27,129 +26,59 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Domingo" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Segunda-Feira" GridPane.rowIndex="1" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Terça-Feira" GridPane.rowIndex="2" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Quarta-Feira" GridPane.rowIndex="3" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Quinta-Feira" GridPane.rowIndex="4" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Sexta-Feira" GridPane.rowIndex="5" />
-            <CheckBox mnemonicParsing="false" styleClass="label" text="Sábado" GridPane.rowIndex="6" />
+            <CheckBox fx:id="ckbDomingo" mnemonicParsing="false" styleClass="label" text="Domingo" />
+            <CheckBox fx:id="ckbSegunda" mnemonicParsing="false" styleClass="label" text="Segunda-Feira" GridPane.rowIndex="1" />
+            <CheckBox fx:id="ckbTerca" mnemonicParsing="false" styleClass="label" text="Terça-Feira" GridPane.rowIndex="2" />
+            <CheckBox fx:id="ckbSabado" mnemonicParsing="false" styleClass="label" text="Quarta-Feira" GridPane.rowIndex="3" />
+            <CheckBox fx:id="ckbQuinta" mnemonicParsing="false" styleClass="label" text="Quinta-Feira" GridPane.rowIndex="4" />
+            <CheckBox fx:id="ckbSexta" mnemonicParsing="false" styleClass="label" text="Sexta-Feira" GridPane.rowIndex="5" />
+            <CheckBox fx:id="ckbSabado" mnemonicParsing="false" styleClass="label" text="Sábado" GridPane.rowIndex="6" />
             <AnchorPane prefHeight="200.0" prefWidth="251.0" GridPane.columnIndex="1">
                <children>
-                  <MenuButton layoutY="4.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Inicio">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                      <MenuItem mnemonicParsing="false" text="Action 2" />
-                    </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="4.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxDI" layoutX="6.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxDT" layoutX="180.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <children>
-                  <MenuButton layoutY="4.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="4.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxSI" layoutX="7.0" layoutY="11.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxST" layoutX="179.0" layoutY="11.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <children>
-                  <MenuButton layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxTI" layoutX="7.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxTT" layoutX="179.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <children>
-                  <MenuButton layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxQI" layoutX="7.0" layoutY="10.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxQT" layoutX="179.0" layoutY="10.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <children>
-                  <MenuButton layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxQUI" layoutX="7.0" layoutY="10.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxQUT" layoutX="179.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="5">
                <children>
-                  <MenuButton layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="3.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxSEI" layoutX="7.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxSET" layoutX="179.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="6">
                <children>
-                  <MenuButton layoutY="6.0" mnemonicParsing="false" styleClass="context-menu" text="Horário De Início">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
-                  <MenuButton layoutX="172.0" layoutY="6.0" mnemonicParsing="false" styleClass="context-menu" text="Horário de Termino">
-                     <items>
-                        <MenuItem mnemonicParsing="false" text="Action 1" />
-                        <MenuItem mnemonicParsing="false" text="Action 2" />
-                     </items>
-                  </MenuButton>
+                  <ComboBox fx:id="cbxSAI" layoutX="7.0" layoutY="10.0" prefWidth="150.0" promptText="Horário De Início" />
+                  <ComboBox fx:id="cbxSAT" layoutX="179.0" layoutY="9.0" prefWidth="150.0" promptText="Horário De Termino" />
                </children>
             </AnchorPane>
          </children>
       </GridPane>
       <Label layoutX="134.0" styleClass="label-header" text="Tabela de horários" />
-      <Button layoutX="220.0" layoutY="400.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="90.0" text="Salvar" />
-      <Button layoutX="350.0" layoutY="400.0" mnemonicParsing="false" prefWidth="90.0" text="Sair" />
+      <Button layoutX="220.0" layoutY="400.0" mnemonicParsing="false" onAction="#salvarAlteracao" prefHeight="33.0" prefWidth="90.0" text="Salvar" />
+      <Button layoutX="350.0" layoutY="400.0" mnemonicParsing="false" onAction="#fecharTela" prefWidth="90.0" text="Sair" />
    </children>
 </AnchorPane>

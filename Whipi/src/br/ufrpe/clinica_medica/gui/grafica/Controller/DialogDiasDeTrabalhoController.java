@@ -1,18 +1,22 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
-import java.awt.Checkbox;
+
+import java.net.URL;
+import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.MenuButton;
 
-public class DialogDiasDeTrabalhoController {
-	@FXML private Checkbox ckbDomingo;
-	@FXML private Checkbox ckbSegunda;
-	@FXML private Checkbox ckbTerca;
-	@FXML private Checkbox ckbQuarta;
-	@FXML private Checkbox ckbQuinta;
-	@FXML private Checkbox ckbSexta;
-	@FXML private Checkbox ckbSabado;
+public class DialogDiasDeTrabalhoController implements Initializable {
+	@FXML private CheckBox ckbDomingo;
+	@FXML private CheckBox ckbSegunda;
+	@FXML private CheckBox ckbTerca;
+	@FXML private CheckBox ckbQuarta;
+	@FXML private CheckBox ckbQuinta;
+	@FXML private CheckBox ckbSexta;
+	@FXML private CheckBox ckbSabado;
 	
 	@FXML private MenuButton menuDomingoInicio;
 	@FXML private MenuButton menuDomingoFim;
@@ -29,11 +33,23 @@ public class DialogDiasDeTrabalhoController {
 	@FXML private MenuButton menuSabadoInicio;
 	@FXML private MenuButton menuSabadoFim;
 	
+	private Telas t;
+	
+	@Override
+	public void initialize(URL arg0, ResourceBundle arg1) {
+		// TODO Auto-generated method stub
+		t = Telas.getInstance();
+	}
+	
 	@FXML public void salvarAlteracoes(){
 		
 	}
 	
-	@FXML public void cancelarAlteracoes(){
-		
+	
+	
+	@FXML public void fecharTela(){
+		t.fecharTelaDialogo();
 	}
+
+
 }

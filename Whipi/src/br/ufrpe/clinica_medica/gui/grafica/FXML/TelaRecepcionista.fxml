@@ -21,30 +21,14 @@
                <top>
                   <Accordion prefWidth="741.0" BorderPane.alignment="CENTER">
                      <panes>
-                        <TitledPane text="Médico">
+                        <TitledPane prefHeight="250.0" prefWidth="600.0" text="Médico">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="598.0">
                                  <children>
-                                    <GridPane layoutX="309.0" layoutY="14.0" prefHeight="116.0" prefWidth="281.0">
-                                       <columnConstraints>
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                       </columnConstraints>
-                                       <rowConstraints>
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="58.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
-                                          <RowConstraints maxHeight="34.0" minHeight="0.0" prefHeight="25.0" vgrow="SOMETIMES" />
-                                       </rowConstraints>
-                                       <children>
-                                          <Button mnemonicParsing="false" onAction="#telaListarMedico" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" />
-                                       </children>
-                                    </GridPane>
-                                    <TableView layoutX="14.0" layoutY="6.0" prefHeight="200.0" prefWidth="212.0">
+                                    <TableView fx:id="tabelaMedico" layoutX="181.0" layoutY="4.0" prefHeight="217.0" prefWidth="237.0">
                                       <columns>
-                                        <TableColumn prefWidth="75.0" text="Nome" />
-                                        <TableColumn prefWidth="75.0" text="CPF" />
+                                        <TableColumn fx:id="colunaNomeMedico" prefWidth="97.0" text="Nome" />
+                                        <TableColumn fx:id="colunaCpfMedico" prefWidth="136.0" text="CPF" />
                                       </columns>
                                     </TableView>
                                  </children>

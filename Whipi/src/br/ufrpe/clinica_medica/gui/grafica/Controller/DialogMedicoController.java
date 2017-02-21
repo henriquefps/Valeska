@@ -173,7 +173,7 @@ public class DialogMedicoController implements Initializable {
 			errorMessage += "Data de nascimento invï¿½lida!\n";
 		}
 		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
-			errorMessage += "Senha inválida!\n";
+			errorMessage += "Senha invï¿½lida!\n";
 		}
 		if (errorMessage.length() == 0) {
 			return true;
