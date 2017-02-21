@@ -77,7 +77,7 @@
             </AnchorPane>
          </children>
       </GridPane>
-      <Label layoutX="134.0" styleClass="label-header" text="Tabela de horários" />
+      <Label layoutX="220.0" layoutY="14.0" styleClass="label-custom" text="Tabela de horários" />
       <Button layoutX="220.0" layoutY="400.0" mnemonicParsing="false" onAction="#salvarAlteracao" prefHeight="33.0" prefWidth="90.0" text="Salvar" />
       <Button layoutX="350.0" layoutY="400.0" mnemonicParsing="false" onAction="#fecharTela" prefWidth="90.0" text="Sair" />
    </children>
