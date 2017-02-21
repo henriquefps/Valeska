@@ -13,37 +13,37 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" text="Recepcionista" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
+<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Recepcionista" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
    <content>
-      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="257.0" prefWidth="598.0">
+      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="600.0" prefWidth="700.0" styleClass="background">
          <children>
-            <BorderPane prefHeight="256.0" prefWidth="600.0">
+            <BorderPane prefHeight="600.0" prefWidth="700.0">
                <top>
-                  <Accordion prefWidth="741.0" BorderPane.alignment="CENTER">
+                  <Accordion prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                      <panes>
-                        <TitledPane prefHeight="250.0" prefWidth="600.0" text="Médico">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Médico">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="598.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="598.0" styleClass="background" stylesheets="@DarkTheme.css">
                                  <children>
-                                    <TableView fx:id="tabelaMedico" layoutX="181.0" layoutY="4.0" prefHeight="217.0" prefWidth="237.0">
+                                    <TableView fx:id="tabelaMedico" layoutY="25.0" prefHeight="350.0" prefWidth="450.0">
                                       <columns>
-                                        <TableColumn fx:id="colunaNomeMedico" prefWidth="97.0" text="Nome" />
-                                        <TableColumn fx:id="colunaCpfMedico" prefWidth="136.0" text="CPF" />
+                                        <TableColumn fx:id="colunaNomeMedico" prefWidth="255.0" text="Nome" />
+                                        <TableColumn fx:id="colunaCpfMedico" prefWidth="190.0" text="CPF" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Meus Dados">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Meus Dados">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="598.0">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="598.0" styleClass="background">
                                  <children>
-                                    <GridPane layoutX="175.0" layoutY="73.0" prefHeight="103.0" prefWidth="267.0" AnchorPane.bottomAnchor="73.19999999999999" AnchorPane.leftAnchor="175.0" AnchorPane.rightAnchor="175.20000000000005" AnchorPane.topAnchor="73.0">
+                                    <GridPane layoutX="198.0" layoutY="96.0" prefHeight="103.0" prefWidth="267.0" AnchorPane.bottomAnchor="96.99999999999994" AnchorPane.leftAnchor="198.0" AnchorPane.rightAnchor="199.00000000000023" AnchorPane.topAnchor="96.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="124.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="76.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -52,26 +52,26 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#telaAtualizaRecepcionista" prefHeight="25.0" prefWidth="98.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Button mnemonicParsing="false" onAction="#verDetalhes" prefHeight="63.0" prefWidth="76.0" text="ver detalhes" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#telaAtualizaRecepcionista" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" onAction="#verDetalhes" prefHeight="25.0" prefWidth="110.0" text="Detalhes" GridPane.columnIndex="1" />
                                        </children>
                                     </GridPane>
                                  </children>
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane pickOnBounds="false" text="Paciente">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" pickOnBounds="false" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Paciente">
                            <content>
-                              <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="247.0" prefWidth="598.0" visible="false">
+                              <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="247.0" prefWidth="598.0" styleClass="background" visible="false">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                                  <children>
-                                    <GridPane layoutX="303.0" layoutY="14.0" prefHeight="116.0" prefWidth="281.0">
+                                    <GridPane layoutX="450.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="124.0" minWidth="10.0" prefWidth="124.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="76.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -80,30 +80,30 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="110.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
-                                    <TableView fx:id="tabelaPaciente" layoutX="14.0" layoutY="14.0" onMouseClicked="#nomePacienteClicado" prefHeight="200.0" prefWidth="200.0">
+                                    <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="350.0" prefWidth="450.0">
                                       <columns>
-                                        <TableColumn fx:id="colunaPacienteNome" prefWidth="75.0" text="Nome" />
-                                        <TableColumn fx:id="colunaPacienteCPF" prefWidth="124.0" text="CPF" />
+                                        <TableColumn fx:id="colunaPacienteNome" prefWidth="255.0" text="Nome" />
+                                        <TableColumn fx:id="colunaPacienteCPF" prefWidth="190.0" text="CPF" />
                                       </columns>
                                     </TableView>
                                  </children>
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane text="Consultas">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" snapToPixel="false" styleClass="label" text="Consultas">
                           <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="598.0">
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="598.0" styleClass="background">
                                  <children>
-                                    <GridPane layoutX="345.0" layoutY="39.0" prefHeight="116.0" prefWidth="281.0">
+                                    <GridPane layoutX="450.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0">
                                        <columnConstraints>
                                           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="118.0" minWidth="10.0" prefWidth="118.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="82.0" />
                                        </columnConstraints>
                                        <rowConstraints>
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -112,18 +112,18 @@
                                           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                        </rowConstraints>
                                        <children>
-                                          <Button mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="25.0" prefWidth="85.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="85.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="85.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Button mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="87.0" text="Listar" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="33.0" prefWidth="110.0" text="Cadastrar" GridPane.columnIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="110.0" text="Detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
-                                    <TableView fx:id="tabelaConsultas" layoutX="14.0" layoutY="12.0" prefHeight="200.0" prefWidth="362.0">
+                                    <TableView fx:id="tabelaConsultas" layoutY="25.0" prefHeight="350.0" prefWidth="450.0">
                                       <columns>
-                                        <TableColumn fx:id="colunaConsultaMedico" prefWidth="75.0" text="Medico" />
-                                        <TableColumn fx:id="colunaConsultaPaciente" prefWidth="75.0" text="Paciente" />
-                                          <TableColumn fx:id="colunaConsultaHorario" prefWidth="122.0" text="Horário" />
-                                          <TableColumn fx:id="colunaConsultaRealizada" prefWidth="89.0" text="Realizada" />
+                                        <TableColumn fx:id="colunaConsultaMedico" prefWidth="100.0" text="Medico" />
+                                        <TableColumn fx:id="colunaConsultaPaciente" prefWidth="112.0" text="Paciente" />
+                                          <TableColumn fx:id="colunaConsultaHorario" prefWidth="103.0" text="Horário" />
+                                          <TableColumn fx:id="colunaConsultaRealizada" prefWidth="130.0" text="Realizada" />
                                       </columns>
                                     </TableView>
                                  </children>
@@ -134,9 +134,9 @@
                   </Accordion>
                </top>
             </BorderPane>
-            <Button layoutX="312.0" layoutY="339.0" mnemonicParsing="false" onAction="#sair" text="Sair" />
-            <Button layoutX="232.0" layoutY="339.0" mnemonicParsing="false" onAction="#logoff" text="Logoff" />
-            <Label layoutX="476.0" layoutY="352.0" opacity="0.5" text="Powered By: Valeska" />
+            <Label layoutX="555.0" layoutY="545.0" opacity="0.5" text="Powered By: Valeska" />
+            <Button layoutX="410.0" layoutY="530.0" mnemonicParsing="false" onAction="#sair" prefWidth="90.0" text="Sair" />
+            <Button layoutX="232.0" layoutY="530.0" mnemonicParsing="false" onAction="#logoff" prefWidth="90.0" text="Logoff" />
          </children>
       </AnchorPane>
    </content>
