@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,85 +15,93 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogRecepcionistaController">
+<AnchorPane prefHeight="550.0" prefWidth="400.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogRecepcionistaController">
    <children>
-      <GridPane layoutX="25.0" layoutY="50.0" prefHeight="448.0" prefWidth="350.0">
-         <children>
-            <Label text="Nome:" />
-            <Label text="Cpf:" GridPane.rowIndex="1" />
-            <Label text="Rg:" GridPane.rowIndex="2" />
-            <Label text="Telefone:" GridPane.rowIndex="3" />
-            <Label text="Celular:" GridPane.rowIndex="4" />
-            <Label text="Sexo:" GridPane.rowIndex="5" />
-            <TextField fx:id="txfNome" prefWidth="190.0" promptText="Nome" GridPane.columnIndex="1" />
-            <TextField fx:id="txfCpf" promptText="Cpf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="txfRg" promptText="Rg" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="txfTelefone" promptText="Telefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="txfCelular" promptText="Celular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+      <ScrollPane fitToHeight="true" layoutX="25.0" layoutY="46.0" prefHeight="453.0" prefWidth="366.0">
+         <content>
+            <AnchorPane prefHeight="604.0" prefWidth="351.0" styleClass="background">
                <children>
-                  <RadioButton fx:id="rbtMasculino" mnemonicParsing="false" text="Masculino">
-                     <toggleGroup>
-                        <ToggleGroup fx:id="tgpSexo" />
-                     </toggleGroup>
-                  </RadioButton>
-                  <RadioButton fx:id="rbtFeminino" mnemonicParsing="false" text="Feminino" toggleGroup="$tgpSexo" GridPane.columnIndex="1" />
+                  <GridPane layoutY="4.0" prefHeight="600.0" prefWidth="338.0">
+                     <children>
+                        <Label text="Nome:" />
+                        <Label text="Cpf:" GridPane.rowIndex="1" />
+                        <Label text="Rg:" GridPane.rowIndex="2" />
+                        <Label text="Telefone:" GridPane.rowIndex="3" />
+                        <Label text="Celular:" GridPane.rowIndex="4" />
+                        <Label text="Sexo:" GridPane.rowIndex="5" />
+                        <TextField fx:id="txfNome" prefWidth="190.0" promptText="Nome" GridPane.columnIndex="1" />
+                        <TextField fx:id="txfCpf" promptText="Cpf" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="txfRg" promptText="Rg" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="txfTelefone" promptText="Telefone" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="txfCelular" promptText="Celular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <GridPane GridPane.columnIndex="1" GridPane.rowIndex="5">
+                           <children>
+                              <RadioButton fx:id="rbtMasculino" mnemonicParsing="false" text="Masculino">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="tgpSexo" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton fx:id="rbtFeminino" mnemonicParsing="false" text="Feminino" toggleGroup="$tgpSexo" GridPane.columnIndex="1" />
+                           </children>
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                        </GridPane>
+                        <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <TextField fx:id="txfCidade" promptText="Cidade" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+                        <TextField fx:id="txfBairro" promptText="Bairro" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+                        <TextField fx:id="txfRua" promptText="Rua" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+                        <TextField fx:id="txfCep" promptText="Cep" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+                        <TextField fx:id="txfComplemento" promptText="Complemento" GridPane.columnIndex="1" GridPane.rowIndex="11" />
+                        <Label text="Estado:" GridPane.rowIndex="6" />
+                        <Label text="Cidade:" GridPane.rowIndex="7" />
+                        <Label text="Bairro:" GridPane.rowIndex="8" />
+                        <Label text="Rua:" GridPane.rowIndex="9" />
+                        <Label text="Cep:" GridPane.rowIndex="10" />
+                        <Label text="Complemento:" GridPane.rowIndex="11" />
+                        <Label text="Data:" GridPane.rowIndex="12" />
+                        <DatePicker fx:id="dtpNascimento" promptText="Data de nascimento" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+                        <PasswordField fx:id="pswSenha" promptText="Senha" GridPane.columnIndex="1" GridPane.rowIndex="13" />
+                        <PasswordField fx:id="pswConfirmarSenha" promptText="Confirmar senha" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+                        <Label text="Senha:" GridPane.rowIndex="13" />
+                        <Label fx:id="lC" text="Confirmar senha:" GridPane.rowIndex="14" />
+                     </children>
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="127.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="211.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                  </GridPane>
                </children>
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-               </rowConstraints>
-            </GridPane>
-            <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <TextField fx:id="txfCidade" promptText="Cidade" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-            <TextField fx:id="txfBairro" promptText="Bairro" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="txfRua" promptText="Rua" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField fx:id="txfCep" promptText="Cep" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="txfComplemento" promptText="Complemento" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <Label text="Estado:" GridPane.rowIndex="6" />
-            <Label text="Cidade:" GridPane.rowIndex="7" />
-            <Label text="Bairro:" GridPane.rowIndex="8" />
-            <Label text="Rua:" GridPane.rowIndex="9" />
-            <Label text="Cep:" GridPane.rowIndex="10" />
-            <Label text="Complemento:" GridPane.rowIndex="11" />
-            <Label text="Data:" GridPane.rowIndex="12" />
-            <DatePicker fx:id="dtpNascimento" promptText="Data de nascimento" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <PasswordField fx:id="pswSenha" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <PasswordField fx:id="pswConfirmarSenha" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <Label text="Senha" GridPane.rowIndex="13" />
-            <Label fx:id="lC" text="Confirmar Senha" GridPane.rowIndex="14" />
-         </children>
-         <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="158.0" minWidth="10.0" prefWidth="96.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="265.0" minWidth="10.0" prefWidth="254.0" />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-         </rowConstraints>
-      </GridPane>
-      <Label fx:id="labelTitle" layoutX="110.0" layoutY="14.0" text="Cadastro Recepcionista">
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+      <Label fx:id="labelTitle" layoutX="95.0" layoutY="7.0" styleClass="label-custom" text="Cadastro Recepcionista">
          <font>
             <Font name="Times New Roman" size="18.0" />
          </font>
       </Label>
-      <Button layoutX="305.0" layoutY="511.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="70.0" text="Sair" />
-      <Button fx:id="bntSave" layoutX="219.0" layoutY="511.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="70.0" text="Salvar" />
+      <Button layoutX="296.0" layoutY="511.0" mnemonicParsing="false" onAction="#sair" prefHeight="25.0" prefWidth="90.0" text="Sair" />
+      <Button fx:id="bntSave" layoutX="188.0" layoutY="511.0" mnemonicParsing="false" onAction="#salvar" prefHeight="25.0" prefWidth="90.0" text="Salvar" />
    </children>
 </AnchorPane>
