@@ -94,8 +94,6 @@
             				<TextField fx:id="txfConsultas" promptText="Número de consultas" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             				<Label text="Senha" GridPane.rowIndex="15" />
             				<TextField fx:id="txfSenha" promptText="Senha" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-                        <Button mnemonicParsing="false" onAction="#diasDeTrabalho" text="Dias de trabalho" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-                        <Label text="Dias de trabalho:" GridPane.rowIndex="16" />
             			</children>
             		</GridPane>
                </children>
@@ -118,8 +116,8 @@
             <Font name="Times New Roman" size="14.0" />
          </font>
       </Label>
-      <Button layoutX="448.0" layoutY="57.0" mnemonicParsing="false" onAction="#maisEspecialidades" prefHeight="33.0" prefWidth="64.0" stylesheets="@DarkTheme.css" text="+" />
-      <ScrollPane layoutX="439.0" layoutY="95.0" pannable="true" prefHeight="361.0" prefWidth="225.0">
+      <Button fx:id="btnMaisEsp" layoutX="448.0" layoutY="57.0" mnemonicParsing="false" onAction="#maisEspecialidades" prefHeight="33.0" prefWidth="64.0" stylesheets="@DarkTheme.css" text="+" />
+      <ScrollPane layoutX="439.0" layoutY="95.0" pannable="true" prefHeight="361.0" prefWidth="263.0">
          <content>
             <AnchorPane>
                <children>
@@ -142,6 +140,6 @@
             </AnchorPane>
          </content>
       </ScrollPane>
-      <Button layoutX="620.0" layoutY="57.0" mnemonicParsing="false" onAction="#menosEspecialidades" prefHeight="33.0" prefWidth="64.0" stylesheets="@DarkTheme.css" text="-" />
+      <Button fx:id="btnMenosEsp" layoutX="620.0" layoutY="57.0" mnemonicParsing="false" onAction="#menosEspecialidades" prefHeight="33.0" prefWidth="64.0" stylesheets="@DarkTheme.css" text="-" />
 	</children>
 </AnchorPane>
