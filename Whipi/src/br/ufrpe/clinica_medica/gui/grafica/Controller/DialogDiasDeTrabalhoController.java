@@ -4,16 +4,13 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import br.ufrpe.clinica_medica.exceptions.PNEException;
-import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.DiasDeAtendimento;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.MenuButton;
 
 public class DialogDiasDeTrabalhoController implements Initializable {
 	@FXML private CheckBox ckbSeg;
@@ -24,43 +21,32 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	@FXML private CheckBox ckbSab;
 	@FXML private Label labelDia;
 	
-	private Telas t;
+	private Medico medico;
 	
-	private FachadaClinicaMedica f; 
+	private Telas t;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		t = Telas.getInstance();
-		f = FachadaClinicaMedica.getInstance();
 		mostrarDetalhes();
 	}
 	
+	public void setMedico(Medico medico){
+		this.medico = medico;
+	}
+	
+	public Medico getMedico(){
+		return medico;
+	}
+	
 	@FXML public void salvarAlteracao(){
-		DiasDeAtendimento v[] = ((Medico) t.getLogada()).getDiasDeTrabalho();
-		v[0].setDia(ckbSeg.isSelected());
-		v[1].setDia(ckbTer.isSelected());
-		v[2].setDia(ckbQuar.isSelected());
-		v[3].setDia(ckbQui.isSelected());
-		v[4].setDia(ckbSex.isSelected());
-		v[5].setDia(ckbSab.isSelected());
-		Medico m = ((Medico) t.getLogada());
-		m.setDiasDeTrabalho(v);
-		try {
-			f.alterarMedico(m.getCpf(), m);
-			
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Sucesso!");
-			alert.setHeaderText("Cadastro!");
-			alert.setContentText("Médico atualizado com sucesso!");
-			alert.showAndWait();
-			
-		} catch (PNEException e) {
-			Alert alert = new Alert(AlertType.ERROR);
-			alert.setTitle("Erro!");
-			alert.setHeaderText("Cadastro inválido!");
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
-		}
+		Medico medico = ((Medico) t.getLogada());
+		medico.setDia(0, ckbSeg.isArmed());
+		medico.setDia(1, ckbTer.isArmed());
+		medico.setDia(2, ckbQuar.isArmed());
+		medico.setDia(3, ckbQui.isArmed());
+		medico.setDia(4, ckbSex.isArmed());
+		medico.setDia(5, ckbSab.isArmed());
 		t.fecharTelaDialogo();
 	}
 	
@@ -71,24 +57,36 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	}
 	
 	protected void mostrarDetalhes(){
-		DiasDeAtendimento v[] = ((Medico) t.getLogada()).getDiasDeTrabalho();
-		if (v[0].isDia()) {
-			ckbSeg.setSelected(true);
+		Medico medico = ((Medico) t.getLogada());
+		if (medico.isDia(0)) {
+			ckbSeg.arm();
+		} else {
+			ckbSeg.disarm();
 		}
-		if(v[1].isDia()){
-			ckbTer.setSelected(true);
+		if(medico.isDia(1)){
+			ckbTer.arm();
+		} else {
+			ckbTer.disarm();
 		}
-		if (v[2].isDia()) {
-			ckbQuar.setSelected(true);
+		if (medico.isDia(2)) {
+			ckbQuar.arm();
+		} else{
+			ckbQuar.disarm();
 		}
-		if (v[3].isDia()) {
-			ckbQui.setSelected(true);
+		if (medico.isDia(3)) {
+			ckbQui.arm();
+		} else {
+			ckbQui.disarm();
 		}
-		if (v[4].isDia()) {
-			ckbSex.setSelected(true);
+		if (medico.isDia(4)) {
+			ckbSex.arm();
+		} else {
+			ckbSex.disarm();
 		}
-		if (v[5].isDia()) {
-			ckbSab.setSelected(true);
+		if (medico.isDia(5)) {
+			ckbSab.arm();
+		} else{
+			ckbSab.disarm();
 		}
 	}
 	

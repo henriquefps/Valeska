@@ -12,6 +12,7 @@
 package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 public class Consulta implements Serializable {
@@ -19,12 +20,12 @@ public class Consulta implements Serializable {
 	private static int proximoId = 1;
 	private int id;
 	private Paciente paciente;
-	private LocalDateTime horario;
+	private LocalDate horario;
 	private boolean realizada;
 	private String descricao;
 	private Medico medico;
 
-	public Consulta(Paciente paciente, LocalDateTime horario, Medico medico) {
+	public Consulta(Paciente paciente, LocalDate horario, Medico medico) {
 		this.id = Consulta.proximoId;
 		this.paciente = paciente;
 		this.horario = horario;
@@ -66,11 +67,11 @@ public class Consulta implements Serializable {
 		this.paciente = paciente;
 	}
 
-	public LocalDateTime getHorario() {
+	public LocalDate getHorario() {
 		return horario;
 	}
 
-	public void setHorario(LocalDateTime horario) {
+	public void setHorario(LocalDate horario) {
 		this.horario = horario;
 	}
 

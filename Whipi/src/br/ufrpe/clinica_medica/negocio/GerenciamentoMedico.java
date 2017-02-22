@@ -90,12 +90,12 @@ public class GerenciamentoMedico {
 		return pessoas.listarTodosMedicos();
 	}
 
-	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
-		medico.getDiasDeTrabalho()[diaDaSemana].setDiaTrue(horaI, minutoI, horaF, minutoF);
+	public void trabalharDiaX(Medico medico, int diaDaSemana) {
+		medico.setDia(diaDaSemana, true);
 	}
 
 	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
-		medico.getDiasDeTrabalho()[diaDaSemana].setDiaFalse();
+		medico.setDia(diaDaSemana, false);
 	}
 	
 	public ArrayList<LocalTime> getConsultasPossiveis() {

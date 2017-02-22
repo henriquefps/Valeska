@@ -47,15 +47,17 @@ public class GerenciamentoConsulta {
 		}
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException, PNEException, NCDException {
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDate horario)
+			throws ECException, PNEException, NCDException {
 		if (medico != null) {
 			if (paciente != null) {
 				int diaDaSemana = horario.getDayOfWeek().getValue() - 2;
-				if (medico.getDiasDeTrabalho()[diaDaSemana].isDia() && medico.getConsultasPorDia() > consultasComMedicoNoDia(medico, horario.toLocalDate()).size()) {
+				if (medico.isDia(diaDaSemana) && medico
+						.getConsultasPorDia() > consultasComMedicoNoDia(medico, horario).size()) {
 					consultas.cadastrar(new Consulta(paciente, horario, medico));
 					consultas.salvarConsultaEmArquivo();
 				} else {
-					
+
 					throw new ECException();
 				}
 			} else {

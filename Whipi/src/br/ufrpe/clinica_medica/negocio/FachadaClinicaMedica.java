@@ -51,7 +51,7 @@ public class FachadaClinicaMedica {
 		return this.consulta.consultasDoDia(medico);
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario)
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDate horario)
 			throws ECException, PNEException, NCDException {
 		this.consulta.cadastrarConsulta(medico, paciente, horario);
 	}
@@ -155,8 +155,8 @@ public class FachadaClinicaMedica {
 		return recepcionista.listarRecepcionistas();
 	}
 
-	public void trabalharDiaX(Medico medico, int diaDaSemana, int horaI, int minutoI, int horaF, int minutoF) {
-		this.medico.trabalharDiaX(medico, diaDaSemana, horaI, minutoI, horaF, minutoF);
+	public void trabalharDiaX(Medico medico, int diaDaSemana) {
+		this.medico.trabalharDiaX(medico, diaDaSemana);
 	}
 
 	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) throws NCDException, CJAException {

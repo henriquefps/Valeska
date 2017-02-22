@@ -147,7 +147,7 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 		}
 	}
 
-	public void modificar(Consulta con, LocalDateTime horario) {
+	public void modificar(Consulta con, LocalDate horario) {
 		if (con != null) {
 			int i = lista.indexOf(con);
 			con.setHorario(horario);
@@ -177,8 +177,8 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 
 			if (cpfDoPaciente != null && lista.get(i).getPaciente().getCpf().equals(cpfDoPaciente)) {
 
-				if (data != null && lista.get(i).getHorario().toLocalDate().getDayOfMonth() == data.getDayOfMonth()
-						&& lista.get(i).getHorario().toLocalDate().getMonthValue() == data.getMonthValue()
+				if (data != null && lista.get(i).getHorario().getDayOfMonth() == data.getDayOfMonth()
+						&& lista.get(i).getHorario().getMonthValue() == data.getMonthValue()
 						&& lista.get(i).getHorario().getYear() == data.getYear()) {
 
 					achou = lista.get(i);
@@ -195,9 +195,9 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 		ArrayList<Consulta> comMedico = new ArrayList<Consulta>();
 		for (int i = 0; i < lista.size(); i++) {
 			if (lista.get(i).getMedico().equals(medico)
-					&& lista.get(i).getHorario().toLocalDate().getDayOfMonth() == dia.getDayOfMonth()
-					&& lista.get(i).getHorario().toLocalDate().getMonthValue() == dia.getMonthValue()
-					&& lista.get(i).getHorario().toLocalDate().getYear() == dia.getYear()) {
+					&& lista.get(i).getHorario().getDayOfMonth() == dia.getDayOfMonth()
+					&& lista.get(i).getHorario().getMonthValue() == dia.getMonthValue()
+					&& lista.get(i).getHorario().getYear() == dia.getYear()) {
 				comMedico.add(lista.get(i));
 			}
 		}
@@ -219,5 +219,11 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 
 	public ArrayList<Consulta> getLista() {
 		return lista;
+	}
+
+	@Override
+	public void modificar(Consulta con, LocalDateTime horario) {
+		// TODO Auto-generated method stub
+		
 	}
 }
