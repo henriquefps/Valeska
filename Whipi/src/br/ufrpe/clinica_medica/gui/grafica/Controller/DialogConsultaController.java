@@ -85,29 +85,6 @@ public class DialogConsultaController implements Initializable {
 			}
 			
 		});
-		
-		final Callback<DatePicker, DateCell> dayCellFactory = 
-	            new Callback<DatePicker, DateCell>() {
-	                @Override
-	                public DateCell call(final DatePicker datePicker) {
-	                    return new DateCell() {
-	                        @Override
-	                        public void updateItem(LocalDate item, boolean empty) {
-	                            super.updateItem(item, empty);
-	                           
-	                            if (item.isBefore(
-	                                    LocalDate.now()) || item.getDayOfWeek().getValue() == 7
-	                                ) {
-	                                    setDisable(true);
-	                                    setStyle("-fx-background-color: #ffc0cb;");
-	                            } else {
-	                            	setStyle("-fx-background-color: #90EE90;");
-	                            }
-	                    }
-	                };
-	            }
-	        };
-		dtpConsulta.setDayCellFactory(dayCellFactory);
 	        
 		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>(){
 			@Override
@@ -241,6 +218,7 @@ public class DialogConsultaController implements Initializable {
 		case 3:
 			tabelaConsulta.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(true);
+			preencherDatePicker();
 			
 			tabelaMedico.setVisible(false);
 			tabelaConsulta.setVisible(true);
@@ -272,6 +250,31 @@ public class DialogConsultaController implements Initializable {
 		colunaMedicoNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaMedicoCRM.setCellValueFactory(new PropertyValueFactory<>("crm"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
+	}
+	
+	public void preencherDatePicker() {
+		final Callback<DatePicker, DateCell> dayCellFactory = 
+	            new Callback<DatePicker, DateCell>() {
+	                @Override
+	                public DateCell call(final DatePicker datePicker) {
+	                    return new DateCell() {
+	                        @Override
+	                        public void updateItem(LocalDate item, boolean empty) {
+	                            super.updateItem(item, empty);
+	                           
+	                            if (item.isBefore(
+	                                    LocalDate.now()) || item.getDayOfWeek().getValue() == 7
+	                                ) {
+	                                    setDisable(true);
+	                                    setStyle("-fx-background-color: #ffc0cb;");
+	                            } else {
+	                            	setStyle("-fx-background-color: #90EE90;");
+	                            }
+	                    }
+	                };
+	            }
+	        };
+		dtpConsulta.setDayCellFactory(dayCellFactory);
 	}
 	
 	@FXML
