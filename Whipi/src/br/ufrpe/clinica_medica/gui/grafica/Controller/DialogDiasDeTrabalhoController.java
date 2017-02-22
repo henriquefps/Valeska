@@ -41,12 +41,12 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	
 	@FXML public void salvarAlteracao(){
 		DiasDeAtendimento v[] = ((Medico) t.getLogada()).getDiasDeTrabalho();
-		v[1].setDia(ckbSeg.isArmed());
-		v[2].setDia(ckbTer.isArmed());
-		v[3].setDia(ckbQuar.isArmed());
-		v[4].setDia(ckbQui.isArmed());
-		v[5].setDia(ckbSex.isArmed());
-		v[6].setDia(ckbSab.isArmed());
+		v[0].setDia(ckbSeg.isArmed());
+		v[1].setDia(ckbTer.isArmed());
+		v[2].setDia(ckbQuar.isArmed());
+		v[3].setDia(ckbQui.isArmed());
+		v[4].setDia(ckbSex.isArmed());
+		v[5].setDia(ckbSab.isArmed());
 		t.fecharTelaDialogo();
 	}
 	

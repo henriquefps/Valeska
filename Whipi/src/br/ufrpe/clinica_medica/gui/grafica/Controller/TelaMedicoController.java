@@ -87,7 +87,7 @@ public class TelaMedicoController implements Initializable {
 
 	@FXML
 	public void cancelarConsultasDeUmDia() {
-
+		
 	}
 	
 	@FXML
