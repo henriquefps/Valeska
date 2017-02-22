@@ -51,7 +51,8 @@ public class FachadaClinicaMedica {
 		return this.consulta.consultasDoDia(medico);
 	}
 
-	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario) throws ECException {
+	public void cadastrarConsulta(Medico medico, Paciente paciente, LocalDateTime horario)
+			throws ECException, PNEException, NCDException {
 		this.consulta.cadastrarConsulta(medico, paciente, horario);
 	}
 
@@ -77,8 +78,8 @@ public class FachadaClinicaMedica {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade)
-			throws PJCException {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha,
+			ArrayList<EspecialidadeMedico> especialidade) throws PJCException {
 		this.medico.cadastrarMedico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 				consultasPorDia, senha, especialidade);
 	}
@@ -98,7 +99,7 @@ public class FachadaClinicaMedica {
 	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
 		return medico.pesquisarMedicoNome(nome);
 	}
-	
+
 	public ArrayList<Medico> listarMedicos() {
 		return medico.listarMedicos();
 	}
@@ -123,7 +124,7 @@ public class FachadaClinicaMedica {
 	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
 		return paciente.pesquisarPacienteNome(nome);
 	}
-	
+
 	public ArrayList<Paciente> listarPacientes() {
 		return paciente.listarPacientes();
 	}
@@ -181,24 +182,24 @@ public class FachadaClinicaMedica {
 	public ArrayList<Consulta> listarConsultas() {
 		return consulta.listarConsultas();
 	}
-	
-	public void cadastrarEspecialidade(String nome) throws EMEException{
+
+	public void cadastrarEspecialidade(String nome) throws EMEException {
 		especialidade.cadastrar(nome);
 	}
-	
-	public void removerEspecialidade(EspecialidadeMedico esp) throws EMNEException{
+
+	public void removerEspecialidade(EspecialidadeMedico esp) throws EMNEException {
 		especialidade.remover(esp);
 	}
-	
-	public void alterarEspecialidade(String nome, EspecialidadeMedico novo) throws EMNEException{
+
+	public void alterarEspecialidade(String nome, EspecialidadeMedico novo) throws EMNEException {
 		especialidade.atualizar(nome, novo);
 	}
-	
-	public ArrayList<EspecialidadeMedico> pesquisarEspecialidade(String nome){
+
+	public ArrayList<EspecialidadeMedico> pesquisarEspecialidade(String nome) {
 		return especialidade.pesquisar(nome);
 	}
-	
-	public ArrayList<EspecialidadeMedico> listarTodosEspecialidade(){
+
+	public ArrayList<EspecialidadeMedico> listarTodosEspecialidade() {
 		return especialidade.listarTodos();
 	}
 }

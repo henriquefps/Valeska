@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.NCDException;
 import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.gui.TelaTextual;
@@ -38,8 +39,14 @@ public class Principal {
 					new Endereco("Rua guarana", "Recife", "Gracas", "PE", "52012312", "APT1201"),
 					LocalDate.of(1992, 9, 24));
 			GerenciamentoConsulta consulta = new GerenciamentoConsulta();
-			consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"),
-					LocalDateTime.of(2016, 10, 7, 16, 00));
+			try {
+				consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"),
+						LocalDateTime.of(2016, 10, 7, 16, 00));
+			} catch (PNEException e) {
+				e.printStackTrace();
+			} catch (NCDException e) {
+				e.printStackTrace();
+			}
 		} catch (IllegalArgumentException e) {
 			System.out.println(e.getMessage());
 		} catch (ECException e) {

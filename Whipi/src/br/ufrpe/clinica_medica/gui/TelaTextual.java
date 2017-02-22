@@ -283,7 +283,11 @@ public class TelaTextual {
 				Medico a = fachada.pesquisarMedico(cpfMedico);
 				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
 				try {
-					fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+					try {
+						fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+					} catch (PNEException | NCDException e) {
+						e.printStackTrace();
+					}
 				} catch (DateTimeException dte) {
 					System.out.println("Data ou hora invalida");
 				} catch (IllegalArgumentException ile) {
