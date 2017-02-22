@@ -10,7 +10,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="461.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogDiasDeTrabalhoController">
    <children>
-      <Label layoutX="121.0" layoutY="25.0" styleClass="label-custom" text="Tabela de horários" />
+      <Label fx:id="labelDias" layoutX="121.0" layoutY="25.0" styleClass="label-custom" text="Dias de Trabalho" />
       <Button layoutX="93.0" layoutY="277.0" mnemonicParsing="false" onAction="#salvarAlteracao" prefHeight="33.0" prefWidth="90.0" text="Salvar" />
       <Button layoutX="274.0" layoutY="277.0" mnemonicParsing="false" onAction="#fecharTela" prefWidth="90.0" text="Sair" />
       <GridPane layoutX="85.0" layoutY="68.0" prefHeight="165.0" prefWidth="320.0">
