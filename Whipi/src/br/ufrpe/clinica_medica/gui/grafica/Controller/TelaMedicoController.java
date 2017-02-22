@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.NCDException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -26,9 +27,9 @@ public class TelaMedicoController implements Initializable {
 	@FXML
 	private TableView<Consulta> tabelaConsultas;
 	@FXML
-	private TableColumn<Medico, String> colunaNomeDoMedico;
+	private TableColumn<Consulta, String> colunaNomeDoMedico;
 	@FXML
-	private TableColumn<Paciente, String> colunaNomeDoPaciente;
+	private TableColumn<Consulta, String> colunaNomeDoPaciente;
 	@FXML
 	private TableColumn<Consulta, LocalDateTime> colunaHorario;
 	@FXML
@@ -46,17 +47,11 @@ public class TelaMedicoController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		lblLogado.setText(t.getLogada().getNome());
-		ArrayList<Consulta> consultas = f.listarConsultas();
-		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaNomeDoPaciente.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-		colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
-		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 		Pessoa p = t.getLogada();
 		if(p instanceof Medico){
-			
 			logado = (Medico) p; 
 		}
+		preencherTableViewConsultas();
 		
 	}
 
@@ -73,7 +68,7 @@ public class TelaMedicoController implements Initializable {
 
 	@FXML
 	public void realizarConsulta() {
-
+		preencherTableViewConsultas();
 	}
 
 	@FXML
@@ -95,6 +90,21 @@ public class TelaMedicoController implements Initializable {
 	@FXML
 	public void sair(){
 		t.sairDoSistema();
+		
+	}
+	
+	public void preencherTableViewConsultas(){
+		ArrayList<Consulta> consultas = null;
+		try {
+			consultas = f.consultasDoDia(logado);
+			colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nomeDoMedico"));
+			colunaNomeDoPaciente.setCellValueFactory(new PropertyValueFactory<>("nomeDoPaciente"));
+			colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
+			colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
+			tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
+		} catch (NCDException e) {
+			e.printStackTrace();
+		}
 		
 	}
 	

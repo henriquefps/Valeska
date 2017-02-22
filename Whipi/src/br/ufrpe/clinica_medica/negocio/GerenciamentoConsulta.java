@@ -52,8 +52,7 @@ public class GerenciamentoConsulta {
 		if (medico != null) {
 			if (paciente != null) {
 				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
-				if (medico
-						.getConsultasPorDia() > consultasComMedicoNoDia(medico, horario).size()) {
+				if (medico.getConsultasPorDia() > consultasComMedicoNoDia(medico, horario).size()) {
 					consultas.cadastrar(new Consulta(paciente, horario, medico));
 					consultas.salvarConsultaEmArquivo();
 				} else {
