@@ -96,11 +96,11 @@ public class DialogConsultaController implements Initializable {
 	                            super.updateItem(item, empty);
 	                           
 	                            if (item.isBefore(
-	                                    LocalDate.now())
+	                                    LocalDate.now()) || item.getDayOfWeek().getValue() == 7
 	                                ) {
 	                                    setDisable(true);
 	                                    setStyle("-fx-background-color: #ffc0cb;");
-	                            }   
+	                            }
 	                    }
 	                };
 	            }
@@ -134,7 +134,7 @@ public class DialogConsultaController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends LocalDate> arg0, LocalDate arg1, LocalDate arg2) {
 				LocalDate agora = LocalDate.now();
-				if (arg2.isBefore(agora)) {
+				if (arg2.isBefore(agora) || arg2.getDayOfWeek().getValue() == 7) {
 					Alert alert = new Alert(AlertType.ERROR);
 					alert.setTitle("Erro!");
 					alert.setHeaderText("Data inválida!");
