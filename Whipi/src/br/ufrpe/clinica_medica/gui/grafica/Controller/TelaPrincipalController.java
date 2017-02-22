@@ -35,16 +35,6 @@ public class TelaPrincipalController implements Initializable {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
 		
-		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
-
-			@Override
-			public void handle(WindowEvent arg0) {
-				t.sairDoSistema();
-			}
-			
-		});
-		
-		
 	}
 
 	@FXML

@@ -109,16 +109,6 @@ public class TelaAdminController implements Initializable {
 		preencherTableViewRecepcionista();
 		preencherTableViewEspecialidade();
 		
-		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
-
-			@Override
-			public void handle(WindowEvent arg0) {
-				t.sairDoSistema();
-			}
-			
-		});
-		
-		
 		tabelaEspecialidades.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EspecialidadeMedico>(){
 
 			@Override

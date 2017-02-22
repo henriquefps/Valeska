@@ -12,8 +12,10 @@ import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -24,11 +26,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 /*
  * controller da tela principal do recepcionista
@@ -50,9 +53,9 @@ public class TelaRecepcionistaController implements Initializable {
     @FXML
 	private TableView<Consulta> tabelaConsultas;
 	@FXML
-	private TableColumn<Medico, String> colunaConsultaMedico;
+	private TableColumn<Consulta, String> colunaConsultaMedico;
 	@FXML
-	private TableColumn<Consulta, Paciente> colunaConsultaPaciente;
+	private TableColumn<Consulta, String> colunaConsultaPaciente;
 	@FXML
 	private TableColumn<Consulta, LocalDateTime> colunaConsultaHorario;
 	@FXML
@@ -69,10 +72,14 @@ public class TelaRecepcionistaController implements Initializable {
 	private Button detalhesConsulta;
 	@FXML
 	private Label lblLogado;
+	
+	@FXML
+	private Button verDetalhesMedico;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
 	private Paciente pacienteAtual;
+	private Medico medicoAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -81,16 +88,28 @@ public class TelaRecepcionistaController implements Initializable {
 		lblLogado.setText(t.getLogada().getNome());
 		preencherTableView();
 		preencherTableViewMedico();
+		preencherTableViewConsultas();
 		
-		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
+		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>(){
 
 			@Override
-			public void handle(WindowEvent arg0) {
-				t.sairDoSistema();
+			public void changed(ObservableValue<? extends Medico> arg0, Medico arg1, Medico arg2) {
+				medicoAtual = arg2;
+				verDetalhesMedico.setDisable(false);
 			}
 			
 		});
 		
+		
+		
+	}
+	
+	public void verDetalhesDoMedico(){
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle("Detalhes do Médico");
+		alert.setHeaderText(medicoAtual.getNome());
+		alert.setContentText(medicoAtual.toString());
+		alert.showAndWait();
 	}
 
 	@FXML
@@ -174,6 +193,7 @@ public class TelaRecepcionistaController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+		preencherTableViewConsultas();
 	}
 
 	@FXML
@@ -221,8 +241,27 @@ public class TelaRecepcionistaController implements Initializable {
 	public void preencherTableViewConsultas() {
 		ArrayList<Consulta> consultas = f.listarConsultas();
 		colunaConsultaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-		colunaConsultaMedico.setCellValueFactory(new PropertyValueFactory<>("medico"));
-		colunaConsultaPaciente.setCellValueFactory(new PropertyValueFactory<>("paciente"));
+		
+		colunaConsultaMedico.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
+				
+				return new SimpleStringProperty(c.getValue().getMedico().getNome());
+			}
+		});
+		
+		colunaConsultaPaciente.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+
+			@Override
+			public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
+				
+				return new SimpleStringProperty(c.getValue().getPaciente().getNome());
+			}
+			
+		});
+
+		
+		
 		colunaConsultaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 	}

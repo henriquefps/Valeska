@@ -119,7 +119,7 @@ public class DialogMedicoController implements Initializable {
 			m.setSenha(txfSenha.getText());
 			m.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
 					cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));
-			m.setNumCRM(txfCRM.getAnchor());
+			m.setNumCRM(Integer.parseInt(txfCRM.getText()));
 			m.setSenha(txfSenha.getText());
 			if(sexo.getSelectedToggle().equals(rbMasculino)){
 			   m.setSexo('M');
@@ -243,7 +243,7 @@ public class DialogMedicoController implements Initializable {
 			}
 			dtpNascimento.setValue(m.getDataDeNascimento());
 			txfSenha.setText(m.getSenha());
-			txfCRM.setText(Integer.toString(m.getNumCRM()));
+			txfCRM.setText(String.valueOf(m.getNumCRM()));
 			txfConsultas.setText(Integer.toString(m.getConsultasPorDia()));
 		} else {
 			txfNome.setText("");

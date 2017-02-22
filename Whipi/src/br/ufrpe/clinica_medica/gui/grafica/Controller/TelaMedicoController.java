@@ -9,21 +9,23 @@ import br.ufrpe.clinica_medica.exceptions.NCDException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
-import br.ufrpe.clinica_medica.negocio.beans.Paciente;
-import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 public class TelaMedicoController implements Initializable {
 	@FXML
@@ -49,10 +51,6 @@ public class TelaMedicoController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		lblLogado.setText(t.getLogada().getNome());
-		Pessoa p = t.getLogada();
-		if(p instanceof Medico){
-			logado = (Medico) p; 
-		}
 		preencherTableViewConsultas();
 		
 	}
@@ -108,13 +106,32 @@ public class TelaMedicoController implements Initializable {
 		ArrayList<Consulta> consultas = null;
 		try {
 			consultas = f.consultasDoDia(logado);
-			colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nomeDoMedico"));
-			colunaNomeDoPaciente.setCellValueFactory(new PropertyValueFactory<>("nomeDoPaciente"));
+			colunaNomeDoMedico.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
+					
+					return new SimpleStringProperty(c.getValue().getMedico().getNome());
+				}
+			});
+			
+			colunaNomeDoPaciente.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+
+				@Override
+				public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
+					
+					return new SimpleStringProperty(c.getValue().getPaciente().getNome());
+				}
+				
+			});
 			colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
 			colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
 			tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 		} catch (NCDException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Informação");
+			alert.setHeaderText(null);
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		}
 		
 	}

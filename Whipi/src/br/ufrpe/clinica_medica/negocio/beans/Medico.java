@@ -106,6 +106,33 @@ public class Medico extends Pessoa {
 			resultado += esp;
 		}
 		
+		resultado += "Dias de Trabalho:\n";
+		for(int i = 0; i < dias.size(); i++){
+			if(dias.get(i)){
+				switch(i){
+					case 0:
+						resultado += "segunda-feira / ";
+						break;
+					case 1:
+						resultado += "terça-feira / ";
+						break;
+					case 2:
+						resultado += "quarta-feira / ";
+						break;
+					case 3:
+						resultado += "quinta-feira / ";
+						break;
+					case 4:
+						resultado += "sexta-feira / ";
+						break;
+					case 5:
+						resultado += "sábado";
+						break;
+				}
+			}
+		}
+		resultado += "\n";
+		
 		return resultado;
 	}
 }

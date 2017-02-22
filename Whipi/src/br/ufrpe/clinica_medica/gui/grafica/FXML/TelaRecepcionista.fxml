@@ -37,6 +37,7 @@
                                                 <TableColumn fx:id="colunaCpfMedico" prefWidth="190.0" text="CPF" />
                                              </columns>
                                           </TableView>
+                                          <Button fx:id="verDetalhesMedico" disable="true" layoutX="509.0" layoutY="79.0" mnemonicParsing="false" onAction="#verDetalhesDoMedico" text="Ver detalhes" />
                                        </children>
                                     </AnchorPane>
                                  </content>
