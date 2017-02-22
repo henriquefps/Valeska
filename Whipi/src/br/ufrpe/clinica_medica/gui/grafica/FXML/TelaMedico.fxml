@@ -1,63 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaMedicoController">
-	<children>
-		<TitledPane alignment="CENTER" collapsible="false" prefHeight="400.0" prefWidth="600.0" text="Médico">
-			<content>
-				<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-					<children>
-						<BorderPane prefHeight="374.0" prefWidth="600.0">
-							<top>
-								<Accordion BorderPane.alignment="CENTER">
-									<panes>
-										<TitledPane text="Dados">
-											<content>
-												<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-													<children>
-														<Button layoutX="215.0" layoutY="41.0" mnemonicParsing="false" onAction="#alterarDiasDeTrabalho" text="Alterar Dias De Trabalho" />
-														<Button layoutX="254.0" layoutY="105.0" mnemonicParsing="false" onAction="#editarPerfil" text="Editar Perfil" />
-													</children>
-												</AnchorPane>
-											</content>
-										</TitledPane>
-										<TitledPane prefHeight="368.0" prefWidth="600.0" text="Consultas">
-											<content>
-												<AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-													<children>
-														<Button layoutX="415.0" layoutY="95.0" mnemonicParsing="false" onAction="#realizarConsulta" text="Realizar Consultas" />
-														<Button layoutX="378.0" layoutY="186.0" mnemonicParsing="false" onAction="#cancelarConsultasDeUmDia" text="Cancelar Consultas De Um Dia" />
-														<TableView fx:id="tabelaConsultas" prefHeight="318.0" prefWidth="363.0">
-															<columns>
-																<TableColumn fx:id="colunaNomeDoMedico" prefWidth="75.0" text="Médico" />
-																<TableColumn fx:id="colunaNomeDoPaciente" prefWidth="75.0" text="Paciente" />
-																<TableColumn fx:id="colunaHorario" prefWidth="130.0" text="Horario" />
-																<TableColumn fx:id="colunaRealizada" prefWidth="81.0" text="Realizada" />
-															</columns>
-														</TableView>
-													</children>
-												</AnchorPane>
-											</content>
-										</TitledPane>
-									</panes>
-								</Accordion>
-							</top>
-						</BorderPane>
-                  <Button layoutX="232.0" layoutY="339.0" mnemonicParsing="false" onAction="#logoff" text="Logoff" />
-                  <Button layoutX="319.0" layoutY="339.0" mnemonicParsing="false" onAction="#sair" prefWidth="51.0" text="Sair" />
-					</children>
-				</AnchorPane>
-			</content>
-		</TitledPane>
-	</children>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Accordion prefHeight="440.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css">
+        <panes>
+          <TitledPane alignment="CENTER" animated="false" collapsible="false" contentDisplay="CENTER" expanded="false" prefHeight="1.0" prefWidth="700.0" styleClass="label-bright" text="Médico" />
+          <TitledPane styleClass="label" text="Dados">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                     <children>
+                        <Button layoutX="250.0" layoutY="214.0" mnemonicParsing="false" onAction="#alterarDiasDeTrabalho" text="Alterar dias de trabalho" />
+                        <Button layoutX="288.0" layoutY="116.0" mnemonicParsing="false" onAction="#editarPerfil" text="Editar perfil" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+          <TitledPane styleClass="label" text="Consultas">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="background">
+                     <children>
+                        <Button layoutX="520.0" layoutY="200.0" mnemonicParsing="false" onAction="#realizarConsulta" prefWidth="165.0" text="Realizar consulta" />
+                        <Button layoutX="520.0" layoutY="130.0" mnemonicParsing="false" onAction="#cancelarConsultasDeUmDia" prefWidth="165.0" text="Cancelar consulta" />
+                        <TableView fx:id="tabelaConsultas" layoutY="20.0" prefHeight="325.0" prefWidth="467.0">
+                           <columns>
+                              <TableColumn fx:id="colunaNomeDoMedico" prefWidth="108.0" text="Médico" />
+                              <TableColumn fx:id="colunaNomeDoPaciente" prefWidth="121.0" text="Paciente" />
+                              <TableColumn fx:id="colunaHorario" prefWidth="106.0" text="Horário" />
+                              <TableColumn fx:id="colunaRealizada" prefWidth="127.0" text="Realizada" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </TitledPane>
+        </panes>
+      </Accordion>
+      <Button layoutX="270.0" layoutY="460.0" mnemonicParsing="false" onAction="#logoff" prefWidth="90.0" text="Logoff" />
+      <Button layoutX="450.0" layoutY="460.0" mnemonicParsing="false" onAction="#sair" prefWidth="90.0" text="Sair" />
+   </children>
 </AnchorPane>
