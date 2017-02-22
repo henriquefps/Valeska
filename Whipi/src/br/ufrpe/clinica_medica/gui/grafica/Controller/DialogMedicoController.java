@@ -317,10 +317,10 @@ public class DialogMedicoController implements Initializable {
 		txfSenha.setDisable(true);
 	}
 	
-	public void diasDeTrabalho(){
+	/*public void diasDeTrabalho(){
 		
 	}
-
+*/
 	@FXML
 	private void sair() {
 		Telas.getInstance().fecharTelaDialogo();

@@ -21,7 +21,7 @@
                <top>
                   <Accordion prefHeight="500.0" prefWidth="700.0" BorderPane.alignment="CENTER">
                      <panes>
-                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Médico">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" onMousePressed="#clicadoForaDaTabela" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Médico">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="212.0" prefWidth="598.0" styleClass="background" stylesheets="@DarkTheme.css">
                                  <children>
@@ -35,7 +35,7 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Meus Dados">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" onMousePressed="#clicadoForaDaTabela" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Meus Dados">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="230.0" prefWidth="598.0" styleClass="background">
                                  <children>
@@ -60,7 +60,7 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane maxHeight="250.0" maxWidth="600.0" pickOnBounds="false" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Paciente">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" onMousePressed="#clicadoForaDaTabela" pickOnBounds="false" prefHeight="250.0" prefWidth="600.0" styleClass="label" text="Paciente">
                            <content>
                               <AnchorPane minHeight="0.0" minWidth="0.0" pickOnBounds="false" prefHeight="247.0" prefWidth="598.0" styleClass="background" visible="false">
                                  <opaqueInsets>
@@ -81,8 +81,8 @@
                                        </rowConstraints>
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#telaCadastroPaciente" prefHeight="25.0" prefWidth="110.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="atualizaPaciente" disable="true" mnemonicParsing="false" onAction="#telaAtualizaPaciente" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="removePaciente" disable="true" mnemonicParsing="false" onAction="#telaRemovePaciente" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                                        </children>
                                     </GridPane>
                                     <TableView fx:id="tabelaPaciente" layoutY="25.0" onMouseClicked="#nomePacienteClicado" prefHeight="350.0" prefWidth="450.0">
@@ -95,7 +95,7 @@
                               </AnchorPane>
                            </content>
                         </TitledPane>
-                        <TitledPane maxHeight="250.0" maxWidth="600.0" prefHeight="250.0" prefWidth="600.0" snapToPixel="false" styleClass="label" text="Consultas">
+                        <TitledPane maxHeight="250.0" maxWidth="600.0" onMousePressed="#clicadoForaDaTabela" prefHeight="250.0" prefWidth="600.0" snapToPixel="false" styleClass="label" text="Consultas">
                           <content>
                             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="223.0" prefWidth="598.0" styleClass="background">
                                  <children>
@@ -113,9 +113,9 @@
                                        </rowConstraints>
                                        <children>
                                           <Button mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="33.0" prefWidth="110.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                          <Button mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                          <Button mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="110.0" text="Detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                          <Button fx:id="atualizaConsulta" disable="true" mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button fx:id="removeConsulta" disable="true" mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button fx:id="detalhesConsulta" disable="true" mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="110.0" text="Detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                                        </children>
                                     </GridPane>
                                     <TableView fx:id="tabelaConsultas" layoutY="25.0" prefHeight="350.0" prefWidth="450.0">

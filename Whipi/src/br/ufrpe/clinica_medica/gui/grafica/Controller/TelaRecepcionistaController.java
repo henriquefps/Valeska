@@ -18,6 +18,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
@@ -39,7 +40,6 @@ public class TelaRecepcionistaController implements Initializable {
 	private TableView<Paciente> tabelaPaciente;
 	@FXML 
 	private TableView<Medico> tabelaMedico;
-    
 	@FXML
     private TableColumn<Medico, String> colunaNomeMedico;
     @FXML
@@ -54,6 +54,16 @@ public class TelaRecepcionistaController implements Initializable {
 	private TableColumn<Consulta, LocalDateTime> colunaConsultaHorario;
 	@FXML
 	private TableColumn<Consulta, Boolean> colunaConsultaRealizada;
+	@FXML
+	private Button atualizaPaciente;
+	@FXML
+	private Button removePaciente;
+	@FXML
+	private Button atualizaConsulta;
+	@FXML
+	private Button removeConsulta;
+	@FXML
+	private Button detalhesConsulta;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
@@ -188,6 +198,8 @@ public class TelaRecepcionistaController implements Initializable {
 		Paciente clicado = tabelaPaciente.getSelectionModel().getSelectedItem();
 		if (clicado != null) {
 			pacienteAtual = clicado;
+			atualizaPaciente.setDisable(false);
+			removePaciente.setDisable(false);
 		}
 	}
 
@@ -205,6 +217,15 @@ public class TelaRecepcionistaController implements Initializable {
 		colunaNomeMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaCpfMedico.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(med));
-		
+	}
+	
+	@FXML
+	public void clicadoForaDaTabela() {
+		atualizaPaciente.setDisable(true);
+		removePaciente.setDisable(true);
+		atualizaConsulta.setDisable(true);
+		removeConsulta.setDisable(true);
+		detalhesConsulta.setDisable(true);
+		this.pacienteAtual = null;
 	}
 }
