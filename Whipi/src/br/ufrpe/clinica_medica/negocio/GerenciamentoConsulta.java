@@ -51,8 +51,8 @@ public class GerenciamentoConsulta {
 			throws ECException, PNEException, NCDException {
 		if (medico != null) {
 			if (paciente != null) {
-				int diaDaSemana = horario.getDayOfWeek().getValue() - 2;
-				if (medico.isDia(diaDaSemana) && medico
+				int diaDaSemana = horario.getDayOfWeek().getValue() - 1;
+				if (medico
 						.getConsultasPorDia() > consultasComMedicoNoDia(medico, horario).size()) {
 					consultas.cadastrar(new Consulta(paciente, horario, medico));
 					consultas.salvarConsultaEmArquivo();

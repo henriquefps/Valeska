@@ -62,6 +62,9 @@ public class Medico extends Pessoa {
 	}
 	
 	public boolean[] getDiasDeTrabalho() {
+		if(diasDeTrabalho.getDias() == null){
+			diasDeTrabalho = new DiasDeAtendimento();
+		}
 		return diasDeTrabalho.getDias();
 	}
 	

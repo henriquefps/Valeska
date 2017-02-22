@@ -115,7 +115,7 @@ public class DialogMedicoController implements Initializable {
 			m.setDataDeNascimento(dtpNascimento.getValue());
 			m.setCelular(txfCelular.getText());
 			m.setTelefone(txfTelefone.getText());
-			m.setConsultasPorDia(txfConsultas.getAnchor());
+			m.setConsultasPorDia(Integer.parseInt(txfConsultas.getText()));
 			m.setSenha(txfSenha.getText());
 			m.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
 					cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));

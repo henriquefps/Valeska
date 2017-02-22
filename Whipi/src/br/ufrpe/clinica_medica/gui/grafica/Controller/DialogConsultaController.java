@@ -6,6 +6,9 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import br.ufrpe.clinica_medica.exceptions.ECException;
+import br.ufrpe.clinica_medica.exceptions.NCDException;
+import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
@@ -74,6 +77,7 @@ public class DialogConsultaController implements Initializable {
 		t = Telas.getInstance();
 		preencherTableViewPaciente(fachada.listarPacientes());
 		click = 1;
+		btnSave.setDisable(false);
 		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Paciente>(){
 			@Override
 			public void changed(ObservableValue<? extends Paciente> arg0, Paciente arg1, Paciente arg2) {
@@ -175,8 +179,10 @@ public class DialogConsultaController implements Initializable {
 	}
 	
 	public void handleAnterior(){
-		if(click == 3)
+		if(click == 3){
 			dtpConsulta.setValue(null);
+			
+		}
 		else if (click == 2)
 			medicoAtual = null;
 		else if (click == 1)
@@ -286,7 +292,13 @@ public class DialogConsultaController implements Initializable {
 	
 	@FXML
 	private void salvar(){
-		
+		try {
+			fachada.cadastrarConsulta(medicoAtual, pacienteAtual, dtpConsulta.getValue());
+			t.fecharTelaDialogo();
+		} catch (ECException | PNEException | NCDException e) {
+			t.fecharTelaDialogo();
+			e.printStackTrace();
+		}
 	}
 	
 	
