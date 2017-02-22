@@ -16,6 +16,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
@@ -24,6 +25,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 
 public class DialogConsultaController implements Initializable {
 
@@ -84,6 +86,27 @@ public class DialogConsultaController implements Initializable {
 			
 		});
 		
+		final Callback<DatePicker, DateCell> dayCellFactory = 
+	            new Callback<DatePicker, DateCell>() {
+	                @Override
+	                public DateCell call(final DatePicker datePicker) {
+	                    return new DateCell() {
+	                        @Override
+	                        public void updateItem(LocalDate item, boolean empty) {
+	                            super.updateItem(item, empty);
+	                           
+	                            if (item.isBefore(
+	                                    LocalDate.now())
+	                                ) {
+	                                    setDisable(true);
+	                                    setStyle("-fx-background-color: #ffc0cb;");
+	                            }   
+	                    }
+	                };
+	            }
+	        };
+		dtpConsulta.setDayCellFactory(dayCellFactory);
+	        
 		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>(){
 			@Override
 			public void changed(ObservableValue<? extends Medico> arg0, Medico arg1, Medico arg2) {
