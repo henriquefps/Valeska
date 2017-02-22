@@ -40,7 +40,7 @@ public class TelaMedicoController implements Initializable {
 	private Label lblLogado;
 
 	private Medico logado;
-
+	private Consulta consultaAtual;
 	private Telas t;
 	private FachadaClinicaMedica f;
 
@@ -70,6 +70,10 @@ public class TelaMedicoController implements Initializable {
 
 	@FXML
 	public void realizarConsulta() {
+		if (consultaAtual != null) {
+			consultaAtual.setRealizada(true);
+		}
+		
 		preencherTableViewConsultas();
 	}
 
@@ -86,8 +90,13 @@ public class TelaMedicoController implements Initializable {
 
 	@FXML
 	public void cancelarConsultasDeUmDia() {
-		
+		if (consultaAtual != null) {
+			ArrayList<Consulta> aux = f.listarConsultas();
+			aux.remove(consultaAtual);
+		}
+		preencherTableViewConsultas();
 	}
+	
 	
 	@FXML
 	public void sair(){
@@ -114,5 +123,11 @@ public class TelaMedicoController implements Initializable {
 	public void logoff(){
 		t.logoff();
 	}
-
+	
+	@FXML private void consultaClicado() {
+		Consulta clicado = tabelaConsultas.getSelectionModel().getSelectedItem();
+		if (clicado != null) {
+			consultaAtual = clicado;
+		}
+	}
 }
