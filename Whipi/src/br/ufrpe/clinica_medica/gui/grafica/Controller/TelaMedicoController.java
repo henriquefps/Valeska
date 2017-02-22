@@ -62,7 +62,11 @@ public class TelaMedicoController implements Initializable {
 
 	@FXML
 	public void alterarDiasDeTrabalho() {
-
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogDiasDeTrabalho")), t.getLogada());
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
@@ -86,11 +90,13 @@ public class TelaMedicoController implements Initializable {
 
 	}
 	
+	@FXML
 	public void sair(){
 		t.sairDoSistema();
 		
 	}
 	
+	@FXML
 	public void logoff(){
 		t.logoff();
 	}
