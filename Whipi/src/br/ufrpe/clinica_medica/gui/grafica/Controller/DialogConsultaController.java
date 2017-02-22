@@ -14,12 +14,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
 
@@ -105,17 +107,21 @@ public class DialogConsultaController implements Initializable {
 			
 		});
 		
-		/*dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>(){
+		dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>(){
 			@Override
 			public void changed(ObservableValue<? extends LocalDate> arg0, LocalDate arg1, LocalDate arg2) {
-				if (arg2 != null) {
-					btnSave.setDisable(false);
-				} else {
-					btnSave.setDisable(true);
-				}		
+				LocalDate agora = LocalDate.now();
+				if (arg2.isBefore(agora)) {
+					Alert alert = new Alert(AlertType.ERROR);
+					alert.setTitle("Erro!");
+					alert.setHeaderText("Data inválida!");
+					alert.setContentText("Não é permitido marcar consulta antes do dia atual!");
+					alert.showAndWait();
+					dtpConsulta.setValue(null);
+				}
 			}
 			
-		});*/
+		});
 		
 		
 		txfPesquisaPaciente.lengthProperty().addListener(new ChangeListener<Number>(){
@@ -160,8 +166,13 @@ public class DialogConsultaController implements Initializable {
 	public void handleAnterior(){
 		if(click == 3)
 			dtpConsulta.setValue(null);
+		else if (click == 2)
+			medicoAtual = null;
+		else if (click == 1)
+			pacienteAtual = null;
 		click--;
 		escolherTabela();
+		btnProximo.setDisable(true);
 	}
 	
 	private void escolherTabela(){
@@ -169,6 +180,8 @@ public class DialogConsultaController implements Initializable {
 		case 1:
 			preencherTableViewPaciente(fachada.listarPacientes());
 			labelMedico.setText("");
+			labelPaciente.setText("");
+			tabelaPaciente.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(false);
 			
 			tabelaPaciente.setVisible(true);
@@ -181,6 +194,7 @@ public class DialogConsultaController implements Initializable {
 			break;
 		case 2:
 			preencherTableViewMedico(fachada.listarMedicos());
+			labelMedico.setText("");
 			tabelaMedico.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(false);
 			
@@ -188,6 +202,7 @@ public class DialogConsultaController implements Initializable {
 			tabelaMedico.setVisible(true);
 			tabelaConsulta.setVisible(false);
 			
+			txfPesquisaMedico.setDisable(false);
 			txfPesquisaMedico.setVisible(true);
 			txfPesquisaPaciente.setVisible(false);
 			break;
@@ -200,6 +215,8 @@ public class DialogConsultaController implements Initializable {
 			tabelaPaciente.setVisible(false);
 			
 			btnProximo.setDisable(true);
+			
+			txfPesquisaMedico.setDisable(true);
 			break;
 		}
 	}
