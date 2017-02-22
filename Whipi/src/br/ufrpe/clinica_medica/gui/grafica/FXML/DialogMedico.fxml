@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.*?>
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
@@ -22,7 +16,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="550.0" prefWidth="714.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogMedicoController">
+<AnchorPane prefHeight="550.0" prefWidth="714.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogMedicoController">
 	<children>
       <ScrollPane layoutX="22.0" layoutY="35.0" pannable="true" prefHeight="515.0" prefWidth="400.0">
          <content>
@@ -75,12 +69,12 @@
             				<TextField fx:id="txfCelular" promptText="Celular" GridPane.columnIndex="1" GridPane.rowIndex="4" />
             				<HBox alignment="CENTER" prefHeight="24.0" prefWidth="241.0" spacing="40.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
             					<children>
-            						<RadioButton fx:id="rbMasculino" mnemonicParsing="false" text="Masculino">
+            						<RadioButton fx:id="rbMasculino" mnemonicParsing="false" text="Masculino" textFill="WHITE">
                                  <toggleGroup>
             								<ToggleGroup fx:id="sexo" />
                                  </toggleGroup>
                               </RadioButton>
-            						<RadioButton fx:id="rbFeminino" mnemonicParsing="false" text="Feminino" toggleGroup="$sexo" />
+            						<RadioButton fx:id="rbFeminino" mnemonicParsing="false" text="Feminino" textFill="WHITE" toggleGroup="$sexo" />
             					</children>
             				</HBox>
             				<TextField fx:id="txfRua" promptText="Endereço" GridPane.columnIndex="1" GridPane.rowIndex="6" />
