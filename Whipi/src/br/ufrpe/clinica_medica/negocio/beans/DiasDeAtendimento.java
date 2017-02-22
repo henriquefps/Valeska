@@ -26,6 +26,10 @@ public class DiasDeAtendimento implements Serializable {
 		this.diaFim = LocalTime.of(horaF, minutoF);
 	}
 
+	public void setDia(boolean dia) {
+		this.dia = dia;
+	}
+
 	public void setDiaFalse() {
 		this.dia = false;
 		this.diaInicio = null;
