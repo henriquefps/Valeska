@@ -8,9 +8,9 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="461.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="331.0" prefWidth="461.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogDiasDeTrabalhoController">
    <children>
-      <Label fx:id="labelDia" layoutX="121.0" layoutY="25.0" styleClass="label-custom" text="Dias de Trabalho" />
+      <Label layoutX="121.0" layoutY="25.0" styleClass="label-custom" text="Tabela de horários" />
       <Button layoutX="93.0" layoutY="277.0" mnemonicParsing="false" onAction="#salvarAlteracao" prefHeight="33.0" prefWidth="90.0" text="Salvar" />
       <Button layoutX="274.0" layoutY="277.0" mnemonicParsing="false" onAction="#fecharTela" prefWidth="90.0" text="Sair" />
       <GridPane layoutX="85.0" layoutY="68.0" prefHeight="165.0" prefWidth="320.0">
@@ -24,12 +24,12 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <CheckBox fx:id="cbSeg" mnemonicParsing="false" text="Segunda-feira" textFill="WHITE" />
-            <CheckBox fx:id="cbTer" mnemonicParsing="false" text="Terça-feira" textFill="WHITE" GridPane.columnIndex="1" />
-            <CheckBox fx:id="cbQuar" mnemonicParsing="false" text="Quarta-feira" textFill="#fff7f7" GridPane.rowIndex="1" />
-            <CheckBox fx:id="cbQui" mnemonicParsing="false" text="Quinta-feira" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <CheckBox fx:id="cbSex" mnemonicParsing="false" text="Sexta-feira" textFill="WHITE" GridPane.rowIndex="2" />
-            <CheckBox fx:id="cbSab" mnemonicParsing="false" text="Sábado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <CheckBox fx:id="ckbSeg" mnemonicParsing="false" text="Segunda-feira" textFill="WHITE" />
+            <CheckBox fx:id="ckbTer" mnemonicParsing="false" text="Terça-feira" textFill="WHITE" GridPane.columnIndex="1" />
+            <CheckBox fx:id="ckbQuar" mnemonicParsing="false" text="Quarta-feira" textFill="#fff7f7" GridPane.rowIndex="1" />
+            <CheckBox fx:id="ckbQui" mnemonicParsing="false" text="Quinta-feira" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <CheckBox fx:id="ckbSex" mnemonicParsing="false" text="Sexta-feira" textFill="WHITE" GridPane.rowIndex="2" />
+            <CheckBox fx:id="ckbSab" mnemonicParsing="false" text="Sábado" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>
