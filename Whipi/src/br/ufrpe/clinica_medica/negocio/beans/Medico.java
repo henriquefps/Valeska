@@ -19,7 +19,8 @@ public class Medico extends Pessoa {
 	private int numCRM;
 	private int consultasPorDia;
 	private String senha;
-	private DiasDeAtendimento diasDeTrabalho;
+	private ArrayList<Boolean> dias;
+	//private DiasDeAtendimento diasDeTrabalho;
 	private ArrayList<EspecialidadeMedico> especialidade;
 
 	
@@ -29,7 +30,10 @@ public class Medico extends Pessoa {
 		this.numCRM = numCRM;
 		this.consultasPorDia = consultasPorDia;
 		this.senha = senha;
-		this.diasDeTrabalho = new DiasDeAtendimento();
+		this.dias = new ArrayList<Boolean>(6);
+		for (int i = 0; i < 6; i++) {
+			dias.add(i, true);
+		}
 		this.especialidade = especialidade;
 	}
 
@@ -61,19 +65,21 @@ public class Medico extends Pessoa {
 		this.senha = senha;
 	}
 	
-	public boolean[] getDiasDeTrabalho() {
-		if(diasDeTrabalho.getDias() == null){
-			diasDeTrabalho = new DiasDeAtendimento();
-		}
-		return diasDeTrabalho.getDias();
-	}
-	
-	public void setDia(int dia, boolean set) {
-		diasDeTrabalho.setDia(dia, set);
+	public ArrayList<Boolean> getDiasDeTrabalho() {
+		System.out.println(dias);
+		return this.dias;
 	}
 	
 	public boolean isDia(int dia) {
-		return diasDeTrabalho.isDia(dia);
+		boolean resultado = false;
+		if (this.dias.get(dia)) {
+			resultado = true;
+		}
+		return resultado;
+	}
+	
+	public void setDia(int dia, boolean set) {
+		this.dias.set(dia, set);
 	}
 
 	public ArrayList<EspecialidadeMedico> getEspecialidade() {

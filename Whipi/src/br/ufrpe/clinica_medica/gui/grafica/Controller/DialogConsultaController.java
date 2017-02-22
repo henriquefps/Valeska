@@ -64,13 +64,13 @@ public class DialogConsultaController implements Initializable {
 	private Label labelMedico;
 	@FXML
 	private DatePicker dtpConsulta;
-	
+
 	private Paciente pacienteAtual;
 	private Medico medicoAtual;
 	private FachadaClinicaMedica fachada;
 	private Telas t;
 	private int click;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
@@ -78,46 +78,46 @@ public class DialogConsultaController implements Initializable {
 		preencherTableViewPaciente(fachada.listarPacientes());
 		click = 1;
 		btnSave.setDisable(false);
-		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Paciente>(){
+		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Paciente>() {
 			@Override
 			public void changed(ObservableValue<? extends Paciente> arg0, Paciente arg1, Paciente arg2) {
 				labelPaciente.setVisible(true);
-				if(arg2 != null)
+				if (arg2 != null)
 					labelPaciente.setText(arg2.getNome());
 				pacienteAtual = arg2;
 				btnProximo.setDisable(false);
 			}
-			
+
 		});
-	        
-		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>(){
+
+		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>() {
 			@Override
 			public void changed(ObservableValue<? extends Medico> arg0, Medico arg1, Medico arg2) {
 				labelMedico.setVisible(true);
-				if(arg2 != null)
+				if (arg2 != null)
 					labelMedico.setText(arg2.getNome());
 				medicoAtual = arg2;
 				btnProximo.setDisable(false);
 			}
 		});
-		
-		tabelaConsulta.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LocalTime>(){
+
+		tabelaConsulta.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LocalTime>() {
 			@Override
 			public void changed(ObservableValue<? extends LocalTime> arg0, LocalTime arg1, LocalTime arg2) {
 				if (arg2 != null) {
 					btnSave.setDisable(false);
 				} else {
 					btnSave.setDisable(true);
-				}		
+				}
 			}
-			
+
 		});
-		
-		dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>(){
+
+		dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>() {
 			@Override
 			public void changed(ObservableValue<? extends LocalDate> arg0, LocalDate arg1, LocalDate arg2) {
 				LocalDate agora = LocalDate.now();
-				if(arg2 != null){
+				if (arg2 != null) {
 					if (arg2.isBefore(agora)) {
 						Alert alert = new Alert(AlertType.ERROR);
 						alert.setTitle("Erro!");
@@ -135,55 +135,52 @@ public class DialogConsultaController implements Initializable {
 					}
 				}
 			}
-			
+
 		});
-		
-		
-		txfPesquisaPaciente.lengthProperty().addListener(new ChangeListener<Number>(){
+
+		txfPesquisaPaciente.lengthProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				if(arg2.intValue() == 0)
+				if (arg2.intValue() == 0)
 					preencherTableViewPaciente(fachada.listarPacientes());
-				else{
+				else {
 					ArrayList<Paciente> pacientes = fachada.pesquisarPacienteNome(txfPesquisaPaciente.getText());
 					preencherTableViewPaciente(pacientes);
 				}
-					
+
 			}
-			
+
 		});
-		
-		txfPesquisaMedico.lengthProperty().addListener(new ChangeListener<Number>(){
+
+		txfPesquisaMedico.lengthProperty().addListener(new ChangeListener<Number>() {
 			@Override
 			public void changed(ObservableValue<? extends Number> arg0, Number arg1, Number arg2) {
-				if(arg2.intValue() == 0)
+				if (arg2.intValue() == 0)
 					preencherTableViewMedico(fachada.listarMedicos());
-				else{
+				else {
 					ArrayList<Medico> medicos = fachada.pesquisarMedicoNome(txfPesquisaMedico.getText());
 					preencherTableViewMedico(medicos);
 				}
-					
+
 			}
-			
+
 		});
-		
-		
+
 	}
-	
-	public void handleProximo(){
+
+	public void handleProximo() {
 		click++;
 		escolherTabela();
 		btnProximo.setDisable(true);
 		btnAnterior.setDisable(false);
 
 	}
-	
-	public void handleAnterior(){
-		if(click == 3){
+
+	public void handleAnterior() {
+		if (click == 3) {
 			dtpConsulta.setValue(null);
-			
-		}
-		else if (click == 2)
+
+		} else if (click == 2)
 			medicoAtual = null;
 		else if (click == 1)
 			pacienteAtual = null;
@@ -191,20 +188,20 @@ public class DialogConsultaController implements Initializable {
 		escolherTabela();
 		btnProximo.setDisable(true);
 	}
-	
-	private void escolherTabela(){
-		switch(click){
+
+	private void escolherTabela() {
+		switch (click) {
 		case 1:
 			preencherTableViewPaciente(fachada.listarPacientes());
 			labelMedico.setText("");
 			labelPaciente.setText("");
 			tabelaPaciente.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(false);
-			
+
 			tabelaPaciente.setVisible(true);
 			tabelaMedico.setVisible(false);
 			tabelaConsulta.setVisible(false);
-			
+
 			btnAnterior.setDisable(true);
 			txfPesquisaPaciente.setVisible(true);
 			txfPesquisaMedico.setVisible(false);
@@ -214,11 +211,11 @@ public class DialogConsultaController implements Initializable {
 			labelMedico.setText("");
 			tabelaMedico.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(false);
-			
+
 			tabelaPaciente.setVisible(false);
 			tabelaMedico.setVisible(true);
 			tabelaConsulta.setVisible(false);
-			
+
 			txfPesquisaMedico.setDisable(false);
 			txfPesquisaMedico.setVisible(true);
 			txfPesquisaPaciente.setVisible(false);
@@ -227,39 +224,39 @@ public class DialogConsultaController implements Initializable {
 			tabelaConsulta.getSelectionModel().clearSelection();
 			dtpConsulta.setVisible(true);
 			preencherDatePicker();
-			
+
 			tabelaMedico.setVisible(false);
 			tabelaConsulta.setVisible(true);
 			tabelaPaciente.setVisible(false);
-			
+
 			btnProximo.setDisable(true);
-			
+
 			txfPesquisaMedico.setDisable(true);
 			break;
 		}
 	}
-	
+
 	@FXML
 	private void pesquisaPaciente(KeyEvent e) {
-		
+
 	}
-	
+
 	public void preencherTableViewPaciente(ArrayList<Paciente> pacientes) {
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
 	}
-	
+
 	@FXML
 	private void pesquisaMedico() {
 	}
-	
+
 	public void preencherTableViewMedico(ArrayList<Medico> medicos) {
 		colunaMedicoNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaMedicoCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
-	
+
 	public void preencherDatePicker() {
 		final Callback<DatePicker, DateCell> dayCellFactory = 
 	            new Callback<DatePicker, DateCell>() {
@@ -271,27 +268,32 @@ public class DialogConsultaController implements Initializable {
 	                            super.updateItem(item, empty);
 	                           
 	                            if (item.isBefore(
-	                                    LocalDate.now()) || item.getDayOfWeek().getValue() == 7
+	                                    LocalDate.now()) || item.getDayOfWeek().getValue() == 7 || medicoAtual.getConsultasPorDia() == 0
 	                                ) {
 	                                    setDisable(true);
 	                                    setStyle("-fx-background-color: #ffc0cb;");
 	                            } else {
 	                            	setStyle("-fx-background-color: #90EE90;");
 	                            }
+	                            if (item.getDayOfWeek().getValue() != 7 && !medicoAtual.isDia(item.getDayOfWeek().getValue() - 1)) {
+                            		setDisable(true);
+                                    setStyle("-fx-background-color: #ffc0cb;");
+                            	}
+	                           
 	                    }
 	                };
 	            }
 	        };
 		dtpConsulta.setDayCellFactory(dayCellFactory);
 	}
-	
+
 	@FXML
 	private void fecharTela() {
 		t.fecharTelaDialogo();
 	}
-	
+
 	@FXML
-	private void salvar(){
+	private void salvar() {
 		try {
 			fachada.cadastrarConsulta(medicoAtual, pacienteAtual, dtpConsulta.getValue());
 			t.fecharTelaDialogo();
@@ -300,7 +302,5 @@ public class DialogConsultaController implements Initializable {
 			e.printStackTrace();
 		}
 	}
-	
-	
 
 }
