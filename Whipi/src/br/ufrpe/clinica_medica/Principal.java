@@ -41,7 +41,7 @@ public class Principal {
 			GerenciamentoConsulta consulta = new GerenciamentoConsulta();
 			try {
 				consulta.cadastrarConsulta(a.pesquisarMedico("123"), paciente.pesquisarPaciente("987"),
-						LocalDateTime.of(2016, 10, 7, 16, 00));
+						LocalDate.of(2016, 10, 7));
 			} catch (PNEException e) {
 				e.printStackTrace();
 			} catch (NCDException e) {

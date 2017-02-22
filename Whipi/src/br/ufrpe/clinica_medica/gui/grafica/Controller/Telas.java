@@ -74,7 +74,7 @@ public class Telas {
 
 	public void setScene(Scene s, Pessoa log) {
 		this.cena.add(s);
-		this.logada = log;
+		logada = log;
 	}
 
 	public void setScene(Scene s) {

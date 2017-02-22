@@ -18,6 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -347,10 +348,12 @@ public class DialogMedicoController implements Initializable {
 		esp.add(c);
 		if(cont >= 6){
 			gridEsp.addRow(cont, esp.get(cont));
+			GridPane.setMargin(c, new Insets(0, 0, 0, 50));
 			cont++;
 		}
 		else {
 			gridEsp.add(esp.get(cont), 0, cont);
+			GridPane.setMargin(c, new Insets(0, 0, 0, 50));
 			cont++;
 		}
 		
@@ -376,6 +379,7 @@ public class DialogMedicoController implements Initializable {
 		int i = 0;
 		for (ComboBox<EspecialidadeMedico> c : esp) {
 			gridEsp.add(c, 0, i);
+			GridPane.setMargin(c, new Insets(0, 0, 0, 50));
 			i++;
 		}
 		cont = i;

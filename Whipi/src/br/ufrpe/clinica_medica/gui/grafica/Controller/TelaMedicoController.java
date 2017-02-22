@@ -15,6 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,18 +25,16 @@ import javafx.stage.Stage;
 public class TelaMedicoController implements Initializable {
 	@FXML
 	private TableView<Consulta> tabelaConsultas;
-
 	@FXML
 	private TableColumn<Medico, String> colunaNomeDoMedico;
-
 	@FXML
 	private TableColumn<Paciente, String> colunaNomeDoPaciente;
-
 	@FXML
 	private TableColumn<Consulta, LocalDateTime> colunaHorario;
-
 	@FXML
 	private TableColumn<Consulta, Boolean> colunaRealizada;
+	@FXML
+	private Label lblLogado;
 
 	private Medico logado;
 
@@ -46,6 +45,7 @@ public class TelaMedicoController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
+		lblLogado.setText(t.getLogada().getNome());
 		ArrayList<Consulta> consultas = f.listarConsultas();
 		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaNomeDoPaciente.setCellValueFactory(new PropertyValueFactory<>("nome"));

@@ -284,7 +284,7 @@ public class TelaTextual {
 				Paciente b = fachada.pesquisarPaciente(cpfPaciente);
 				try {
 					try {
-						fachada.cadastrarConsulta(a, b, LocalDateTime.of(anoC, mesC, diaC, horaC, minC));
+						fachada.cadastrarConsulta(a, b, LocalDate.of(anoC, mesC, diaC));
 					} catch (PNEException | NCDException e) {
 						e.printStackTrace();
 					}

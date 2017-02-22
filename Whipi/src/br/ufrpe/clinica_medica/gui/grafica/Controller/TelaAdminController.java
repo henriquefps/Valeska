@@ -24,6 +24,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextInputDialog;
@@ -85,6 +86,9 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private TableColumn<EspecialidadeMedico, String> colunaEspecialidade;
 	
+	@FXML
+	private Label lblLogado;
+	
 	private Telas t;
 	private FachadaClinicaMedica f;
 
@@ -97,6 +101,7 @@ public class TelaAdminController implements Initializable {
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
+		lblLogado.setText(t.getLogada().getNome());
 		preencherTableViewPaciente();
 		preencherTableViewMedico();
 		preencherTableViewRecepcionista();

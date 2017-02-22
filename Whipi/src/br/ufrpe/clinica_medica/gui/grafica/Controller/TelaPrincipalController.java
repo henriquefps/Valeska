@@ -40,8 +40,10 @@ public class TelaPrincipalController implements Initializable {
 
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
 
-		if (resultado != null)
+		if (resultado != null){
 			t.fecharTelaDialogo();
+			t.setLogada(resultado);
+		}
 		if (resultado instanceof Recepcionista) {
 			t.setScene(new Scene((Parent) t.carregarFXML("TelaRecepcionista")), resultado);
 			t.abrirTela();

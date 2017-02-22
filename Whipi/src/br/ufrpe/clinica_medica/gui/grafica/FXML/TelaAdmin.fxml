@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Accordion?>
@@ -15,9 +20,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
+<AnchorPane prefHeight="637.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaAdminController">
 	<children>
-		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#clicadoForaDaTabela" prefHeight="600.0" prefWidth="800.0" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Administrador">
+		<TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMousePressed="#clicadoForaDaTabela" prefHeight="614.0" prefWidth="800.0" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Administrador">
 			<content>
 				<AnchorPane minHeight="0.0" minWidth="0.0" onMousePressed="#clicadoForaDaTabela" prefHeight="600.0" prefWidth="800.0" styleClass="background" stylesheets="@DarkTheme.css">
 					<children>
@@ -204,18 +209,20 @@
 								</Accordion>
 							</top>
 						</BorderPane>
-						<Button layoutX="500.0" layoutY="525.0" mnemonicParsing="false" onAction="#sair" prefHeight="33.0" prefWidth="90.0" text="Sair">
+						<Button layoutX="470.0" layoutY="516.0" mnemonicParsing="false" onAction="#sair" prefHeight="33.0" prefWidth="90.0" text="Sair">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-						<Button layoutX="250.0" layoutY="525.0" mnemonicParsing="false" onAction="#logoff" prefWidth="90.0" text="Logoff">
+						<Button layoutX="220.0" layoutY="516.0" mnemonicParsing="false" onAction="#logoff" prefWidth="90.0" text="Logoff">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-						<Label layoutX="660.0" layoutY="550.0" opacity="0.5" text="Powered By: Valeska" />
+						<Label layoutX="660.0" layoutY="560.0" opacity="0.5" text="Powered By: Valeska" />
 					</children>
 				</AnchorPane>
 			</content>
 		</TitledPane>
+      <Label layoutX="466.0" layoutY="-1.0" text="Usuário Logado:" />
+      <Label fx:id="lblLogado" layoutX="584.0" />
 	</children>
 </AnchorPane>

@@ -1,14 +1,13 @@
 package br.ufrpe.clinica_medica.negocio.beans;
 
 import java.io.Serializable;
-import java.time.LocalTime;
-import java.util.ArrayList;
 
 public class DiasDeAtendimento implements Serializable {
 
 	private boolean dias[];
 
 	public DiasDeAtendimento() {
+		dias = new boolean[6];
 		for (int i = 0; i < 6; i++) {
 			dias[i] = true;
 		}

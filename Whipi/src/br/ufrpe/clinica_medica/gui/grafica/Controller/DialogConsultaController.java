@@ -113,20 +113,22 @@ public class DialogConsultaController implements Initializable {
 			@Override
 			public void changed(ObservableValue<? extends LocalDate> arg0, LocalDate arg1, LocalDate arg2) {
 				LocalDate agora = LocalDate.now();
-				if (arg2.isBefore(agora)) {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Erro!");
-					alert.setHeaderText("Data inválida!");
-					alert.setContentText("Não é permitido marcar consulta antes do dia atual!");
-					alert.showAndWait();
-					dtpConsulta.setValue(null);
-				} else if (arg2.getDayOfWeek().getValue() == 7) {
-					Alert alert = new Alert(AlertType.ERROR);
-					alert.setTitle("Erro!");
-					alert.setHeaderText("Data inválida!");
-					alert.setContentText("Não é permitido marcar consulta no domingo!");
-					alert.showAndWait();
-					dtpConsulta.setValue(null);
+				if(arg2 != null){
+					if (arg2.isBefore(agora)) {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Erro!");
+						alert.setHeaderText("Data inválida!");
+						alert.setContentText("Não é permitido marcar consulta antes do dia atual!");
+						alert.showAndWait();
+						dtpConsulta.setValue(null);
+					} else if (arg2.getDayOfWeek().getValue() == 7) {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Erro!");
+						alert.setHeaderText("Data inválida!");
+						alert.setContentText("Não é permitido marcar consulta no domingo!");
+						alert.showAndWait();
+						dtpConsulta.setValue(null);
+					}
 				}
 			}
 			
