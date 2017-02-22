@@ -216,6 +216,7 @@ public class DialogMedicoController implements Initializable {
 		if (m != null) {
 			txfNome.setText(m.getNome());
 			txfCPF.setText(m.getCpf());
+			txfCPF.setDisable(true);
 			txfRG.setText(m.getRg());
 			txfTelefone.setText(m.getTelefone());
 			txfCelular.setText(m.getCelular());
@@ -285,6 +286,13 @@ public class DialogMedicoController implements Initializable {
 		medico.setEspecialidade(especialidades);
 		try {
 			fachada.alterarMedico(medico.getCpf(), medico);
+			
+			Alert alert = new Alert(AlertType.INFORMATION);
+			alert.setTitle("Sucesso!");
+			alert.setHeaderText("Cadastro!");
+			alert.setContentText("Médico atualizado com sucesso!");
+			alert.showAndWait();
+			
 		} catch (PNEException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro!");
@@ -316,11 +324,7 @@ public class DialogMedicoController implements Initializable {
 		txfCRM.setDisable(true);
 		txfSenha.setDisable(true);
 	}
-	
-	/*public void diasDeTrabalho(){
-		
-	}
-*/
+
 	@FXML
 	private void sair() {
 		Telas.getInstance().fecharTelaDialogo();
@@ -369,6 +373,6 @@ public class DialogMedicoController implements Initializable {
 			gridEsp.add(c, 0, i);
 			i++;
 		}
-		
+		cont = i;
 	}
 }

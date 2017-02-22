@@ -196,6 +196,7 @@ public class DialogRecepcionistaController implements Initializable {
 		if (m != null) {
 			txfNome.setText(m.getNome());
 			txfCpf.setText(m.getCpf());
+			txfCpf.setDisable(true);
 			txfRg.setText(m.getRg());
 			txfTelefone.setText(m.getTelefone());
 			txfCelular.setText(m.getCelular());

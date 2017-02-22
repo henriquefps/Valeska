@@ -65,32 +65,32 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	
 	protected void mostrarDetalhes(){
 		DiasDeAtendimento v[] = ((Medico) t.getLogada()).getDiasDeTrabalho();
-		if (v[1].isDia()) {
+		if (v[0].isDia()) {
 			ckbSeg.arm();
 		} else {
 			ckbSeg.disarm();
 		}
-		if(v[2].isDia()){
+		if(v[1].isDia()){
 			ckbTer.arm();
 		} else {
 			ckbTer.disarm();
 		}
-		if (v[3].isDia()) {
+		if (v[2].isDia()) {
 			ckbQuar.arm();
 		} else{
 			ckbQuar.disarm();
 		}
-		if (v[4].isDia()) {
+		if (v[3].isDia()) {
 			ckbQui.arm();
 		} else {
 			ckbQui.disarm();
 		}
-		if (v[5].isDia()) {
+		if (v[4].isDia()) {
 			ckbSex.arm();
 		} else {
 			ckbSex.disarm();
 		}
-		if (v[6].isDia()) {
+		if (v[5].isDia()) {
 			ckbSab.arm();
 		} else{
 			ckbSab.disarm();

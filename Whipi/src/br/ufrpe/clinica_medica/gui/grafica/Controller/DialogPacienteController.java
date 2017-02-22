@@ -182,6 +182,7 @@ public class DialogPacienteController implements Initializable {
 		if (paciente != null) {
 			txfNome.setText(paciente.getNome());
 			txfCpf.setText(paciente.getCpf());
+			txfCpf.setDisable(true);
 			txfRg.setText(paciente.getRg());
 			txfTelefone.setText(paciente.getTelefone());
 			txfCelular.setText(paciente.getCelular());
