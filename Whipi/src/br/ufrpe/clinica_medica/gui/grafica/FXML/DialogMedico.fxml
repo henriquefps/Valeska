@@ -22,9 +22,9 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="554.0" prefWidth="714.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogMedicoController">
+<AnchorPane prefHeight="550.0" prefWidth="714.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.DialogMedicoController">
 	<children>
-      <ScrollPane layoutX="22.0" layoutY="35.0" pannable="true" prefHeight="455.0" prefWidth="400.0">
+      <ScrollPane layoutX="22.0" layoutY="35.0" pannable="true" prefHeight="515.0" prefWidth="400.0">
          <content>
             <AnchorPane prefWidth="385.0" styleClass="background">
                <children>
@@ -93,7 +93,9 @@
             				<ComboBox fx:id="cbxEstados" prefWidth="150.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="9" />
             				<TextField fx:id="txfConsultas" promptText="Número de consultas" GridPane.columnIndex="1" GridPane.rowIndex="14" />
             				<Label text="Senha" GridPane.rowIndex="15" />
-            				<TextField fx:id="txfSenha" promptText="Senha" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <PasswordField fx:id="txfSenha" GridPane.columnIndex="1" GridPane.rowIndex="15" />
+                        <Label fx:id="lblConfirmaSenha" text="Confirmar Senha" GridPane.rowIndex="16" />
+                        <PasswordField fx:id="txfConfirmaSenha" GridPane.columnIndex="1" GridPane.rowIndex="16" />
             			</children>
             		</GridPane>
                </children>

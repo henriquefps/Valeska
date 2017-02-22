@@ -10,7 +10,6 @@ import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
-import br.ufrpe.clinica_medica.negocio.beans.DiasDeAtendimento;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -19,20 +18,17 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
 
@@ -61,9 +57,9 @@ public class DialogMedicoController implements Initializable {
 	@FXML
 	private TextField txfConsultas;
 	@FXML
-	private TextField txfSenha;
+	private PasswordField txfSenha;
 	@FXML
-	private TextField txfConfirmaSenha;
+	private PasswordField txfConfirmaSenha;
 	@FXML
 	private ComboBox<String> cbxEstados;
 	@FXML
@@ -84,6 +80,8 @@ public class DialogMedicoController implements Initializable {
     private Button btnMaisEsp;
     @FXML
     private Button btnMenosEsp;
+    @FXML
+    private Label lblConfirmaSenha;
     
     ArrayList<ComboBox<EspecialidadeMedico>> esp;
     private int cont;
@@ -197,6 +195,12 @@ public class DialogMedicoController implements Initializable {
 		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
 			errorMessage += "Senha inválida!\n";
 		}
+		if(txfConfirmaSenha.getText() == null || txfConfirmaSenha.getText().length() == 0){
+			errorMessage += "Confirmação de senha inválida!\n";
+		}
+		if(!txfSenha.getText().equals(txfConfirmaSenha.getText())){
+			errorMessage += "Senhas não coincidem!\n";
+		}
 		if(esp.isEmpty()){
 			errorMessage += "Nenhuma especialidade selecionada!\n";
 		}
@@ -278,8 +282,8 @@ public class DialogMedicoController implements Initializable {
 		medico.setDataDeNascimento(dtpNascimento.getValue());
 		medico.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
 				cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));
-		medico.setConsultasPorDia(txfConsultas.getAnchor());
-		medico.setNumCRM(txfCRM.getAnchor());
+		medico.setConsultasPorDia(Integer.parseInt(txfConsultas.getText()));
+		medico.setNumCRM(Integer.parseInt(txfCRM.getText()));
 		medico.setSenha(txfSenha.getText());
 		ArrayList<EspecialidadeMedico> especialidades = new ArrayList<>();
 		for (ComboBox<EspecialidadeMedico> comboBox : esp) {
@@ -329,6 +333,8 @@ public class DialogMedicoController implements Initializable {
 		btnMaisEsp.setVisible(false);
 		btnMenosEsp.setVisible(false);
 		gridEsp.setDisable(true);
+		txfConfirmaSenha.setVisible(false);
+		lblConfirmaSenha.setVisible(false);
 	}
 
 	@FXML

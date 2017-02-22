@@ -66,6 +66,9 @@ public class Medico extends Pessoa {
 	public DiasDeAtendimento[] getDiasDeTrabalho() {
 		return diasDeTrabalho;
 	}
+	public void setDiasDeTrabalho(DiasDeAtendimento[] diasDeTrabalho) {
+		this.diasDeTrabalho = diasDeTrabalho;
+	}
 
 	public ArrayList<EspecialidadeMedico> getEspecialidade() {
 		return especialidade;
