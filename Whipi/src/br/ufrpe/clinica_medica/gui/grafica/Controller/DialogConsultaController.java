@@ -132,6 +132,13 @@ public class DialogConsultaController implements Initializable {
 						alert.setContentText("Não é permitido marcar consulta no domingo!");
 						alert.showAndWait();
 						dtpConsulta.setValue(null);
+					} else if (!medicoAtual.isDia(arg2.getDayOfWeek().getValue() - 1)) {
+						Alert alert = new Alert(AlertType.ERROR);
+						alert.setTitle("Erro!");
+						alert.setHeaderText("Data inválida!");
+						alert.setContentText("Não é permitido marcar consulta no dia digitado!");
+						alert.showAndWait();
+						dtpConsulta.setValue(null);
 					}
 				}
 			}
