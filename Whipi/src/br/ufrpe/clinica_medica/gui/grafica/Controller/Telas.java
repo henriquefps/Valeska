@@ -125,7 +125,7 @@ public class Telas {
 
 	public void logoff() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
+		alert.setTitle("Confirmaçãoo");
 		alert.setHeaderText("Logoff");
 		alert.setContentText("Deseja fazer logoff?");
 
@@ -140,7 +140,7 @@ public class Telas {
 	
 	public void sairDoSistema(){
 		Alert alert = new Alert(AlertType.CONFIRMATION);
-		alert.setTitle("Confirma��o");
+		alert.setTitle("Confirmação");
 		alert.setHeaderText("Sair");
 		alert.setContentText("Deseja fechar o programa?");
 

@@ -29,7 +29,7 @@ public class Medico extends Pessoa {
 		this.numCRM = numCRM;
 		this.consultasPorDia = consultasPorDia;
 		this.senha = senha;
-		this.diasDeTrabalho = new DiasDeAtendimento[7];
+		this.diasDeTrabalho = new DiasDeAtendimento[6];
 		this.especialidade = especialidade;
 	}
 
