@@ -48,7 +48,7 @@ public class DialogConsultaController implements Initializable {
 	@FXML
 	private TableColumn<Medico, String> colunaMedicoNome;
 	@FXML
-	private TableColumn<Medico, String> colunaMedicoCRM;
+	private TableColumn<Medico, Integer> colunaMedicoCRM;
 	@FXML
 	private TableColumn<LocalTime, String> colunaConsultaHorario;
 	@FXML
@@ -248,7 +248,7 @@ public class DialogConsultaController implements Initializable {
 	
 	public void preencherTableViewMedico(ArrayList<Medico> medicos) {
 		colunaMedicoNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
-		colunaMedicoCRM.setCellValueFactory(new PropertyValueFactory<>("crm"));
+		colunaMedicoCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
 	
