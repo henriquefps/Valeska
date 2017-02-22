@@ -55,7 +55,7 @@
                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                            </rowConstraints>
                         </GridPane>
-                        <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                        <ComboBox fx:id="cbxEstado" prefHeight="25.0" prefWidth="157.0" styleClass="context-menu" GridPane.columnIndex="1" GridPane.rowIndex="6" />
                         <TextField fx:id="txfCidade" promptText="Cidade" GridPane.columnIndex="1" GridPane.rowIndex="7" />
                         <TextField fx:id="txfBairro" promptText="Bairro" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                         <TextField fx:id="txfRua" promptText="Rua" GridPane.columnIndex="1" GridPane.rowIndex="9" />

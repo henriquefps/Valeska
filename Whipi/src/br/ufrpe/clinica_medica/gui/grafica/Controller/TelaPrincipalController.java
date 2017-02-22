@@ -8,6 +8,7 @@ import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -17,6 +18,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.stage.WindowEvent;
 
 public class TelaPrincipalController implements Initializable {
 
@@ -24,6 +26,7 @@ public class TelaPrincipalController implements Initializable {
 	private TextField txfUsuario;
 	@FXML
 	private PasswordField psfSenha;
+	
 	private FachadaClinicaMedica fachada;
 	private Telas t;
 
@@ -31,6 +34,17 @@ public class TelaPrincipalController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
+		
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
+			}
+			
+		});
+		
+		
 	}
 
 	@FXML

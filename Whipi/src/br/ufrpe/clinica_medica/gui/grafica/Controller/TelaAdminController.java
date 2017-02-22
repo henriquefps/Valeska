@@ -16,6 +16,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -31,6 +32,7 @@ import javafx.scene.control.TextInputDialog;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class TelaAdminController implements Initializable {
 
@@ -106,6 +108,15 @@ public class TelaAdminController implements Initializable {
 		preencherTableViewMedico();
 		preencherTableViewRecepcionista();
 		preencherTableViewEspecialidade();
+		
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
+			}
+			
+		});
 		
 		
 		tabelaEspecialidades.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EspecialidadeMedico>(){

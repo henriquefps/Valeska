@@ -78,7 +78,7 @@
 				<Label text="Cep:" GridPane.rowIndex="10" />
 				<Label text="Complemento:" GridPane.rowIndex="11" />
 				<Label text="Data:" GridPane.rowIndex="12" />
-				<DatePicker fx:id="dtpNascimento" accessibleRole="DECREMENT_BUTTON" promptText="Data de nascimento" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="12" />
+				<DatePicker fx:id="dtpNascimento" promptText="Data de nascimento" styleClass="text-field" GridPane.columnIndex="1" GridPane.rowIndex="12" />
 			</children>
 		</GridPane>
 		<Label fx:id="labelTitle" layoutX="138.0" layoutY="6.0" styleClass="label-custom" text="Cadastro Paciente">

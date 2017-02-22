@@ -13,6 +13,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -27,6 +28,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 /*
  * controller da tela principal do recepcionista
@@ -79,6 +81,15 @@ public class TelaRecepcionistaController implements Initializable {
 		lblLogado.setText(t.getLogada().getNome());
 		preencherTableView();
 		preencherTableViewMedico();
+		
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>(){
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
+			}
+			
+		});
 		
 	}
 
