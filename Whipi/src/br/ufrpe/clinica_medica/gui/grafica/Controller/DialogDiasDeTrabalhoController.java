@@ -9,6 +9,7 @@ import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 
 public class DialogDiasDeTrabalhoController implements Initializable {
@@ -19,6 +20,7 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	@FXML private CheckBox ckbQui;
 	@FXML private CheckBox ckbSex;
 	@FXML private CheckBox ckbSab;
+	@FXML private Label labelDia;
 	
 //	@FXML private MenuButton menuDomingoInicio;
 //	@FXML private MenuButton menuDomingoFim;
@@ -61,7 +63,7 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 		t.fecharTelaDialogo();
 	}
 	
-	public void mostrarDetalhes(){
+	protected void mostrarDetalhes(){
 		DiasDeAtendimento v[] = ((Medico) t.getLogada()).getDiasDeTrabalho();
 		if (v[1].isDia()) {
 			ckbSeg.arm();
@@ -94,5 +96,15 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 			ckbSab.disarm();
 		}
 	}
-
+	
+	protected void verDetalhes(){
+		this.mostrarDetalhes();
+		labelDia.setText("Ver dias de trabalho");
+		ckbSeg.setDisable(true);
+		ckbTer.setDisable(true);
+		ckbQuar.setDisable(true);
+		ckbQui.setDisable(true);
+		ckbSex.setDisable(true);
+		ckbSab.setDisable(true);
+	}
 }
