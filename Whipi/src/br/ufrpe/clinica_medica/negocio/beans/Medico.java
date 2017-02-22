@@ -30,6 +30,8 @@ public class Medico extends Pessoa {
 		this.consultasPorDia = consultasPorDia;
 		this.senha = senha;
 		this.diasDeTrabalho = new DiasDeAtendimento[6];
+		for(int i = 0; i < diasDeTrabalho.length; i++)
+			diasDeTrabalho[i] = new DiasDeAtendimento();
 		this.especialidade = especialidade;
 	}
 
@@ -60,6 +62,7 @@ public class Medico extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
+	
 	public DiasDeAtendimento[] getDiasDeTrabalho() {
 		return diasDeTrabalho;
 	}

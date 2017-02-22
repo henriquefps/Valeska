@@ -10,6 +10,7 @@ import br.ufrpe.clinica_medica.exceptions.PJCException;
 import br.ufrpe.clinica_medica.exceptions.PNEException;
 import br.ufrpe.clinica_medica.negocio.Estados;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
+import br.ufrpe.clinica_medica.negocio.beans.DiasDeAtendimento;
 import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
@@ -22,8 +23,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -32,6 +31,8 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class DialogMedicoController implements Initializable {
 
@@ -79,7 +80,10 @@ public class DialogMedicoController implements Initializable {
     private Button btnSave;
     @FXML
     private GridPane gridEsp;
-    
+    @FXML
+    private Button btnMaisEsp;
+    @FXML
+    private Button btnMenosEsp;
     
     ArrayList<ComboBox<EspecialidadeMedico>> esp;
     private int cont;
@@ -96,7 +100,6 @@ public class DialogMedicoController implements Initializable {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
 		cbxEstados.getItems().addAll(FXCollections.observableArrayList(Estados.pegarEstados()));
-		
 	}
 
 	@FXML
@@ -323,18 +326,14 @@ public class DialogMedicoController implements Initializable {
 		txfConsultas.setDisable(true);
 		txfCRM.setDisable(true);
 		txfSenha.setDisable(true);
+		btnMaisEsp.setVisible(false);
+		btnMenosEsp.setVisible(false);
+		gridEsp.setDisable(true);
 	}
 
 	@FXML
 	private void sair() {
 		Telas.getInstance().fecharTelaDialogo();
-	}
-	@FXML public void diasDeTrabalho(){
-		t.setScene(new Scene((Parent) t.carregarFXML("DialogDiasDeTrabalho")), t.getLogada());
-		t.setDialogStage(new Stage());
-		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
-		t.getDialogStage().initOwner(t.getStage());
-		t.abrirTelaDialogo();
 	}
 	
 	public void maisEspecialidades(){

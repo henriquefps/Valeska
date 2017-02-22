@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 
 public class DialogDiasDeTrabalhoController implements Initializable {
-//	@FXML private CheckBox ckbDomingo;
 	@FXML private CheckBox ckbSeg;
 	@FXML private CheckBox ckbTer;
 	@FXML private CheckBox ckbQuar;
@@ -22,28 +21,22 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 	@FXML private CheckBox ckbSab;
 	@FXML private Label labelDia;
 	
-//	@FXML private MenuButton menuDomingoInicio;
-//	@FXML private MenuButton menuDomingoFim;
-//	@FXML private MenuButton menuSegundaInicio;
-//	@FXML private MenuButton menuSegundaFim;
-//	@FXML private MenuButton menuTercaInicio;
-//	@FXML private MenuButton menuTercaFim;
-//	@FXML private MenuButton menuQuartaInicio;
-//	@FXML private MenuButton menuQuartaFim;
-//	@FXML private MenuButton menuQuintaInicio;
-//	@FXML private MenuButton menuQuintaFim;
-//	@FXML private MenuButton menuSextaInicio;
-//	@FXML private MenuButton menuSextaFim;
-//	@FXML private MenuButton menuSabadoInicio;
-//	@FXML private MenuButton menuSabadoFim;
+	private Medico medico;
 	
 	private Telas t;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		// TODO Auto-generated method stub
 		t = Telas.getInstance();
 		mostrarDetalhes();
+	}
+	
+	public void setMedico(Medico medico){
+		this.medico = medico;
+	}
+	
+	public Medico getMedico(){
+		return medico;
 	}
 	
 	@FXML public void salvarAlteracao(){
