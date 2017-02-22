@@ -100,6 +100,8 @@ public class DialogConsultaController implements Initializable {
 	                                ) {
 	                                    setDisable(true);
 	                                    setStyle("-fx-background-color: #ffc0cb;");
+	                            } else {
+	                            	setStyle("-fx-background-color: #90EE90;");
 	                            }
 	                    }
 	                };
