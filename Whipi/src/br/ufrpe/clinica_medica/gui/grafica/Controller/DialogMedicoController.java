@@ -14,8 +14,6 @@ import br.ufrpe.clinica_medica.negocio.beans.Endereco;
 import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -30,11 +28,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import javafx.scene.layout.GridPane;
 
 public class DialogMedicoController implements Initializable {
 
@@ -81,37 +78,24 @@ public class DialogMedicoController implements Initializable {
     @FXML
     private Button btnSave;
     @FXML
-    private ListView<EspecialidadeMedico> listEspecialidades;
-    private ArrayList<EspecialidadeMedico> especialidades;
+    private GridPane gridEsp;
+    
+    
+    ArrayList<ComboBox<EspecialidadeMedico>> esp;
+    private int cont;
 
 	private FachadaClinicaMedica fachada;
     private Telas t;
     
     public DialogMedicoController(){
-    	especialidades = new ArrayList<>();
+    	esp = new ArrayList<>();
+    	cont = 0;
     }
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
 		cbxEstados.getItems().addAll(FXCollections.observableArrayList(Estados.pegarEstados()));
-		listEspecialidades.getItems().addAll(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
-		
-		
-		
-		listEspecialidades.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-		
-		ObservableList<EspecialidadeMedico> list = listEspecialidades.getSelectionModel().getSelectedItems();
-		list.addListener((ListChangeListener.Change<? extends EspecialidadeMedico> c) -> {
-			while(c.next()){
-				for(EspecialidadeMedico e : c.getAddedSubList())
-					especialidades.add(e);
-				
-				for(EspecialidadeMedico e : c.getRemoved())
-					especialidades.remove(e);
-			}
-		});
-		
 		
 	}
 
@@ -141,10 +125,15 @@ public class DialogMedicoController implements Initializable {
 				m.setSexo('F');
 			}
 			
+			ArrayList<EspecialidadeMedico> especialidades = new ArrayList<>();
+			for (ComboBox<EspecialidadeMedico> comboBox : esp) {
+				especialidades.add(comboBox.getValue());
+			}
+			
 			try{
 				fachada.cadastrarMedico(m.getNome(), m.getCpf(), m.getRg(), m.getTelefone(), m.getCelular(), m.getSexo(),
 						m.getEndereco(), m.getDataDeNascimento(), m.getNumCRM(), 
-						m.getConsultasPorDia(), m.getSenha(), null);
+						m.getConsultasPorDia(), m.getSenha(), especialidades);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Sucesso!");
 				alert.setHeaderText("Cadastro!");
@@ -205,6 +194,9 @@ public class DialogMedicoController implements Initializable {
 		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
 			errorMessage += "Senha inválida!\n";
 		}
+		if(esp.isEmpty()){
+			errorMessage += "Nenhuma especialidade selecionada!\n";
+		}
 		
 		if (errorMessage.length() == 0) {
 			return true;
@@ -233,6 +225,8 @@ public class DialogMedicoController implements Initializable {
 			txfComplemento.setText(m.getEndereco().getComplemento());
 			txfCEP.setText(m.getEndereco().getCep());
 			cbxEstados.setValue(m.getEndereco().getEstado());
+			ArrayList<EspecialidadeMedico> especialidades = m.getEspecialidade();
+			mostrarEspecialidades(especialidades);
 			if (m.getSexo() == 'M') {
 				sexo.selectToggle(rbMasculino);
 			} else {
@@ -283,21 +277,20 @@ public class DialogMedicoController implements Initializable {
 		medico.setConsultasPorDia(txfConsultas.getAnchor());
 		medico.setNumCRM(txfCRM.getAnchor());
 		medico.setSenha(txfSenha.getText());
+		ArrayList<EspecialidadeMedico> especialidades = new ArrayList<>();
+		for (ComboBox<EspecialidadeMedico> comboBox : esp) {
+			especialidades.add(comboBox.getValue());
+		}
+		
+		medico.setEspecialidade(especialidades);
 		try {
-			fachada.removerMedico(m);
-			try {
-				fachada.cadastrarMedico(medico.getNome(), medico.getCpf(), medico.getRg(), medico.getTelefone(), medico.getCelular(), medico.getSexo(),
-				medico.getEndereco(), medico.getDataDeNascimento(), medico.getNumCRM(), 
-				medico.getConsultasPorDia(), medico.getSenha(), null);
-			} catch (PJCException e) {
-				Alert alert = new Alert(AlertType.ERROR);
-				alert.setTitle("Erro!");
-				alert.setHeaderText("Cadastro inválido!");
-				alert.setContentText(e.getMessage());
-				alert.showAndWait();
-			}
+			fachada.alterarMedico(medico.getCpf(), medico);
 		} catch (PNEException e) {
-			e.printStackTrace();
+			Alert alert = new Alert(AlertType.ERROR);
+			alert.setTitle("Erro!");
+			alert.setHeaderText("Cadastro inválido!");
+			alert.setContentText(e.getMessage());
+			alert.showAndWait();
 		}
 	}
 
@@ -323,10 +316,13 @@ public class DialogMedicoController implements Initializable {
 		txfCRM.setDisable(true);
 		txfSenha.setDisable(true);
 	}
+	
+	public void diasDeTrabalho(){
+		
+	}
 
 	@FXML
 	private void sair() {
-		Telas.getInstance().voltarTela();
 		Telas.getInstance().fecharTelaDialogo();
 	}
 	@FXML public void diasDeTrabalho(){
@@ -335,5 +331,44 @@ public class DialogMedicoController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		t.abrirTelaDialogo();
+	}
+	
+	public void maisEspecialidades(){
+		ComboBox<EspecialidadeMedico> c = new ComboBox<>(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
+		esp.add(c);
+		if(cont >= 6){
+			gridEsp.addRow(cont, esp.get(cont));
+			cont++;
+		}
+		else {
+			gridEsp.add(esp.get(cont), 0, cont);
+			cont++;
+		}
+		
+	}
+	
+	public void menosEspecialidades(){
+		if(!gridEsp.getChildren().isEmpty()){
+			cont--;
+			gridEsp.getChildren().remove(esp.get(cont));
+			
+			esp.remove(cont);
+			
+		}
+	}
+	
+	public void mostrarEspecialidades(ArrayList<EspecialidadeMedico> especialidades){
+		for (EspecialidadeMedico especialidadeMedico : especialidades) {
+			ComboBox<EspecialidadeMedico> c = new ComboBox<>(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
+			c.setValue(especialidadeMedico);
+			esp.add(c);
+		}
+		
+		int i = 0;
+		for (ComboBox<EspecialidadeMedico> c : esp) {
+			gridEsp.add(c, 0, i);
+			i++;
+		}
+		
 	}
 }
