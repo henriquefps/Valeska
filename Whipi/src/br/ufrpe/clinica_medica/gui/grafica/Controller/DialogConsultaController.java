@@ -86,7 +86,7 @@ public class DialogConsultaController implements Initializable {
 		t = Telas.getInstance();
 		preencherTableViewPaciente(fachada.listarPacientes());
 		click = 1;
-		btnSave.setDisable(false);
+		btnSave.setDisable(true);
 		tabelaPaciente.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Paciente>() {
 			@Override
 			public void changed(ObservableValue<? extends Paciente> arg0, Paciente arg1, Paciente arg2) {
@@ -108,18 +108,6 @@ public class DialogConsultaController implements Initializable {
 				medicoAtual = arg2;
 				btnProximo.setDisable(false);
 			}
-		});
-
-		tabelaConsulta.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<LocalTime>() {
-			@Override
-			public void changed(ObservableValue<? extends LocalTime> arg0, LocalTime arg1, LocalTime arg2) {
-				if (arg2 != null) {
-					btnSave.setDisable(false);
-				} else {
-					btnSave.setDisable(true);
-				}
-			}
-
 		});
 
 		dtpConsulta.valueProperty().addListener(new ChangeListener<LocalDate>() {
@@ -148,7 +136,11 @@ public class DialogConsultaController implements Initializable {
 						alert.setContentText("Não é permitido marcar consulta no dia digitado!");
 						alert.showAndWait();
 						dtpConsulta.setValue(null);
+					} else {
+						btnSave.setDisable(false);
 					}
+				} else {
+					btnSave.setDisable(true);
 				}
 			}
 
@@ -258,11 +250,6 @@ public class DialogConsultaController implements Initializable {
 			break;
 		}
 	}
-
-	@FXML
-	private void pesquisaPaciente(KeyEvent e) {
-
-	}
 /*
  * preenche a tabela de pacientes
  */
@@ -270,10 +257,6 @@ public class DialogConsultaController implements Initializable {
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaPaciente.setItems(FXCollections.observableArrayList(pacientes));
-	}
-
-	@FXML
-	private void pesquisaMedico() {
 	}
 /*
  * preenche a tabela de médicos	
