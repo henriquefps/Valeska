@@ -1,3 +1,8 @@
+/*
+ * Whipi inc
+ * Classe DialogDiasDeTrabalho
+ * Define quais dias da semana o médico quer trabalhar
+ */
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -47,14 +52,23 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 		mostrarDetalhes();
 	}
 
+	/*
+	 * define o médico que vai ser alterado
+	 */
 	public void setMedico(Medico medico) {
 		this.medico = medico;
 	}
 
+	/*
+	 * retorna o medico que foi alterado
+	 */
 	public Medico getMedico() {
 		return medico;
 	}
 
+	/*
+	 * Salva as alterações feitas
+	 */
 	@FXML
 	public void salvarAlteracao() {
 		Medico medico = ((Medico) t.getLogada());
@@ -85,11 +99,16 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 		t.fecharTelaDialogo();
 	}
 
+	/*
+	 * fecha o dialogo
+	 */
 	@FXML
 	public void fecharTela() {
 		t.fecharTelaDialogo();
 	}
-
+/*
+ * carrega as informações do médico na tela
+ */
 	protected void mostrarDetalhes() {
 
 		if (medico.isDia(0)) {
@@ -111,7 +130,9 @@ public class DialogDiasDeTrabalhoController implements Initializable {
 			ckbSab.setSelected(true);
 		}
 	}
-
+/*
+ * carrega as informações na tela, sem deixar alterar
+ */
 	protected void verDetalhes() {
 		this.mostrarDetalhes();
 		labelDia.setText("Ver dias de trabalho");

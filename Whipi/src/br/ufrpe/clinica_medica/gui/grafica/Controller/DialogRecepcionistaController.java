@@ -1,3 +1,8 @@
+/*
+ * Whipi inc
+ * Classe DialogRecepcionistaController
+ * Gerencia as funcoes de cadastro de recepcionista
+ */
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -82,11 +87,17 @@ public class DialogRecepcionistaController implements Initializable {
 		cbxEstado.getItems().addAll(estados);
 	}
 
+	/*
+	 * salva alterações feitas
+	 */
 	@FXML
 	private void salvar() {
 		cadastrar();
 	}
 
+	/*
+	 * cria novo Recepcionista
+	 */
 	public void cadastrar() {
 		if (isInputValid()) {
 			Recepcionista recep = new Recepcionista();
@@ -126,6 +137,9 @@ public class DialogRecepcionistaController implements Initializable {
 		}
 	}
 
+	/*
+	 * garante que os campos estão preenchidos corretamente
+	 */
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -186,11 +200,17 @@ public class DialogRecepcionistaController implements Initializable {
 		}
 	}
 
+	/*
+	 * fecha a tela de dialogo
+	 */
 	@FXML
 	private void sair() {
 		t.fecharTelaDialogo();
 	}
 
+	/*
+	 * carrega as informações do recepcionista na tela
+	 */
 	protected void mostrarDetalhes(Recepcionista m) {
 		this.labelTitle.setText("Atualiza Medico");
 		if (m != null) {
@@ -236,6 +256,9 @@ public class DialogRecepcionistaController implements Initializable {
 		});
 	}
 
+	/*
+	 * atualiza as informaçõe do recepcionista
+	 */
 	protected void atualizaRecepcionista(Recepcionista m) {
 		Recepcionista recep = new Recepcionista();
 		recep.setNome(txfNome.getText());
@@ -265,6 +288,9 @@ public class DialogRecepcionistaController implements Initializable {
 		}
 	}
 
+	/*
+	 * carrega as informações do recepcionista na tela sem deixar alterar
+	 */
 	protected void verDetalhes(Recepcionista recepcionista) {
 		mostrarDetalhes(recepcionista);
 		this.labelTitle.setText("Detalhe Paciente");

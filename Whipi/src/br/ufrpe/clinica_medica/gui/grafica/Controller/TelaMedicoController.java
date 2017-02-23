@@ -1,3 +1,8 @@
+/*
+ * Whipi inc
+ * Classe TelaMedicoController
+ * Tem todas As funções do da Cena TelaMedico.fxml
+ */
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -54,6 +59,9 @@ public class TelaMedicoController implements Initializable {
 	private Telas t;
 	private FachadaClinicaMedica f;
 
+	/*
+	 * inicializa a cena
+	 */
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		t = Telas.getInstance();
@@ -66,7 +74,9 @@ public class TelaMedicoController implements Initializable {
 		preencherTableViewConsultas();
 
 	}
-
+/*
+ * altera os dias liberados para marcar consulta para um medico
+ */
 	@FXML
 	public void alterarDiasDeTrabalho() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogDiasDeTrabalho")), t.getLogada());
@@ -79,6 +89,9 @@ public class TelaMedicoController implements Initializable {
 		t.abrirTelaDialogo();
 	}
 
+	/*
+	 * Marca uma Consulta do médico como realizada(True)
+	 */
 	@FXML
 	public void realizarConsulta() {
 		if (consultaAtual != null) {
@@ -87,7 +100,10 @@ public class TelaMedicoController implements Initializable {
 
 		preencherTableViewConsultas();
 	}
-
+	
+/*
+ * Abre a tela de Alterar informações pessoais do médico
+ */
 	@FXML
 	public void editarPerfil() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")), t.getLogada());
@@ -98,7 +114,9 @@ public class TelaMedicoController implements Initializable {
 		p.mostrarDetalhes((Medico) t.getLogada());
 		t.abrirTelaDialogo();
 	}
-
+/*
+ * Cancela uma consulta selecionada
+ */
 	@FXML
 	public void cancelarConsultasDeUmDia() {
 		if (consultaAtual != null) {
@@ -115,12 +133,18 @@ public class TelaMedicoController implements Initializable {
 		}
 	}
 
+	/*
+	 * fecha o programa
+	 */
 	@FXML
 	public void sair() {
 		t.sairDoSistema();
 
 	}
 
+	/*
+	 * preenche a TableView Consultas
+	 */
 	public void preencherTableViewConsultas() {
 		ArrayList<Consulta> consultas = null;
 		try {
@@ -159,12 +183,17 @@ public class TelaMedicoController implements Initializable {
 		}
 
 	}
-
+/*
+ * sai do perfil logado e volta para a tela inicial
+ */
 	@FXML
 	public void logoff() {
 		t.logoff();
 	}
 
+	/*
+	 * pega a consulta clicada na tabela
+	 */
 	@FXML
 	private void consultaClicado() {
 		Consulta clicado = tabelaConsultas.getSelectionModel().getSelectedItem();

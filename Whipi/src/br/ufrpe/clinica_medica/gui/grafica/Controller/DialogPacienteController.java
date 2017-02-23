@@ -1,3 +1,8 @@
+/*
+ * Whipi inc
+ * Classe DialogPacienteController
+ * Controla cadastro e edições de informações de pacientes
+ */
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -77,12 +82,16 @@ public class DialogPacienteController implements Initializable {
 		cbxEstado.getItems().addAll(estados);
 
 	}
-
+/*
+ * salva alterações
+ */
 	@FXML
 	private void salvarPaciente() {
 		cadastrar();
 	}
-
+/*
+ * cadastra um novo paciente
+ */
 	public void cadastrar() {
 		if (isInputValid()) {
 			Paciente paciente = new Paciente();
@@ -121,6 +130,9 @@ public class DialogPacienteController implements Initializable {
 		}
 	}
 
+	/*
+	 * garante que os campos foram preenchidos corretamente
+	 */
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -171,12 +183,18 @@ public class DialogPacienteController implements Initializable {
 			return false;
 		}
 	}
-
+	
+/*
+ * fecha o dialogo
+ */
 	@FXML
 	private void fecharTela() {
 		t.fecharTelaDialogo();
 	}
 
+	/*
+	 * carrega as informações do paciente na tela
+	 */
 	protected void mostrarDetalhes(Paciente paciente) {
 		this.labelTitle.setText("Atualiza Paciente");
 		if (paciente != null) {
@@ -220,7 +238,10 @@ public class DialogPacienteController implements Initializable {
 			}
 		});
 	}
-
+	
+/*
+ * atualiza as informações do paciente
+ */
 	protected void atualizaPaciente(Paciente a) {
 		Paciente paciente = new Paciente();
 		paciente.setNome(txfNome.getText());
@@ -248,7 +269,10 @@ public class DialogPacienteController implements Initializable {
 		}
 
 	}
-
+	
+/*
+ * carrega as informações na tela sem deixar alterar
+ */
 	protected void verDetalhes(Paciente paciente) {
 		mostrarDetalhes(paciente);
 		this.labelTitle.setText("Detalhe Paciente");

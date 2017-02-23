@@ -1,3 +1,9 @@
+/*
+ * Whipi inc
+ * Classe DialogConsultaController
+ * Contém todas as funções a serem chamadas pelo DialogConsulta.fxml
+ */
+
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -71,6 +77,9 @@ public class DialogConsultaController implements Initializable {
 	private Telas t;
 	private int click;
 
+	/*
+	 * inicializa as tabelas do DialogConsulta
+	 * */
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
@@ -174,7 +183,9 @@ public class DialogConsultaController implements Initializable {
 		});
 
 	}
-
+/*
+ * cuida dos eventos do botão próximo
+ */
 	public void handleProximo() {
 		click++;
 		escolherTabela();
@@ -182,7 +193,9 @@ public class DialogConsultaController implements Initializable {
 		btnAnterior.setDisable(false);
 
 	}
-
+/*
+ * cuida dos eventos do botão anterior
+ */
 	public void handleAnterior() {
 		if (click == 3) {
 			dtpConsulta.setValue(null);
@@ -196,6 +209,9 @@ public class DialogConsultaController implements Initializable {
 		btnProximo.setDisable(true);
 	}
 
+	/*
+	 * Decide qual tabela deve apacecer na cena
+	 */
 	private void escolherTabela() {
 		switch (click) {
 		case 1:
@@ -247,7 +263,9 @@ public class DialogConsultaController implements Initializable {
 	private void pesquisaPaciente(KeyEvent e) {
 
 	}
-
+/*
+ * preenche a tabela de pacientes
+ */
 	public void preencherTableViewPaciente(ArrayList<Paciente> pacientes) {
 		colunaPacienteNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaPacienteCPF.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -257,13 +275,18 @@ public class DialogConsultaController implements Initializable {
 	@FXML
 	private void pesquisaMedico() {
 	}
-
+/*
+ * preenche a tabela de médicos	
+ */
 	public void preencherTableViewMedico(ArrayList<Medico> medicos) {
 		colunaMedicoNome.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaMedicoCRM.setCellValueFactory(new PropertyValueFactory<>("numCRM"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(medicos));
 	}
 
+	/*
+	 * preenche o calendário de consutas com os dias disponíveis para se marcar uma consualta para um médico
+	 */
 	public void preencherDatePicker() {
 		final Callback<DatePicker, DateCell> dayCellFactory = new Callback<DatePicker, DateCell>() {
 			@Override
@@ -292,12 +315,17 @@ public class DialogConsultaController implements Initializable {
 		};
 		dtpConsulta.setDayCellFactory(dayCellFactory);
 	}
-
+/*
+ *  fecha a tela de Dialogo
+ */
 	@FXML
 	private void fecharTela() {
 		t.fecharTelaDialogo();
 	}
-
+	
+/*
+ * salva a consulta
+ */
 	@FXML
 	private void salvar() {
 		try {

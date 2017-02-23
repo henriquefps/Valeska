@@ -1,3 +1,8 @@
+/*
+ * Whipi inc
+ * classe TelaAdminController
+ * Gerencia TelaAdmin.fxml
+ */
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
 import java.net.URL;
@@ -133,6 +138,9 @@ public class TelaAdminController implements Initializable {
 
 	}
 
+	/*
+	 * abre o dialogMedico para cadastro
+	 */
 	@FXML
 	private void telaCadastroMedico() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogMedico")));
@@ -146,6 +154,9 @@ public class TelaAdminController implements Initializable {
 		detalheMedico.setDisable(true);
 	}
 
+	/*
+	 * abre o DialogMedico para atualizar medicos
+	 */
 	@FXML
 	private void telaAtualizaMedico() {
 		if (medicoAtual == null) {
@@ -164,7 +175,9 @@ public class TelaAdminController implements Initializable {
 		removeMedico.setDisable(true);
 		detalheMedico.setDisable(true);
 	}
-
+/*
+ * remove um médico do sistema
+ */
 	@FXML
 	private void telaRemoveMedico() {
 		if (medicoAtual == null) {
@@ -200,6 +213,9 @@ public class TelaAdminController implements Initializable {
 		}
 	}
 
+	/*
+	 * abre o dialogMedico para ver as informações sem deixar editar
+	 */
 	@FXML
 	private void telaDetalheMedico() {
 		if (medicoAtual == null) {
