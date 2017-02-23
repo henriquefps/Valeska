@@ -246,7 +246,7 @@ public class DialogPacienteController implements Initializable {
 			alert.setContentText(e.getMessage());
 			alert.showAndWait();
 		}
-		
+
 	}
 
 	protected void verDetalhes(Paciente paciente) {

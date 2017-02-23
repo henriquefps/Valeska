@@ -43,26 +43,26 @@ public class TelaAdminController implements Initializable {
 	@FXML
 	private Button detalheMedico;
 	@FXML
-	
+
 	private Button atualizaRecepcionista;
 	@FXML
 	private Button removeRecepcionista;
 	@FXML
 	private Button detalheRecepcionista;
 	@FXML
-	
+
 	private Button atualizaPaciente;
 	@FXML
 	private Button removePaciente;
 	@FXML
 	private Button detalhePaciente;
-	
+
 	@FXML
 	private Button atualizaEspecialidade;
 	@FXML
 	private Button removeEspecialidade;
-	
-	@FXML	
+
+	@FXML
 	private TableColumn<Paciente, String> colunaPacienteNome;
 	@FXML
 	private TableColumn<Paciente, String> colunaPacienteCPF;
@@ -75,22 +75,22 @@ public class TelaAdminController implements Initializable {
 	private TableView<Medico> tabelaMedico;
 	@FXML
 	private TableColumn<Medico, String> colunaCpfDoMedico;
-	
+
 	@FXML
 	private TableColumn<Recepcionista, String> colunaNomeDoRecepcionista;
 	@FXML
 	private TableView<Recepcionista> tabelaRecepcionista;
 	@FXML
 	private TableColumn<Recepcionista, String> colunaCpfDoRecepcionista;
-	
+
 	@FXML
 	private TableView<EspecialidadeMedico> tabelaEspecialidades;
 	@FXML
 	private TableColumn<EspecialidadeMedico, String> colunaEspecialidade;
-	
+
 	@FXML
 	private Label lblLogado;
-	
+
 	private Telas t;
 	private FachadaClinicaMedica f;
 
@@ -108,20 +108,29 @@ public class TelaAdminController implements Initializable {
 		preencherTableViewMedico();
 		preencherTableViewRecepcionista();
 		preencherTableViewEspecialidade();
-		
-		tabelaEspecialidades.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<EspecialidadeMedico>(){
+
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
 
 			@Override
-			public void changed(ObservableValue<? extends EspecialidadeMedico> observable, EspecialidadeMedico oldValue,
-					EspecialidadeMedico newValue) {
-				especialidadeAtual = newValue;
-				atualizaEspecialidade.setDisable(false);
-				removeEspecialidade.setDisable(false);
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
 			}
 
-			
 		});
-		
+
+		tabelaEspecialidades.getSelectionModel().selectedItemProperty()
+				.addListener(new ChangeListener<EspecialidadeMedico>() {
+
+					@Override
+					public void changed(ObservableValue<? extends EspecialidadeMedico> observable,
+							EspecialidadeMedico oldValue, EspecialidadeMedico newValue) {
+						especialidadeAtual = newValue;
+						atualizaEspecialidade.setDisable(false);
+						removeEspecialidade.setDisable(false);
+					}
+
+				});
+
 	}
 
 	@FXML
@@ -174,12 +183,12 @@ public class TelaAdminController implements Initializable {
 				removeMedico.setDisable(true);
 				detalheMedico.setDisable(true);
 				preencherTableViewMedico();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Remoção realizada com sucesso");
 				a.setContentText(null);
-				
+
 			} catch (PNEException e) {
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Erro");
@@ -256,12 +265,12 @@ public class TelaAdminController implements Initializable {
 				removeRecepcionista.setDisable(true);
 				detalheRecepcionista.setDisable(true);
 				preencherTableViewRecepcionista();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Remoção realizada com sucesso");
 				a.setContentText(null);
-				
+
 			} catch (PNEException e) {
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Erro");
@@ -337,12 +346,12 @@ public class TelaAdminController implements Initializable {
 				detalhePaciente.setDisable(true);
 				this.pacienteAtual = null;
 				preencherTableViewPaciente();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Remoção realizada com sucesso");
 				a.setContentText(null);
-				
+
 			} catch (PNEException e) {
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Erro");
@@ -389,7 +398,9 @@ public class TelaAdminController implements Initializable {
 			pacienteAtual = clicado;
 		}
 	}
-	@FXML private void nomeMedicoClicado() {
+
+	@FXML
+	private void nomeMedicoClicado() {
 		Medico clicado = tabelaMedico.getSelectionModel().getSelectedItem();
 		if (clicado != null) {
 			medicoAtual = clicado;
@@ -399,29 +410,32 @@ public class TelaAdminController implements Initializable {
 			medicoAtual = clicado;
 		}
 	}
-	
-	@FXML private void nomeRecepcionistaClicado(){
+
+	@FXML
+	private void nomeRecepcionistaClicado() {
 		Recepcionista clicado = tabelaRecepcionista.getSelectionModel().getSelectedItem();
-		if(clicado != null){
+		if (clicado != null) {
 			recepcionistaAtual = clicado;
 			atualizaRecepcionista.setDisable(false);
 			removeRecepcionista.setDisable(false);
 			detalheRecepcionista.setDisable(false);
-			recepcionistaAtual =  clicado;
+			recepcionistaAtual = clicado;
 		}
 	}
 
-	public Medico retornaMedico(){
+	public Medico retornaMedico() {
 		return this.medicoAtual;
 	}
+
 	public Paciente retornaPaciente() {
 		return this.pacienteAtual;
 	}
-	public Recepcionista retornaRecepcionista(){
+
+	public Recepcionista retornaRecepcionista() {
 		return this.recepcionistaAtual;
-		
+
 	}
-	
+
 	@FXML
 	public void clicadoForaDaTabela() {
 		atualizaMedico.setDisable(true);
@@ -449,7 +463,7 @@ public class TelaAdminController implements Initializable {
 		tabelaPaciente.getColumns().get(0).setVisible(false);
 		tabelaPaciente.getColumns().get(0).setVisible(true);
 	}
-	
+
 	public void preencherTableViewMedico() {
 		ArrayList<Medico> medico = f.listarMedicos();
 		colunaNomeDoMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
@@ -458,8 +472,8 @@ public class TelaAdminController implements Initializable {
 		tabelaMedico.getColumns().get(0).setVisible(false);
 		tabelaMedico.getColumns().get(0).setVisible(true);
 	}
-	
-	public void preencherTableViewRecepcionista(){
+
+	public void preencherTableViewRecepcionista() {
 		ArrayList<Recepcionista> recepcionista = f.listarRecepcionistas();
 		colunaNomeDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaCpfDoRecepcionista.setCellValueFactory(new PropertyValueFactory<>("cpf"));
@@ -467,35 +481,35 @@ public class TelaAdminController implements Initializable {
 		tabelaRecepcionista.getColumns().get(0).setVisible(false);
 		tabelaRecepcionista.getColumns().get(0).setVisible(true);
 	}
-	
-	public void preencherTableViewEspecialidade(){
+
+	public void preencherTableViewEspecialidade() {
 		ArrayList<EspecialidadeMedico> especialidade = f.listarTodosEspecialidade();
 		colunaEspecialidade.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		tabelaEspecialidades.setItems(FXCollections.observableArrayList(especialidade));
 		tabelaEspecialidades.getColumns().get(0).setVisible(false);
 		tabelaEspecialidades.getColumns().get(0).setVisible(true);
 	}
-	
-	public void telaCadastroEspecialidade(){
+
+	public void telaCadastroEspecialidade() {
 		TextInputDialog tid = new TextInputDialog();
 		tid.setTitle("Cadastro Especialidade");
 		tid.setHeaderText(null);
 		tid.setContentText("Digite a especialidade:");
 		Optional<String> result = tid.showAndWait();
-		if(result.isPresent()){
+		if (result.isPresent()) {
 			try {
 				f.cadastrarEspecialidade(result.get());
 				atualizaEspecialidade.setDisable(true);
 				removeEspecialidade.setDisable(true);
 				this.especialidadeAtual = null;
 				preencherTableViewEspecialidade();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Cadastro realizado com sucesso");
 				a.setContentText(null);
 				a.showAndWait();
-				
+
 			} catch (EMEException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro");
@@ -505,27 +519,27 @@ public class TelaAdminController implements Initializable {
 			}
 		}
 	}
-	
-	public void telaAtualizaEspecialidade(){
+
+	public void telaAtualizaEspecialidade() {
 		TextInputDialog tid = new TextInputDialog();
 		tid.setTitle("Atualizar Especialidade");
 		tid.setHeaderText(null);
 		tid.setContentText("Digite a atualização:");
 		Optional<String> result = tid.showAndWait();
-		if(result.isPresent()){
+		if (result.isPresent()) {
 			try {
 				f.alterarEspecialidade(especialidadeAtual.getNome(), new EspecialidadeMedico(result.get()));
 				atualizaEspecialidade.setDisable(true);
 				removeEspecialidade.setDisable(true);
 				this.especialidadeAtual = null;
 				preencherTableViewEspecialidade();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Alteração realizada com sucesso");
 				a.setContentText(null);
 				a.showAndWait();
-				
+
 			} catch (EMNEException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro");
@@ -534,9 +548,9 @@ public class TelaAdminController implements Initializable {
 				alert.showAndWait();
 			}
 		}
-	}	
-	
-	public void telaRemoveEspecialidade(){
+	}
+
+	public void telaRemoveEspecialidade() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Remover paciente");
 		alert.setHeaderText("Deseja remover a especialidade " + especialidadeAtual.getNome() + "?");
@@ -549,13 +563,13 @@ public class TelaAdminController implements Initializable {
 				removeEspecialidade.setDisable(true);
 				this.especialidadeAtual = null;
 				preencherTableViewEspecialidade();
-				
+
 				Alert a = new Alert(AlertType.INFORMATION);
 				a.setTitle("Sucesso");
 				a.setHeaderText("Remoção realizada com sucesso");
 				a.setContentText(null);
 				a.showAndWait();
-				
+
 			} catch (EMNEException e) {
 				Alert a = new Alert(AlertType.ERROR);
 				a.setTitle("Erro");
@@ -567,6 +581,5 @@ public class TelaAdminController implements Initializable {
 			return;
 		}
 	}
-	
-	
+
 }

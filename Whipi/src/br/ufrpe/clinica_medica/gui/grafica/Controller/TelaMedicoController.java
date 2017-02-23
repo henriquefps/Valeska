@@ -3,28 +3,36 @@ package br.ufrpe.clinica_medica.gui.grafica.Controller;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 import br.ufrpe.clinica_medica.exceptions.NCDException;
 import br.ufrpe.clinica_medica.negocio.FachadaClinicaMedica;
 import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
+import br.ufrpe.clinica_medica.negocio.beans.Paciente;
+import br.ufrpe.clinica_medica.negocio.beans.Pessoa;
+import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 public class TelaMedicoController implements Initializable {
@@ -51,8 +59,12 @@ public class TelaMedicoController implements Initializable {
 		t = Telas.getInstance();
 		f = FachadaClinicaMedica.getInstance();
 		lblLogado.setText(t.getLogada().getNome());
+		Pessoa p = t.getLogada();
+		if (p instanceof Medico) {
+			logado = (Medico) p;
+		}
 		preencherTableViewConsultas();
-		
+
 	}
 
 	@FXML
@@ -62,6 +74,7 @@ public class TelaMedicoController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		DialogDiasDeTrabalhoController p = t.getF().getController();
+		p.setMedico((Medico) t.getLogada());
 		p.mostrarDetalhes();
 		t.abrirTelaDialogo();
 	}
@@ -71,7 +84,7 @@ public class TelaMedicoController implements Initializable {
 		if (consultaAtual != null) {
 			consultaAtual.setRealizada(true);
 		}
-		
+
 		preencherTableViewConsultas();
 	}
 
@@ -82,66 +95,78 @@ public class TelaMedicoController implements Initializable {
 		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
 		t.getDialogStage().initOwner(t.getStage());
 		DialogMedicoController p = t.getF().getController();
-		p.mostrarDetalhes((Medico)t.getLogada());
+		p.mostrarDetalhes((Medico) t.getLogada());
 		t.abrirTelaDialogo();
 	}
 
 	@FXML
 	public void cancelarConsultasDeUmDia() {
 		if (consultaAtual != null) {
-			ArrayList<Consulta> aux = f.listarConsultas();
-			aux.remove(consultaAtual);
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Remover paciente");
+			alert.setHeaderText("Deseja remover a consulta?");
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK) {
+				ArrayList<Consulta> aux = f.listarConsultas();
+				aux.remove(consultaAtual);
+				preencherTableViewConsultas();
+				RepositorioConsultas.getInstance().salvarConsultaEmArquivo();
+			}
 		}
-		preencherTableViewConsultas();
 	}
-	
-	
+
 	@FXML
-	public void sair(){
+	public void sair() {
 		t.sairDoSistema();
-		
+
 	}
-	
-	public void preencherTableViewConsultas(){
+
+	public void preencherTableViewConsultas() {
 		ArrayList<Consulta> consultas = null;
 		try {
 			consultas = f.consultasDoDia(logado);
-			colunaNomeDoMedico.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-				@Override
-				public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
-					
-					return new SimpleStringProperty(c.getValue().getMedico().getNome());
-				}
-			});
-			
-			colunaNomeDoPaciente.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-
-				@Override
-				public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
-					
-					return new SimpleStringProperty(c.getValue().getPaciente().getNome());
-				}
-				
-			});
+			colunaNomeDoMedico
+					.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+						@Override
+						public ObservableValue<String> call(CellDataFeatures<Consulta, String> oferta) {
+							return new SimpleStringProperty(oferta.getValue().getMedico().getNome());
+						}
+					});
+			colunaNomeDoPaciente
+					.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+						@Override
+						public ObservableValue<String> call(CellDataFeatures<Consulta, String> oferta) {
+							return new SimpleStringProperty(oferta.getValue().getPaciente().getNome());
+						}
+					});
 			colunaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-			colunaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
+			colunaRealizada
+					.setCellValueFactory(new Callback<CellDataFeatures<Consulta, Boolean>, ObservableValue<Boolean>>() {
+						@Override
+						public ObservableValue<Boolean> call(CellDataFeatures<Consulta, Boolean> oferta) {
+							return new SimpleBooleanProperty(oferta.getValue().foiRealizada());
+						}
+					});
 			tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
+			tabelaConsultas.getColumns().get(0).setVisible(false);
+			tabelaConsultas.getColumns().get(0).setVisible(true);
 		} catch (NCDException e) {
-			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("Informação");
-			alert.setHeaderText(null);
-			alert.setContentText(e.getMessage());
-			alert.showAndWait();
+			Alert a = new Alert(AlertType.INFORMATION);
+			a.setTitle("Sucesso");
+			a.setHeaderText(e.getMessage());
+			a.setContentText(null);
+			a.showAndWait();
 		}
-		
+
 	}
-	
+
 	@FXML
-	public void logoff(){
+	public void logoff() {
 		t.logoff();
 	}
-	
-	@FXML private void consultaClicado() {
+
+	@FXML
+	private void consultaClicado() {
 		Consulta clicado = tabelaConsultas.getSelectionModel().getSelectedItem();
 		if (clicado != null) {
 			consultaAtual = clicado;

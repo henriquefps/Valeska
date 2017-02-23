@@ -26,7 +26,7 @@ public class TelaPrincipalController implements Initializable {
 	private TextField txfUsuario;
 	@FXML
 	private PasswordField psfSenha;
-	
+
 	private FachadaClinicaMedica fachada;
 	private Telas t;
 
@@ -34,7 +34,16 @@ public class TelaPrincipalController implements Initializable {
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
 		t = Telas.getInstance();
-		
+
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
+
+			@Override
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
+			}
+
+		});
+
 	}
 
 	@FXML
@@ -44,7 +53,7 @@ public class TelaPrincipalController implements Initializable {
 
 		Pessoa resultado = fachada.efetuarLogin(usuario, senha);
 
-		if (resultado != null){
+		if (resultado != null) {
 			t.fecharTelaDialogo();
 			t.setLogada(resultado);
 		}

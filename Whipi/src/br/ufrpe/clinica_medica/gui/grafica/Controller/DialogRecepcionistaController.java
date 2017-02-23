@@ -69,7 +69,7 @@ public class DialogRecepcionistaController implements Initializable {
 	private Label labelTitle;
 	@FXML
 	private Label lC;
-	
+
 	private FachadaClinicaMedica fachada;
 	private Telas t;
 
@@ -109,7 +109,7 @@ public class DialogRecepcionistaController implements Initializable {
 				fachada.cadastrarRecepcionista(recep.getNome(), recep.getCpf(), recep.getRg(), recep.getTelefone(),
 						recep.getCelular(), recep.getSexo(), recep.getEndereco(), recep.getDataDeNascimento(),
 						recep.getSenha());
-				
+
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Sucesso");
 				alert.setHeaderText(null);
@@ -169,7 +169,7 @@ public class DialogRecepcionistaController implements Initializable {
 		if (pswConfirmarSenha.getText() == null || pswConfirmarSenha.getText().length() == 0) {
 			errorMessage += "Confirmação de Senha inválida!\n";
 		}
-		if(!pswSenha.getText().equals(pswConfirmarSenha.getText())){
+		if (!pswSenha.getText().equals(pswConfirmarSenha.getText())) {
 			errorMessage += "Senhas não coincidem!\n";
 		}
 		if (errorMessage.length() == 0) {
@@ -226,14 +226,16 @@ public class DialogRecepcionistaController implements Initializable {
 			txfCep.setText("");
 			cbxEstado.setValue("");
 			pswSenha.setText("");
-		}bntSave.setOnAction(new EventHandler<ActionEvent>() {
+		}
+		bntSave.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent evento) {
-		        atualizaRecepcionista(m);
+				atualizaRecepcionista(m);
 				sair();
 			}
 		});
 	}
+
 	protected void atualizaRecepcionista(Recepcionista m) {
 		Recepcionista recep = new Recepcionista();
 		recep.setNome(txfNome.getText());
@@ -247,13 +249,13 @@ public class DialogRecepcionistaController implements Initializable {
 			recep.setSexo('F');
 		}
 		recep.setDataDeNascimento(dtpNascimento.getValue());
-		recep.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(),
-				cbxEstado.getValue(), txfCep.getText(), txfComplemento.getText()));
+		recep.setEndereco(new Endereco(txfRua.getText(), txfCidade.getText(), txfBairro.getText(), cbxEstado.getValue(),
+				txfCep.getText(), txfComplemento.getText()));
 		recep.setSenha(pswSenha.getText());
-		
+
 		try {
 			fachada.alterarRecepcionista(recep.getCpf(), recep);
-			
+
 		} catch (PNEException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro!");
@@ -262,7 +264,7 @@ public class DialogRecepcionistaController implements Initializable {
 			alert.showAndWait();
 		}
 	}
-	
+
 	protected void verDetalhes(Recepcionista recepcionista) {
 		mostrarDetalhes(recepcionista);
 		this.labelTitle.setText("Detalhe Paciente");

@@ -1,6 +1,5 @@
 package br.ufrpe.clinica_medica.gui.grafica.Controller;
 
-
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -73,27 +72,28 @@ public class DialogMedicoController implements Initializable {
 	private RadioButton rbMasculino;
 	@FXML
 	private Label labelTitle;
-    @FXML
-    private Button btnSave;
-    @FXML
-    private GridPane gridEsp;
-    @FXML
-    private Button btnMaisEsp;
-    @FXML
-    private Button btnMenosEsp;
-    @FXML
-    private Label lblConfirmaSenha;
-    
-    ArrayList<ComboBox<EspecialidadeMedico>> esp;
-    private int cont;
+	@FXML
+	private Button btnSave;
+	@FXML
+	private GridPane gridEsp;
+	@FXML
+	private Button btnMaisEsp;
+	@FXML
+	private Button btnMenosEsp;
+	@FXML
+	private Label lblConfirmaSenha;
+
+	ArrayList<ComboBox<EspecialidadeMedico>> esp;
+	private int cont;
 
 	private FachadaClinicaMedica fachada;
-    private Telas t;
-    
-    public DialogMedicoController(){
-    	esp = new ArrayList<>();
-    	cont = 0;
-    }
+	private Telas t;
+
+	public DialogMedicoController() {
+		esp = new ArrayList<>();
+		cont = 0;
+	}
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		fachada = FachadaClinicaMedica.getInstance();
@@ -121,29 +121,29 @@ public class DialogMedicoController implements Initializable {
 					cbxEstados.getValue(), txfCEP.getText(), txfComplemento.getText()));
 			m.setNumCRM(Integer.parseInt(txfCRM.getText()));
 			m.setSenha(txfSenha.getText());
-			if(sexo.getSelectedToggle().equals(rbMasculino)){
-			   m.setSexo('M');
-			}else{
+			if (sexo.getSelectedToggle().equals(rbMasculino)) {
+				m.setSexo('M');
+			} else {
 				m.setSexo('F');
 			}
-			
+
 			ArrayList<EspecialidadeMedico> especialidades = new ArrayList<>();
 			for (ComboBox<EspecialidadeMedico> comboBox : esp) {
 				especialidades.add(comboBox.getValue());
 			}
-			
-			try{
-				fachada.cadastrarMedico(m.getNome(), m.getCpf(), m.getRg(), m.getTelefone(), m.getCelular(), m.getSexo(),
-						m.getEndereco(), m.getDataDeNascimento(), m.getNumCRM(), 
-						m.getConsultasPorDia(), m.getSenha(), especialidades);
+
+			try {
+				fachada.cadastrarMedico(m.getNome(), m.getCpf(), m.getRg(), m.getTelefone(), m.getCelular(),
+						m.getSexo(), m.getEndereco(), m.getDataDeNascimento(), m.getNumCRM(), m.getConsultasPorDia(),
+						m.getSenha(), especialidades);
 				Alert alert = new Alert(AlertType.INFORMATION);
 				alert.setTitle("Sucesso!");
 				alert.setHeaderText("Cadastro!");
 				alert.setContentText("Médico cadastrado com sucesso!");
 				alert.showAndWait();
 				fecharTela();
-				
-			} catch (PJCException e){
+
+			} catch (PJCException e) {
 				Alert alert = new Alert(AlertType.ERROR);
 				alert.setTitle("Erro!");
 				alert.setHeaderText("Cadastro inválido!");
@@ -153,9 +153,10 @@ public class DialogMedicoController implements Initializable {
 		}
 	}
 
-	private void fecharTela(){
+	private void fecharTela() {
 		t.fecharTelaDialogo();
 	}
+
 	private boolean isInputValid() {
 		String errorMessage = "";
 
@@ -193,19 +194,19 @@ public class DialogMedicoController implements Initializable {
 		if (dtpNascimento.getValue() == null || dtpNascimento.getValue().isAfter(hoje)) {
 			errorMessage += "Data de nascimento inválida!\n";
 		}
-		if(txfSenha.getText() == null || txfSenha.getText().length() == 0){
+		if (txfSenha.getText() == null || txfSenha.getText().length() == 0) {
 			errorMessage += "Senha inválida!\n";
 		}
-		if(txfConfirmaSenha.getText() == null || txfConfirmaSenha.getText().length() == 0){
+		if (txfConfirmaSenha.getText() == null || txfConfirmaSenha.getText().length() == 0) {
 			errorMessage += "Confirmação de senha inválida!\n";
 		}
-		if(!txfSenha.getText().equals(txfConfirmaSenha.getText())){
+		if (!txfSenha.getText().equals(txfConfirmaSenha.getText())) {
 			errorMessage += "Senhas não coincidem!\n";
 		}
-		if(esp.isEmpty()){
+		if (esp.isEmpty()) {
 			errorMessage += "Nenhuma especialidade selecionada!\n";
 		}
-		
+
 		if (errorMessage.length() == 0) {
 			return true;
 		} else {
@@ -244,7 +245,7 @@ public class DialogMedicoController implements Initializable {
 			dtpNascimento.setValue(m.getDataDeNascimento());
 			txfSenha.setText(m.getSenha());
 			txfCRM.setText(String.valueOf(m.getNumCRM()));
-			txfConsultas.setText(Integer.toString(m.getConsultasPorDia()));
+			txfConsultas.setText(String.valueOf(m.getConsultasPorDia()));
 		} else {
 			txfNome.setText("");
 			txfCPF.setText("");
@@ -260,7 +261,8 @@ public class DialogMedicoController implements Initializable {
 			txfSenha.setText("");
 			txfCRM.setText("");
 			txfConsultas.setText("");
-		}btnSave.setOnAction(new EventHandler<ActionEvent>() {
+		}
+		btnSave.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent evento) {
 				atualizaMedico(m);
@@ -268,6 +270,7 @@ public class DialogMedicoController implements Initializable {
 			}
 		});
 	}
+
 	protected void atualizaMedico(Medico m) {
 		Medico medico = new Medico();
 		medico.setNome(txfNome.getText());
@@ -290,17 +293,17 @@ public class DialogMedicoController implements Initializable {
 		for (ComboBox<EspecialidadeMedico> comboBox : esp) {
 			especialidades.add(comboBox.getValue());
 		}
-		
+
 		medico.setEspecialidade(especialidades);
 		try {
 			fachada.alterarMedico(medico.getCpf(), medico);
-			
+
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("Sucesso!");
 			alert.setHeaderText("Cadastro!");
 			alert.setContentText("Médico atualizado com sucesso!");
 			alert.showAndWait();
-			
+
 		} catch (PNEException e) {
 			Alert alert = new Alert(AlertType.ERROR);
 			alert.setTitle("Erro!");
@@ -342,40 +345,41 @@ public class DialogMedicoController implements Initializable {
 	private void sair() {
 		Telas.getInstance().fecharTelaDialogo();
 	}
-	
-	public void maisEspecialidades(){
-		ComboBox<EspecialidadeMedico> c = new ComboBox<>(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
+
+	public void maisEspecialidades() {
+		ComboBox<EspecialidadeMedico> c = new ComboBox<>(
+				FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
 		esp.add(c);
-		if(cont >= 6){
+		if (cont >= 6) {
 			gridEsp.addRow(cont, esp.get(cont));
 			GridPane.setMargin(c, new Insets(0, 0, 0, 50));
 			cont++;
-		}
-		else {
+		} else {
 			gridEsp.add(esp.get(cont), 0, cont);
 			GridPane.setMargin(c, new Insets(0, 0, 0, 50));
 			cont++;
 		}
-		
+
 	}
-	
-	public void menosEspecialidades(){
-		if(!gridEsp.getChildren().isEmpty()){
+
+	public void menosEspecialidades() {
+		if (!gridEsp.getChildren().isEmpty()) {
 			cont--;
 			gridEsp.getChildren().remove(esp.get(cont));
-			
+
 			esp.remove(cont);
-			
+
 		}
 	}
-	
-	public void mostrarEspecialidades(ArrayList<EspecialidadeMedico> especialidades){
+
+	public void mostrarEspecialidades(ArrayList<EspecialidadeMedico> especialidades) {
 		for (EspecialidadeMedico especialidadeMedico : especialidades) {
-			ComboBox<EspecialidadeMedico> c = new ComboBox<>(FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
+			ComboBox<EspecialidadeMedico> c = new ComboBox<>(
+					FXCollections.observableArrayList(fachada.listarTodosEspecialidade()));
 			c.setValue(especialidadeMedico);
 			esp.add(c);
 		}
-		
+
 		int i = 0;
 		for (ComboBox<EspecialidadeMedico> c : esp) {
 			gridEsp.add(c, 0, i);

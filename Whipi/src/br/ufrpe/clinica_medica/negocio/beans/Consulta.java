@@ -24,7 +24,7 @@ public class Consulta implements Serializable {
 	private boolean realizada;
 	private String descricao;
 	private Medico medico;
-	
+
 	private String nomeDoMedico;
 	private String nomeDoPaciente;
 

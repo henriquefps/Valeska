@@ -24,26 +24,28 @@ public interface IRepositorioPessoas {
 	 * Retorna o toString de todos os pacientes cadastrados no sistema.
 	 */
 	public ArrayList<Paciente> listaTodosPacientes();
-	
+
 	/**
 	 * Retorna um ArrayList de pacientes com as iniciais "inicial"
 	 */
 	public ArrayList<Paciente> pesquisarPacienteCPF(String inicial);
-	
+
 	public ArrayList<Paciente> pesquisarPacienteNome(String nome);
 
 	/**
 	 * Retorna o toString de todos os medicos cadastrados no sistema.
 	 */
 	public ArrayList<Medico> listarTodosMedicos();
-	
+
 	/**
 	 * Lista de medicos com a String inicial.
-	 * @param inicial String para busca.
+	 * 
+	 * @param inicial
+	 *            String para busca.
 	 * @return Retorna um ArrayList de medicos com a string "inicial".
 	 */
 	public ArrayList<Medico> pesquisarMedicoCPF(String inicial);
-	
+
 	public ArrayList<Medico> pesquisarMedicoNome(String nome);
 
 	/**

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Accordion?>
 <?import javafx.scene.control.Button?>
@@ -17,7 +13,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="631.0" prefWidth="700.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="br.ufrpe.clinica_medica.gui.grafica.Controller.TelaRecepcionistaController">
    <children>
       <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="609.0" prefWidth="700.0" styleClass="label-bright" stylesheets="@DarkTheme.css" text="Recepcionista">
          <content>
@@ -37,7 +33,6 @@
                                                 <TableColumn fx:id="colunaCpfMedico" prefWidth="190.0" text="CPF" />
                                              </columns>
                                           </TableView>
-                                          <Button fx:id="verDetalhesMedico" disable="true" layoutX="509.0" layoutY="79.0" mnemonicParsing="false" onAction="#verDetalhesDoMedico" text="Ver detalhes" />
                                        </children>
                                     </AnchorPane>
                                  </content>
@@ -109,9 +104,7 @@
                                           <GridPane layoutX="450.0" layoutY="100.0" prefHeight="200.0" prefWidth="300.0">
                                              <children>
                                                 <Button mnemonicParsing="false" onAction="#telaCadastroConsulta" prefHeight="33.0" prefWidth="110.0" text="Cadastrar" GridPane.columnIndex="1" />
-                                                <Button fx:id="atualizaConsulta" disable="true" mnemonicParsing="false" onAction="#telaAtualizaConsulta" prefHeight="25.0" prefWidth="110.0" text="Atualizar" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="removeConsulta" disable="true" mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                                                <Button fx:id="detalhesConsulta" disable="true" mnemonicParsing="false" onAction="#telaListarConsulta" prefHeight="25.0" prefWidth="110.0" text="Detalhes" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                                                <Button fx:id="removeConsulta" disable="true" mnemonicParsing="false" onAction="#telaRemoveConsulta" prefHeight="25.0" prefWidth="110.0" text="Remover" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                                              </children>
                                              <columnConstraints>
                                                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -125,7 +118,7 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                           </GridPane>
-                                          <TableView fx:id="tabelaConsultas" layoutY="25.0" prefHeight="350.0" prefWidth="450.0">
+                                          <TableView fx:id="tabelaConsultas" layoutY="25.0" onMousePressed="#nomeRecepcionistaClicado" prefHeight="350.0" prefWidth="450.0">
                                              <columns>
                                                 <TableColumn fx:id="colunaConsultaMedico" prefWidth="100.0" text="Medico" />
                                                 <TableColumn fx:id="colunaConsultaPaciente" prefWidth="112.0" text="Paciente" />

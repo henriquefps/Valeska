@@ -12,33 +12,32 @@ import br.ufrpe.clinica_medica.repositorio.IRepositorioEspecialidadeMedico;
 import br.ufrpe.clinica_medica.repositorio.RepositorioEspecialidadeMedico;
 
 public class GerenciamentoEspecialidadeMedico {
-	
+
 	private IRepositorioEspecialidadeMedico especialidades;
-	
-	public GerenciamentoEspecialidadeMedico(){
+
+	public GerenciamentoEspecialidadeMedico() {
 		especialidades = RepositorioEspecialidadeMedico.getInstance();
 	}
-	
-	public void cadastrar(String nome) throws EMEException{
-		if(nome == null)
+
+	public void cadastrar(String nome) throws EMEException {
+		if (nome == null)
 			throw new IllegalArgumentException("Nome de Especialidade inválido");
-		if(!especialidades.existe(nome)){
+		if (!especialidades.existe(nome)) {
 			especialidades.cadastrar(new EspecialidadeMedico(nome));
 			especialidades.salvarEmArquivo();
-		}
-		else
+		} else
 			throw new EMEException("Especialidade " + nome + " já cadastrada!");
-		
+
 	}
-	
-	public ArrayList<EspecialidadeMedico> pesquisar(String nome){
-		if(nome == null)
+
+	public ArrayList<EspecialidadeMedico> pesquisar(String nome) {
+		if (nome == null)
 			throw new IllegalArgumentException("Nome de Especialidade inválido");
-		
+
 		return especialidades.pesquisar(nome);
 	}
-	
-	public void remover(EspecialidadeMedico especialidade) throws EMNEException{
+
+	public void remover(EspecialidadeMedico especialidade) throws EMNEException {
 		if (especialidade != null) {
 			especialidades.remover(especialidade);
 			especialidades.salvarEmArquivo();
@@ -46,11 +45,11 @@ public class GerenciamentoEspecialidadeMedico {
 			throw new EMNEException("Especialidade não encontrada no sistema");
 		}
 	}
-	
-	public ArrayList<EspecialidadeMedico> listarTodos(){
+
+	public ArrayList<EspecialidadeMedico> listarTodos() {
 		return especialidades.listarTodos();
 	}
-	
+
 	public void atualizar(String nome, EspecialidadeMedico e) throws EMNEException {
 		EspecialidadeMedico em = null;
 		if (nome != null) {

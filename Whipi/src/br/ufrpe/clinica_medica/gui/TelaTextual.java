@@ -173,7 +173,7 @@ public class TelaTextual {
 				System.out.print("Digite sua nova senha: ");
 				String senha = scan.nextLine();
 				scan.nextLine();
-				
+
 				System.out.print("Digite sua Especialidade: ");
 				String especialidade = scan.nextLine();
 				scan.nextLine();

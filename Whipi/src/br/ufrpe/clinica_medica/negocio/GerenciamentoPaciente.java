@@ -52,12 +52,11 @@ public class GerenciamentoPaciente {
 	public void removerPaciente(Paciente a) throws PNEException {
 		if (a == null)
 			throw new IllegalArgumentException("Parâmetro inválido");
-		
-		if(pessoas.existe(a.getCpf())){
+
+		if (pessoas.existe(a.getCpf())) {
 			pessoas.remover(a);
 			pessoas.salvarPessoaEmArquivo();
-		}
-		else{
+		} else {
 			throw new PNEException("CPF do paciente não encontrado no sistema");
 		}
 	}
@@ -85,7 +84,7 @@ public class GerenciamentoPaciente {
 	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
 		return pessoas.pesquisarPacienteNome(nome);
 	}
-	
+
 	public ArrayList<Paciente> listarPacientes() {
 		return pessoas.listaTodosPacientes();
 	}

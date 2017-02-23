@@ -11,26 +11,26 @@ import java.util.ArrayList;
 
 import br.ufrpe.clinica_medica.negocio.beans.EspecialidadeMedico;
 
-public class RepositorioEspecialidadeMedico implements Serializable, IRepositorioEspecialidadeMedico{
-	
+public class RepositorioEspecialidadeMedico implements Serializable, IRepositorioEspecialidadeMedico {
+
 	private ArrayList<EspecialidadeMedico> lista;
-	
+
 	private static RepositorioEspecialidadeMedico instance;
-	
-	private RepositorioEspecialidadeMedico(){
+
+	private RepositorioEspecialidadeMedico() {
 		lista = new ArrayList<>();
 	}
-	
-	public static IRepositorioEspecialidadeMedico getInstance(){
-		if(instance == null){
+
+	public static IRepositorioEspecialidadeMedico getInstance() {
+		if (instance == null) {
 			instance = lerDoArquivo();
 		}
-		
+
 		return instance;
-			
+
 	}
-	
-	private static RepositorioEspecialidadeMedico lerDoArquivo(){
+
+	private static RepositorioEspecialidadeMedico lerDoArquivo() {
 		File f = new File("EspecialidadeMedico.dat");
 		if (!f.exists()) {
 			try {
@@ -64,11 +64,11 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 
 		return rem;
 	}
-	
+
 	@Override
 	public void cadastrar(EspecialidadeMedico em) {
 		lista.add(em);
-		
+
 	}
 
 	@Override
@@ -79,12 +79,12 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 	@Override
 	public ArrayList<EspecialidadeMedico> pesquisar(String nome) {
 		ArrayList<EspecialidadeMedico> em = new ArrayList<>();
-		
+
 		for (EspecialidadeMedico especialidade : lista) {
-			if(especialidade.getNome().startsWith(nome)){
+			if (especialidade.getNome().startsWith(nome)) {
 				em.add(especialidade);
 			}
-			
+
 		}
 		return em;
 	}
@@ -98,27 +98,27 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 	public void salvarEmArquivo() {
 		FileOutputStream fos = null;
 		ObjectOutputStream ous = null;
-		try{
+		try {
 			fos = new FileOutputStream("EspecialidadeMedico.dat");
 			ous = new ObjectOutputStream(fos);
 			ous.writeObject(instance);
-			
-		} catch(Exception e){
-			//TODO
+
+		} catch (Exception e) {
+			// TODO
 			e.printStackTrace();
-			
-		} finally{
-			if(ous != null){
-				try{
+
+		} finally {
+			if (ous != null) {
+				try {
 					ous.close();
-					
-				} catch(IOException e){
-					//TODO
+
+				} catch (IOException e) {
+					// TODO
 					e.printStackTrace();
 				}
 			}
 		}
-		
+
 	}
 
 	@Override
@@ -132,9 +132,9 @@ public class RepositorioEspecialidadeMedico implements Serializable, IRepositori
 
 	@Override
 	public void atualizar(EspecialidadeMedico ant, EspecialidadeMedico novo) {
-		if(ant == null || novo == null)
-				throw new IllegalArgumentException();
-		
+		if (ant == null || novo == null)
+			throw new IllegalArgumentException();
+
 		lista.set(lista.indexOf(ant), novo);
 	}
 

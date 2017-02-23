@@ -114,34 +114,34 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		}
 		return m;
 	}
-	
+
 	public ArrayList<Medico> pesquisarMedicoCPF(String inicial) {
 		ArrayList<Medico> m = new ArrayList<>();
-		
+
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Medico) {
 				if (repositorio.get(i).getNome().startsWith(inicial)) {
-					m.add((Medico) repositorio.get(i));					
+					m.add((Medico) repositorio.get(i));
 				}
 			}
 		}
 		return m;
 	}
-	
+
 	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
 		ArrayList<Medico> m = new ArrayList<>();
-		
+
 		for (Pessoa pessoa : repositorio) {
-			if(pessoa instanceof Medico){
+			if (pessoa instanceof Medico) {
 				Medico medico = (Medico) pessoa;
-				if(medico.getNome().startsWith(nome)){
+				if (medico.getNome().startsWith(nome)) {
 					m.add(medico);
 				}
 			}
 		}
-		
+
 		return m;
-		
+
 	}
 
 	public ArrayList<Paciente> listaTodosPacientes() {
@@ -154,36 +154,35 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 		}
 		return p;
 	}
-	
+
 	public ArrayList<Paciente> pesquisarPacienteCPF(String inicial) {
 		ArrayList<Paciente> p = new ArrayList<>();
-		
+
 		for (int i = 0; i < repositorio.size(); i++) {
 			if (repositorio.get(i) instanceof Paciente) {
 				if (repositorio.get(i).getCpf().startsWith(inicial)) {
-					p.add((Paciente) repositorio.get(i));					
+					p.add((Paciente) repositorio.get(i));
 				}
 			}
 		}
 		return p;
 	}
-	
+
 	public ArrayList<Paciente> pesquisarPacienteNome(String nome) {
 		ArrayList<Paciente> p = new ArrayList<>();
-		
+
 		for (Pessoa pessoa : repositorio) {
-			if(pessoa instanceof Paciente){
+			if (pessoa instanceof Paciente) {
 				Paciente paciente = (Paciente) pessoa;
-				if(paciente.getNome().startsWith(nome)){
+				if (paciente.getNome().startsWith(nome)) {
 					p.add(paciente);
 				}
 			}
 		}
-		
+
 		return p;
-		
+
 	}
-	
 
 	public ArrayList<Recepcionista> listarTodosRecepcionistas() {
 		ArrayList<Recepcionista> r = new ArrayList<>();
@@ -238,10 +237,9 @@ public class RepositorioPessoas implements IRepositorioPessoas, Serializable {
 	}
 
 	public void atualizar(Pessoa ant, Pessoa novo) {
-		if (ant != null && novo != null){
+		if (ant != null && novo != null) {
 			repositorio.set(repositorio.indexOf(ant), novo);
-		}
-		else
+		} else
 			throw new IllegalArgumentException();
 	}
 

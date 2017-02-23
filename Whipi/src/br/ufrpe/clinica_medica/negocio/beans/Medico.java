@@ -20,12 +20,12 @@ public class Medico extends Pessoa {
 	private int consultasPorDia;
 	private String senha;
 	private ArrayList<Boolean> dias;
-	//private DiasDeAtendimento diasDeTrabalho;
+	// private DiasDeAtendimento diasDeTrabalho;
 	private ArrayList<EspecialidadeMedico> especialidade;
 
-	
 	public Medico(String nome, String cpf, String rg, String telefone, String celular, char sexo, Endereco endereco,
-			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade) {
+			LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha,
+			ArrayList<EspecialidadeMedico> especialidade) {
 		super(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento);
 		this.numCRM = numCRM;
 		this.consultasPorDia = consultasPorDia;
@@ -64,12 +64,12 @@ public class Medico extends Pessoa {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	
+
 	public ArrayList<Boolean> getDiasDeTrabalho() {
 		System.out.println(dias);
 		return this.dias;
 	}
-	
+
 	public boolean isDia(int dia) {
 		boolean resultado = false;
 		if (this.dias.get(dia)) {
@@ -77,7 +77,7 @@ public class Medico extends Pessoa {
 		}
 		return resultado;
 	}
-	
+
 	public void setDia(int dia, boolean set) {
 		this.dias.set(dia, set);
 	}
@@ -105,34 +105,7 @@ public class Medico extends Pessoa {
 		for (EspecialidadeMedico esp : especialidade) {
 			resultado += esp;
 		}
-		
-		resultado += "Dias de Trabalho:\n";
-		for(int i = 0; i < dias.size(); i++){
-			if(dias.get(i)){
-				switch(i){
-					case 0:
-						resultado += "segunda-feira / ";
-						break;
-					case 1:
-						resultado += "terça-feira / ";
-						break;
-					case 2:
-						resultado += "quarta-feira / ";
-						break;
-					case 3:
-						resultado += "quinta-feira / ";
-						break;
-					case 4:
-						resultado += "sexta-feira / ";
-						break;
-					case 5:
-						resultado += "sábado";
-						break;
-				}
-			}
-		}
-		resultado += "\n";
-		
+
 		return resultado;
 	}
 }

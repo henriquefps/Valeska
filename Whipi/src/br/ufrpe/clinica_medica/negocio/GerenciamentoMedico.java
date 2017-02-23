@@ -34,8 +34,8 @@ public class GerenciamentoMedico {
 	}
 
 	public void cadastrarMedico(String nome, String cpf, String rg, String telefone, String celular, char sexo,
-			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha, ArrayList<EspecialidadeMedico> especialidade)
-			throws PJCException {
+			Endereco endereco, LocalDate dataDeNascimento, int numCRM, int consultasPorDia, String senha,
+			ArrayList<EspecialidadeMedico> especialidade) throws PJCException {
 		if (!pessoas.existe(cpf)) {
 			pessoas.cadastrar(new Medico(nome, cpf, rg, telefone, celular, sexo, endereco, dataDeNascimento, numCRM,
 					consultasPorDia, senha, especialidade));
@@ -85,7 +85,7 @@ public class GerenciamentoMedico {
 	public ArrayList<Medico> pesquisarMedicoNome(String nome) {
 		return pessoas.pesquisarMedicoNome(nome);
 	}
-	
+
 	public ArrayList<Medico> listarMedicos() {
 		return pessoas.listarTodosMedicos();
 	}
@@ -97,10 +97,11 @@ public class GerenciamentoMedico {
 	public void cancelarDiaDeTrabalhoX(Medico medico, int diaDaSemana) {
 		medico.setDia(diaDaSemana, false);
 	}
-	
+
 	public ArrayList<LocalTime> getConsultasPossiveis() {
 		ArrayList<LocalTime> resultado = null;
-		//TODO Fazer um metodo que retorna um ArrayList de hora possivel de um medico!
+		// TODO Fazer um metodo que retorna um ArrayList de hora possivel de um
+		// medico!
 		return resultado;
 	}
 }

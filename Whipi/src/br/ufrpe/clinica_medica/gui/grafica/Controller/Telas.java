@@ -137,8 +137,8 @@ public class Telas {
 			alert.close();
 		}
 	}
-	
-	public void sairDoSistema(){
+
+	public void sairDoSistema() {
 		Alert alert = new Alert(AlertType.CONFIRMATION);
 		alert.setTitle("Confirmação");
 		alert.setHeaderText("Sair");

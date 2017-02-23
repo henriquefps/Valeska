@@ -12,10 +12,13 @@ import br.ufrpe.clinica_medica.negocio.beans.Consulta;
 import br.ufrpe.clinica_medica.negocio.beans.Medico;
 import br.ufrpe.clinica_medica.negocio.beans.Paciente;
 import br.ufrpe.clinica_medica.negocio.beans.Recepcionista;
+import br.ufrpe.clinica_medica.repositorio.RepositorioConsultas;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -31,6 +34,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.util.Callback;
 
 /*
@@ -44,13 +48,13 @@ public class TelaRecepcionistaController implements Initializable {
 	private TableColumn<Paciente, String> colunaPacienteCPF;
 	@FXML
 	private TableView<Paciente> tabelaPaciente;
-	@FXML 
+	@FXML
 	private TableView<Medico> tabelaMedico;
 	@FXML
-    private TableColumn<Medico, String> colunaNomeMedico;
-    @FXML
-    private TableColumn<Medico, String> colunaCpfMedico;
-    @FXML
+	private TableColumn<Medico, String> colunaNomeMedico;
+	@FXML
+	private TableColumn<Medico, String> colunaCpfMedico;
+	@FXML
 	private TableView<Consulta> tabelaConsultas;
 	@FXML
 	private TableColumn<Consulta, String> colunaConsultaMedico;
@@ -65,21 +69,14 @@ public class TelaRecepcionistaController implements Initializable {
 	@FXML
 	private Button removePaciente;
 	@FXML
-	private Button atualizaConsulta;
-	@FXML
 	private Button removeConsulta;
 	@FXML
-	private Button detalhesConsulta;
-	@FXML
 	private Label lblLogado;
-	
-	@FXML
-	private Button verDetalhesMedico;
 
 	private Telas t;
 	private FachadaClinicaMedica f;
 	private Paciente pacienteAtual;
-	private Medico medicoAtual;
+	private Consulta consultaAtual;
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -89,27 +86,16 @@ public class TelaRecepcionistaController implements Initializable {
 		preencherTableView();
 		preencherTableViewMedico();
 		preencherTableViewConsultas();
-		
-		tabelaMedico.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Medico>(){
+
+		t.getDialogStage().setOnCloseRequest(new EventHandler<WindowEvent>() {
 
 			@Override
-			public void changed(ObservableValue<? extends Medico> arg0, Medico arg1, Medico arg2) {
-				medicoAtual = arg2;
-				verDetalhesMedico.setDisable(false);
+			public void handle(WindowEvent arg0) {
+				t.sairDoSistema();
 			}
-			
+
 		});
-		
-		
-		
-	}
-	
-	public void verDetalhesDoMedico(){
-		Alert alert = new Alert(AlertType.INFORMATION);
-		alert.setTitle("Detalhes do Médico");
-		alert.setHeaderText(medicoAtual.getNome());
-		alert.setContentText(medicoAtual.toString());
-		alert.showAndWait();
+
 	}
 
 	@FXML
@@ -164,28 +150,28 @@ public class TelaRecepcionistaController implements Initializable {
 
 	@FXML
 	private void telaAtualizaRecepcionista() {
-          Recepcionista recep = (Recepcionista) t.getLogada();
-          t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
-          t.setDialogStage(new Stage());
-          t.getDialogStage().initModality(Modality.WINDOW_MODAL);
-          t.getDialogStage().initOwner(t.getStage());
-          DialogRecepcionistaController p = t.getF().getController();
-  		  p.mostrarDetalhes(recep);
-  		  t.abrirTelaDialogo();
-  		  
+		Recepcionista recep = (Recepcionista) t.getLogada();
+		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogRecepcionistaController p = t.getF().getController();
+		p.mostrarDetalhes(recep);
+		t.abrirTelaDialogo();
 	}
 
 	@FXML
-	private void verDetalhes(){
-		Recepcionista recep = (Recepcionista) t.getLogada(); 
+	private void verDetalhes() {
+		Recepcionista recep = (Recepcionista) t.getLogada();
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogRecepcionista")));
-         t.setDialogStage(new Stage());
-         t.getDialogStage().initModality(Modality.WINDOW_MODAL);
-         t.getDialogStage().initOwner(t.getStage());
-         DialogRecepcionistaController p = t.getF().getController();
-         p.verDetalhes(recep);
-         t.abrirTelaDialogo();
+		t.setDialogStage(new Stage());
+		t.getDialogStage().initModality(Modality.WINDOW_MODAL);
+		t.getDialogStage().initOwner(t.getStage());
+		DialogRecepcionistaController p = t.getF().getController();
+		p.verDetalhes(recep);
+		t.abrirTelaDialogo();
 	}
+
 	@FXML
 	private void telaCadastroConsulta() {
 		t.setScene(new Scene((Parent) t.carregarFXML("DialogConsulta")));
@@ -197,18 +183,20 @@ public class TelaRecepcionistaController implements Initializable {
 	}
 
 	@FXML
-	private void telaAtualizaConsulta() {
-
-	}
-
-	@FXML
 	private void telaRemoveConsulta() {
-
-	}
-
-	@FXML
-	private void telaListarConsulta() {
-
+		if (consultaAtual != null) {
+			Alert alert = new Alert(AlertType.CONFIRMATION);
+			alert.setTitle("Remover paciente");
+			alert.setHeaderText("Deseja remover a consulta?");
+			Optional<ButtonType> result = alert.showAndWait();
+			if (result.get() == ButtonType.OK) {
+				ArrayList<Consulta> aux = f.listarConsultas();
+				aux.remove(consultaAtual);
+				preencherTableViewConsultas();
+				RepositorioConsultas.getInstance().salvarConsultaEmArquivo();
+			}
+			removeConsulta.setDisable(true);
+		}
 	}
 
 	@FXML
@@ -238,48 +226,54 @@ public class TelaRecepcionistaController implements Initializable {
 		}
 	}
 
+	@FXML
+	private void nomeRecepcionistaClicado() {
+		Consulta clicado = tabelaConsultas.getSelectionModel().getSelectedItem();
+		if (clicado != null) {
+			consultaAtual = clicado;
+			removeConsulta.setDisable(false);
+		}
+	}
+
 	public void preencherTableViewConsultas() {
 		ArrayList<Consulta> consultas = f.listarConsultas();
 		colunaConsultaHorario.setCellValueFactory(new PropertyValueFactory<>("horario"));
-		
-		colunaConsultaMedico.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
-				
-				return new SimpleStringProperty(c.getValue().getMedico().getNome());
-			}
-		});
-		
-		colunaConsultaPaciente.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
-
-			@Override
-			public ObservableValue<String> call(CellDataFeatures<Consulta, String> c) {
-				
-				return new SimpleStringProperty(c.getValue().getPaciente().getNome());
-			}
-			
-		});
-
-		
-		
-		colunaConsultaRealizada.setCellValueFactory(new PropertyValueFactory<>("realizada"));
+		colunaConsultaMedico
+				.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<Consulta, String> oferta) {
+						return new SimpleStringProperty(oferta.getValue().getMedico().getNome());
+					}
+				});
+		colunaConsultaPaciente
+				.setCellValueFactory(new Callback<CellDataFeatures<Consulta, String>, ObservableValue<String>>() {
+					@Override
+					public ObservableValue<String> call(CellDataFeatures<Consulta, String> oferta) {
+						return new SimpleStringProperty(oferta.getValue().getPaciente().getNome());
+					}
+				});
+		colunaConsultaRealizada
+				.setCellValueFactory(new Callback<CellDataFeatures<Consulta, Boolean>, ObservableValue<Boolean>>() {
+					@Override
+					public ObservableValue<Boolean> call(CellDataFeatures<Consulta, Boolean> oferta) {
+						return new SimpleBooleanProperty(oferta.getValue().foiRealizada());
+					}
+				});
 		tabelaConsultas.setItems(FXCollections.observableArrayList(consultas));
 	}
-	
-	public void preencherTableViewMedico(){
+
+	public void preencherTableViewMedico() {
 		ArrayList<Medico> med = f.listarMedicos();
 		colunaNomeMedico.setCellValueFactory(new PropertyValueFactory<>("nome"));
 		colunaCpfMedico.setCellValueFactory(new PropertyValueFactory<>("cpf"));
 		tabelaMedico.setItems(FXCollections.observableArrayList(med));
 	}
-	
+
 	@FXML
 	public void clicadoForaDaTabela() {
 		atualizaPaciente.setDisable(true);
 		removePaciente.setDisable(true);
-		atualizaConsulta.setDisable(true);
 		removeConsulta.setDisable(true);
-		detalhesConsulta.setDisable(true);
 		this.pacienteAtual = null;
 	}
 }

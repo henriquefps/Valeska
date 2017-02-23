@@ -224,6 +224,6 @@ public class RepositorioConsultas implements IRepositorioConsultas, Serializable
 	@Override
 	public void modificar(Consulta con, LocalDateTime horario) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
