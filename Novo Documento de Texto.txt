@@ -1,4 +1,4 @@
-	classe Pessoa
+	classe 
 -nome: String
 -cpf: String
 -rg: String
